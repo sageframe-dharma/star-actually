@@ -1,0 +1,59 @@
+# ho-actually — an instance of *, Actually. Content + config; the build engine
+# is the `star-actually` package. No [build-system]: virtual project.
+
+[project]
+name = "ho-actually"
+version = "0.1.0"
+description = "Ho System, Actually — the Ho System methodology as a navigable *, Actually knowledge graph."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Andrew T Marcus", email = "atmarcus@gmail.com" },
+]
+dependencies = [
+    "star-actually",
+]
+
+[tool.uv.sources]
+# Local dev across the star-actually/ family: editable path to the engine.
+star-actually = { git = "git@github-no-kaji:sageframe-no-kaji/star-actually.git", tag = "v0.3.0" }
+# CI / deploy: pin a reproducible engine tag instead (uncomment, comment the path).
+# star-actually = { git = "git@github-no-kaji:sageframe-no-kaji/star-actually.git", tag = "v0.3.0" }
+
+[dependency-groups]
+dev = [
+    "ruff>=0.7",
+    "mypy>=1.13",
+    "pytest>=8.0",
+    "pre-commit>=4.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["tests"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "N", "RUF", "SIM"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = ["--verbose", "--strict-markers"]

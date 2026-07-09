@@ -1,0 +1,14 @@
+# The domain boundary. Everything SSH-specific that isn't a node lives here.
+# The engine (src/star_actually, templates/, assets/) never mentions the domain.
+
+title: "SSH, Actually"
+system_name: "*, Actually"
+domain_word: "SSH"
+tagline: "100% signal, 0% noise."
+prompt: "What do you want to know about SSH, actually?"
+url: "https://ssh-actually.sageframe.net"
+root_node: "what-ssh-is"
+repo: "https://github.com/sageframe-no-kaji/ssh-actually"
+author: "Andrew T Marcus"
+receptionist: false  # static build; the /ask backend is not deployed
+base_path: "/ssh-actually"

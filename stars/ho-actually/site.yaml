@@ -1,0 +1,21 @@
+# The domain boundary. Everything Ho-System-specific that isn't a node lives
+# here. The engine (the star-actually package) never mentions the domain.
+
+title: "Ho System, Actually"
+system_name: "*, Actually"
+domain_word: "the Ho System"
+tagline: "Build the software. Develop the judgment."
+prompt: "What do you want to know about the Ho System, actually?"
+url: "https://ho-actually.sageframe.net"
+root_node: "what-is-ho-system"
+repo: "https://github.com/sageframe-no-kaji/ho-actually"
+author: "Andrew T Marcus"
+receptionist: false  # static build; the /ask backend is not deployed
+blurb: >
+  The Ho System is a methodology for building production-quality software with AI
+  as an implementation partner — for people who think in systems. Work proceeds in
+  bounded steps (hos), framed before it is built (kamae), and verified at every
+  close. This site is that framework, decomposed into a navigable graph.
+source_url: "https://hosystem.sageframe.net"
+source_label: "the full framework at hosystem.sageframe.net"
+base_path: "/ho-actually"

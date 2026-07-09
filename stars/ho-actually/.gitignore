@@ -1,0 +1,24 @@
+# Private prompts (sageframe convention)
+/prompts/
+
+# Build output
+/dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node (Pagefind runs via npx at build time)
+node_modules/
+
+# Environment
+.env
+
+# macOS
+.DS_Store

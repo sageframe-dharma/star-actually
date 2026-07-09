@@ -6,9 +6,9 @@ system_name: "*, Actually"
 domain_word: "the Ho System"
 tagline: "Build the software. Develop the judgment."
 prompt: "What do you want to know about the Ho System, actually?"
-url: "https://ho-actually.sageframe.net"
+url: "https://star-actually.sageframe.net/ho-actually"
 root_node: "what-is-ho-system"
-repo: "https://github.com/sageframe-no-kaji/ho-actually"
+repo: "https://github.com/sageframe-dharma/star-actually"
 author: "Andrew T Marcus"
 receptionist: false  # static build; the /ask backend is not deployed
 blurb: >

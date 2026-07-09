@@ -1,0 +1,93 @@
+<article class="node" id="content"
+  data-node-id="ssh-debugging"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Debugging SSH">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Debugging SSH</h1>
+      <span class="node-type node-type-troubleshooting">troubleshooting</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/ssh-debugging/d4/"
+         hx-get="/ssh-actually/n/ssh-debugging/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/ssh-debugging/d2/"
+         hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>SSH failures are rarely mysterious once you ask the right tool. Four tools cover almost every case: <strong>verbose output</strong> (<code>ssh -v</code>) shows what the client tried and where it failed, <strong>config resolution</strong> (<code>ssh -G</code>) shows what configuration actually applied, <strong>agent inspection</strong> (<code>ssh-add -l</code>) shows which keys are loaded, and <strong>server-side logs</strong> show why the server said no.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <h3>Watch the connection</h3>
+<pre><code class="language-bash">ssh -v user@server      # Basic verbosity
+ssh -vv user@server     # More detail
+ssh -vvv user@server    # Maximum detail
+</code></pre>
+<p>Look for: which keys are being tried, the authentication method used, and where failures occur.</p>
+<h3>Check what config resolved</h3>
+<pre><code class="language-bash">ssh -G hostname
+</code></pre>
+<p>Shows all resolved options, which config rules matched, and the final values used. Use case: debugging unexpected SSH behavior — this is how you find out SSH is using a different key than you think.</p>
+<h3>Inspect the agent</h3>
+<pre><code class="language-bash">ssh-add -l
+</code></pre>
+<p>Shows all keys currently loaded in the agent. Add a key with <code>ssh-add ~/.ssh/id_example</code> (cache passphrase for session); clear everything with <code>ssh-add -D</code>.</p>
+<h3>Read the server's side (requires existing access)</h3>
+<pre><code class="language-bash">sudo tail -20 /var/log/auth.log
+# or on some systems:
+sudo journalctl -u sshd -n 20
+</code></pre>
+<p>The server will log exactly why it rejected the key.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="file-permissions" href="/ssh-actually/n/file-permissions/"
+               hx-get="/ssh-actually/n/file-permissions/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/file-permissions/">&rarr; SSH File Permissions</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="host-key-changed" href="/ssh-actually/n/host-key-changed/"
+               hx-get="/ssh-actually/n/host-key-changed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-key-changed/">&rarr; Host Key Changed</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="identities-only" href="/ssh-actually/n/identities-only/"
+               hx-get="/ssh-actually/n/identities-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/identities-only/">&rarr; IdentitiesOnly</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="known-hosts" href="/ssh-actually/n/known-hosts/"
+               hx-get="/ssh-actually/n/known-hosts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/known-hosts/">&rarr; Known Hosts</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&rarr; SSH Agents</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

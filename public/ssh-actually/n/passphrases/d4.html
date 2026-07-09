@@ -1,0 +1,176 @@
+<article class="node" id="content"
+  data-node-id="passphrases"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Passphrases">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Passphrases</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/passphrases/d3/"
+         hx-get="/ssh-actually/n/passphrases/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>passphrase</strong> is a secret used to encrypt a private key <strong>at rest</strong> on disk. It is not a password for a server — it protects the key file itself.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>What it does:</p>
+<ul>
+<li>prevents immediate use if the file is stolen</li>
+</ul>
+<p>What it does <strong>not</strong> do:</p>
+<ul>
+<li>prevent offline brute-force attacks</li>
+<li>limit guessing attempts</li>
+<li>protect against malware on an unlocked system</li>
+</ul>
+<p>The important reality:</p>
+<blockquote>
+<p>If someone steals a private key file, they can brute-force the passphrase <strong>offline with unlimited attempts</strong>.</p>
+</blockquote>
+<p>That's why strength matters — 20+ characters, stored in a password manager. The tradeoff is honest: no passphrase → convenient, unsafe; passphrase → safer, annoying.</p>
+<p>And if you forget it: there is no recovery. You cannot use the key. Generate a new key pair and deploy it to your servers — which is exactly why the passphrase belongs in a password manager.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The passphrase sits at the center of three tradeoffs:</p>
+<ul>
+<li><strong>The annoyance has a fix.</strong> Retyping the passphrase every connection is what <strong>SSH agents</strong> exist for — the agent caches the unlocked key for a session. macOS goes further and makes the whole thing invisible (Keychain + Touch ID), which is convenience, not a stronger boundary.</li>
+<li><strong>The comparison that clarifies it.</strong> A passphrase protects a <em>file</em>, brute-forceable offline with unlimited attempts. A hardware PIN protects a <em>physical device</em>, with attempt limits enforced inside the hardware. That asymmetry is why a 6-digit PIN can safely replace a 40-character passphrase.</li>
+<li><strong>What it says about where you stand.</strong> Needing a passphrase at all is a symptom of the disk-based trust boundary: the secret is a copyable file, so it needs armor. Hardware keys remove the file entirely — and the passphrase with it.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="pins-vs-passphrases" href="/ssh-actually/n/pins-vs-passphrases/"
+               hx-get="/ssh-actually/n/pins-vs-passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/pins-vs-passphrases/">&darr; PINs vs Passphrases</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&darr; SSH Agents</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&darr; Stolen Laptop</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&rarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-pin" href="/ssh-actually/n/hardware-pin/"
+               hx-get="/ssh-actually/n/hardware-pin/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-pin/">&rarr; Hardware PINs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-generation" href="/ssh-actually/n/key-generation/"
+               hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-generation/">&rarr; Generating Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&rarr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&rarr; macOS Keychain Integration</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passwords" href="/ssh-actually/n/passwords/"
+               hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passwords/">&rarr; Passwords</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pins-vs-passphrases" href="/ssh-actually/n/pins-vs-passphrases/"
+               hx-get="/ssh-actually/n/pins-vs-passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/pins-vs-passphrases/">&rarr; PINs vs Passphrases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&rarr; SSH Agents</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&rarr; Trust Boundaries</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&uarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-pin" href="/ssh-actually/n/hardware-pin/"
+               hx-get="/ssh-actually/n/hardware-pin/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-pin/">&uarr; Hardware PINs</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="key-generation" href="/ssh-actually/n/key-generation/"
+               hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-generation/">&uarr; Generating Keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&uarr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&uarr; macOS Keychain Integration</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="passwords" href="/ssh-actually/n/passwords/"
+               hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passwords/">&uarr; Passwords</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="pins-vs-passphrases" href="/ssh-actually/n/pins-vs-passphrases/"
+               hx-get="/ssh-actually/n/pins-vs-passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/pins-vs-passphrases/">&uarr; PINs vs Passphrases</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&uarr; SSH Agents</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&uarr; Stolen Laptop</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&uarr; Trust Boundaries</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

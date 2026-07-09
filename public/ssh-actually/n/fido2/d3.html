@@ -1,0 +1,104 @@
+<article class="node" id="content"
+  data-node-id="fido2"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="FIDO2">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">FIDO2</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/fido2/d4/"
+         hx-get="/ssh-actually/n/fido2/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/fido2/d2/"
+         hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><strong>FIDO2</strong> is a standard for cryptographic authentication where the server never learns your secret. The key idea:</p>
+<blockquote>
+<p>The service verifies a <em>signature</em>, not a secret.</p>
+</blockquote>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>FIDO2 replaces shared secrets with <strong>key-pair cryptography</strong>. Instead of storing a password that can be stolen, the service stores a public key and asks your authenticator to sign a challenge. Nothing reusable ever travels; nothing stealable ever sits on the server.</p>
+<p>You encounter FIDO2 wearing several different outfits:</p>
+<ul>
+<li><strong>WebAuthn</strong> — the browser API that lets websites use it</li>
+<li><strong>Passkeys</strong> — discoverable FIDO2 credentials, made user-friendly and synced by platforms</li>
+<li><strong>Hardware security keys</strong> — FIDO2 with physical enforcement</li>
+<li><strong>Hardware-backed SSH keys</strong> (<code>ed25519-sk</code>) — SSH using FIDO2 hardware as signing devices</li>
+</ul>
+<p>The confusion around these names exists because the technologies evolved incrementally, not coherently. They are all one idea.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&darr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&darr; Passkeys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&darr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&rarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&rarr; Passkeys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="phishing-resistance" href="/ssh-actually/n/phishing-resistance/"
+               hx-get="/ssh-actually/n/phishing-resistance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/phishing-resistance/">&rarr; Phishing Resistance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="signatures" href="/ssh-actually/n/signatures/"
+               hx-get="/ssh-actually/n/signatures/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/signatures/">&rarr; Signatures</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&rarr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

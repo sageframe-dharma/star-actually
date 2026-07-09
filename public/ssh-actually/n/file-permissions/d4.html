@@ -1,0 +1,121 @@
+<article class="node" id="content"
+  data-node-id="file-permissions"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="SSH File Permissions">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">SSH File Permissions</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/file-permissions/d3/"
+         hx-get="/ssh-actually/n/file-permissions/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>SSH refuses to use a private key if other users could read it. The logic: if the file is readable by others, it might already be compromised. <strong>SSH would rather fail than use a key it can't trust.</strong> The same applies to <code>authorized_keys</code> on the server side.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <h3>correct permissions (local machine)</h3>
+<pre><code class="language-bash"># The .ssh directory itself
+chmod 700 ~/.ssh
+
+# Private keys — owner read/write only
+chmod 600 ~/.ssh/id_*
+
+# Public keys — owner read/write, others can read
+chmod 644 ~/.ssh/id_*.pub
+
+# Config file
+chmod 600 ~/.ssh/config
+
+# Known hosts
+chmod 644 ~/.ssh/known_hosts
+</code></pre>
+<h3>correct permissions (server side)</h3>
+<pre><code class="language-bash"># Home directory — must not be writable by others
+chmod 755 ~/
+# Some servers require 700
+
+# The .ssh directory
+chmod 700 ~/.ssh
+
+# Authorized keys file
+chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+<p><strong>The home directory matters.</strong> This trips people up. Even if <code>~/.ssh</code> and <code>authorized_keys</code> have correct permissions, SSH will reject the key if the home directory itself is group-writable or world-writable. This is a server-side <code>sshd</code> requirement, not a client-side one.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>What this assumes, and where it connects:</p>
+<ul>
+<li>On the server side, if <code>authorized_keys</code> or its parent directories are writable by other users, SSH ignores the file entirely — the trust anchor itself must be tamper-proof, not just the secret.</li>
+<li><code>ssh-copy-id</code> sets correct permissions for you; the manual deployment method makes them your job. Keys copied to a new machine arrive with whatever permissions the copy gave them — set them explicitly.</li>
+<li>When permissions are wrong, the failure is <strong>silent</strong>: no error in normal mode, just &quot;Permission denied.&quot; The failure mode and its diagnosis path are their own node — this one carries the why and the correct numbers.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&rarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&rarr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&rarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&uarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&uarr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&uarr; Permission Denied</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProxyJump (depth 5) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="proxy-jump"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="ProxyJump">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">ProxyJump</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/proxy-jump/d4/"
+         hx-get="/ssh-actually/n/proxy-jump/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>An SSH feature that routes your connection through an intermediate server <strong>without giving that server access to your agent</strong> — the intermediate opens a TCP tunnel, and your client authenticates directly with the destination through it. The secure alternative to agent forwarding for multi-hop SSH.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>On the command line:</p>
+<pre><code class="language-bash">ssh -J jumphost user@destination
+</code></pre>
+<p>Or in <code>~/.ssh/config</code>:</p>
+<pre><code>Host destination
+    HostName 10.0.0.5
+    User admin
+    ProxyJump jumphost
+</code></pre>
+<p>How it works:</p>
+<ol>
+<li>SSH opens a connection to the jump host</li>
+<li>The jump host opens a <strong>TCP tunnel</strong> to the destination</li>
+<li>Your SSH client authenticates <strong>directly</strong> with the destination through the tunnel</li>
+<li>The jump host sees encrypted traffic — nothing else</li>
+</ol>
+<p>The jump host never sees your key, never talks to your agent, cannot use your credentials. It is just a network relay.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>ProxyJump is the third of three answers to &quot;my key is on my laptop but I need to hop through a machine&quot; — the other two being <em>copy the key to the intermediate</em> (don't) and <em>agent forwarding</em> (the key stays home but its power travels). The comparison:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Agent Forwarding</th>
+<th>ProxyJump</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key leaves laptop</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Intermediate can sign as you</td>
+<td><strong>Yes</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Requires trust in intermediate</td>
+<td><strong>Yes</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Config complexity</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Works with hardware keys</td>
+<td>Partially</td>
+<td><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+<p>When to use ProxyJump instead of forwarding: <strong>almost always</strong>. Especially any server you don't fully control, any multi-hop path through shared infrastructure, any cloud or work environment — and any time hardware keys are involved, because agent forwarding behavior with hardware keys varies and can be unreliable while ProxyJump works cleanly.</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>What &quot;just a network relay&quot; actually buys you.</p>
+<p>The tunnel carries a second, fully encrypted SSH connection — client to destination, end to end. The destination's authentication challenge travels through the jump host as ciphertext and is answered by <em>your local client</em>, so the cryptographic conversation has no party in the middle. There is nothing for the intermediate to steal (it never sees key material) and nothing for it to borrow (it never gets a channel to your agent, so it cannot ask for signatures the way a forwarding-enabled intermediate can).</p>
+<p>That collapses the trust question. With agent forwarding, you must trust the intermediate with <strong>the power to act as you</strong> — anyone with root there can sign as you for the life of your session. With ProxyJump, the worst a hostile jump host can do is refuse to carry your traffic. Compromising it gets an attacker a view of encrypted bytes, not an identity.</p>
+<p>This is also why hardware-backed keys and ProxyJump pair so well: the signing happens where it always does — between your local client and your device, touch and PIN included. No remote machine ever needs to talk to your agent or your hardware, so nothing about the hop changes the ceremony.</p>
+<p>The design lesson generalizes: when a path must cross a machine you don't control, prefer the option that hands that machine <strong>packets</strong> over any option that hands it <strong>authority</strong>.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&darr; Configuring Jump Hosts</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&rarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&rarr; Configuring Jump Hosts</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&rarr; Trust Boundaries</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&uarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&uarr; Configuring Jump Hosts</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

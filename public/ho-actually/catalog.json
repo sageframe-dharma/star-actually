@@ -1,0 +1,588 @@
+{
+  "site": "Ho System, Actually",
+  "root": "what-is-ho-system",
+  "nodes": [
+    {
+      "id": "agent-task",
+      "title": "agent task (AT)",
+      "type": "definition",
+      "summary": "A precise, checkable spec an autonomous coding agent runs to do one bounded piece of work, halting rather than improvising when it meets a surprise.",
+      "entry_points": [
+        "agent task"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "arc",
+      "title": "arc",
+      "type": "concept",
+      "summary": "The full sequence of steps that carries a project from first idea to running system.",
+      "entry_points": [
+        "arc"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "basis-of-design",
+      "title": "Basis of Design",
+      "type": "definition",
+      "summary": "The one file that holds a project's settled design values as explicit numbers, the source of truth everything else builds from.",
+      "entry_points": [
+        "basis of design"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "builds-on",
+      "title": "builds-on",
+      "type": "procedure",
+      "summary": "A frontmatter field naming the upstream documents a piece of work depends on, so opening it pulls its context in order.",
+      "entry_points": [
+        "builds-on"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "closure",
+      "title": "closure",
+      "type": "concept",
+      "summary": "The moment a unit of work and its look-back are finished and its status is marked done.",
+      "entry_points": [
+        "closure"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "compressed-chain",
+      "title": "compressed chain",
+      "type": "definition",
+      "summary": "The chain of up-front framing documents when a seasoned practitioner has deliberately merged or skipped some of its layers.",
+      "entry_points": [
+        "compressed chain"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "constitutive-child",
+      "title": "constitutive child",
+      "type": "definition",
+      "summary": "A child unit of work that only makes sense alongside the parent it was split from.",
+      "entry_points": [
+        "constitutive child"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "dandori",
+      "title": "dandori (段取り)",
+      "type": "procedure",
+      "summary": "The preparation that turns a resolved plan into exact, runnable instructions before any building starts.",
+      "entry_points": [
+        "dandori"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "declared-compression",
+      "title": "declared compression",
+      "type": "procedure",
+      "summary": "Deliberately merging or skipping framing layers, but only when you write down what you combined and why, where the next session will see it.",
+      "entry_points": [
+        "declared compression"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "design-tuning",
+      "title": "design tuning",
+      "type": "concept",
+      "summary": "Settling a design's feel by building throwaway try-outs, watching real values move, and locking the ones that feel right.",
+      "entry_points": [
+        "design tuning"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "devlog",
+      "title": "devlog",
+      "type": "definition",
+      "summary": "A structured write-up done after a session that records what was decided and learned, so the work reads as yours rather than the machine's.",
+      "entry_points": [
+        "devlog"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "dogfood",
+      "title": "dogfood",
+      "type": "definition",
+      "summary": "Learning a tool by actually using it on a real task, the way a real user would.",
+      "entry_points": [
+        "dogfood"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "forward-only",
+      "title": "forward-only",
+      "type": "concept",
+      "summary": "Finished work stays finished; a mistake is answered with a new document, never by editing the old one.",
+      "entry_points": [
+        "forward-only"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "graded-eval",
+      "title": "eval (graded eval)",
+      "type": "definition",
+      "summary": "A human-graded check of output quality — correctness, clarity, judgment — where a pass/fail machine won't do.",
+      "entry_points": [
+        "eval"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "ha",
+      "title": "ha (破)",
+      "type": "concept",
+      "summary": "The middle stage where the practitioner breaks from the set form to scope and decide their own work.",
+      "entry_points": [
+        "ha"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "ho",
+      "title": "ho (歩)",
+      "type": "concept",
+      "summary": "One bounded, deliverable session of work that leaves a record when it closes.",
+      "entry_points": [
+        "ho"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "ho-0-5",
+      "title": "ho 0.5",
+      "type": "definition",
+      "summary": "The decimal slot for an unplanned step slipped in before the next major one.",
+      "entry_points": [
+        "ho 0.5"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "ho-00",
+      "title": "ho-00",
+      "type": "definition",
+      "summary": "A project's first session, which sets up its conditions, primers, and conventions and passes to the first building step.",
+      "entry_points": [
+        "ho-00"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "ho-document",
+      "title": "ho document",
+      "type": "definition",
+      "summary": "The written scope for one working session — its decisions, boundaries, and checks — read by the person doing the work.",
+      "entry_points": [
+        "ho document"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "ho-overview",
+      "title": "ho overview",
+      "type": "definition",
+      "summary": "The build's directional plan, grouping the planned steps into themed clusters with checkpoints and named milestones.",
+      "entry_points": [
+        "ho overview"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "ho-process",
+      "title": "ho-process/",
+      "type": "definition",
+      "summary": "The project folder that holds the methodology's working artifacts — the framing documents, the session records, and the task specs.",
+      "entry_points": [
+        "ho-process/"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "interaction-test",
+      "title": "interaction test",
+      "type": "definition",
+      "summary": "A human at a real terminal checking that something works and feels right, not just that the code runs.",
+      "entry_points": [
+        "interaction test"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "kagen",
+      "title": "kagen (加減)",
+      "type": "definition",
+      "summary": "The felt-right amount for a value — its correct degree, found by feel rather than by rule.",
+      "entry_points": [
+        "kagen"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "kamae",
+      "title": "Kamae (構え)",
+      "type": "concept",
+      "summary": "The ready stance and all the framing done before a build, producing a chain of documents that move from opinions to a session plan.",
+      "entry_points": [
+        "kamae"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "kamae-addendum",
+      "title": "Kamae addendum (kamae-N.M)",
+      "type": "procedure",
+      "summary": "A follow-on decision document that overrides a named part of an earlier framing document without editing it, carrying its own justification and record.",
+      "entry_points": [
+        "kamae addendum"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "kokoroe",
+      "title": "kokoroe (心得)",
+      "type": "concept",
+      "summary": "The built-in care an executing agent works under — read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.",
+      "entry_points": [
+        "kokoroe"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "landing-ho",
+      "title": "landing ho",
+      "type": "definition",
+      "summary": "A session whose whole job is settling visual or behavioral values at their felt-right degree and locking them with a commit.",
+      "entry_points": [
+        "landing ho"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "learning-walkthrough",
+      "title": "learning walkthrough",
+      "type": "definition",
+      "summary": "A plain-language, after-the-fact walk through what a session actually built, written for the practitioner as learner.",
+      "entry_points": [
+        "learning walkthrough"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "mind-hand",
+      "title": "mind / hand",
+      "type": "concept",
+      "summary": "The core principle of splitting one idea into its thinking (the mind) and its doing (the hand), so the doing can be handed off cheaply.",
+      "entry_points": [
+        "mind / hand"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "mutability",
+      "title": "mutability (living / frozen / sealed)",
+      "type": "concept",
+      "summary": "The scale of how much an artifact may change over its life — living (revised freely), frozen (changed only by override), or sealed (never again).",
+      "entry_points": [
+        "mutability"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "notes",
+      "title": "notes/",
+      "type": "definition",
+      "summary": "The folder where findings gathered before a session wait until some later session pulls them in.",
+      "entry_points": [
+        "notes/"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "orientation-ho",
+      "title": "orientation ho",
+      "type": "definition",
+      "summary": "A framing-only session — setting conditions, primers, and handoff — with no building work inside it.",
+      "entry_points": [
+        "orientation ho"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "parti",
+      "title": "parti",
+      "type": "concept",
+      "summary": "The single core idea a whole project is organized around, the reference every later decision is judged against.",
+      "entry_points": [
+        "parti"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "phase",
+      "title": "phase",
+      "type": "concept",
+      "summary": "A named stage of work, used at three scales — the whole project's progression, a cluster of related sessions, and the steps within a single session.",
+      "entry_points": [
+        "phase"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "precedential-thinking",
+      "title": "precedential thinking",
+      "type": "procedure",
+      "summary": "Studying what already exists in a problem space before proposing to build anything new in it.",
+      "entry_points": [
+        "precedential thinking"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "propagation-ledger",
+      "title": "propagation ledger",
+      "type": "procedure",
+      "summary": "The running log of changes to the settled values, each commit naming why the value moved.",
+      "entry_points": [
+        "propagation ledger"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "reflect",
+      "title": "Reflect",
+      "type": "definition",
+      "summary": "The honest look back after the work: did the plan hold, what changed, what the next session carries.",
+      "entry_points": [
+        "reflect"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "registers",
+      "title": "architectural register / executable register",
+      "type": "concept",
+      "summary": "The two levels a single thought is written at: the reasoning a person reads, and the exact instructions the executor follows.",
+      "entry_points": [
+        "architectural register / executable register"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "release-tag",
+      "title": "release tag",
+      "type": "definition",
+      "summary": "A tagged commit marking the end of a build stage, forcing a done/not-done call and leaving a rollback point.",
+      "entry_points": [
+        "release tag"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "replan-checkpoint",
+      "title": "replan checkpoint",
+      "type": "definition",
+      "summary": "A named pause in the plan where the practitioner stops, weighs real evidence, and decides whether to continue, insert, or rethink.",
+      "entry_points": [
+        "replan checkpoint"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "ri",
+      "title": "ri (離)",
+      "type": "concept",
+      "summary": "The stage where the form has been so internalized the practitioner moves past it, working from mastery rather than rules.",
+      "entry_points": [
+        "ri"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "seed",
+      "title": "seed",
+      "type": "definition",
+      "summary": "The founding document that states a project's problem, vision, constraints, and guiding idea, revised deliberately as it evolves.",
+      "entry_points": [
+        "seed"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "shape",
+      "title": "shape",
+      "type": "definition",
+      "summary": "The structural form a session document takes, chosen at authoring time, describing the document rather than the person.",
+      "entry_points": [
+        "shape"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "shu",
+      "title": "shu (守)",
+      "type": "concept",
+      "summary": "The beginner stage of following a prescribed form exactly, before earning the judgment to depart from it.",
+      "entry_points": [
+        "shu"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "shu-ha-ri",
+      "title": "shu-ha-ri (守破離)",
+      "type": "concept",
+      "summary": "The three-stage path of mastery — follow the form, break from it deliberately, then transcend it — held separately for each skill.",
+      "entry_points": [
+        "shu-ha-ri"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "sidecar",
+      "title": "sidecar",
+      "type": "definition",
+      "summary": "A record kept in a sibling folder outside a fork's working tree, so your own process files never mix into someone else's repository.",
+      "entry_points": [
+        "sidecar"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "sidequest",
+      "title": "sidequest",
+      "type": "definition",
+      "summary": "A bounded, detachable line of work inside a project, with its own folder, numbering, and its own check that it worked.",
+      "entry_points": [
+        "sidequest"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "smoke-test",
+      "title": "smoke test",
+      "type": "definition",
+      "summary": "An agent walking through the real feature to confirm it works — the floor other checks must clear, never the final word.",
+      "entry_points": [
+        "smoke test"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "spike",
+      "title": "spike (design)",
+      "type": "definition",
+      "summary": "A purpose-built proof that a design's settled values hold up against real code constraints, made as the reference the production build copies from.",
+      "entry_points": [
+        "spike"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "splits-from",
+      "title": "splits-from",
+      "type": "definition",
+      "summary": "A frontmatter field on a session carved out of an oversized one, pointing back at the original it was divided from.",
+      "entry_points": [
+        "splits-from"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "standalone-agent-task",
+      "title": "standalone agent task",
+      "type": "definition",
+      "summary": "A self-contained agent task that belongs to no larger session — maintenance, a surgical fix, or early exploration.",
+      "entry_points": [
+        "standalone agent task"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "supersedes",
+      "title": "supersedes",
+      "type": "procedure",
+      "summary": "Names exactly what a newer document overtakes; the older one keeps a pointer back, and nothing is erased.",
+      "entry_points": [
+        "supersedes"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "think-execute-reflect",
+      "title": "Think / Execute / Reflect",
+      "type": "concept",
+      "summary": "The fixed three-part rhythm of a building session — decide first, build second, then judge honestly what happened.",
+      "entry_points": [
+        "think / execute / reflect"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "tiered-understanding",
+      "title": "tiered understanding",
+      "type": "concept",
+      "summary": "Naming honestly how well you grasp something, on a three-step scale from use-it-blindly to could-rebuild-it.",
+      "entry_points": [
+        "tiered understanding"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "tripwired",
+      "title": "tripwired",
+      "type": "definition",
+      "summary": "Built to run on its own within set bounds but stop and raise a flag the instant it meets something unexpected.",
+      "entry_points": [
+        "tripwired"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "tuner",
+      "title": "tuner",
+      "type": "definition",
+      "summary": "A live control that lets you move a visual or behavioral value and watch it change before committing to a number.",
+      "entry_points": [
+        "tuner"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "verification-validation",
+      "title": "verification / validation",
+      "type": "concept",
+      "summary": "The two halves of quality — verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.",
+      "entry_points": [
+        "verification / validation"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "what-is-ho-system",
+      "title": "What the Ho System Is",
+      "type": "concept",
+      "summary": "Building production software with AI while developing real judgment.",
+      "entry_points": [
+        "what is the ho system",
+        "is this for me",
+        "how does ho work"
+      ],
+      "depth_levels": 3
+    }
+  ]
+}

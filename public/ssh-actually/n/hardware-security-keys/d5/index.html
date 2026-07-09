@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware Security Keys (depth 5) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="hardware-security-keys"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="Hardware Security Keys">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Hardware Security Keys</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/hardware-security-keys/d4/"
+         hx-get="/ssh-actually/n/hardware-security-keys/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A small physical device whose entire purpose is to <strong>hold cryptographic power in a place software cannot reach</strong>. It is not &quot;extra authentication.&quot; It is <strong>moving trust out of your computer and into a physical object</strong>.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>A hardware security key can do four things, and understanding them dissolves most of the mystery:</p>
+<p><strong>1. Generate cryptographic secrets.</strong> A cryptographic secret is a large random number that is mathematically infeasible to guess. When a hardware key generates one, the secret is created <strong>inside the hardware</strong> — the operating system never sees it, it is never written to disk, it cannot be copied. You cannot steal what never existed outside the device.</p>
+<p><strong>2. Store secrets securely.</strong> Storage that cannot be read, copied, or dumped — even by the computer it's plugged into. Secrets live in tamper-resistant memory, there is no command to &quot;export&quot; them, and physical extraction is extremely difficult and usually destructive. The hardware key does <strong>not</strong> &quot;encrypt files.&quot; It simply <strong>refuses to give secrets away</strong>.</p>
+<p><strong>3. Require touch and/or PIN.</strong> This is about <strong>control</strong>, not identity — a physical press proves a human is present, and a device-enforced PIN limits who can ask.</p>
+<p><strong>4. Sign data without exposing secrets.</strong> The computer asks: <em>&quot;Please sign this challenge.&quot;</em> The hardware responds: <em>&quot;Here is a proof I signed it.&quot;</em> At no point does the computer get the private key, any reusable secret, or any material it could steal.</p>
+<p>Examples: YubiKey, SoloKey, Nitrokey. They are not &quot;USB passwords.&quot; They are <strong>cryptographic co-processors</strong>.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Why the device exists at all: key-pair cryptography is strong, but there's still a vulnerability — <strong>where the secret lives</strong>. Traditional SSH keys live on disk. That means malware can copy them, disk theft exposes them, and backups contain them. Passphrases help, but they're brute-forceable offline. Hardware security keys solve this by changing the rules entirely: the secret never exists anywhere software can reach.</p>
+<p>Because the underlying trick is generic — sign challenges without releasing the secret — one device can act as several things at once:</p>
+<ul>
+<li>an <strong>MFA device</strong> (second factor for logins)</li>
+<li>a <strong>passkey holder</strong> (storing discoverable FIDO2 credentials)</li>
+<li>an <strong>SSH authenticator</strong> (signing SSH challenges, no private keys on disk)</li>
+<li>a <strong>smart card</strong> (on models that support it)</li>
+</ul>
+<p>All of these rely on the same three guarantees: hardware isolation, non-exportable secrets, signature-based authentication.</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>The signature is the core magic. A <strong>signature</strong> is a mathematical proof that a specific secret exists and that the holder of that secret approved <em>this exact action</em>. Crucially, the secret never leaves the hardware — only the signature does.</p>
+<p>In key-pair terms:</p>
+<ul>
+<li>Public key → shared with servers</li>
+<li>Private key → locked inside hardware</li>
+<li>Signature → proof created <em>by</em> the hardware</li>
+</ul>
+<p>The mental model to keep. A hardware security key is not:</p>
+<ul>
+<li>A password manager</li>
+<li>A magic dongle</li>
+<li>A second password</li>
+</ul>
+<p>It is:</p>
+<blockquote>
+<p><strong>A physically enforced boundary where secrets can be used but never stolen.</strong></p>
+</blockquote>
+<p>Everything else — SSH, passkeys, PINs, touch — is just different ways of <em>asking</em> that boundary to prove something. Once you see it this way, the rest stops being obtuse.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-key-capabilities" href="/ssh-actually/n/hardware-key-capabilities/"
+               hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-capabilities/">&darr; Hardware Key Capabilities</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&darr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-pin" href="/ssh-actually/n/hardware-pin/"
+               hx-get="/ssh-actually/n/hardware-pin/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-pin/">&darr; Hardware PINs</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="touch-requirement" href="/ssh-actually/n/touch-requirement/"
+               hx-get="/ssh-actually/n/touch-requirement/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/touch-requirement/">&darr; The Touch Requirement</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&rarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&rarr; macOS Keychain Integration</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mfa" href="/ssh-actually/n/mfa/"
+               hx-get="/ssh-actually/n/mfa/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa/">&rarr; Multi-Factor Authentication</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&rarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&rarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&rarr; Passkeys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="phishing-resistance" href="/ssh-actually/n/phishing-resistance/"
+               hx-get="/ssh-actually/n/phishing-resistance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/phishing-resistance/">&rarr; Phishing Resistance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="signatures" href="/ssh-actually/n/signatures/"
+               hx-get="/ssh-actually/n/signatures/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/signatures/">&rarr; Signatures</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&uarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&uarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-key-capabilities" href="/ssh-actually/n/hardware-key-capabilities/"
+               hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-capabilities/">&uarr; Hardware Key Capabilities</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&uarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-pin" href="/ssh-actually/n/hardware-pin/"
+               hx-get="/ssh-actually/n/hardware-pin/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-pin/">&uarr; Hardware PINs</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&uarr; macOS Keychain Integration</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mfa" href="/ssh-actually/n/mfa/"
+               hx-get="/ssh-actually/n/mfa/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa/">&uarr; Multi-Factor Authentication</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&uarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&uarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&uarr; Passkeys</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

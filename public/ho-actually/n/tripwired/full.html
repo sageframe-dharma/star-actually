@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tripwired · Ho System, Actually</title>
+<link rel="stylesheet" href="/ho-actually/assets/style.css">
+</head>
+<body data-base="/ho-actually">
+<header class="site-head">
+  <a class="site-name" href="/ho-actually/">Ho System, Actually</a>
+  <span class="site-tagline">Build the software. Develop the judgment.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="tripwired"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="tripwired">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">tripwired</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/tripwired/d3/"
+         hx-get="/ho-actually/n/tripwired/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Built to run on its own within set bounds but stop and raise a flag the instant it meets something unexpected.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The property that makes an agent task safe to delegate: autonomous within its
+bounds, but the moment it hits something unanticipated it halts and surfaces rather than
+adapting. Bounded autonomy with a halt-and-surface tripwire. <em>Escalation</em> is the mechanism;
+<em>tripwired</em> is the property — &quot;ATs are safe to delegate because they are tripwired.&quot;</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Escalating — autonomous until something new surfaces.</strong> The AT is executed autonomously — <em>unless it finds something new</em>. When execution
+surfaces something the ho didn't anticipate — a schema mismatch, a wrong assumption in
+the spec, a real-data shape that contradicts the fixtures, an unanticipated
+dependency — the executing agent stops and surfaces the finding. It does not adapt
+silently, does not rationalize the surprise as &quot;probably fine,&quot; and does not acquire
+architectural authority because something feels suboptimal mid-execution.</p>
+<p>Two mechanisms carry this:</p>
+<ul>
+<li><strong>Stop Conditions</strong> (a spec section) name the <em>anticipated</em> surprises: &quot;If a real
+export reveals shape mismatches with the schema, stop and surface findings before
+modifying the data model.&quot;</li>
+<li><strong>The general rule</strong> covers the unanticipated ones: any surprise halts the loop.
+This is kokoroe guideline 4 (&quot;Halt and surface&quot;) and it applies whether or not a
+Stop Condition section exists.</li>
+</ul>
+<p>This is the operating discipline's <em>stop for decisions, not permissions</em> rule applied
+at the AT layer. The decision that comes back goes to the practitioner (or a heavier
+model in a discursive session); its resolution lands in the parent ho (see §6), and
+execution resumes against the updated record.</p>
+<p>This property — bounded autonomy with a halt-and-surface tripwire — is what makes an AT
+safe to delegate to a cheaper executor: the AT is <strong>tripwired</strong>. <em>Escalation</em> is the
+mechanism; <em>tripwired</em> is the property. It is the word to reach for in the explanatory
+sentence — &quot;ATs are safe to delegate because they are tripwired.&quot;</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="agent-task" href="/ho-actually/n/agent-task/"
+               hx-get="/ho-actually/n/agent-task/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/agent-task/">&rarr; agent task (AT)</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="agent-task" href="/ho-actually/n/agent-task/"
+               hx-get="/ho-actually/n/agent-task/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/agent-task/">&uarr; agent task (AT)</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ho-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ho-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ho-actually/assets/htmx.min.js"></script>
+<script src="/ho-actually/assets/app.js"></script>
+</body>
+</html>

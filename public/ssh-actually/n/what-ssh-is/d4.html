@@ -1,0 +1,132 @@
+<article class="node" id="content"
+  data-node-id="what-ssh-is"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="What SSH Is">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">What SSH Is</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/what-ssh-is/d3/"
+         hx-get="/ssh-actually/n/what-ssh-is/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><strong>SSH (Secure Shell)</strong> is a protocol that lets you securely connect to another computer over a network and run commands on it.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>SSH assumes:</p>
+<ul>
+<li>the network is hostile</li>
+<li>someone may be listening</li>
+<li>someone may try to impersonate you</li>
+</ul>
+<p>SSH solves this by requiring <strong>cryptographic proof</strong> before access is granted. SSH normally does <strong>not</strong> use passwords — it uses key-pair cryptography: the server never learns your secret, and only you can prove you have it.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>SSH shows up in two roles, and confusing them is where most misunderstanding starts:</p>
+<ul>
+<li><strong>Server login</strong> (the traditional model) — you get a shell, you run commands, the connection stays open. This is what &quot;hardening a server&quot; is about: passwords off, keys only.</li>
+<li><strong>Authentication only</strong> (the Git hosting model) — GitHub, GitLab. You never get a shell; you only prove identity, and each git operation is a separate proof. <strong>Same cryptography, different purpose.</strong></li>
+</ul>
+<p>SSH also predates everything it now resembles. It has used key-pair cryptography since the 1990s, while the web kept using passwords; the web slowly caught up to where SSH already was — with different names (FIDO2, WebAuthn, passkeys) and different contexts.</p>
+<p>The mental model to keep: SSH proves <strong>possession</strong>, not identity — and servers never store secrets.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&darr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&darr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="known-hosts" href="/ssh-actually/n/known-hosts/"
+               hx-get="/ssh-actually/n/known-hosts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/known-hosts/">&darr; Known Hosts</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&darr; Server Hardening</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&darr; SSH Config Basics</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&rarr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&rarr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&rarr; Server Hardening</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&uarr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&uarr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="known-hosts" href="/ssh-actually/n/known-hosts/"
+               hx-get="/ssh-actually/n/known-hosts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/known-hosts/">&uarr; Known Hosts</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&uarr; Server Hardening</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&uarr; SSH Config Basics</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

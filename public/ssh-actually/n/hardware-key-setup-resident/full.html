@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setting Up a Resident Key · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="hardware-key-setup-resident"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Setting Up a Resident Key">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Setting Up a Resident Key</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/hardware-key-setup-resident/d2/"
+         hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The setup for hardware-backed SSH where the key lives <strong>inside</strong> the device: generate with <code>-O resident</code>, deploy like any key, and — the step that is not optional — create a duplicate resident key on a second hardware key so losing the first one isn't lockout.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Prerequisites:</p>
+<ul>
+<li>A FIDO2-capable hardware key (YubiKey 5, YubiKey Bio, similar)</li>
+<li>OpenSSH 8.2+ installed (<code>ssh -V</code> to check)</li>
+<li>libfido2 installed (<code>apt install libfido2-1</code> on Debian/Ubuntu)</li>
+</ul>
+<p><strong>1. Plug in hardware key</strong></p>
+<p><strong>2. Generate resident SSH key</strong></p>
+<pre><code class="language-bash">ssh-keygen -t ed25519-sk -O resident -f ~/.ssh/id_myserver_yk -C &quot;myserver-hw&quot;
+</code></pre>
+<ul>
+<li>Touch key when prompted</li>
+<li>Set a PIN if prompted (highly recommended)</li>
+<li>Creates stub file and stores key on hardware</li>
+</ul>
+<p><strong>3. Deploy to server</strong></p>
+<pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_myserver_yk.pub username@server
+</code></pre>
+<p><strong>4. Test it</strong></p>
+<pre><code class="language-bash">ssh username@server
+</code></pre>
+<ul>
+<li>Enter PIN if required</li>
+<li>Touch key when it flashes</li>
+<li>Should log in</li>
+</ul>
+<p><strong>5. Create SSH config</strong></p>
+<p>Edit <code>~/.ssh/config</code>:</p>
+<pre><code>Host myserver
+    HostName server-address
+    User username
+    IdentityFile ~/.ssh/id_myserver_yk
+    IdentitiesOnly yes
+</code></pre>
+<p><strong>Recovery setup (CRITICAL):</strong> on a SECOND hardware key, create a duplicate resident key:</p>
+<pre><code class="language-bash"># With second key plugged in
+ssh-keygen -t ed25519-sk -O resident -f ~/.ssh/id_myserver_backup_yk -C &quot;myserver-hw-backup&quot;
+ssh-copy-id -i ~/.ssh/id_myserver_backup_yk.pub username@server
+</code></pre>
+<p>Store the backup key safely. If you lose your primary key, you can still access the server.</p>
+<p>What just happened:</p>
+<ul>
+<li>Private key was generated INSIDE the hardware key</li>
+<li>It never touched your computer</li>
+<li>Stub file on disk is just a pointer</li>
+<li>You can regenerate the stub on any machine: <code>ssh-keygen -K</code></li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-nonresident" href="/ssh-actually/n/hardware-key-setup-nonresident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-nonresident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-nonresident/">&rarr; Setting Up a Non-Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-pin" href="/ssh-actually/n/hardware-pin/"
+               hx-get="/ssh-actually/n/hardware-pin/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-pin/">&rarr; Hardware PINs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="managing-resident-credentials" href="/ssh-actually/n/managing-resident-credentials/"
+               hx-get="/ssh-actually/n/managing-resident-credentials/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/managing-resident-credentials/">&rarr; Managing Resident Credentials</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&rarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resident-keys" href="/ssh-actually/n/resident-keys/"
+               hx-get="/ssh-actually/n/resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-keys/">&rarr; Resident SSH Keys</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

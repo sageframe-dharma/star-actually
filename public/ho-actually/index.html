@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ho System, Actually</title>
+<link rel="stylesheet" href="/ho-actually/assets/style.css">
+</head>
+<body class="entry" data-base="/ho-actually">
+<main class="entry-screen">
+  <h1 class="entry-title">Ho System, Actually</h1>
+  <p class="entry-tagline">Build the software. Develop the judgment.</p>
+
+  <form class="entry-prompt" id="ask-form" action="/ho-actually/help.html" method="get" data-receptionist="off">
+    <label class="prompt-label" for="ask">What do you want to know about the Ho System, actually?</label>
+    <div class="prompt-line">
+      <span class="prompt-glyph">&gt;</span>
+      <input class="prompt-input" id="ask" name="q" type="text" autocomplete="off" autofocus
+             placeholder="type a question, or press &darr; to just start">
+      <span class="cursor" aria-hidden="true"></span>
+    </div>
+  </form>
+
+  <div class="entry-results" id="results" aria-live="polite"></div>
+
+  
+  <p class="entry-start">
+    <a class="nav-node nav-root" data-node-id="what-is-ho-system" href="/ho-actually/n/what-is-ho-system/">&darr; or start at the beginning: What the Ho System Is</a>
+  </p>
+  
+
+  <p class="entry-help"><a href="/ho-actually/help.html">? what is this place</a></p>
+
+  
+  <p class="entry-about">The Ho System is a methodology for building production-quality software with AI as an implementation partner — for people who think in systems. Work proceeds in bounded steps (hos), framed before it is built (kamae), and verified at every close. This site is that framework, decomposed into a navigable graph. <a class="entry-source" href="https://hosystem.sageframe.net">the full framework at hosystem.sageframe.net</a></p>
+  
+</main>
+
+<footer class="action-bar">
+  <span class="key-hint"><kbd>&crarr;</kbd> search</span>
+  <span class="key-hint"><kbd>&darr;</kbd> begin</span>
+  <span class="key-hint"><kbd>/</kbd> search</span>
+  <span class="key-hint"><kbd>?</kbd> help</span>
+</footer>
+
+<script src="/ho-actually/assets/htmx.min.js"></script>
+<script src="/ho-actually/assets/app.js"></script>
+</body>
+</html>

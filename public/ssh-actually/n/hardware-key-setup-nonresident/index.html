@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setting Up a Non-Resident Key · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="hardware-key-setup-nonresident"
+  data-depth="2"
+  data-max-depth="3"
+  data-title="Setting Up a Non-Resident Key">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Setting Up a Non-Resident Key</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/2</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/hardware-key-setup-nonresident/d3/"
+         hx-get="/ssh-actually/n/hardware-key-setup-nonresident/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The setup for hardware-backed SSH where keys are <strong>derived on demand</strong> rather than stored: generate an <code>ed25519-sk</code> key, register the public key with the service, and take on the one obligation that comes with it — the blob file must be preserved.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&rarr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-resident" href="/ssh-actually/n/hardware-key-setup-resident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-resident/">&rarr; Setting Up a Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-generation" href="/ssh-actually/n/key-generation/"
+               hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-generation/">&rarr; Generating Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-naming" href="/ssh-actually/n/key-naming/"
+               hx-get="/ssh-actually/n/key-naming/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-naming/">&rarr; Naming Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="non-resident-keys" href="/ssh-actually/n/non-resident-keys/"
+               hx-get="/ssh-actually/n/non-resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/non-resident-keys/">&rarr; Non-Resident SSH Keys</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

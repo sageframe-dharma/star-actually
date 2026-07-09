@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passkeys · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="passkeys"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Passkeys">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Passkeys</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/passkeys/d3/"
+         hx-get="/ssh-actually/n/passkeys/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>passkey</strong> is a discoverable FIDO2 credential used for passwordless login — a public/private key pair created and managed via WebAuthn, stored securely on a device or platform (Apple, Google, Microsoft).</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Key properties:</p>
+<ul>
+<li>Based on cryptographic key pairs — authentication is done by <strong>signature, not by sharing secrets</strong></li>
+<li>No password required, ever</li>
+<li><strong>Phishing-resistant</strong> — there is nothing to type on a fake site</li>
+<li>Often synced across your devices by the platform</li>
+<li>Typically unlocked by biometrics or a PIN</li>
+</ul>
+<p>Passkeys are excellent for usability <em>and</em> security. They eliminate passwords entirely rather than layering defenses on top of them.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The important distinction — and the tradeoff:</p>
+<blockquote>
+<p>Passkeys are <strong>controlled by the service and platform</strong>. You do not manage the raw keys directly.</p>
+</blockquote>
+<p>The platform controls the experience: creation, syncing, recovery. That is exactly what makes passkeys easy to use and extremely secure — and it is also what ties your trust to the platform managing them. Where a disk-based SSH key is a file you custody yourself and a hardware key is a physical object you hold, a passkey's secret lives wherever the platform puts it, moves when the platform syncs it, and comes back (or doesn't) through the platform's recovery process.</p>
+<p>Against hardware security keys, the split is clean: passkeys trade direct control for convenience; hardware keys trade convenience for <strong>physical enforcement</strong> — secrets that never leave the device, touch required, no platform in the loop. On the MFA strength ladder they sit adjacent, both far above anything code-based; which one is &quot;better&quot; depends on whether the thing you value is recoverability or custody.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&rarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-capabilities" href="/ssh-actually/n/hardware-key-capabilities/"
+               hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-capabilities/">&rarr; Hardware Key Capabilities</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&rarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&rarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="presence-vs-identity" href="/ssh-actually/n/presence-vs-identity/"
+               hx-get="/ssh-actually/n/presence-vs-identity/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/presence-vs-identity/">&rarr; Presence vs Identity</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&rarr; Trust Boundaries</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&rarr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&uarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-key-capabilities" href="/ssh-actually/n/hardware-key-capabilities/"
+               hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-capabilities/">&uarr; Hardware Key Capabilities</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&uarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&uarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&uarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="presence-vs-identity" href="/ssh-actually/n/presence-vs-identity/"
+               hx-get="/ssh-actually/n/presence-vs-identity/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/presence-vs-identity/">&uarr; Presence vs Identity</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&uarr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

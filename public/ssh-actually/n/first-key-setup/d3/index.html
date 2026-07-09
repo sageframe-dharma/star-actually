@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First-Time Key Setup (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="first-key-setup"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="First-Time Key Setup">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">First-Time Key Setup</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/first-key-setup/d2/"
+         hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><strong>Goal:</strong> set up SSH key authentication to access a server without typing passwords. You generate a key pair, send the public key to the server, and from then on the server trusts your key instead of asking for passwords.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Prerequisites:</p>
+<ul>
+<li>You have an account on a remote server</li>
+<li>You can currently log in with a password</li>
+<li>You're on Linux, macOS, or Windows with OpenSSH</li>
+</ul>
+<p><strong>1. Generate an SSH key pair</strong></p>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -f ~/.ssh/id_myserver -C &quot;$(whoami)@$(hostname)&quot;
+</code></pre>
+<ul>
+<li>Press Enter when prompted for passphrase (or type a strong one)</li>
+<li>Creates <code>~/.ssh/id_myserver</code> (private) and <code>~/.ssh/id_myserver.pub</code> (public)</li>
+</ul>
+<p><strong>2. Copy public key to server</strong></p>
+<pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_myserver.pub username@server-address
+</code></pre>
+<ul>
+<li>Enter your password when prompted</li>
+<li>This is the LAST time you'll need the password</li>
+</ul>
+<p><strong>3. Test it</strong></p>
+<pre><code class="language-bash">ssh username@server-address
+</code></pre>
+<ul>
+<li>Should log in without password</li>
+<li>May prompt for passphrase if you set one</li>
+</ul>
+<p><strong>4. (Optional) Create SSH config for convenience</strong></p>
+<p>Edit or create <code>~/.ssh/config</code>:</p>
+<pre><code>Host myserver
+    HostName server-address
+    User username
+    IdentityFile ~/.ssh/id_myserver
+</code></pre>
+<p>Now you can just type:</p>
+<pre><code class="language-bash">ssh myserver
+</code></pre>
+<p>What you just did:</p>
+<ul>
+<li>Generated a cryptographic key pair</li>
+<li>Sent the public key to the server</li>
+<li>Server now trusts your key instead of asking for passwords</li>
+<li>Your private key stays on your laptop</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&rarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&rarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-generation" href="/ssh-actually/n/key-generation/"
+               hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-generation/">&rarr; Generating Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&rarr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&rarr; SSH Config Basics</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

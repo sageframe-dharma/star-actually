@@ -1,0 +1,185 @@
+<article class="node" id="content"
+  data-node-id="resident-vs-non-resident"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Resident vs Non-Resident">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Resident vs Non-Resident</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/resident-vs-non-resident/d3/"
+         hx-get="/ssh-actually/n/resident-vs-non-resident/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Both are hardware-backed SSH keys with the <strong>same cryptographic strength</strong>. The difference is what the hardware remembers: a <strong>resident key</strong> is generated and stored entirely inside the device; a <strong>non-resident key</strong> is derived on demand from a <strong>blob</strong> file on disk. Resident vs non-resident is about <strong>state survivability</strong>, not strength.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The critical summary:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Non-Resident</th>
+<th>Resident</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secrets on disk</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Blob required</td>
+<td>✔</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Stub regenerable</td>
+<td>N/A*</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Uses slots</td>
+<td>❌</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Unlimited</td>
+<td>✔</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Disk loss safe</td>
+<td>❌</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Best use</td>
+<td>GitHub</td>
+<td>Servers</td>
+</tr>
+</tbody>
+</table>
+<p>*Non-resident keys use blobs (required, not regenerable), not stubs. Only resident keys have stubs, which can be regenerated on any machine.</p>
+<p>Neither puts a secret on disk. The question is which <em>non-secret</em> file sits there — a blob you must preserve, or a stub you can throw away — and whether the key consumes a scarce hardware slot.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The two tradeoffs are mirror images:</p>
+<blockquote>
+<p><strong>Resident keys trade scalability for permanence.</strong>
+<strong>Non-resident keys trade discoverability for scalability.</strong></p>
+</blockquote>
+<p>Choose by situation:</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access to 1–5 critical servers</td>
+<td><strong>Resident keys</strong></td>
+</tr>
+<tr>
+<td>Access to GitHub/GitLab only</td>
+<td><strong>Non-resident keys</strong></td>
+</tr>
+<tr>
+<td>Access to 10+ servers/services</td>
+<td><strong>Non-resident keys</strong></td>
+</tr>
+<tr>
+<td>Need maximum recovery capability</td>
+<td><strong>Resident keys</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Why the table falls this way: resident keys survive disk loss and work on fresh machines with nothing but the hardware — ideal for critical infrastructure and long-lived access, where recovery matters more than quantity — but each one consumes a slot, and slots are intentionally scarce. Non-resident keys are unlimited and use no slots, but you accept responsibility for preserving the blob, with no recovery if it's lost.</p>
+<p>The failure modes mirror too. Lose the <em>disk</em>: resident keys are fine (regenerate stubs), non-resident keys die with their blobs unless you backed them up. Lose the <em>hardware</em>: both are gone — which is why the recovery plan (a backup hardware key, or backed-up blobs plus a new device) matters no matter which side you choose.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="lost-hardware-key" href="/ssh-actually/n/lost-hardware-key/"
+               hx-get="/ssh-actually/n/lost-hardware-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/lost-hardware-key/">&darr; Lost Hardware Key</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&rarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&rarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&rarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="state" href="/ssh-actually/n/state/"
+               hx-get="/ssh-actually/n/state/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/state/">&rarr; State</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&uarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="lost-hardware-key" href="/ssh-actually/n/lost-hardware-key/"
+               hx-get="/ssh-actually/n/lost-hardware-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/lost-hardware-key/">&uarr; Lost Hardware Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&uarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="state" href="/ssh-actually/n/state/"
+               hx-get="/ssh-actually/n/state/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/state/">&uarr; State</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

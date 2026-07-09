@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Key Rotation · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="key-rotation"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Key Rotation">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Key Rotation</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/key-rotation/d3/"
+         hx-get="/ssh-actually/n/key-rotation/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Replacing an existing SSH key with a new one, either on a planned schedule or in response to a security event. Keys don't expire on their own — SSH has no built-in expiration mechanism. A key generated in 2019 works identically in 2029. This is a feature — and a risk.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p><strong>When to rotate.</strong></p>
+<p>Event-driven rotation (do it now):</p>
+<ul>
+<li>You suspect a private key was exposed</li>
+<li>A machine with your key was stolen or decommissioned</li>
+<li>You left a job and had keys on work machines</li>
+<li>You changed your security posture (moving from disk-based to hardware-backed)</li>
+</ul>
+<p>Scheduled rotation (reasonable cadence):</p>
+<ul>
+<li>Disk-based keys: once a year is practical</li>
+<li>Hardware-backed keys: rotation is less urgent because the key cannot be copied, but rotating when you replace hardware is good practice</li>
+</ul>
+<p><strong>How to rotate.</strong> Rotation means:</p>
+<ol>
+<li>Generate a new key</li>
+<li>Deploy the new public key to all servers that need it</li>
+<li>Test access with the new key</li>
+<li>Remove the old public key from all servers' <code>authorized_keys</code></li>
+<li>Delete or archive the old private key locally</li>
+</ol>
+<p>The critical step is <strong>3 before 4</strong>. Test before you revoke. Otherwise a mistake in deployment locks you out.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Why rotate at all: rotation limits the damage from keys you forgot existed, keys on machines you no longer control, keys whose passphrases may have been compromised without your knowledge, and <code>authorized_keys</code> files on servers that have accumulated stale entries.</p>
+<p>What most people actually do: nothing. They generate a key once, use it everywhere, and forget about it. This works until it doesn't. <strong>Rotation is insurance — boring until the moment you need it.</strong></p>
+<p>Hardware-backed keys change the rotation calculus:</p>
+<ul>
+<li>The private key cannot be copied, so &quot;key compromise&quot; means physical device compromise</li>
+<li>Non-resident keys: rotation means generating a new key, deploying the new public key, and deleting the old blob</li>
+<li>Resident keys: rotation means generating a new key in a new slot, deploying the new public key, and deleting the old slot entry</li>
+</ul>
+<p>Hardware keys don't eliminate the need for rotation. They reduce the urgency.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-naming" href="/ssh-actually/n/key-naming/"
+               hx-get="/ssh-actually/n/key-naming/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-naming/">&rarr; Naming Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&rarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&rarr; Stolen Laptop</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&uarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&uarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&uarr; Stolen Laptop</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

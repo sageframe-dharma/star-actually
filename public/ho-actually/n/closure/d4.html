@@ -1,0 +1,67 @@
+<article class="node" id="content"
+  data-node-id="closure"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="closure">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">closure</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/closure/d3/"
+         hx-get="/ho-actually/n/closure/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The moment a unit of work and its look-back are finished and its status is marked done.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The state change when a ho's work and reflection are done. Canonical signal:
+frontmatter <code>status: draft → complete</code> (after Reflect for ha, Results for ri, authoring for
+orientation), optionally with a <code>commit:</code> field; <code>superseded</code> is the second terminal state.
+Forward-only applies from closure onward.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Closure signal.</strong> A ho signals that it is closed through its <code>status:</code> frontmatter field. There are two terminal states:</p>
+<ul>
+<li><strong><code>complete</code></strong> — the ho's deliverable is done and committed. The flip happens after the phase that closes the work: Reflect for ha, Results for ri, and authoring for orientation hos (which are complete once written). An optional <code>commit:</code> field records the closing commit hash.</li>
+<li><strong><code>superseded</code></strong> — a later ho has overtaken this one's decisions under the forward-only principle (§3.5). The ho stays in the record; the <code>status:</code> marks that its conclusions no longer hold, and the superseding ho is named per the bidirectional-supersession rule. The flip is exclusive: when a later ho supersedes this one, its status moves from <code>complete</code> to <code>superseded</code> and the <code>superseded-by:</code> field names the successor — the two terminal states never coexist.</li>
+</ul>
+<p>These two are the whole vocabulary — earlier projects drifted into <code>closed</code>, <code>done</code>, and <code>-DONE-</code> filename prefixes; those are superseded by <code>complete</code>. Where a project also keeps a human-readable Reflect trailer at the end of the ho document (a one-line &quot;closed on / by&quot; note), that trailer is a <em>complementary</em> signal, not a replacement for the <code>status:</code> field.</p>
+<hr />
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="reflect" href="/ho-actually/n/reflect/"
+               hx-get="/ho-actually/n/reflect/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/reflect/">&rarr; Reflect</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

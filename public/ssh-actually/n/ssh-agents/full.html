@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSH Agents · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="ssh-agents"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="SSH Agents">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">SSH Agents</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/ssh-agents/d3/"
+         hx-get="/ssh-actually/n/ssh-agents/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>An <strong>SSH agent</strong> is a background process that holds your unlocked private keys for a <strong>session</strong>, so you type your passphrase once instead of on every connection. <code>ssh-agent</code> is the standard one; OS keychains play the same role.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p><strong>Session</strong> — a period of time during which authentication remains valid.</p>
+<p>Agent caching:</p>
+<ul>
+<li>avoids repeated typing</li>
+<li>expires when the session ends</li>
+<li>requires a background process</li>
+</ul>
+<p>The working vocabulary is three <code>ssh-add</code> commands:</p>
+<pre><code class="language-bash">ssh-add ~/.ssh/id_example   # unlock a key and cache it for the session
+ssh-add -l                  # list keys currently loaded in the agent
+ssh-add -D                  # remove all keys from the agent
+</code></pre>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The agent is a small idea with long shadows:</p>
+<ul>
+<li><strong>It's why macOS feels magical.</strong> macOS stores passphrases in Keychain, unlocks them via Touch ID, and auto-loads keys into <code>ssh-agent</code>. The invisibility is the agent working, not a different security model — the key still lives on disk.</li>
+<li><strong>It's what agent forwarding forwards.</strong> Forwarding lets a remote server request signatures from <em>your local</em> agent. Convenient across hops — and the reason a compromised intermediate can sign as you for the length of your session. The agent's power is exactly what gets lent.</li>
+<li><strong>It's the first thing to check when the wrong key wins.</strong> SSH will offer agent-loaded keys during authentication; <code>ssh-add -l</code> tells you what's actually loaded, which is a standard early step when debugging why SSH presented a key you didn't expect.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&darr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&darr; macOS Keychain Integration</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&rarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&rarr; macOS Keychain Integration</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&rarr; Passphrases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&rarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&uarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="macos-keychain" href="/ssh-actually/n/macos-keychain/"
+               hx-get="/ssh-actually/n/macos-keychain/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/macos-keychain/">&uarr; macOS Keychain Integration</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&uarr; Passphrases</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&uarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&uarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<article class="node" id="content"
+  data-node-id="server-hardening"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Server Hardening">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Server Hardening</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/server-hardening/d3/"
+         hx-get="/ssh-actually/n/server-hardening/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A properly hardened SSH server usually has:</p>
+<ul>
+<li>❌ password login disabled</li>
+<li>❌ direct root login disabled</li>
+<li>✅ SSH key-only access</li>
+<li>✅ normal user account</li>
+<li>✅ <code>sudo</code> for privilege escalation</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Why this exact shape?</p>
+<p>Passwords:</p>
+<ul>
+<li>can be guessed</li>
+<li>can be phished</li>
+<li>can be reused</li>
+<li>can leak</li>
+</ul>
+<p>SSH keys:</p>
+<ul>
+<li>cannot be guessed</li>
+<li>cannot be reused elsewhere</li>
+<li>cannot be brute-forced remotely</li>
+</ul>
+<p>Disabling password login removes the entire category of remote guessing attacks. Disabling direct root login means an attacker needs both a working key <em>and</em> a way to escalate — <code>sudo</code> from a normal account keeps escalation visible and revocable.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Hardening is the server-side half of the key-pair bargain:</p>
+<ul>
+<li>The server stores <strong>only public keys</strong> — its list of who to trust lives in <code>authorized_keys</code>, which is why auditing that file <em>is</em> auditing access. A hardened server with a stale <code>authorized_keys</code> is only half hardened.</li>
+<li>Passwords are the structural weakness the whole arrangement exists to remove: a shared secret the server can lose. Key-only access means there is nothing on the server worth stealing.</li>
+<li>Key-only cuts both ways: get the order right. Deploy your key, <strong>test that key login works</strong>, and only then turn password login off — the same test-before-revoke discipline as key rotation. A permissions mistake that makes SSH silently refuse your key (&quot;Permission denied&quot;) on a password-disabled server is a lockout, not an inconvenience.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passwords" href="/ssh-actually/n/passwords/"
+               hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passwords/">&rarr; Passwords</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-ssh-is" href="/ssh-actually/n/what-ssh-is/"
+               hx-get="/ssh-actually/n/what-ssh-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/what-ssh-is/">&rarr; What SSH Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&uarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="passwords" href="/ssh-actually/n/passwords/"
+               hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passwords/">&uarr; Passwords</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="what-ssh-is" href="/ssh-actually/n/what-ssh-is/"
+               hx-get="/ssh-actually/n/what-ssh-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/what-ssh-is/">&uarr; What SSH Is</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

@@ -1,0 +1,78 @@
+<article class="node" id="content"
+  data-node-id="stub"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Stub">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Stub</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/stub/d2/"
+         hx-get="/ssh-actually/n/stub/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>small, non-secret local file</strong> that tells SSH <em>which resident key to use</em>. It contains no private material, can be safely deleted, and can be regenerated on any machine. A stub is a <strong>pointer</strong>, not a dependency.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>With a resident key, the hardware stores the private key and the key's identity; the computer stores <strong>nothing essential</strong>. The stub simply tells SSH which resident key to ask the hardware for.</p>
+<p>Regenerate stubs on any machine:</p>
+<pre><code class="language-bash">ssh-keygen -K
+</code></pre>
+<p>This scans the hardware key for resident credentials and creates stub files in the current directory — move them to <code>~/.ssh/</code> afterward. Use it on a fresh machine, after accidentally deleting stub files, or when migrating to a new computer.</p>
+<p>What loss means: a minor inconvenience only. Stub loss is five seconds of <code>ssh-keygen -K</code>. Compare the <strong>blob</strong> — the file a <em>non-resident</em> key depends on — whose loss is permanent. Both are non-secret and both are useless to a thief without the hardware; only the stub is regenerable. Backing up stubs is pointless — just regenerate.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="lost-hardware-key" href="/ssh-actually/n/lost-hardware-key/"
+               hx-get="/ssh-actually/n/lost-hardware-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/lost-hardware-key/">&rarr; Lost Hardware Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="managing-resident-credentials" href="/ssh-actually/n/managing-resident-credentials/"
+               hx-get="/ssh-actually/n/managing-resident-credentials/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/managing-resident-credentials/">&rarr; Managing Resident Credentials</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&rarr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resident-keys" href="/ssh-actually/n/resident-keys/"
+               hx-get="/ssh-actually/n/resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-keys/">&rarr; Resident SSH Keys</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

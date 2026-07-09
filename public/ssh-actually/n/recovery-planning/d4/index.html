@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recovery Planning (depth 4) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="recovery-planning"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Recovery Planning">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Recovery Planning</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/recovery-planning/d3/"
+         hx-get="/ssh-actually/n/recovery-planning/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Every authentication setup should be built with its own failure in mind: keys get lost, disks die, passphrases and PINs get forgotten. Recovery planning means deciding — <strong>before</strong> anything breaks — how you will get back in. Security you can't recover from isn't strength; it's fragility with good cryptography.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The critical safety rules:</p>
+<ol>
+<li>
+<p><strong>Always have a recovery path</strong></p>
+<ul>
+<li>Second hardware key with duplicate keys, OR</li>
+<li>Disk-based backup key stored securely, OR</li>
+<li>Out-of-band access to servers</li>
+</ul>
+</li>
+<li>
+<p><strong>For resident keys: two hardware keys, always</strong></p>
+<ul>
+<li>Primary key for daily use</li>
+<li>Backup key stored safely with duplicate resident keys</li>
+</ul>
+</li>
+<li>
+<p><strong>Blobs aren't secrets, but their loss is permanent</strong></p>
+<ul>
+<li>Back them up</li>
+<li>They can't be reverse-engineered</li>
+<li>But losing them means generating new keys</li>
+</ul>
+</li>
+<li>
+<p><strong>Test your recovery process before you need it</strong></p>
+<ul>
+<li>Can you regenerate stubs?</li>
+<li>Can you access servers with backup key?</li>
+<li>Do you know your PIN?</li>
+</ul>
+</li>
+</ol>
+<p>For disk-based keys: always use strong passphrases (20+ characters), store the passphrase in a password manager, and back up private keys to encrypted storage. For hardware keys: store the backup key safely (not with the primary), test the backup regularly, and document your recovery process.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Recovery planning is the practical face of a question that runs through the whole graph: <strong>where does authentication state live, and what happens when that place is destroyed?</strong></p>
+<ul>
+<li>A <strong>disk key</strong>'s state is a file — its recovery story is backups (encrypted) plus the ability to revoke fast when the file falls into the wrong hands.</li>
+<li>A <strong>non-resident hardware key</strong> splits state between device and blob — its recovery story is blob backups plus an accepted cost of regenerating keys if the device dies.</li>
+<li>A <strong>resident key</strong> puts all state in the device — its recovery story <em>must</em> be a duplicate device, because nothing else can reconstruct it. This is why the resident-vs-non-resident choice is really a recovery-planning choice.</li>
+</ul>
+<p>The supporting hygiene compounds here: <strong>one key per purpose</strong> (don't reuse keys across contexts — easier to revoke when needed), <strong>regularly audit <code>authorized_keys</code> on servers</strong> (remove old and unknown keys), and <strong>name keys clearly</strong> (makes revocation easier). Each of these turns a future emergency from an investigation into a checklist. And the untested plan is the one that fails: a backup key you've never authenticated with, a blob backup you've never restored, a PIN you <em>think</em> you remember — none of those are recovery paths yet. Test them while nothing is wrong.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-resident" href="/ssh-actually/n/hardware-key-setup-resident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-resident/">&rarr; Setting Up a Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&rarr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="lost-hardware-key" href="/ssh-actually/n/lost-hardware-key/"
+               hx-get="/ssh-actually/n/lost-hardware-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/lost-hardware-key/">&rarr; Lost Hardware Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resident-vs-non-resident" href="/ssh-actually/n/resident-vs-non-resident/"
+               hx-get="/ssh-actually/n/resident-vs-non-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-vs-non-resident/">&rarr; Resident vs Non-Resident</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&rarr; Stolen Laptop</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&uarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-key-setup-resident" href="/ssh-actually/n/hardware-key-setup-resident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-resident/">&uarr; Setting Up a Resident Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&uarr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="lost-hardware-key" href="/ssh-actually/n/lost-hardware-key/"
+               hx-get="/ssh-actually/n/lost-hardware-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/lost-hardware-key/">&uarr; Lost Hardware Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resident-vs-non-resident" href="/ssh-actually/n/resident-vs-non-resident/"
+               hx-get="/ssh-actually/n/resident-vs-non-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-vs-non-resident/">&uarr; Resident vs Non-Resident</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&uarr; Stolen Laptop</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

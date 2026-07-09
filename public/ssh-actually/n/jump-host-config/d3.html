@@ -1,0 +1,105 @@
+<article class="node" id="content"
+  data-node-id="jump-host-config"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Configuring Jump Hosts">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Configuring Jump Hosts</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/jump-host-config/d2/"
+         hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Encoding the bastion path in <code>~/.ssh/config</code> with <code>ProxyJump</code>, so SSH routes through the intermediate automatically — you type <code>ssh production-db</code> and the hop just happens, no flags.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The basic pattern — one block for the destination, one for the bastion it rides through:</p>
+<pre><code>Host production-db
+    HostName 10.0.1.50
+    User dbadmin
+    ProxyJump bastion
+
+Host bastion
+    HostName bastion.company.com
+    User tyro
+    IdentityFile ~/.ssh/id_work
+</code></pre>
+<p>Connect with <code>ssh production-db</code> — SSH automatically connects through bastion.</p>
+<p>At scale, combine <code>ProxyJump</code> with wildcards to define whole environments at once:</p>
+<pre><code>Host bastion
+    HostName bastion.company.com
+    User sysadmin
+    IdentityFile ~/.ssh/prod_yk
+
+Host prod-*
+    ProxyJump bastion
+    User admin
+    IdentityFile ~/.ssh/prod_yk
+    IdentitiesOnly yes
+
+Host prod-db1
+    HostName 10.0.1.10
+
+Host prod-web1
+    HostName 10.0.1.20
+
+Host staging-*
+    User admin
+    IdentityFile ~/.ssh/staging
+    IdentitiesOnly yes
+
+Host staging-web1
+    HostName staging.company.com
+    Port 2222
+</code></pre>
+<p>Usage:</p>
+<pre><code class="language-bash">ssh prod-db1      # Automatically goes through bastion
+ssh prod-web1     # Automatically goes through bastion
+ssh staging-web1  # Direct connection, different key
+</code></pre>
+<p>Every <code>prod-*</code> host inherits the jump, the user, and the key from the wildcard block; the per-host blocks only carry what differs (the address). Staging gets its own key and no bastion — the pattern boundaries <em>are</em> the environment boundaries.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&rarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&rarr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxy-jump" href="/ssh-actually/n/proxy-jump/"
+               hx-get="/ssh-actually/n/proxy-jump/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/proxy-jump/">&rarr; ProxyJump</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

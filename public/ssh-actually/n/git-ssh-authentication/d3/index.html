@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git over SSH (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="git-ssh-authentication"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Git over SSH">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Git over SSH</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/git-ssh-authentication/d4/"
+         hx-get="/ssh-actually/n/git-ssh-authentication/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/git-ssh-authentication/d2/"
+         hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>With GitHub, GitLab, and similar services, SSH is used as <strong>authentication, not login</strong>. You never get a shell — you only prove identity, the service decides what you can access based on that identity, and each git operation is a separate authentication.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Two models, one protocol.</p>
+<p><strong>The traditional model (server login):</strong> you get a shell, you run commands, you browse the filesystem, the connection stays open.</p>
+<p><strong>The git hosting model (authentication only):</strong> no shell, ever. You prove identity; the service does the rest.</p>
+<p>When you run:</p>
+<pre><code class="language-bash">git clone git@github.com:user/repo.git
+</code></pre>
+<p>behind the scenes:</p>
+<ol>
+<li>Git opens an SSH connection to <code>github.com</code></li>
+<li>You prove identity using your SSH key</li>
+<li>GitHub checks: &quot;Does this key have access to this repo?&quot;</li>
+<li>If yes → sends repository data</li>
+<li>Connection closes</li>
+</ol>
+<p>No shell. No commands. Just <strong>cryptographic proof of identity</strong>.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="multiple-github-accounts" href="/ssh-actually/n/multiple-github-accounts/"
+               hx-get="/ssh-actually/n/multiple-github-accounts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/multiple-github-accounts/">&darr; Multiple Accounts, One Service</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="username-trick" href="/ssh-actually/n/username-trick/"
+               hx-get="/ssh-actually/n/username-trick/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/username-trick/">&darr; The git@ Username</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-nonresident" href="/ssh-actually/n/hardware-key-setup-nonresident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-nonresident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-nonresident/">&rarr; Setting Up a Non-Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="phishing-resistance" href="/ssh-actually/n/phishing-resistance/"
+               hx-get="/ssh-actually/n/phishing-resistance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/phishing-resistance/">&rarr; Phishing Resistance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="username-trick" href="/ssh-actually/n/username-trick/"
+               hx-get="/ssh-actually/n/username-trick/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/username-trick/">&rarr; The git@ Username</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-ssh-is" href="/ssh-actually/n/what-ssh-is/"
+               hx-get="/ssh-actually/n/what-ssh-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/what-ssh-is/">&rarr; What SSH Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Forwarding (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="agent-forwarding"
+  data-depth="3"
+  data-max-depth="5"
+  data-title="Agent Forwarding">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Agent Forwarding</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/4</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/agent-forwarding/d4/"
+         hx-get="/ssh-actually/n/agent-forwarding/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/agent-forwarding/d2/"
+         hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A feature that lets a remote server request signatures from the SSH agent running on your local machine — without copying the private key to that server.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>You SSH from your laptop to Server A. From Server A, you need to SSH to Server B. Server B trusts your key — but your key is on your laptop, not on Server A.</p>
+<p>With agent forwarding enabled, Server A sends the authentication challenge <strong>back through the SSH connection</strong> to your laptop. Your laptop's agent signs it, the signature travels back through Server A to Server B, and Server B grants access. The private key <strong>never leaves your laptop</strong>.</p>
+<p>Why it's useful: one key, multiple hops, no private keys copied to servers, feels transparent.</p>
+<p>Why it's dangerous: while you are connected with forwarding enabled, <strong>anyone with root on Server A can use your agent</strong>. They cannot steal the key — it never arrives. But they can ask your agent to sign things. Any things. Silently, for as long as your session is open.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&rarr; Configuring Jump Hosts</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxy-jump" href="/ssh-actually/n/proxy-jump/"
+               hx-get="/ssh-actually/n/proxy-jump/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/proxy-jump/">&rarr; ProxyJump</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&rarr; SSH Agents</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&rarr; Trust Boundaries</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

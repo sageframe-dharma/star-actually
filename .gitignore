@@ -1,0 +1,16 @@
+# Per-star build caches and venvs
+**/.venv/
+**/__pycache__/
+**/*.pyc
+**/.mypy_cache/
+**/.ruff_cache/
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+**/node_modules/
+
+# Per-star build output — the deployable artifact is public/, which IS committed.
+stars/*/dist/
+
+.env
+.DS_Store

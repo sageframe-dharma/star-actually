@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host Aliases (depth 4) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="host-aliases"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Host Aliases">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Host Aliases</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/host-aliases/d3/"
+         hx-get="/ssh-actually/n/host-aliases/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>In SSH config, <code>Host</code> is a <strong>nickname</strong> and <code>HostName</code> is the <strong>actual address</strong>. They don't have to match. A host alias is a Host name you invent — it connects wherever its <code>HostName</code> says.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>An alias block looks like any other config block — the only trick is that the label is made up:</p>
+<pre><code>Host github-personal
+    HostName github.com
+    IdentityFile ~/.ssh/github_personal
+    IdentitiesOnly yes
+</code></pre>
+<p>Connecting with <code>ssh github-personal</code> — or a git URL like <code>git@github-personal:my-user/my-repo.git</code> — still reaches <code>github.com</code>; that's what <code>HostName</code> handles. But SSH matched the block by the alias you typed, so it presents the key <em>that block</em> names.</p>
+<p>The service never sees the alias. It only sees the <code>HostName</code> you connected to and the key you presented. The alias exists purely on your machine, in your config.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The mental model: SSH config is not a routing table for hostnames. It is a <strong>named set of connection instructions</strong>. The Host name is whatever you want it to be. The HostName is where the connection actually goes.</p>
+<p>Once you see Host as a <strong>label you control</strong> rather than a hostname you must match, multi-identity SSH stops being confusing. You're just giving SSH different names for different ways of reaching the same place — which is exactly what solves the multiple-accounts-on-one-service problem: same hostname, same username, different keys, distinguished only by which alias you typed.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="multiple-github-accounts" href="/ssh-actually/n/multiple-github-accounts/"
+               hx-get="/ssh-actually/n/multiple-github-accounts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/multiple-github-accounts/">&darr; Multiple Accounts, One Service</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&rarr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="multiple-github-accounts" href="/ssh-actually/n/multiple-github-accounts/"
+               hx-get="/ssh-actually/n/multiple-github-accounts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/multiple-github-accounts/">&rarr; Multiple Accounts, One Service</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&rarr; SSH Config Basics</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="username-trick" href="/ssh-actually/n/username-trick/"
+               hx-get="/ssh-actually/n/username-trick/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/username-trick/">&rarr; The git@ Username</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&uarr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="multiple-github-accounts" href="/ssh-actually/n/multiple-github-accounts/"
+               hx-get="/ssh-actually/n/multiple-github-accounts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/multiple-github-accounts/">&uarr; Multiple Accounts, One Service</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&uarr; SSH Config Basics</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="username-trick" href="/ssh-actually/n/username-trick/"
+               hx-get="/ssh-actually/n/username-trick/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/username-trick/">&uarr; The git@ Username</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

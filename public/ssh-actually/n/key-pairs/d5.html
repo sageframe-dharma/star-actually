@@ -1,0 +1,266 @@
+<article class="node" id="content"
+  data-node-id="key-pairs"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="Key Pairs">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Key Pairs</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/key-pairs/d4/"
+         hx-get="/ssh-actually/n/key-pairs/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>key pair</strong> is two mathematically linked keys:</p>
+<ul>
+<li>a <strong>private key</strong> (secret, kept by you)</li>
+<li>a <strong>public key</strong> (shared with others)</li>
+</ul>
+<p>The public key can verify that a message was created by the private key <strong>without revealing the private key</strong>.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The two halves, precisely:</p>
+<p><strong>Private key</strong> — a secret file that proves your identity. If stolen, it can be used to impersonate you.</p>
+<p><strong>Public key</strong> — a non-secret file used by a server to verify signatures.</p>
+<p>The rules that follow:</p>
+<ul>
+<li>The private key <strong>must never be shared</strong></li>
+<li>The public key <strong>is safe to share</strong></li>
+<li>The server stores <strong>only public keys</strong></li>
+</ul>
+<p>That last rule is the one people doubt, and it holds: sharing a public key gives away nothing that lets anyone impersonate you.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Everything around key pairs is answering one of two questions:</p>
+<p><strong>How do you prove possession?</strong> By itself a key pair proves nothing — the missing piece is the <strong>signature</strong>: the server sends a challenge, your private key signs it, the public key verifies. That flow is what makes the pair usable.</p>
+<p><strong>Where does the private key live?</strong> This is the real security question, because the answer sets who you must trust:</p>
+<ul>
+<li>On disk (traditional) — protected at rest by a <strong>passphrase</strong>, at the mercy of your OS and anything running on it.</li>
+<li>Inside a hardware key — usable, never extractable.</li>
+</ul>
+<p>The public key's home is simpler: the server keeps it in <code>authorized_keys</code>, its list of keys it will accept. Losing a public key costs nothing; it can always be re-shared.</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>The core idea, and why it beats passwords structurally:</p>
+<ul>
+<li>The <strong>server never knows your secret</strong></li>
+<li>Only <strong>you</strong> can prove you have it</li>
+<li>Proof is done via <strong>signatures</strong></li>
+</ul>
+<p>A password is a shared secret known by you <em>and</em> the service — it can be stolen from servers, reused, phished, and must be remembered. SSH keys:</p>
+<ul>
+<li>cannot be guessed</li>
+<li>cannot be reused elsewhere</li>
+<li>cannot be brute-forced remotely</li>
+</ul>
+<p>Everything modern in authentication — FIDO2, WebAuthn, passkeys, hardware keys — converges on the same idea SSH has run on since the 1990s:</p>
+<blockquote>
+<p><strong>Never give the server a secret it can lose.</strong></p>
+</blockquote>
+<p>The final mental model: SSH proves <strong>possession</strong>, not identity. Servers never store secrets. Hardware keys don't change the crypto — they change <strong>where secrets live</strong>.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&darr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&darr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&darr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&darr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&darr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="file-permissions" href="/ssh-actually/n/file-permissions/"
+               hx-get="/ssh-actually/n/file-permissions/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/file-permissions/">&darr; SSH File Permissions</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&darr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&darr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&darr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&darr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="key-generation" href="/ssh-actually/n/key-generation/"
+               hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-generation/">&darr; Generating Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="key-naming" href="/ssh-actually/n/key-naming/"
+               hx-get="/ssh-actually/n/key-naming/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-naming/">&darr; Naming Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&darr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&darr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&darr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&darr; Passphrases</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&darr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&darr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&darr; Server Hardening</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="signatures" href="/ssh-actually/n/signatures/"
+               hx-get="/ssh-actually/n/signatures/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/signatures/">&darr; Signatures</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&darr; SSH Agents</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&darr; Stolen Laptop</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&darr; Trust Boundaries</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&rarr; Passphrases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="signatures" href="/ssh-actually/n/signatures/"
+               hx-get="/ssh-actually/n/signatures/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/signatures/">&rarr; Signatures</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&rarr; Trust Boundaries</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-ssh-is" href="/ssh-actually/n/what-ssh-is/"
+               hx-get="/ssh-actually/n/what-ssh-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/what-ssh-is/">&rarr; What SSH Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&uarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&uarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&uarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&uarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&uarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&uarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="file-permissions" href="/ssh-actually/n/file-permissions/"
+               hx-get="/ssh-actually/n/file-permissions/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/file-permissions/">&uarr; SSH File Permissions</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&uarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&uarr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&uarr; Hardware Keys for SSH</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

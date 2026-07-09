@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Modern Auth Landscape · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="modern-auth-landscape"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="The Modern Auth Landscape">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The Modern Auth Landscape</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/modern-auth-landscape/d3/"
+         hx-get="/ssh-actually/n/modern-auth-landscape/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The map of how passwords, MFA, FIDO, WebAuthn, passkeys, and hardware keys actually fit together. Everything modern converges on one idea:</p>
+<blockquote>
+<p><em>Never give the server a secret it can lose.</em></p>
+</blockquote>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>You do <strong>not</strong> need to be new to computers to be confused by this. The confusion exists because these technologies evolved <strong>incrementally, not coherently</strong> — independently, and never properly unified in documentation.</p>
+<p>Modern authentication is built from <strong>layers</strong>, each solving a different problem:</p>
+<ol>
+<li><strong>Identity</strong> — who are you claiming to be?</li>
+<li><strong>Proof</strong> — how do you prove that claim?</li>
+<li><strong>Transport</strong> — how does that proof travel safely?</li>
+<li><strong>Enforcement</strong> — what limits abuse or theft?</li>
+</ol>
+<p>Different technologies live at different layers; confusion happens when they get lumped together. How the pieces fit:</p>
+<ul>
+<li><strong>Passwords</strong> → shared secrets (weak)</li>
+<li><strong>OTP</strong> → layered defense (better)</li>
+<li><strong>FIDO2/WebAuthn</strong> → cryptographic proof (strong)</li>
+<li><strong>Passkeys</strong> → FIDO2 made usable</li>
+<li><strong>Hardware keys</strong> → FIDO2 with physical enforcement</li>
+<li><strong>SSH</strong> → cryptography before it was cool</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The mental model to keep:</p>
+<ul>
+<li><strong>FIDO2</strong> = the cryptographic foundation</li>
+<li><strong>WebAuthn</strong> = how browsers use it</li>
+<li><strong>Passkeys</strong> = user-friendly FIDO2</li>
+<li><strong>Hardware keys</strong> = physical enforcement</li>
+<li><strong>SSH</strong> = FIDO2 without the browser</li>
+</ul>
+<p>Where SSH fits: SSH predates all of this. It has used key-pair cryptography since 1995; the web kept using passwords, then slowly caught up to where SSH already was — with different names and different contexts. SSH already knows the username and doesn't need discovery, so modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong>.</p>
+<p>That single family tree — key-pair cryptography at the root, branching to SSH on one side and FIDO2 (WebAuthn → passkeys, hardware keys, <code>ed25519-sk</code>) on the other — explains the things that otherwise feel like coincidence:</p>
+<ul>
+<li>Why hardware SSH keys aren't a &quot;new&quot; technology — they're SSH and FIDO2 meeting in the middle</li>
+<li>Why the same YubiKey works for web logins <em>and</em> SSH</li>
+<li>Why touch + PIN feels similar whether you're logging into a website or authenticating to a server</li>
+</ul>
+<p>The legacy branch — passwords, then OTP layered on top — is fundamentally weaker for one reason: the server stores secrets. The modern branch stores none; the server verifies <strong>signatures, not secrets</strong>.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&rarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&rarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&rarr; Passkeys</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choosing an Approach (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="choosing-an-approach"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Choosing an Approach">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Choosing an Approach</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/choosing-an-approach/d4/"
+         hx-get="/ssh-actually/n/choosing-an-approach/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/choosing-an-approach/d2/"
+         hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>There are three viable setups: a <strong>disk-based key with a strong passphrase</strong>, a <strong>hardware-backed resident key</strong>, and a <strong>hardware-backed non-resident key</strong>. Which one you want depends on your situation — how many servers, whether you already own a hardware key, how much recovery capability you need — not on reaching for the maximum.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>If you're trying to decide what to do, start here.</p>
+<h3>for ssh server access</h3>
+<pre><code>Do you need to access servers?
+│
+├─ Yes, and I'm just getting started
+│  → Use disk-based SSH keys with a strong passphrase
+│
+├─ Yes, and I want maximum security
+│  → Use hardware-backed resident SSH keys
+│
+└─ Yes, and I manage dozens of servers
+   → Use hardware-backed non-resident SSH keys
+</code></pre>
+<h3>for git hosting (github, gitlab, etc.)</h3>
+<pre><code>Do you need to authenticate to Git services?
+│
+├─ Yes, and I already have a hardware key
+│  → Use hardware-backed non-resident SSH keys
+│     (Unlimited keys, better security)
+│
+├─ Yes, but I don't have a hardware key
+│  → Use disk-based SSH keys with a strong passphrase
+│     (Still much stronger than passwords)
+│
+└─ Yes, and I want the absolute strongest security
+   → Get a hardware key and use non-resident keys
+</code></pre>
+<h3>quick recommendations by use case</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Recommended Approach</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal laptop, accessing 1-2 servers</td>
+<td>Disk-based key with passphrase</td>
+<td>Simple, secure enough</td>
+</tr>
+<tr>
+<td>Work laptop, accessing company infrastructure</td>
+<td>Hardware-backed resident keys</td>
+<td>Best security, survives laptop wipes</td>
+</tr>
+<tr>
+<td>Developer using GitHub/GitLab daily</td>
+<td>Hardware-backed non-resident keys</td>
+<td>Unlimited keys, no passwords ever</td>
+</tr>
+<tr>
+<td>System administrator, 20+ servers</td>
+<td>Hardware-backed resident keys</td>
+<td>Can't lose access, physical presence required</td>
+</tr>
+<tr>
+<td>Learning SSH for the first time</td>
+<td>Disk-based key with passphrase</td>
+<td>Master the basics first</td>
+</tr>
+</tbody>
+</table>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&rarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&rarr; Passphrases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resident-vs-non-resident" href="/ssh-actually/n/resident-vs-non-resident/"
+               hx-get="/ssh-actually/n/resident-vs-non-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-vs-non-resident/">&rarr; Resident vs Non-Resident</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

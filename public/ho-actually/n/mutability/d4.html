@@ -1,0 +1,120 @@
+<article class="node" id="content"
+  data-node-id="mutability"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="mutability (living / frozen / sealed)">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">mutability (living / frozen / sealed)</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/mutability/d3/"
+         hx-get="/ho-actually/n/mutability/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The scale of how much an artifact may change over its life — living (revised freely), frozen (changed only by override), or sealed (never again).</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The axis naming how an artifact changes over its
+life. <strong>living</strong> — revised in place (README, overview, seed by dated revision, the Basis of
+Design). <strong>frozen</strong> — not edited in place, changed only by a superseding addendum (system
+design); thaw-able through the addendum mechanism, still governs the build. <strong>sealed</strong> —
+final, never changes (closed hos, sidequests, addenda, dogfood findings, devlogs/Reflect,
+executed ATs, propagation-ledger commits); a future document may <em>respond</em> but nothing
+supersedes it in force. Forward-only governs frozen and sealed; living is the declared exception.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Mutability regimes (cross-cutting).</strong> Not every artifact has the same mutability. The corpus practices one axis with three
+values — <strong>living | frozen | sealed</strong> — and naming them removes a recurring ambiguity in
+forward-only's application: forward-only governs how <em>frozen</em> and <em>sealed</em> change
+(supersede forward, never edit), while <em>living</em> is the declared exception (edited in place).</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Applies to</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>living</strong></td>
+<td>README (kamae-3), ho overview (kamae-4), seed (kamae-1, see note), the Basis of Design (2.11)</td>
+<td>Edited in place as the project evolves. Overview edits are forward-looking only: dead numbers stay dead, checkpoint outcomes get recorded, historical entries aren't rewritten. &quot;Small frequent updates beat large rare ones&quot; (sharibako kamae-4).</td>
+</tr>
+<tr>
+<td><strong>frozen</strong></td>
+<td>System design (kamae-2)</td>
+<td>Not edited in place; changed only by a superseding addendum. Body preserved as-authored; a reader's-note pointer at the top names the addenda; the addenda carry the change (sharibako kamae-2 + 2.1 + 2.2). Thaw-able through the addendum mechanism, and still governs the build.</td>
+</tr>
+<tr>
+<td><strong>sealed</strong></td>
+<td>Closed hos, sidequests, addenda, dogfood findings, devlogs/Reflect, executed ATs, propagation-ledger commits</td>
+<td>Final — never changes. Typographical fixes only; anything that changes what the document <em>said</em> belongs in a new document. A future document may <em>respond</em> (forward-only), but nothing supersedes it in force — it is already history.</td>
+</tr>
+</tbody>
+</table>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dogfood" href="/ho-actually/n/dogfood/"
+               hx-get="/ho-actually/n/dogfood/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/dogfood/">&rarr; dogfood</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="forward-only" href="/ho-actually/n/forward-only/"
+               hx-get="/ho-actually/n/forward-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/forward-only/">&rarr; forward-only</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="reflect" href="/ho-actually/n/reflect/"
+               hx-get="/ho-actually/n/reflect/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/reflect/">&rarr; Reflect</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="seed" href="/ho-actually/n/seed/"
+               hx-get="/ho-actually/n/seed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/seed/">&rarr; seed</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="supersedes" href="/ho-actually/n/supersedes/"
+               hx-get="/ho-actually/n/supersedes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/supersedes/">&rarr; supersedes</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="forward-only" href="/ho-actually/n/forward-only/"
+               hx-get="/ho-actually/n/forward-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/forward-only/">&uarr; forward-only</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

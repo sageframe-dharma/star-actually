@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSH File Permissions · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="file-permissions"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="SSH File Permissions">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">SSH File Permissions</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/file-permissions/d3/"
+         hx-get="/ssh-actually/n/file-permissions/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>SSH refuses to use a private key if other users could read it. The logic: if the file is readable by others, it might already be compromised. <strong>SSH would rather fail than use a key it can't trust.</strong> The same applies to <code>authorized_keys</code> on the server side.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&rarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&rarr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&rarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

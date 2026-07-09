@@ -1,0 +1,183 @@
+<article class="node" id="content"
+  data-node-id="permission-denied"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Permission Denied">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Permission Denied</h1>
+      <span class="node-type node-type-troubleshooting">troubleshooting</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/permission-denied/d3/"
+         hx-get="/ssh-actually/n/permission-denied/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>SSH is opinionated about file permissions. If permissions are wrong, SSH <strong>silently refuses to use the key</strong> — no error message in normal mode, just &quot;Permission denied.&quot; This is the single most common cause of &quot;my key doesn't work&quot; problems.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Why SSH cares: if a private key file is readable by other users, it might already be compromised. SSH would rather fail than use a key it can't trust. The same applies to <code>authorized_keys</code> on the server — if the file or its parent directories are writable by others, SSH ignores it entirely.</p>
+<p>Fix all permissions at once, locally:</p>
+<pre><code class="language-bash">chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+chmod 644 ~/.ssh/*.pub
+chmod 644 ~/.ssh/known_hosts
+</code></pre>
+<p>And on the server:</p>
+<pre><code class="language-bash">chmod 755 ~/
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+<p><strong>The home directory matters.</strong> Even if <code>~/.ssh</code> and <code>authorized_keys</code> are correct, the server rejects the key if your home directory is group- or world-writable. Server-side <code>sshd</code> requirement, and it trips people up constantly.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>When key auth fails silently, the diagnosis path is:</p>
+<ol>
+<li><strong>Verbose output:</strong> <code>ssh -vvv user@server</code> — look for lines containing &quot;Permissions&quot;, &quot;ignored&quot;, or &quot;bad ownership&quot;.</li>
+<li><strong>Server-side logs</strong> (requires existing access): <code>sudo tail -20 /var/log/auth.log</code> or <code>sudo journalctl -u sshd -n 20</code>. The server logs exactly why it rejected the key.</li>
+<li><strong>Ownership:</strong> <code>ls -la ~/.ssh/</code> — everything should be owned by your user. Root-owned files in <code>~/.ssh</code> are a common artifact of running <code>ssh-keygen</code> with <code>sudo</code>.</li>
+</ol>
+<p>Common patterns:</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;Permission denied (publickey)&quot;</td>
+<td>Private key is 644 instead of 600</td>
+<td><code>chmod 600 ~/.ssh/id_*</code></td>
+</tr>
+<tr>
+<td>Works locally, not from new machine</td>
+<td>Forgot permissions after copying</td>
+<td>Run the fix-all commands</td>
+</tr>
+<tr>
+<td>Works as root, not as user</td>
+<td><code>authorized_keys</code> owned by root</td>
+<td><code>chown user:user ~/.ssh/authorized_keys</code></td>
+</tr>
+<tr>
+<td>Suddenly stops working</td>
+<td>Home directory permissions changed</td>
+<td><code>chmod 755 ~/</code> on the server</td>
+</tr>
+<tr>
+<td>Works on one server, not another</td>
+<td>Different <code>sshd</code> strictness (<code>StrictModes</code>)</td>
+<td>Check server-side <code>/etc/ssh/sshd_config</code></td>
+</tr>
+</tbody>
+</table>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&rarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="file-permissions" href="/ssh-actually/n/file-permissions/"
+               hx-get="/ssh-actually/n/file-permissions/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/file-permissions/">&rarr; SSH File Permissions</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&rarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="host-key-changed" href="/ssh-actually/n/host-key-changed/"
+               hx-get="/ssh-actually/n/host-key-changed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-key-changed/">&rarr; Host Key Changed</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="known-hosts" href="/ssh-actually/n/known-hosts/"
+               hx-get="/ssh-actually/n/known-hosts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/known-hosts/">&rarr; Known Hosts</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&rarr; Server Hardening</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-agents" href="/ssh-actually/n/ssh-agents/"
+               hx-get="/ssh-actually/n/ssh-agents/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-agents/">&rarr; SSH Agents</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&rarr; SSH Config Basics</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&rarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&uarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="deploy-public-key" href="/ssh-actually/n/deploy-public-key/"
+               hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/deploy-public-key/">&uarr; Deploying a Public Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="file-permissions" href="/ssh-actually/n/file-permissions/"
+               hx-get="/ssh-actually/n/file-permissions/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/file-permissions/">&uarr; SSH File Permissions</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&uarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="host-key-changed" href="/ssh-actually/n/host-key-changed/"
+               hx-get="/ssh-actually/n/host-key-changed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-key-changed/">&uarr; Host Key Changed</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&uarr; Server Hardening</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&uarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

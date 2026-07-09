@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phishing Resistance · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="phishing-resistance"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Phishing Resistance">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Phishing Resistance</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/phishing-resistance/d3/"
+         hx-get="/ssh-actually/n/phishing-resistance/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>An authentication method is <strong>phishing-resistant</strong> when tricking you onto a fake site gains the attacker nothing — because there is no secret to type, nothing that travels can be captured and replayed, and the authentication simply doesn't happen with the wrong service.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Phishing works on anything typed. A password typed on a convincing fake site is captured whole. A one-time code is no better in the moment that matters: codes are <strong>phishable and replayable</strong> — an attacker who tricks you into entering one can immediately use it, live, against the real service.</p>
+<p>Cryptographic authentication removes the raw material:</p>
+<ul>
+<li><strong>Git over SSH</strong>: no passwords ever transmitted, no credentials to steal from the service's servers — phishing-resistant because <em>you're not typing anything</em>.</li>
+<li><strong>WebAuthn</strong>: phishing-resistant <em>by design</em> — the browser and authenticator perform the exchange; there is no code for a fake page to ask you for.</li>
+<li><strong>Hardware security keys</strong>: phishing is ineffective because <em>the device verifies the service before signing anything</em>. Point it at the wrong site and it refuses — no user vigilance required.</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Phishing resistance is the lateral thread running through everything signature-based, and it falls out of one structural fact rather than any anti-phishing feature:</p>
+<blockquote>
+<p>The server verifies <strong>signatures, not secrets</strong> — so no secret is ever entered, transmitted, or stored where it can be stolen.</p>
+</blockquote>
+<p>This is what the MFA strength ladder is actually measuring at its cliff edge. Every code-based rung — email link, SMS, TOTP, enterprise tokens — leaves a human typing something an attacker can relay in real time; each rung just shrinks the window. The signature-based rungs — WebAuthn, passkeys, hardware keys — close the window entirely. Phishing doesn't get <em>harder</em>; it stops working, because the human is no longer the channel the proof travels through.</p>
+<p>SSH had this property from the start: key-pair authentication never sends anything reusable, which is why SSH keys can't be phished the way passwords can. FIDO2 brought the same shape to the web, and hardware keys add the final piece — an authenticator that checks <em>who is asking</em> before it signs. Same cryptography, same immunity, three decades apart.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&rarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&rarr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&rarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="one-time-codes" href="/ssh-actually/n/one-time-codes/"
+               hx-get="/ssh-actually/n/one-time-codes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/one-time-codes/">&rarr; One-Time Codes</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passwords" href="/ssh-actually/n/passwords/"
+               hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passwords/">&rarr; Passwords</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&rarr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&uarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="git-ssh-authentication" href="/ssh-actually/n/git-ssh-authentication/"
+               hx-get="/ssh-actually/n/git-ssh-authentication/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/git-ssh-authentication/">&uarr; Git over SSH</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mfa-strength-ladder" href="/ssh-actually/n/mfa-strength-ladder/"
+               hx-get="/ssh-actually/n/mfa-strength-ladder/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa-strength-ladder/">&uarr; The MFA Strength Ladder</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="one-time-codes" href="/ssh-actually/n/one-time-codes/"
+               hx-get="/ssh-actually/n/one-time-codes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/one-time-codes/">&uarr; One-Time Codes</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="passwords" href="/ssh-actually/n/passwords/"
+               hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passwords/">&uarr; Passwords</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&uarr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

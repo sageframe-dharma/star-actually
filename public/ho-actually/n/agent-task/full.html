@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agent task (AT) · Ho System, Actually</title>
+<link rel="stylesheet" href="/ho-actually/assets/style.css">
+</head>
+<body data-base="/ho-actually">
+<header class="site-head">
+  <a class="site-name" href="/ho-actually/">Ho System, Actually</a>
+  <span class="site-tagline">Build the software. Develop the judgment.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="agent-task"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="agent task (AT)">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">agent task (AT)</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/agent-task/d3/"
+         hx-get="/ho-actually/n/agent-task/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A precise, checkable spec an autonomous coding agent runs to do one bounded piece of work, halting rather than improvising when it meets a surprise.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The executable register: a surgical, command-verifiable spec an
+autonomous coding agent reads to execute one bounded unit of work. Procedural (no
+architectural decisions inside), executor-portable (names its <code>model:</code>), <strong>tripwired</strong>
+(halts and surfaces on surprise), one commit per task. Authored via dandori. Child tasks
+(<code>Ho-NN-AT-MM.md</code>) descend from a ho; standalone tasks stand alone.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Agent tasks (ATs).</strong> <strong>Purpose:</strong> the executable register — a surgical, command-verifiable spec an
+autonomous coding agent reads to execute one bounded unit of work. No architectural
+thinking inside; all decisions were extracted to the parent ho's Think phase.
+<strong>Authored by:</strong> the kamae-5 skill's embedded dandori toolkit (child tasks) or the
+practitioner directly via the standalone dandori skill (standalone tasks).
+<strong>Operational properties (the four that define the type):</strong></p>
+<ol>
+<li><strong>Procedural.</strong> The AT contains no undecided architecture. If specification
+requires a decision, the decision belongs upstream in the ho.</li>
+<li><strong>Executor-portable.</strong> Because there is no thinking in it, the AT can be dispatched
+to a cheaper model, a subagent, or any executor that reliably follows a procedural
+spec. Every AT names its executor in the <code>model:</code> frontmatter field — an unset
+model is an unmade decision. This is the operating discipline's model-choice-by-task
+principle made concrete.</li>
+<li><strong>Escalating.</strong> The AT is autonomous <em>until it finds something new</em>. A surprise —
+schema mismatch, wrong assumption in the spec, unanticipated dependency — halts the
+run and surfaces the finding to the practitioner. No silent architectural decisions
+inside an AT (kokoroe guideline 4, &quot;Halt and surface&quot;; <code>Stop Condition</code> sections
+name the anticipated surprises, the rule covers the unanticipated ones).</li>
+<li><strong>One commit.</strong> Each AT lands as a single commit, prefixed <code>ho-NN:</code> for child
+tasks, referencing the spec ID. The git log reads as a sequence of ATs grouped by
+ho — the split's visible signature. […]</li>
+</ol>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="constitutive-child" href="/ho-actually/n/constitutive-child/"
+               hx-get="/ho-actually/n/constitutive-child/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/constitutive-child/">&rarr; constitutive child</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dandori" href="/ho-actually/n/dandori/"
+               hx-get="/ho-actually/n/dandori/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/dandori/">&rarr; dandori (段取り)</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mind-hand" href="/ho-actually/n/mind-hand/"
+               hx-get="/ho-actually/n/mind-hand/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/mind-hand/">&rarr; mind / hand</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="registers" href="/ho-actually/n/registers/"
+               hx-get="/ho-actually/n/registers/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/registers/">&rarr; architectural register / executable register</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="tripwired" href="/ho-actually/n/tripwired/"
+               hx-get="/ho-actually/n/tripwired/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/tripwired/">&rarr; tripwired</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="constitutive-child" href="/ho-actually/n/constitutive-child/"
+               hx-get="/ho-actually/n/constitutive-child/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/constitutive-child/">&uarr; constitutive child</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mind-hand" href="/ho-actually/n/mind-hand/"
+               hx-get="/ho-actually/n/mind-hand/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/mind-hand/">&uarr; mind / hand</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="registers" href="/ho-actually/n/registers/"
+               hx-get="/ho-actually/n/registers/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/registers/">&uarr; architectural register / executable register</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="tripwired" href="/ho-actually/n/tripwired/"
+               hx-get="/ho-actually/n/tripwired/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/tripwired/">&uarr; tripwired</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ho-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ho-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ho-actually/assets/htmx.min.js"></script>
+<script src="/ho-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The MFA Strength Ladder · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="mfa-strength-ladder"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="The MFA Strength Ladder">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The MFA Strength Ladder</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/mfa-strength-ladder/d3/"
+         hx-get="/ssh-actually/n/mfa-strength-ladder/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A rough ordering of MFA methods from worst to best, ranked by one question: <strong>how hard is it for a motivated, competent attacker — who already knows your username — to successfully impersonate you?</strong></p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The ladder, worst to best:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Method</th>
+<th>Why it sits here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Email link</strong></td>
+<td>Email accounts are often already compromised, logged in on many devices, and themselves protected by weak or reused credentials. If an attacker controls your email, this &quot;factor&quot; collapses entirely.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>SMS code</strong></td>
+<td>Vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone <em>number</em> — not the physical device — is the security anchor: a fundamental design flaw.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Authenticator app (TOTP)</strong></td>
+<td>Codes are short-lived and not transmitted over the network, but still <strong>phishable and replayable</strong> — an attacker who tricks you into entering the code can immediately use it.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Enterprise time-based tokens</strong></td>
+<td>Short validity windows, device management, logging, rapid revocation — but usually still code-based, so real-time phishing remains possible.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Biometrics (local) + WebAuthn</strong></td>
+<td>The biometric doesn't authenticate you to the service — it unlocks a local authenticator, which proves identity cryptographically. The biometric never leaves the device.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Passkeys</strong></td>
+<td>Passwords eliminated entirely; authentication by cryptographic signature, not shared secrets. Phishing-resistant, device-bound — but the platform controls creation, syncing, and recovery.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Hardware security keys</strong></td>
+<td>Secrets never leave the hardware, authentication requires physical touch, attempts are rate-limited, and phishing fails because the device verifies the service before signing anything.</td>
+</tr>
+</tbody>
+</table>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The ladder is really two ladders with a cliff between them. Rungs 1–4 are all <strong>code-based</strong>: something is generated, you type it, and whatever you can type, you can be tricked into typing. Rungs 5–7 are <strong>signature-based</strong>: nothing is typed, so phishing has nothing to capture.</p>
+<p>As you move down the list:</p>
+<ul>
+<li>Shared secrets disappear</li>
+<li>Phishing stops working</li>
+<li>Remote-only attacks fail</li>
+<li>Physical presence becomes required</li>
+</ul>
+<blockquote>
+<p>The strongest systems remove <strong>what can be copied</strong>, <strong>what can be guessed</strong>, and <strong>what can be tricked</strong> — and replace them with cryptographic proof tied to real hardware.</p>
+</blockquote>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mfa" href="/ssh-actually/n/mfa/"
+               hx-get="/ssh-actually/n/mfa/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa/">&rarr; Multi-Factor Authentication</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&rarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="one-time-codes" href="/ssh-actually/n/one-time-codes/"
+               hx-get="/ssh-actually/n/one-time-codes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/one-time-codes/">&rarr; One-Time Codes</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&rarr; Passkeys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="phishing-resistance" href="/ssh-actually/n/phishing-resistance/"
+               hx-get="/ssh-actually/n/phishing-resistance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/phishing-resistance/">&rarr; Phishing Resistance</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mfa" href="/ssh-actually/n/mfa/"
+               hx-get="/ssh-actually/n/mfa/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa/">&uarr; Multi-Factor Authentication</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&uarr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="one-time-codes" href="/ssh-actually/n/one-time-codes/"
+               hx-get="/ssh-actually/n/one-time-codes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/one-time-codes/">&uarr; One-Time Codes</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&uarr; Passkeys</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

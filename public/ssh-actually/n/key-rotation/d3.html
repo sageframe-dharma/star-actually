@@ -1,0 +1,91 @@
+<article class="node" id="content"
+  data-node-id="key-rotation"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Key Rotation">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Key Rotation</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/ssh-actually/n/key-rotation/d4/"
+         hx-get="/ssh-actually/n/key-rotation/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/key-rotation/d2/"
+         hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Replacing an existing SSH key with a new one, either on a planned schedule or in response to a security event. Keys don't expire on their own — SSH has no built-in expiration mechanism. A key generated in 2019 works identically in 2029. This is a feature — and a risk.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p><strong>When to rotate.</strong></p>
+<p>Event-driven rotation (do it now):</p>
+<ul>
+<li>You suspect a private key was exposed</li>
+<li>A machine with your key was stolen or decommissioned</li>
+<li>You left a job and had keys on work machines</li>
+<li>You changed your security posture (moving from disk-based to hardware-backed)</li>
+</ul>
+<p>Scheduled rotation (reasonable cadence):</p>
+<ul>
+<li>Disk-based keys: once a year is practical</li>
+<li>Hardware-backed keys: rotation is less urgent because the key cannot be copied, but rotating when you replace hardware is good practice</li>
+</ul>
+<p><strong>How to rotate.</strong> Rotation means:</p>
+<ol>
+<li>Generate a new key</li>
+<li>Deploy the new public key to all servers that need it</li>
+<li>Test access with the new key</li>
+<li>Remove the old public key from all servers' <code>authorized_keys</code></li>
+<li>Delete or archive the old private key locally</li>
+</ol>
+<p>The critical step is <strong>3 before 4</strong>. Test before you revoke. Otherwise a mistake in deployment locks you out.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-naming" href="/ssh-actually/n/key-naming/"
+               hx-get="/ssh-actually/n/key-naming/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-naming/">&rarr; Naming Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&rarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="stolen-laptop" href="/ssh-actually/n/stolen-laptop/"
+               hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stolen-laptop/">&rarr; Stolen Laptop</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

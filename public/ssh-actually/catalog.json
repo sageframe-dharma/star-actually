@@ -1,0 +1,775 @@
+{
+  "site": "SSH, Actually",
+  "root": "what-ssh-is",
+  "nodes": [
+    {
+      "id": "agent-forwarding",
+      "title": "Agent Forwarding",
+      "type": "concept",
+      "summary": "Let a remote server request signatures from your local SSH agent — convenient, and dangerous in a very specific way.",
+      "entry_points": [
+        "ssh forwarding",
+        "forward agent",
+        "multi-hop ssh",
+        "ssh from server to server"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "authorized-keys",
+      "title": "authorized_keys",
+      "type": "definition",
+      "summary": "The server-side trust anchor — the file of public keys a server will accept, and the discipline of auditing it.",
+      "entry_points": [
+        "what is authorized_keys",
+        "where does the server store my key",
+        "how does the server know my key",
+        "audit ssh access"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "blob",
+      "title": "Blob",
+      "type": "definition",
+      "summary": "The non-secret file on disk that a non-resident hardware key needs to reconstruct its private key. Not a secret — but lose it and the key is gone.",
+      "entry_points": [
+        "blob file",
+        "sk key file",
+        "what is the file on disk for a hardware key"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "choosing-an-approach",
+      "title": "Choosing an Approach",
+      "type": "concept",
+      "summary": "The decision guide: disk-based key with passphrase, hardware-backed resident, or hardware-backed non-resident — chosen by situation, not by maximalism.",
+      "entry_points": [
+        "which ssh key setup should I use",
+        "do I need a hardware key",
+        "disk key or hardware key",
+        "best ssh setup for github"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "config-wildcards",
+      "title": "Config Patterns and Wildcards",
+      "type": "concept",
+      "summary": "Matching semantics — wildcards, per-network blocks, Host * global defaults, most-specific-match wins; plus the useful-options toolbox.",
+      "entry_points": [
+        "ssh config wildcards",
+        "different keys for different networks",
+        "Host * defaults",
+        "which config block wins"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "deploy-public-key",
+      "title": "Deploying a Public Key",
+      "type": "procedure",
+      "summary": "Getting your public key onto the server — ssh-copy-id, the manual authorized_keys method, and the permissions that must accompany it.",
+      "entry_points": [
+        "ssh-copy-id",
+        "add my key to a server",
+        "manually add key to authorized_keys",
+        "deploy public key"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "fido2",
+      "title": "FIDO2",
+      "type": "concept",
+      "summary": "The cryptographic shift for the web — the server verifies a signature, not a secret; key-pair cryptography replacing shared secrets everywhere.",
+      "entry_points": [
+        "what is fido2",
+        "fido2 vs password",
+        "how does fido2 work",
+        "fido2 and ssh"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "file-permissions",
+      "title": "SSH File Permissions",
+      "type": "concept",
+      "summary": "Why SSH is opinionated about permissions — a readable key is an untrustworthy key — the correct numbers on both sides, and the home-directory gotcha.",
+      "entry_points": [
+        "ssh file permissions",
+        "chmod 600 ssh key",
+        "why does ssh care about permissions",
+        "authorized_keys permissions"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "first-key-setup",
+      "title": "First-Time Key Setup",
+      "type": "procedure",
+      "summary": "The end-to-end quick start — generate, deploy with ssh-copy-id, test, add a config block; passwordless server access from zero.",
+      "entry_points": [
+        "set up ssh keys for the first time",
+        "ssh without a password",
+        "quick start ssh key",
+        "how do I stop typing my server password"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "git-ssh-authentication",
+      "title": "Git over SSH",
+      "type": "concept",
+      "summary": "The authentication-only model — no shell, no session; each git operation is a fresh cryptographic proof of identity. Same cryptography, different purpose.",
+      "entry_points": [
+        "how does github ssh work",
+        "why does git use ssh",
+        "git clone ssh vs https",
+        "does github give me a shell"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "hardware-key-capabilities",
+      "title": "Hardware Key Capabilities",
+      "type": "concept",
+      "summary": "The conceptual capability map — OTP, FIDO/U2F, WebAuthn, passkeys, SSH signing, PIV, OpenPGP — and how real models combine them.",
+      "entry_points": [
+        "what can a yubikey do",
+        "which yubikey should I buy",
+        "yubikey security key vs 5 series",
+        "does the blue yubikey do ssh"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "hardware-key-setup-nonresident",
+      "title": "Setting Up a Non-Resident Key",
+      "type": "procedure",
+      "summary": "Quick start for non-resident keys — generate ed25519-sk, register with GitHub/GitLab, config block, test — and the blob-backup obligation.",
+      "entry_points": [
+        "yubikey with github",
+        "set up non-resident ssh key",
+        "hardware key for git",
+        "ed25519-sk github setup"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "hardware-key-setup-resident",
+      "title": "Setting Up a Resident Key",
+      "type": "procedure",
+      "summary": "Quick start for resident keys — generate with -O resident, PIN, deploy, test, and the critical step everyone skips: the duplicate on a second device.",
+      "entry_points": [
+        "set up resident ssh key",
+        "yubikey resident key howto",
+        "ssh-keygen -O resident",
+        "backup yubikey setup"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "hardware-keys-ssh",
+      "title": "Hardware Keys for SSH",
+      "type": "concept",
+      "summary": "Hardware-backed SSH doesn't change the cryptography — it changes where authentication memory lives, splitting state between disk and device.",
+      "entry_points": [
+        "ssh with a yubikey",
+        "what is ed25519-sk",
+        "why does hardware ssh feel weird",
+        "hardware backed ssh keys"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "hardware-pin",
+      "title": "Hardware PINs",
+      "type": "definition",
+      "summary": "A short code enforced by the device itself — attempt-limited, lockout-on-failure, impossible to brute-force offline.",
+      "entry_points": [
+        "what is a fido pin",
+        "yubikey pin",
+        "what happens if I forget my pin",
+        "how many pin attempts"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "hardware-security-keys",
+      "title": "Hardware Security Keys",
+      "type": "concept",
+      "summary": "A physically enforced boundary where secrets can be used but never stolen — a cryptographic co-processor, not a USB password.",
+      "entry_points": [
+        "what is a yubikey",
+        "what does a hardware security key do",
+        "how does a security key work",
+        "can a yubikey be copied"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "host-aliases",
+      "title": "Host Aliases",
+      "type": "concept",
+      "summary": "Host is a label you control, HostName is where the connection goes — SSH config as named connection instructions, not a hostname routing table.",
+      "entry_points": [
+        "ssh host alias",
+        "host vs hostname ssh config",
+        "can host be a made-up name",
+        "nickname for ssh server"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "host-key-changed",
+      "title": "Host Key Changed",
+      "type": "troubleshooting",
+      "summary": "The scary warning decoded — legitimate causes (rebuilt server, reused IP) versus the attack it exists to catch, and the ssh-keygen -R fix.",
+      "entry_points": [
+        "remote host identification has changed",
+        "host key verification failed",
+        "ssh-keygen -R",
+        "server rebuilt ssh warning"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "identities-only",
+      "title": "IdentitiesOnly",
+      "type": "definition",
+      "summary": "Force SSH to present only the keys you named — prevents SSH trying every key you own and the \"too many authentication failures\" it causes.",
+      "entry_points": [
+        "what does identitiesonly do",
+        "too many authentication failures",
+        "ssh tries wrong key"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "jump-host-config",
+      "title": "Configuring Jump Hosts",
+      "type": "procedure",
+      "summary": "The bastion pattern in ~/.ssh/config — ProxyJump blocks, wildcarded environment groups, transparent ssh prod-db1 through a bastion.",
+      "entry_points": [
+        "configure a bastion in ssh config",
+        "proxyjump config example",
+        "ssh through bastion automatically"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "key-generation",
+      "title": "Generating Keys",
+      "type": "procedure",
+      "summary": "ssh-keygen and its choices — algorithm, filename, comment, passphrase — plus changing the passphrase or comment on a key you already have.",
+      "entry_points": [
+        "how to generate an ssh key",
+        "ssh-keygen command",
+        "change passphrase on existing key",
+        "which key algorithm"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "key-naming",
+      "title": "Naming Keys",
+      "type": "concept",
+      "summary": "Names are for humans, not computers — clarity, intent, and scope in key filenames, plus why the comment field earns its keep.",
+      "entry_points": [
+        "how should I name ssh keys",
+        "ssh key naming convention",
+        "what is the ssh key comment",
+        "id_rsa vs custom names"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "key-pairs",
+      "title": "Key Pairs",
+      "type": "concept",
+      "summary": "Two mathematically linked keys — private (secret, yours) and public (shared, safe) — and the storage rules that follow; the server never learns your secret.",
+      "entry_points": [
+        "what is a key pair",
+        "public vs private key",
+        "what is a private key",
+        "can I share my public key"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "key-rotation",
+      "title": "Key Rotation",
+      "type": "procedure",
+      "summary": "Keys never expire on their own — rotation is a manual discipline: when to do it, the test-before-revoke order, and how hardware keys change the calculus.",
+      "entry_points": [
+        "how often should I rotate ssh keys",
+        "do ssh keys expire",
+        "replace an ssh key",
+        "left a job with keys on machines"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "known-hosts",
+      "title": "Known Hosts",
+      "type": "concept",
+      "summary": "The other direction of trust — you verify the server. Fingerprints, the first-connection prompt, and MITM protection.",
+      "entry_points": [
+        "what is known_hosts",
+        "authenticity of host can't be established",
+        "should I type yes",
+        "ssh fingerprint check"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "lost-hardware-key",
+      "title": "Lost Hardware Key",
+      "type": "scenario",
+      "summary": "The recovery playbook when the device is gone — why non-resident loss is an inconvenience and resident-without-backup is total lockout.",
+      "entry_points": [
+        "lost my yubikey",
+        "hardware key stolen what now",
+        "yubikey broke can I recover",
+        "locked out resident key"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "macos-keychain",
+      "title": "macOS Keychain Integration",
+      "type": "concept",
+      "summary": "Why SSH feels invisible on macOS — Keychain, Touch ID, and an auto-loaded agent. Feels like hardware security; is actually disk security plus OS trust.",
+      "entry_points": [
+        "why doesn't my mac ask for my passphrase",
+        "ssh touch id",
+        "UseKeychain",
+        "is my mac key hardware backed"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "managing-resident-credentials",
+      "title": "Managing Resident Credentials",
+      "type": "procedure",
+      "summary": "Housekeeping on the device — ykman list/delete, checking slot usage, freeing slots, and the slot-limit recovery path.",
+      "entry_points": [
+        "list keys on yubikey",
+        "ykman fido credentials",
+        "delete resident key",
+        "yubikey slots full"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "mfa",
+      "title": "Multi-Factor Authentication",
+      "type": "concept",
+      "summary": "Proof comes in categories — know, have, are — and MFA means requiring more than one. Includes the credential/factor vocabulary used everywhere else.",
+      "entry_points": [
+        "what is mfa",
+        "what counts as a factor",
+        "something you know have are",
+        "what is 2fa"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "mfa-strength-ladder",
+      "title": "The MFA Strength Ladder",
+      "type": "concept",
+      "summary": "The worst-to-best ranking — email link → SMS → TOTP → enterprise tokens → biometrics+WebAuthn → passkeys → hardware keys — and why each tier sits where it does.",
+      "entry_points": [
+        "which mfa is strongest",
+        "ranking of 2fa methods",
+        "is sms worse than an authenticator app",
+        "email link login security"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "modern-auth-landscape",
+      "title": "The Modern Auth Landscape",
+      "type": "concept",
+      "summary": "The map — passwords, OTP, FIDO2/WebAuthn, passkeys, and hardware keys all converge on one idea: never give the server a secret it can lose. SSH did it first.",
+      "entry_points": [
+        "how do passkeys mfa and hardware keys fit together",
+        "map of modern authentication",
+        "how does ssh relate to webauthn",
+        "why do these all feel related"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "multiple-github-accounts",
+      "title": "Multiple Accounts, One Service",
+      "type": "scenario",
+      "summary": "The two-accounts trap — same host, same username, different keys — and the alias-based way out, including clone-URL changes and updating existing remotes.",
+      "entry_points": [
+        "two github accounts one machine",
+        "personal and work github ssh",
+        "wrong github account authenticating",
+        "git remote set-url alias"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "new-machine-setup",
+      "title": "New Machine Setup",
+      "type": "procedure",
+      "summary": "Fresh laptop, restore access — three workflows side by side: regenerate stubs (resident), restore blobs (non-resident), restore keys + permissions (disk).",
+      "entry_points": [
+        "ssh on a new laptop",
+        "restore ssh access new machine",
+        "migrate ssh keys",
+        "fresh install ssh setup"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "non-resident-keys",
+      "title": "Non-Resident SSH Keys",
+      "type": "concept",
+      "summary": "The key that is stored nowhere — derived on demand inside the hardware from master secret plus blob; unlimited keys, but you must preserve the blob.",
+      "entry_points": [
+        "what is a non-resident key",
+        "where is my sk key stored",
+        "the key isn't on the hardware?",
+        "unlimited hardware ssh keys"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "one-time-codes",
+      "title": "One-Time Codes",
+      "type": "concept",
+      "summary": "OTP/TOTP/SMS as layered defense on top of shared secrets — rotating codes help, but they remain phishable and replayable, and the secret still lives on a server.",
+      "entry_points": [
+        "what is totp",
+        "are authenticator apps secure",
+        "why is sms 2fa bad",
+        "can otp codes be phished"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "passkeys",
+      "title": "Passkeys",
+      "type": "concept",
+      "summary": "User-friendly FIDO2 — discoverable credentials, synced by platforms, phishing-resistant; the tradeoff is that the platform controls creation, sync, and recovery.",
+      "entry_points": [
+        "what is a passkey",
+        "passkey vs password",
+        "passkey vs hardware key",
+        "who controls my passkeys"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "passphrases",
+      "title": "Passphrases",
+      "type": "concept",
+      "summary": "A secret that encrypts a private key at rest — and its honest limits: offline brute-force with unlimited attempts.",
+      "entry_points": [
+        "should I set a passphrase",
+        "what does a passphrase protect",
+        "passphrase vs password",
+        "forgot my ssh passphrase"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "passwords",
+      "title": "Passwords",
+      "type": "concept",
+      "summary": "The shared-secret baseline — the server knows your secret, so the server can lose it. Everything else in modern authentication exists because of this flaw.",
+      "entry_points": [
+        "why are passwords weak",
+        "what is a shared secret",
+        "why replace passwords"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "permission-denied",
+      "title": "Permission Denied",
+      "type": "troubleshooting",
+      "summary": "The most common SSH failure, and the diagnosis path: SSH silently refuses keys with wrong file permissions — no error, just \"Permission denied.\"",
+      "entry_points": [
+        "permission denied publickey",
+        "key doesn't work",
+        "ssh rejects my key",
+        "file permissions ssh"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "phishing-resistance",
+      "title": "Phishing Resistance",
+      "type": "concept",
+      "summary": "Why cryptographic auth defeats phishing — nothing to type, nothing to replay; the authenticator verifies the service before signing. The thread tying SSH, FIDO2, and hardware keys together.",
+      "entry_points": [
+        "what does phishing resistant mean",
+        "why can't ssh keys be phished",
+        "can 2fa codes be phished",
+        "phishing proof login"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "pins-vs-passphrases",
+      "title": "PINs vs Passphrases",
+      "type": "concept",
+      "summary": "A passphrase protects a file (offline brute-forceable, unlimited attempts); a PIN protects a physical device (rate-limited, hardware-enforced).",
+      "entry_points": [
+        "pin vs passphrase",
+        "is a short pin really safe",
+        "why is a 6 digit pin ok but a short passphrase not"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "presence-vs-identity",
+      "title": "Presence vs Identity",
+      "type": "concept",
+      "summary": "Touch proves a human is present now; biometrics prove which human. For cryptographic auth, presence is sufficient and identity is optional.",
+      "entry_points": [
+        "why is touch enough",
+        "do I need the biometric yubikey",
+        "touch vs fingerprint security key",
+        "does my fingerprint go to the server"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "proxy-jump",
+      "title": "ProxyJump",
+      "type": "concept",
+      "summary": "Route through an intermediate as a dumb TCP relay — it never sees your key, never talks to your agent, cannot act as you. The better answer to multi-hop.",
+      "entry_points": [
+        "what is proxyjump",
+        "ssh -J",
+        "ssh through a jump host safely",
+        "proxyjump vs agent forwarding"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "recovery-planning",
+      "title": "Recovery Planning",
+      "type": "concept",
+      "summary": "Always have a path back — the two-hardware-keys rule, blob backups, out-of-band access, and testing recovery before you need it.",
+      "entry_points": [
+        "ssh backup strategy",
+        "do I need two yubikeys",
+        "how do I not lock myself out",
+        "test recovery process"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "resident-keys",
+      "title": "Resident SSH Keys",
+      "type": "concept",
+      "summary": "The key the hardware remembers — generated and stored entirely inside the device, discoverable, survives disk loss; the cost is a scarce slot.",
+      "entry_points": [
+        "what is a resident key",
+        "ssh key that survives a wiped laptop",
+        "discoverable credential ssh",
+        "-O resident meaning"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "resident-vs-non-resident",
+      "title": "Resident vs Non-Resident",
+      "type": "concept",
+      "summary": "The decision surface — permanence vs scalability. Resident trades slots for survivability; non-resident trades blob custody for unlimited keys. State survivability, not strength.",
+      "entry_points": [
+        "resident or non-resident",
+        "which hardware key type should I use",
+        "resident vs non-resident comparison",
+        "blob vs stub"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "server-hardening",
+      "title": "Server Hardening",
+      "type": "concept",
+      "summary": "Minimum viable server security — passwords off, root off, key-only access, sudo for escalation — and why keys structurally beat passwords.",
+      "entry_points": [
+        "how do I harden ssh",
+        "disable password login",
+        "should I allow root login",
+        "ssh key only access"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "signatures",
+      "title": "Signatures",
+      "type": "concept",
+      "summary": "The challenge–sign–verify flow — proof of possession that never reveals the secret. The missing piece that makes key pairs usable.",
+      "entry_points": [
+        "what is a cryptographic signature",
+        "how does ssh prove identity",
+        "challenge response",
+        "how does the server verify me"
+      ],
+      "depth_levels": 5
+    },
+    {
+      "id": "slots",
+      "title": "Slots",
+      "type": "definition",
+      "summary": "Small, protected storage locations inside the hardware key — intentionally scarce, because limiting stored secrets limits blast radius.",
+      "entry_points": [
+        "what is a slot on a yubikey",
+        "how many keys fit on a hardware key",
+        "why are slots limited"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "ssh-agents",
+      "title": "SSH Agents",
+      "type": "concept",
+      "summary": "The background process that caches unlocked keys for a session so you stop retyping passphrases.",
+      "entry_points": [
+        "what is ssh-agent",
+        "why do I keep typing my passphrase",
+        "ssh-add",
+        "cache ssh passphrase"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "ssh-config-basics",
+      "title": "SSH Config Basics",
+      "type": "concept",
+      "summary": "~/.ssh/config as named connection instructions — Host, HostName, User, Port, IdentityFile — turning flag soup into `ssh myserver`.",
+      "entry_points": [
+        "what is ssh config",
+        "how to set up ~/.ssh/config",
+        "stop typing ssh flags",
+        "ssh nickname for server"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "ssh-debugging",
+      "title": "Debugging SSH",
+      "type": "troubleshooting",
+      "summary": "The diagnostic toolkit as a workflow — verbose output, config resolution, agent inspection, and server-side logs, each answering a different question.",
+      "entry_points": [
+        "debug ssh connection",
+        "ssh -vvv how to read",
+        "why is ssh using the wrong key",
+        "check ssh server logs"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "state",
+      "title": "State",
+      "type": "definition",
+      "summary": "Anything that must be remembered for authentication to keep working — lose it and auth fails, copy it and auth can be stolen.",
+      "entry_points": [
+        "what is authentication state",
+        "what must be remembered for ssh to work",
+        "where does auth state live"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "stolen-laptop",
+      "title": "Stolen Laptop",
+      "type": "scenario",
+      "summary": "Disk-key compromise response — assume the key is being brute-forced and remove the public key from every authorized_keys now.",
+      "entry_points": [
+        "laptop stolen ssh keys",
+        "revoke a compromised ssh key",
+        "someone has my private key file"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "stub",
+      "title": "Stub",
+      "type": "definition",
+      "summary": "The regenerable pointer — a small non-secret file that tells SSH which resident key to use. Delete it freely; regenerate anywhere with ssh-keygen -K.",
+      "entry_points": [
+        "what is a stub file",
+        "ssh-keygen -K",
+        "regenerate ssh key files",
+        "deleted my sk key file"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "touch-requirement",
+      "title": "The Touch Requirement",
+      "type": "definition",
+      "summary": "A physical press required before any cryptographic operation — proves a human is present and the action is intentional; makes automation impossible.",
+      "entry_points": [
+        "why do I have to touch my yubikey",
+        "what does the touch prove",
+        "hardware key flashing"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "trust-boundaries",
+      "title": "Trust Boundaries",
+      "type": "concept",
+      "summary": "Where the secret lives determines who you must trust — disk trusts your OS, hardware trusts a physical object, forwarding lends trust away.",
+      "entry_points": [
+        "where does my ssh key live",
+        "who can steal my key",
+        "where do secrets live",
+        "what am I trusting"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "username-trick",
+      "title": "The git@ Username",
+      "type": "concept",
+      "summary": "Why the username is always git — the service identifies you by which key you present, not by the username you type.",
+      "entry_points": [
+        "why is the username always git",
+        "git@github.com meaning",
+        "how does github know who I am"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "webauthn",
+      "title": "WebAuthn",
+      "type": "concept",
+      "summary": "The browser API that lets websites use FIDO2 — the bridge between web pages and authenticators, phishing-resistant by design.",
+      "entry_points": [
+        "what is webauthn",
+        "webauthn vs fido2",
+        "how do browsers do passwordless login"
+      ],
+      "depth_levels": 3
+    },
+    {
+      "id": "what-ssh-is",
+      "title": "What SSH Is",
+      "type": "concept",
+      "summary": "SSH is cryptographic proof of identity over a hostile network — the protocol assumes someone is listening and someone is impersonating.",
+      "entry_points": [
+        "what is ssh",
+        "how does ssh work",
+        "what does ssh actually do",
+        "why is ssh secure"
+      ],
+      "depth_levels": 4
+    }
+  ]
+}

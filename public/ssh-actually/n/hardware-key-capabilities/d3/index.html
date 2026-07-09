@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware Key Capabilities (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="hardware-key-capabilities"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Hardware Key Capabilities">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Hardware Key Capabilities</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/hardware-key-capabilities/d2/"
+         hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Modern hardware keys can support multiple independent roles. What follows is a <strong>conceptual capability map</strong>, not marketing tiers — different models enable different <em>combinations</em> of the same underlying capabilities.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The capability map:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What it does</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2FA (OTP)</td>
+<td>Generates rotating codes</td>
+<td>Better than SMS</td>
+</tr>
+<tr>
+<td>FIDO/U2F</td>
+<td>Cryptographic challenge-response</td>
+<td>Phishing resistant</td>
+</tr>
+<tr>
+<td>WebAuthn</td>
+<td>Browser-based cryptographic login</td>
+<td>Passwordless</td>
+</tr>
+<tr>
+<td>Passkey storage</td>
+<td>Stores discoverable credentials</td>
+<td>Cross-device login</td>
+</tr>
+<tr>
+<td>SSH signing</td>
+<td>Signs SSH challenges</td>
+<td>No private keys on disk</td>
+</tr>
+<tr>
+<td>Touch requirement</td>
+<td>Enforces presence</td>
+<td>Stops automation</td>
+</tr>
+<tr>
+<td>PIN enforcement</td>
+<td>Rate-limited access</td>
+<td>Stronger than passphrases</td>
+</tr>
+<tr>
+<td>Biometric unlock (optional)</td>
+<td>Local identity check</td>
+<td>Convenience layer</td>
+</tr>
+</tbody>
+</table>
+<p>Using YubiKey as an example (not endorsement) — a simplified conceptual lineup:</p>
+<table>
+<thead>
+<tr>
+<th>Feature / Capability</th>
+<th>Security Key (blue)</th>
+<th>5 Series</th>
+<th>Bio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Touch (presence check)</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>PIN (device-enforced)</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>OTP (TOTP / HOTP)</td>
+<td>✖</td>
+<td>✔</td>
+<td>✖</td>
+</tr>
+<tr>
+<td>WebAuthn (FIDO2 / U2F)</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Passkeys (resident creds)</td>
+<td>✔ (limited)</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>SSH (ed25519-sk)</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>PIV / Smart Card (X.509)</td>
+<td>✖</td>
+<td>✔</td>
+<td>✖</td>
+</tr>
+<tr>
+<td>OpenPGP</td>
+<td>✖</td>
+<td>✔</td>
+<td>✖</td>
+</tr>
+<tr>
+<td>Biometrics (fingerprint)</td>
+<td>✖</td>
+<td>✖</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<p>Important clarifications:</p>
+<ul>
+<li>The <strong>Security Key (blue)</strong> <em>does</em> support SSH (<code>ed25519-sk</code>) and passkeys, but <strong>only via FIDO2/WebAuthn</strong>. It does not support OTP, PIV, or OpenPGP.</li>
+<li><strong>Passkeys = resident FIDO2 credentials</strong>, which are <strong>slot-limited</strong> on all keys (lower limits on Security Key models).</li>
+<li><strong>SSH works on all three</strong>, because it uses FIDO2 as a signing oracle (not PIV).</li>
+<li><strong>Biometrics</strong> are purely a local unlock convenience; cryptographic guarantees are identical with touch+PIN.</li>
+</ul>
+<p>All of these still rely on the same foundation: hardware isolation, non-exportable secrets, signature-based authentication.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passkeys" href="/ssh-actually/n/passkeys/"
+               hx-get="/ssh-actually/n/passkeys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passkeys/">&rarr; Passkeys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&rarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="webauthn" href="/ssh-actually/n/webauthn/"
+               hx-get="/ssh-actually/n/webauthn/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/webauthn/">&rarr; WebAuthn</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

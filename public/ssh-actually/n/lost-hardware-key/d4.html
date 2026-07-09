@@ -1,0 +1,103 @@
+<article class="node" id="content"
+  data-node-id="lost-hardware-key"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Lost Hardware Key">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Lost Hardware Key</h1>
+      <span class="node-type node-type-scenario">scenario</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/lost-hardware-key/d3/"
+         hx-get="/ssh-actually/n/lost-hardware-key/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The hardware key is gone — lost, stolen, or broken (a broken key is the same scenario as a lost one). What happens next depends entirely on one earlier decision: whether your keys were <strong>non-resident</strong> or <strong>resident</strong>, and whether you have a backup device.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p><strong>Non-resident keys:</strong></p>
+<ul>
+<li><strong>Risk:</strong> Blobs are useless without hardware, but new key needed</li>
+<li><strong>Recovery:</strong> Buy new hardware key, generate new keys, deploy to servers</li>
+<li><strong>Prevention:</strong> Have a backup hardware key with separate keys</li>
+</ul>
+<p><strong>Resident keys:</strong></p>
+<ul>
+<li><strong>Risk:</strong> Total loss of access if only key</li>
+<li><strong>Recovery:</strong> Requires out-of-band server access or recovery account</li>
+<li><strong>Prevention:</strong> ALWAYS have a backup hardware key with duplicate resident keys</li>
+</ul>
+<p>Hardware key breaks: same as lost key above. Prevention: have backup hardware key.</p>
+<p>Related device-side dead ends worth knowing:</p>
+<ul>
+<li><strong>Forgot PIN</strong> — cannot use the hardware key after limited attempts; the key locks/wipes after too many failures (usually 8 attempts). Store the PIN securely, have a backup hardware key.</li>
+<li><strong>Reached slot limit (resident keys)</strong> — cannot create more resident keys. Delete old resident keys with <code>ykman fido credentials delete</code>; use non-resident keys for frequently-changing access.</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Why the asymmetry: a non-resident key's identity lives split between the device's master secret and the blob on your disk — losing the device destroys the pair, but <em>you still have working access to your servers through whatever other path exists</em>, and the recovery is mechanical: new device, new keys, redeploy. A resident key lives <strong>only</strong> inside the device. If that was your sole device and your sole access path, no file on any disk can bring it back — recovery is no longer a cryptographic question but an operational one (console access, a recovery account, a hosting provider's out-of-band door).</p>
+<p>What about whoever <em>has</em> your key now? Physical possession alone is not authentication: FIDO2 operations are protected by the device's PIN, enforced in hardware with a small attempt budget before lockout — and the finder can't extract secrets from the device either. The realistic threat is not the stranger who found your key; it's your own lockout. That's why the prevention line repeats across every scenario here: <strong>a second hardware key</strong> — duplicate resident keys for server access, and backed-up blobs for non-resident ones. Deciding this <em>before</em> the loss is the whole content of recovery planning.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="managing-resident-credentials" href="/ssh-actually/n/managing-resident-credentials/"
+               hx-get="/ssh-actually/n/managing-resident-credentials/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/managing-resident-credentials/">&rarr; Managing Resident Credentials</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&rarr; Recovery Planning</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="stub" href="/ssh-actually/n/stub/"
+               hx-get="/ssh-actually/n/stub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stub/">&rarr; Stub</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="managing-resident-credentials" href="/ssh-actually/n/managing-resident-credentials/"
+               hx-get="/ssh-actually/n/managing-resident-credentials/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/managing-resident-credentials/">&uarr; Managing Resident Credentials</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&uarr; Recovery Planning</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

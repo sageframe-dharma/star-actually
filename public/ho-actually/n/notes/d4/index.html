@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>notes/ (depth 4) · Ho System, Actually</title>
+<link rel="stylesheet" href="/ho-actually/assets/style.css">
+</head>
+<body data-base="/ho-actually">
+<header class="site-head">
+  <a class="site-name" href="/ho-actually/">Ho System, Actually</a>
+  <span class="site-tagline">Build the software. Develop the judgment.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="notes"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="notes/">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">notes/</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/notes/d3/"
+         hx-get="/ho-actually/n/notes/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The folder where findings gathered before a session wait until some later session pulls them in.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The <code>ho-process/notes/</code> location where pre-ho findings live (dated finding
+documents) before any ho consumes them via <code>builds-on:</code>. A location, not a first-class
+artifact type. Its complement is <code>ideas.md</code>: <strong>notes/ is evidence behind you; ideas.md is
+intentions ahead of you.</strong></p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Filenames and Location.</strong> The four framing documents live in the project repo under <code>ho-process/</code>, with the README at the repo root.</p>
+<p><strong>Pattern:</strong> <code>kamae-&lt;N&gt;-&lt;project&gt;-&lt;doctype&gt;.md</code> for documents 1, 2, and 4. The README (Kamae 3) is the canonical repo-root <code>README.md</code> and does <em>not</em> take a <code>kamae-3-</code> prefix — it ships as the public face of the repository under its standard name.</p>
+<table>
+<thead>
+<tr>
+<th>Kamae</th>
+<th>Document</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Seed</td>
+<td><code>ho-process/kamae-1-&lt;project&gt;-seed.md</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>System Design</td>
+<td><code>ho-process/kamae-2-&lt;project&gt;-system-design.md</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>README</td>
+<td><code>README.md</code> (repo root)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ho Overview</td>
+<td><code>ho-process/kamae-4-&lt;project&gt;-ho-overview.md</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;project&gt;</code> is the project's short slug in kebab-case (e.g., <code>shodo</code>, <code>hozo</code>, <code>kanyo</code>). It matches the slug used elsewhere in the project (repo name, package name) so the filenames are predictable from any one of them.</p>
+<p><strong>Per-ho documents</strong> (the Kamae 5 phase) live under <code>ho-process/hos/</code> and follow the [[ho-structure|ho filename convention]] (framework/structure/ho-structure.md §3.6): <code>ho-&lt;number&gt;-&lt;slug&gt;.md</code>. <strong>Child agent-task specs</strong> live under <code>ho-process/agent-tasks/</code> and follow <code>Ho-&lt;NN&gt;-AT-&lt;NN&gt;.md</code> (see [[ho-task-decomposition|Ho Task Decomposition]] (framework/structure/ho-task-decomposition.md) §4.2). […]</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="builds-on" href="/ho-actually/n/builds-on/"
+               hx-get="/ho-actually/n/builds-on/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/builds-on/">&rarr; builds-on</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ho-process" href="/ho-actually/n/ho-process/"
+               hx-get="/ho-actually/n/ho-process/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/ho-process/">&rarr; ho-process/</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ho-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ho-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ho-actually/assets/htmx.min.js"></script>
+<script src="/ho-actually/assets/app.js"></script>
+</body>
+</html>

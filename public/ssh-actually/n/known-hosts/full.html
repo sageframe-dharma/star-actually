@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Known Hosts · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="known-hosts"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Known Hosts">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Known Hosts</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/known-hosts/d3/"
+         hx-get="/ssh-actually/n/known-hosts/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><code>~/.ssh/known_hosts</code> stores server fingerprints. Its purpose: prevent MITM attacks — someone impersonating the server you meant to reach — by verifying server identity on every connection.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The first connection to a new server is where the file earns its keep:</p>
+<pre><code>The authenticity of host 'server (192.0.2.10)' can't be established.
+ED25519 key fingerprint is SHA256:abc123...
+Are you sure you want to continue connecting (yes/no)?
+</code></pre>
+<p>What to do:</p>
+<ol>
+<li>Verify the fingerprint via an out-of-band method (ask the admin, check documentation)</li>
+<li>Type <code>yes</code> if the fingerprint matches</li>
+<li>The server is added to <code>known_hosts</code></li>
+</ol>
+<p><strong>Typing <code>yes</code> blindly defeats MITM protection.</strong> The prompt is the one moment you're actually being asked to establish trust; after that, SSH checks automatically.</p>
+<p>Housekeeping:</p>
+<pre><code class="language-bash">cat ~/.ssh/known_hosts                 # see stored fingerprints
+ssh-keygen -H -f ~/.ssh/known_hosts    # hash entries (obscures which servers you visit)
+</code></pre>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>SSH trust runs in both directions, and <code>known_hosts</code> is the half most people never think about:</p>
+<ul>
+<li><code>authorized_keys</code> on the server answers <em>&quot;should I trust this client?&quot;</em></li>
+<li><code>known_hosts</code> on your machine answers <em>&quot;is this really the server I think it is?&quot;</em></li>
+</ul>
+<p>Both use the same mechanism — the server holds a key pair too, and proves possession by signature; the fingerprint you stored is how your client recognizes its public key. Without this check, someone between you and the server could impersonate it and quietly relay everything you type.</p>
+<p>Which is why the scary warning — <code>REMOTE HOST IDENTIFICATION HAS CHANGED</code> — deserves a moment of respect before you fix it. Legitimate causes exist (server rebuilt, OS reinstalled, IP reused), and <code>ssh-keygen -R hostname</code> clears the stale entry. But the warning exists to catch exactly the attack this file defends against; verify before you delete.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="host-key-changed" href="/ssh-actually/n/host-key-changed/"
+               hx-get="/ssh-actually/n/host-key-changed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-key-changed/">&darr; Host Key Changed</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="host-key-changed" href="/ssh-actually/n/host-key-changed/"
+               hx-get="/ssh-actually/n/host-key-changed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-key-changed/">&rarr; Host Key Changed</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="signatures" href="/ssh-actually/n/signatures/"
+               hx-get="/ssh-actually/n/signatures/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/signatures/">&rarr; Signatures</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&rarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="host-key-changed" href="/ssh-actually/n/host-key-changed/"
+               hx-get="/ssh-actually/n/host-key-changed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-key-changed/">&uarr; Host Key Changed</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&uarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="signatures" href="/ssh-actually/n/signatures/"
+               hx-get="/ssh-actually/n/signatures/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/signatures/">&uarr; Signatures</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&uarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

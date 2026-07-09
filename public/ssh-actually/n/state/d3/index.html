@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>State (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="state"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="State">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">State</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/state/d2/"
+         hx-get="/ssh-actually/n/state/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><strong>State</strong> is <em>anything that must be remembered</em> for authentication to keep working. If the required state is lost, authentication fails. If the state is copied, authentication can be stolen.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Examples of state:</p>
+<ul>
+<li>a private SSH key file on disk</li>
+<li>a password stored by a service</li>
+<li>a cryptographic secret stored inside hardware</li>
+</ul>
+<p>You cannot eliminate state — you can only <strong>choose where it lives</strong>.</p>
+<p>That choice is the entire design space. Traditional SSH puts all state on disk. Hardware-backed SSH splits state between your computer and the hardware key. Resident and non-resident keys are two different answers to the same question: which side of that split remembers the key?</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="non-resident-keys" href="/ssh-actually/n/non-resident-keys/"
+               hx-get="/ssh-actually/n/non-resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/non-resident-keys/">&darr; Non-Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="resident-keys" href="/ssh-actually/n/resident-keys/"
+               hx-get="/ssh-actually/n/resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-keys/">&darr; Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&darr; Slots</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-keys-ssh" href="/ssh-actually/n/hardware-keys-ssh/"
+               hx-get="/ssh-actually/n/hardware-keys-ssh/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-keys-ssh/">&rarr; Hardware Keys for SSH</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resident-vs-non-resident" href="/ssh-actually/n/resident-vs-non-resident/"
+               hx-get="/ssh-actually/n/resident-vs-non-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-vs-non-resident/">&rarr; Resident vs Non-Resident</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&rarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="trust-boundaries" href="/ssh-actually/n/trust-boundaries/"
+               hx-get="/ssh-actually/n/trust-boundaries/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/trust-boundaries/">&rarr; Trust Boundaries</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

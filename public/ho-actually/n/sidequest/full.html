@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidequest · Ho System, Actually</title>
+<link rel="stylesheet" href="/ho-actually/assets/style.css">
+</head>
+<body data-base="/ho-actually">
+<header class="site-head">
+  <a class="site-name" href="/ho-actually/">Ho System, Actually</a>
+  <span class="site-tagline">Build the software. Develop the judgment.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="sidequest"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="sidequest">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">sidequest</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/sidequest/d3/"
+         hx-get="/ho-actually/n/sidequest/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A bounded, detachable line of work inside a project, with its own folder, numbering, and its own check that it worked.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>A bounded, severable capability <em>arc</em> inside a project: its own folder, its
+own phase-overview (<code>type: ho-overview-phase</code>), local letter-prefixed numbering (ho-A1…), an
+explicit <code>supersedes:</code> against the main overview (bidirectional), its own validation pass
+(in shodo's case, an eval). It is <em>work</em>, an arc — the counterpart to the dogfood finding's record. (The earlier &quot;sidequest =
+emergent record&quot; definition was a mislabeling, now corrected — those files are dogfood
+findings.)</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Sidequest.</strong> <strong>Purpose:</strong> a bounded, severable capability chain <em>inside</em> a project — a full
+feature/build developed within the project that wants its own ordered arc without
+becoming a separate project (&quot;the work is a capability, not a separate project — no
+separate seed, system design, or README,&quot; shodo Subproject-A phase overview). It is
+<em>work</em>, an arc — not a record. shodo's ingest/harvest engine (Subproject-A-Harvester)
+is the canonical example.
+<strong>Structural signature:</strong></p>
+<ul>
+<li>Its own folder under <code>ho-process/hos/</code> (<code>Subproject-A-Harvester/</code>)</li>
+<li>Its own phase-overview document: <code>type: ho-overview-phase</code>, <code>stage: kamae-4</code>,
+<code>subproject:</code> field — a mini-Kamae-4 fragment with local scope</li>
+<li>Local ho numbering with a letter prefix (ho-A1 … ho-A5)</li>
+<li>An explicit <code>supersedes:</code> clause against the specific main-kamae-4 bullet the
+sidequest overtakes, plus a documented cascade reading order</li>
+<li>Its own validation pass (in shodo's case, an eval) and release-tag consequences […]</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dogfood" href="/ho-actually/n/dogfood/"
+               hx-get="/ho-actually/n/dogfood/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/dogfood/">&rarr; dogfood</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="graded-eval" href="/ho-actually/n/graded-eval/"
+               hx-get="/ho-actually/n/graded-eval/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/graded-eval/">&rarr; eval (graded eval)</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="phase" href="/ho-actually/n/phase/"
+               hx-get="/ho-actually/n/phase/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/phase/">&rarr; phase</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="supersedes" href="/ho-actually/n/supersedes/"
+               hx-get="/ho-actually/n/supersedes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/supersedes/">&rarr; supersedes</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ho-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ho-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ho-actually/assets/htmx.min.js"></script>
+<script src="/ho-actually/assets/app.js"></script>
+</body>
+</html>

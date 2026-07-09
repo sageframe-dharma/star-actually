@@ -1,0 +1,174 @@
+<article class="node" id="content"
+  data-node-id="resident-keys"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="Resident SSH Keys">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Resident SSH Keys</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/resident-keys/d4/"
+         hx-get="/ssh-actually/n/resident-keys/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>resident SSH key</strong> is a hardware-backed SSH key where the hardware device stores the key's identity, remembers the key exists, and the private key is <strong>generated and stored entirely inside the hardware</strong>. The private key never exists as a file, never needs to be reconstructed from disk data, and lives permanently inside the hardware key.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>With a resident key, the hardware stores the private key <em>and</em> the key's identity. The computer stores <strong>nothing essential</strong> — only a <strong>stub</strong>, a small non-secret pointer file that tells SSH which resident key to use. The hardware key already knows <em>which</em> key you mean and <em>how</em> to use it. No reconstruction is required.</p>
+<p>The practical consequences: if you have the hardware key,</p>
+<ul>
+<li>the SSH key <strong>cannot be lost</strong></li>
+<li>no files are required to recover access</li>
+<li>stubs can be regenerated anywhere, on any machine, with <code>ssh-keygen -K</code></li>
+</ul>
+<p>A wiped laptop, a stolen disk, a fresh machine — none of it matters. Plug in the hardware key, regenerate the stubs, and you're back.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Properties:</p>
+<ul>
+<li>✔ survives disk loss</li>
+<li>✔ works on fresh machines</li>
+<li>✔ discoverable by the hardware key</li>
+<li>✔ no blob required</li>
+<li>❌ limited by available hardware slots</li>
+</ul>
+<p>The tradeoff is intentional:</p>
+<blockquote>
+<p><strong>Resident keys trade scalability for permanence.</strong></p>
+</blockquote>
+<p>The mirror image of non-resident keys, which trade the other way — unlimited keys, but a blob on disk you must preserve. A resident key consumes one of the device's intentionally scarce slots (typically 25–32 total); in exchange, the state that matters lives entirely in the hardware, where it cannot be lost with a disk.</p>
+<p>Resident keys are ideal for:</p>
+<ul>
+<li>critical infrastructure</li>
+<li>long-lived access</li>
+<li>situations where recovery matters more than quantity</li>
+</ul>
+<p>One discipline comes with them: because the key exists <em>only</em> in that one physical device, losing the device without a backup means total lockout. Resident keys and a <strong>second hardware key with duplicate credentials</strong> go together.</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>The authentication flow:</p>
+<pre><code class="language-text">Client → Hardware Key → Signature → Server
+</code></pre>
+<p>Step-by-step:</p>
+<ol>
+<li>SSH requests authentication</li>
+<li>The hardware key recognizes the resident key</li>
+<li>User presence (touch / PIN) is confirmed</li>
+<li>The private key signs the challenge internally</li>
+<li>The signature is returned</li>
+<li>The private key never leaves the hardware</li>
+</ol>
+<p>Compare the non-resident flow — <code>Client → Blob → Hardware Key → Signature → Server</code> — and notice what's missing here: the required disk file. That is what &quot;discoverable&quot; means mechanically: the device can enumerate its own resident credentials, which is why <code>ssh-keygen -K</code> can rebuild your stub files from nothing but the plugged-in key. The stub is required by SSH at connection time, but it is <em>derived</em> state, not <em>essential</em> state — deleting it costs you five seconds, not a key.</p>
+<p>Side by side:</p>
+<pre><code class="language-text">NON-RESIDENT                    RESIDENT
+════════════                    ════════
+- Unlimited keys                - Limited by slots
+- Blob must be preserved        - Stub is regenerable
+- Blob loss = permanent         - Disk loss = recoverable
+</code></pre>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="hardware-key-setup-resident" href="/ssh-actually/n/hardware-key-setup-resident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-resident/">&darr; Setting Up a Resident Key</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="managing-resident-credentials" href="/ssh-actually/n/managing-resident-credentials/"
+               hx-get="/ssh-actually/n/managing-resident-credentials/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/managing-resident-credentials/">&darr; Managing Resident Credentials</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="resident-vs-non-resident" href="/ssh-actually/n/resident-vs-non-resident/"
+               hx-get="/ssh-actually/n/resident-vs-non-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-vs-non-resident/">&darr; Resident vs Non-Resident</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="stub" href="/ssh-actually/n/stub/"
+               hx-get="/ssh-actually/n/stub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stub/">&darr; Stub</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-resident" href="/ssh-actually/n/hardware-key-setup-resident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-resident/">&rarr; Setting Up a Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="non-resident-keys" href="/ssh-actually/n/non-resident-keys/"
+               hx-get="/ssh-actually/n/non-resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/non-resident-keys/">&rarr; Non-Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&rarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="stub" href="/ssh-actually/n/stub/"
+               hx-get="/ssh-actually/n/stub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stub/">&rarr; Stub</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-key-setup-resident" href="/ssh-actually/n/hardware-key-setup-resident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-resident/">&uarr; Setting Up a Resident Key</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="managing-resident-credentials" href="/ssh-actually/n/managing-resident-credentials/"
+               hx-get="/ssh-actually/n/managing-resident-credentials/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/managing-resident-credentials/">&uarr; Managing Resident Credentials</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="non-resident-keys" href="/ssh-actually/n/non-resident-keys/"
+               hx-get="/ssh-actually/n/non-resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/non-resident-keys/">&uarr; Non-Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resident-vs-non-resident" href="/ssh-actually/n/resident-vs-non-resident/"
+               hx-get="/ssh-actually/n/resident-vs-non-resident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-vs-non-resident/">&uarr; Resident vs Non-Resident</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&uarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="stub" href="/ssh-actually/n/stub/"
+               hx-get="/ssh-actually/n/stub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stub/">&uarr; Stub</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

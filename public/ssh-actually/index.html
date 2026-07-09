@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body class="entry" data-base="/ssh-actually">
+<main class="entry-screen">
+  <h1 class="entry-title">SSH, Actually</h1>
+  <p class="entry-tagline">100% signal, 0% noise.</p>
+
+  <form class="entry-prompt" id="ask-form" action="/ssh-actually/help.html" method="get" data-receptionist="off">
+    <label class="prompt-label" for="ask">What do you want to know about SSH, actually?</label>
+    <div class="prompt-line">
+      <span class="prompt-glyph">&gt;</span>
+      <input class="prompt-input" id="ask" name="q" type="text" autocomplete="off" autofocus
+             placeholder="type a question, or press &darr; to just start">
+      <span class="cursor" aria-hidden="true"></span>
+    </div>
+  </form>
+
+  <div class="entry-results" id="results" aria-live="polite"></div>
+
+  
+  <p class="entry-start">
+    <a class="nav-node nav-root" data-node-id="what-ssh-is" href="/ssh-actually/n/what-ssh-is/">&darr; or start at the beginning: What SSH Is</a>
+  </p>
+  
+
+  <p class="entry-help"><a href="/ssh-actually/help.html">? what is this place</a></p>
+
+  
+</main>
+
+<footer class="action-bar">
+  <span class="key-hint"><kbd>&crarr;</kbd> search</span>
+  <span class="key-hint"><kbd>&darr;</kbd> begin</span>
+  <span class="key-hint"><kbd>/</kbd> search</span>
+  <span class="key-hint"><kbd>?</kbd> help</span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

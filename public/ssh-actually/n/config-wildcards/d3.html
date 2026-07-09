@@ -1,0 +1,102 @@
+<article class="node" id="content"
+  data-node-id="config-wildcards"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Config Patterns and Wildcards">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Config Patterns and Wildcards</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/config-wildcards/d2/"
+         hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><code>Host</code> lines in <code>~/.ssh/config</code> are <strong>patterns</strong>, not just names. Wildcards enable pattern matching, the <strong>most specific match wins</strong>, and <code>Host *</code> sets global defaults — the config is a matching system, not a flat list.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Different keys for different networks:</p>
+<pre><code>Host 192.168.1.*
+    IdentityFile ~/.ssh/id_home
+
+Host 10.0.*.*
+    IdentityFile ~/.ssh/id_work_yk
+
+Host *
+    IdentitiesOnly yes
+    ServerAliveInterval 60
+</code></pre>
+<p>How it works: the most specific match wins, wildcards group machines by pattern, and <code>Host *</code> carries the defaults you want everywhere (like <code>IdentitiesOnly yes</code>).</p>
+<p>The useful-options toolbox, by concern:</p>
+<pre><code>Host myserver
+    # Connection
+    HostName server.com
+    Port 2222
+    User username
+
+    # Authentication
+    IdentityFile ~/.ssh/key
+    IdentitiesOnly yes
+
+    # Keep-alive (prevent disconnects)
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+
+    # Forwarding
+    ForwardAgent yes          # Forward ssh-agent (careful!)
+    LocalForward 8080 localhost:80  # Port forwarding
+
+    # Jump hosts
+    ProxyJump bastion
+</code></pre>
+<p>When the result surprises you, ask SSH what it actually resolved:</p>
+<pre><code class="language-bash">ssh -G hostname
+</code></pre>
+<p>This shows all resolved options, which config rules matched, and the final values used — the fastest way to find out <em>which block won</em>.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="host-aliases" href="/ssh-actually/n/host-aliases/"
+               hx-get="/ssh-actually/n/host-aliases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-aliases/">&rarr; Host Aliases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="identities-only" href="/ssh-actually/n/identities-only/"
+               hx-get="/ssh-actually/n/identities-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/identities-only/">&rarr; IdentitiesOnly</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&rarr; Configuring Jump Hosts</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&rarr; SSH Config Basics</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

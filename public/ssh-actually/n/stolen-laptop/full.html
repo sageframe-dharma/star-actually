@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stolen Laptop · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="stolen-laptop"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Stolen Laptop">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Stolen Laptop</h1>
+      <span class="node-type node-type-scenario">scenario</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/stolen-laptop/d2/"
+         hx-get="/ssh-actually/n/stolen-laptop/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A machine holding your disk-based private keys is in someone else's hands. If the key has no passphrase, the attacker can impersonate you immediately. If the passphrase is weak, the attacker can brute-force it offline.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p><strong>Recovery:</strong> immediately remove your public key from all servers' <code>authorized_keys</code> files. This is the one move that actually ends the threat — once no server trusts the stolen key, it is worthless regardless of what happens to the passphrase.</p>
+<p>What the passphrase did and didn't buy you:</p>
+<ul>
+<li>It <strong>prevents immediate use</strong> if the file is stolen.</li>
+<li>It does <strong>not</strong> prevent offline brute-force attacks, limit guessing attempts, or protect against malware on an unlocked system.</li>
+</ul>
+<blockquote>
+<p>If someone steals a private key file, they can brute-force the passphrase <strong>offline with unlimited attempts</strong>.</p>
+</blockquote>
+<p>So a strong passphrase (20+ characters) buys you <em>time</em> to revoke — not permanent safety. Treat the key as compromised from the moment the machine is gone and use that time.</p>
+<p>Related disk-key losses with the same shape:</p>
+<ul>
+<li><strong>Forgot passphrase</strong> — cannot use the key; generate a new key pair and deploy it. Prevention: store the passphrase in a password manager.</li>
+<li><strong>Disk corruption/loss</strong> — lose access to all servers using that key; generate a new key pair and deploy (requires existing access or out-of-band auth). Prevention: back up keys to encrypted storage.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&rarr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recovery-planning" href="/ssh-actually/n/recovery-planning/"
+               hx-get="/ssh-actually/n/recovery-planning/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/recovery-planning/">&rarr; Recovery Planning</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

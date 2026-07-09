@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware Keys for SSH · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="hardware-keys-ssh"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="Hardware Keys for SSH">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Hardware Keys for SSH</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/hardware-keys-ssh/d4/"
+         hx-get="/ssh-actually/n/hardware-keys-ssh/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Hardware SSH keys don't change the cryptography. They change <strong>where authentication memory lives</strong>. Everything else follows from that.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Why hardware-backed SSH feels strange: with web auth, you visit a site, the browser handles everything, the key just &quot;works.&quot; With SSH, there are files in <code>~/.ssh/</code>, some are called &quot;blobs,&quot; others &quot;stubs,&quot; terms like &quot;resident&quot; and &quot;non-resident&quot; appear, and it's not clear what goes where or why.</p>
+<p>The confusion comes from one shift:</p>
+<blockquote>
+<p><strong>Hardware keys change <em>where authentication state lives</em>.</strong></p>
+</blockquote>
+<p>Traditional SSH puts <strong>all state on disk</strong> — the private key file is the full secret, copyable, losable. Hardware-backed SSH <strong>splits state</strong> between your computer and the hardware key. That split is the entire design.</p>
+<p>Mechanically, modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong> — the <code>ed25519-sk</code> key type uses FIDO2 as a signing oracle. SSH predates all of the modern web-auth machinery: it already uses key-pair cryptography, already knows the username, and does not need discovery. This is why SSH keys, WebAuthn, and passkeys feel related — they <em>are</em>.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Where state lives, side by side:</p>
+<pre><code class="language-text">Traditional SSH (disk-based key)
+
+[ Your Computer ]
+┌──────────────────────────┐
+│ private_key (FULL SECRET)│  ← copyable
+│ passphrase (optional)    │
+└──────────────────────────┘
+
+Hardware-backed SSH
+
+[ Your Computer ]           [ Hardware Key ]
+┌──────────────────┐       ┌────────────────┐
+│ stub / handle    │──────▶│ slot (SECRET)  │
+│ (no secret)      │       │ PIN / touch    │
+└──────────────────┘       └────────────────┘
+</code></pre>
+<p>With the disk key: lose the file → access is gone; copy the file → attacker can authenticate. With the hardware key: the <strong>secret never becomes a file</strong>, the computer cannot authenticate alone, and physical presence is required every time.</p>
+<p>Two concepts carry the whole model from here: <strong>state</strong> (anything that must be remembered for authentication to keep working) and <strong>slots</strong> (the scarce protected storage inside the device). The two kinds of hardware SSH key — resident and non-resident — are just two answers to &quot;which side of the split holds the state?&quot;</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>The takeaway:</p>
+<blockquote>
+<p><strong>Hardware-backed SSH is not about stronger math.</strong>
+<strong>It is about strictly controlling where state is allowed to exist.</strong></p>
+</blockquote>
+<p>The cryptographic strength of an <code>ed25519-sk</code> key and a disk-based <code>ed25519</code> key is the same. What differs is the failure modes. A disk key's state is a file — so its threats are file threats: malware copies it, backups leak it, theft plus a weak passphrase compromises it. A hardware-backed key's secret lives where no copy operation exists — so its threats become physical ones: lose the device (recoverable, if you planned), or lose the non-secret file the device needs (recoverable or permanent, depending on key type).</p>
+<p>Once you understand <em>state</em> and <em>slots</em>, everything else — resident keys, non-resident keys, stubs, blobs, PINs — becomes a detail, not a mystery.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="non-resident-keys" href="/ssh-actually/n/non-resident-keys/"
+               hx-get="/ssh-actually/n/non-resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/non-resident-keys/">&darr; Non-Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="resident-keys" href="/ssh-actually/n/resident-keys/"
+               hx-get="/ssh-actually/n/resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-keys/">&darr; Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&darr; Slots</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="state" href="/ssh-actually/n/state/"
+               hx-get="/ssh-actually/n/state/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/state/">&darr; State</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&rarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&rarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-capabilities" href="/ssh-actually/n/hardware-key-capabilities/"
+               hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-capabilities/">&rarr; Hardware Key Capabilities</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&rarr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pins-vs-passphrases" href="/ssh-actually/n/pins-vs-passphrases/"
+               hx-get="/ssh-actually/n/pins-vs-passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/pins-vs-passphrases/">&rarr; PINs vs Passphrases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&rarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="state" href="/ssh-actually/n/state/"
+               hx-get="/ssh-actually/n/state/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/state/">&rarr; State</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="stub" href="/ssh-actually/n/stub/"
+               hx-get="/ssh-actually/n/stub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/stub/">&rarr; Stub</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&uarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="choosing-an-approach" href="/ssh-actually/n/choosing-an-approach/"
+               hx-get="/ssh-actually/n/choosing-an-approach/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/choosing-an-approach/">&uarr; Choosing an Approach</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-key-capabilities" href="/ssh-actually/n/hardware-key-capabilities/"
+               hx-get="/ssh-actually/n/hardware-key-capabilities/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-capabilities/">&uarr; Hardware Key Capabilities</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&uarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&uarr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="non-resident-keys" href="/ssh-actually/n/non-resident-keys/"
+               hx-get="/ssh-actually/n/non-resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/non-resident-keys/">&uarr; Non-Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="pins-vs-passphrases" href="/ssh-actually/n/pins-vs-passphrases/"
+               hx-get="/ssh-actually/n/pins-vs-passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/pins-vs-passphrases/">&uarr; PINs vs Passphrases</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resident-keys" href="/ssh-actually/n/resident-keys/"
+               hx-get="/ssh-actually/n/resident-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/resident-keys/">&uarr; Resident SSH Keys</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="slots" href="/ssh-actually/n/slots/"
+               hx-get="/ssh-actually/n/slots/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/slots/">&uarr; Slots</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="state" href="/ssh-actually/n/state/"
+               hx-get="/ssh-actually/n/state/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/state/">&uarr; State</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

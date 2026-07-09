@@ -1,0 +1,127 @@
+<article class="node" id="content"
+  data-node-id="signatures"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="Signatures">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Signatures</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/signatures/d4/"
+         hx-get="/ssh-actually/n/signatures/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>signature</strong> is a cryptographic proof created with a private key that:</p>
+<ul>
+<li>proves possession of the private key</li>
+<li>proves the message was not altered</li>
+<li>does <strong>not</strong> reveal the private key</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>In SSH:</p>
+<ol>
+<li>The server sends a challenge</li>
+<li>Your client signs it</li>
+<li>The server verifies the signature using your public key</li>
+</ol>
+<p>If it verifies → access granted.</p>
+<p>That's the whole authentication. No secret travels; only the proof does.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Challenge–sign–verify is the one flow that repeats everywhere key-pair cryptography shows up:</p>
+<ul>
+<li><strong>Hardware security keys</strong> run the same flow with the signing moved inside the device. The computer asks: <em>&quot;Please sign this challenge.&quot;</em> The hardware responds: <em>&quot;Here is a proof I signed it.&quot;</em> The secret never leaves the hardware — only the signature does.</li>
+<li><strong>FIDO2</strong> brought the same shift to the web: the service verifies a <em>signature</em>, not a secret.</li>
+<li><strong>Agent forwarding</strong> is this flow stretched across machines — the challenge travels back to your local agent for signing, and the signature travels forward.</li>
+<li><strong>Known hosts</strong> is the same verification pointed the other way: the server proves <em>its</em> identity to you, and your client checks the proof against a stored fingerprint.</li>
+</ul>
+<p>Once you can see the challenge and the signature in each of these, none of them is a new idea — just a new place to stand.</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>The full flow, as a picture:</p>
+<pre><code class="language-text">Client (has private key)              Server (has public key)
+        │                                     │
+        │◀── challenge: &quot;prove you have ──────│
+        │        the key&quot;                     │
+        │                                     │
+   signs challenge with                       │
+   private key                                │
+        │                                     │
+        │──── signature (proof) ─────────────▶│
+        │                                     │
+        │                          verifies signature
+        │                          with public key
+        │                                     │
+        │◀── ✓ access granted ────────────────│
+        │    (✗ denied if invalid)            │
+</code></pre>
+<p><strong>The private key NEVER travels over the network.</strong> The server verifies the signature using your public key, but never sees your private key.</p>
+<p>What a signature proves, stated fully: a specific secret exists, and the holder of that secret approved <em>this exact action</em>. That second half matters — a signature is bound to the challenge it signed, so it can't be replayed against a different one.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&rarr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-security-keys" href="/ssh-actually/n/hardware-security-keys/"
+               hx-get="/ssh-actually/n/hardware-security-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-security-keys/">&rarr; Hardware Security Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&rarr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="known-hosts" href="/ssh-actually/n/known-hosts/"
+               hx-get="/ssh-actually/n/known-hosts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/known-hosts/">&rarr; Known Hosts</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="key-pairs" href="/ssh-actually/n/key-pairs/"
+               hx-get="/ssh-actually/n/key-pairs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-pairs/">&uarr; Key Pairs</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="known-hosts" href="/ssh-actually/n/known-hosts/"
+               hx-get="/ssh-actually/n/known-hosts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/known-hosts/">&uarr; Known Hosts</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

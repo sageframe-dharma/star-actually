@@ -1,0 +1,101 @@
+<article class="node" id="content"
+  data-node-id="key-generation"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Generating Keys">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Generating Keys</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/key-generation/d2/"
+         hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>One command — <code>ssh-keygen</code> — creates every kind of key pair. The choices that matter are the <strong>algorithm</strong> (<code>-t ed25519</code> for disk keys, <code>-t ed25519-sk</code> for hardware-backed keys), the <strong>filename</strong> (<code>-f</code>), the <strong>comment</strong> (<code>-C</code>), and whether to set a <strong>passphrase</strong>.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <h3>create a standard ssh key pair</h3>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -f ~/.ssh/id_example -C &quot;example@laptop&quot;
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>Creates private key: <code>id_example</code></li>
+<li>Creates public key: <code>id_example.pub</code></li>
+</ul>
+<p>Options:</p>
+<ul>
+<li><code>-t ed25519</code> — Key algorithm (modern, recommended)</li>
+<li><code>-f ~/.ssh/id_example</code> — Name of key files</li>
+<li><code>-C &quot;comment&quot;</code> — Metadata label (optional but helpful)</li>
+</ul>
+<p>When prompted for passphrase:</p>
+<ul>
+<li>Enter strong passphrase (20+ characters) for security</li>
+<li>OR press Enter for no passphrase (convenient but risky)</li>
+</ul>
+<p>For hardware-backed keys the algorithm changes to <code>-t ed25519-sk</code> (with <code>-O resident</code> for resident keys) — the setup procedures for those have their own nodes.</p>
+<h3>change passphrase on existing key</h3>
+<pre><code class="language-bash">ssh-keygen -p -f ~/.ssh/id_example
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>Re-encrypts the private key with new passphrase</li>
+<li>Does NOT change the key itself</li>
+<li>Public key remains valid</li>
+</ul>
+<h3>change comment on existing key</h3>
+<pre><code class="language-bash">ssh-keygen -c -f ~/.ssh/id_example
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>Updates the metadata label only</li>
+<li>Does NOT affect authentication</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&rarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-nonresident" href="/ssh-actually/n/hardware-key-setup-nonresident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-nonresident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-nonresident/">&rarr; Setting Up a Non-Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-naming" href="/ssh-actually/n/key-naming/"
+               hx-get="/ssh-actually/n/key-naming/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-naming/">&rarr; Naming Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&rarr; Passphrases</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

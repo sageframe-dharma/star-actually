@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+  The *, Actually front door. Hand-authored (not engine-generated) — this page is
+  ABOUT the system, so it lives with the engine but isn't woven by the Loom.
+  DRAFT: the origin story is the practitioner's, in his voice — edit freely.
+  TODO: confirm the "htmx, actually" link (search below for HTMX-ACTUALLY-TODO).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>*, Actually</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .home { max-width: 72ch; margin: 0 auto; padding: calc(var(--step) * 3) 1.5rem; }
+  .home section { margin-top: calc(var(--step) * 4); }
+  .home h2 {
+    font-size: 1em; color: var(--dim); text-transform: lowercase;
+    letter-spacing: 0.05ch; margin: 0 0 var(--step) 0;
+  }
+  .home h2::before { content: "── "; color: var(--rule); }
+  .home h2::after  { content: " ──"; color: var(--rule); }
+  .home p { line-height: 1.6; max-width: 64ch; }
+  .home a { color: var(--accent); }
+  .lead { color: var(--dim); }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: var(--step); }
+  .card {
+    display: block; border: 1px solid var(--rule); padding: 1.25rem;
+    text-decoration: none; color: inherit;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card .card-name { color: var(--accent); font-weight: 600; }
+  .card .card-say  { color: var(--dim); display: block; margin-top: 0.4rem; line-height: 1.5; }
+  .stack-list { color: var(--dim); line-height: 1.7; }
+  .ref { color: var(--dim); font-size: 0.86em; }
+  @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="entry">
+<main class="home">
+
+  <h1 class="entry-title">*, Actually</h1>
+  <p class="entry-tagline">Help that rewards curiosity.</p>
+
+  <section>
+    <h2>what this is</h2>
+    <p>
+      <strong>*, Actually</strong> is a new shape for a help system. Most
+      documentation describes a thing a hundred ways and leaves you to sift. This
+      does the opposite: it lets you choose your <em>depth</em>. Start at the
+      surface — a name, a plain definition. When you want more, dial deeper:
+      usage, then how it relates to everything around it, then the theory. Stop
+      the moment the gap closes.
+    </p>
+    <p>
+      That gap is the whole idea. Curiosity, the research says, is what happens
+      when you become aware of a space between what you know and what you want to
+      know — an <em>information gap</em>
+      (<a href="https://doi.org/10.1037/0033-2909.116.1.75">Loewenstein, 1994</a>).
+      A help system that shows you the gap, and lets you close it exactly as far
+      as you care to, works <em>with</em> that instinct instead of drowning it.
+    </p>
+  </section>
+
+  <section>
+    <h2>where it came from</h2>
+    <p>
+      It started with SSH. I wanted to learn it — not the eight million ways other
+      people explain it, but how to actually <em>use</em> and experience it. So I
+      wrote it up in plain language, the way I'd want it told to me. Then I wanted
+      more: the why underneath, the connections, the deep end. I wanted to reach
+      for that depth on demand instead of drowning in it up front.
+    </p>
+    <p>
+      So I built a way to do exactly that. That was <strong>SSH, Actually</strong>
+      — the first instance. The name tips its hat to the htmx community's running
+      line — <a href="https://htmx.org/essays/">“htmx, actually”</a>, the deadpan
+      answer to every over-engineered stack: build the simple thing that respects
+      how people actually work, and let it be enough.
+    </p>
+  </section>
+
+  <section>
+    <h2>go read one</h2>
+    <div class="cards">
+      <a class="card" href="https://ssh-actually.sageframe.net">
+        <span class="card-name">SSH, Actually →</span>
+        <span class="card-say">The one that started it all. SSH — keys, agents,
+          hardware tokens — at the depth you ask for.</span>
+      </a>
+      <a class="card" href="https://hosystem.sageframe.net">
+        <span class="card-name">The Ho System →</span>
+        <span class="card-say">Bringing professional-level development to the
+          people. A methodology for building real software with AI, one step at a
+          time.</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>make your own</h2>
+    <p>
+      A <strong>*, Actually</strong> isn't special — it's an <em>instance</em>. The
+      engine is domain-blind: hand it depth-layered markdown and a
+      <code>site.yaml</code> and it weaves. Anything with a shape — a glossary, a
+      manual, a body of hard-won knowledge you're tired of explaining the same way
+      twice — can become one. The
+      <a href="https://github.com/sageframe-no-kaji/star-actually">engine is open</a>;
+      point it at your content and build.
+    </p>
+    <p>
+      Or don't. If there's a subject you wish existed like this, tell me what it is,
+      why it itches, and send me your content —
+      <a href="mailto:atmarcus@gmail.com">atmarcus@gmail.com</a> — and I'll build you
+      your own. Not a funnel. I just want more of these in the world.
+    </p>
+  </section>
+
+  <section>
+    <h2>about the stack</h2>
+    <p class="lead">
+      The point is craft, so the build is deliberately small and honest.
+    </p>
+    <ul class="stack-list">
+      <li><strong>Fully static.</strong> Plain HTML and CSS, one vanilla
+        JavaScript file, no build step, no framework.</li>
+      <li><strong>Zero external requests.</strong> No CDNs, no webfonts, no
+        analytics, no icons. htmx is vendored; nothing phones home.</li>
+      <li><strong>Authored depth, never generated.</strong> Every layer is real
+        prose, written or extracted — the machine weaves, it doesn't invent.</li>
+      <li><strong>A domain-blind engine.</strong> One build system — the Loom —
+        turns depth-layered markdown into a navigable graph. Each subject is an
+        instance that supplies only its content; the engine never knows the
+        subject. That's what lets one engine serve SSH, the Ho System, and
+        whatever's next.</li>
+      <li><strong>Crawled from source.</strong> Instances can re-ingest their
+        source of truth, idempotently, so the content stays current as the
+        subject grows.</li>
+      <li><strong>Search that works offline.</strong> A static full-text index
+        (Pagefind) ships with the site.</li>
+    </ul>
+  </section>
+
+  <footer class="entry-help" style="margin-top: calc(var(--step) * 5);">
+    <p class="ref">
+      Loewenstein, G. (1994). The psychology of curiosity: A review and
+      reinterpretation. <em>Psychological Bulletin, 116</em>(1), 75–98.
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>

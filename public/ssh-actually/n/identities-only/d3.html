@@ -1,0 +1,75 @@
+<article class="node" id="content"
+  data-node-id="identities-only"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="IdentitiesOnly">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">IdentitiesOnly</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/identities-only/d2/"
+         hx-get="/ssh-actually/n/identities-only/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>An SSH config option that forces SSH to use <strong>only the identities explicitly listed</strong> — the keys named in <code>IdentityFile</code> — instead of trying every key you have.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Without it, SSH offers your keys one after another until something works. Servers count each offered key as an authentication attempt, and once you own a handful of keys you start hitting <strong>&quot;too many authentication failures&quot;</strong> before the right key is ever tried.</p>
+<p>Pair it with <code>IdentityFile</code> in any block where the key matters:</p>
+<pre><code>Host github.com
+    IdentityFile ~/.ssh/id_github_yk
+    IdentitiesOnly yes
+</code></pre>
+<p>Best practice — set it globally, so <em>every</em> connection presents only what you deliberately configured:</p>
+<pre><code>Host *
+    IdentitiesOnly yes
+</code></pre>
+<p>The payoff: the correct key is always used, and fewer authentication failures. If a connection still picks a key you didn't expect, <code>ssh -G hostname</code> shows which config rules matched and what SSH actually resolved.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&rarr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="multiple-github-accounts" href="/ssh-actually/n/multiple-github-accounts/"
+               hx-get="/ssh-actually/n/multiple-github-accounts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/multiple-github-accounts/">&rarr; Multiple Accounts, One Service</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-config-basics" href="/ssh-actually/n/ssh-config-basics/"
+               hx-get="/ssh-actually/n/ssh-config-basics/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-config-basics/">&rarr; SSH Config Basics</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&rarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

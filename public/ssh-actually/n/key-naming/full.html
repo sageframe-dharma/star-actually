@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naming Keys · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="key-naming"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Naming Keys">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Naming Keys</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/key-naming/d2/"
+         hx-get="/ssh-actually/n/key-naming/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>When you create SSH keys, naming them clearly helps you (and others) understand their purpose. What matters: <strong>clarity</strong> (can you tell what the key is for?), <strong>intent</strong> (does the name reflect the key's purpose?), and <strong>scope</strong> (is it clear where this key should be used?). Names are for humans, not computers.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Common naming patterns:</p>
+<pre><code>Disk-based keys:       ~/.ssh/id_purpose
+                       id_github, id_homelab, id_work, id_personal_vps
+
+Hardware-backed keys:  ~/.ssh/purpose_yk
+                       github_yk, gitlab_work_yk, production_servers_yk
+</code></pre>
+<p>The <code>_yk</code> suffix clearly indicates hardware-backed, prevents confusion with disk keys, and makes backup decisions easier. But any clear, consistent system works.</p>
+<p>What <em>doesn't</em> matter: matching filenames across machines, keeping names secret, or following someone else's convention if you have your own system.</p>
+<p>Why naming matters in practice:</p>
+<ul>
+<li><strong>For blobs</strong> (non-resident hardware keys): you must preserve these files. Clear names help you identify what you're backing up — losing a blob means generating a new key.</li>
+<li><strong>For human sanity</strong>: when you have 5+ keys, unclear names create confusion. <code>id_rsa</code> tells you nothing about purpose; <code>github_personal_yk</code> tells you everything.</li>
+</ul>
+<p>For public keys, the filename doesn't matter (they're deployed to servers) — the <strong>comment inside the public key</strong> matters more:</p>
+<pre><code>ssh-ed25519 AAAA... tyro@laptop-2024-github
+</code></pre>
+<p>A good comment format is <code>username@device-year-purpose</code>. It helps identify keys in server logs, makes <code>authorized_keys</code> management easier, and is useful when you have multiple keys.</p>
+<p>The key insight: <strong>names are for humans, not computers</strong>. Make them useful to future-you.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="blob" href="/ssh-actually/n/blob/"
+               hx-get="/ssh-actually/n/blob/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/blob/">&rarr; Blob</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="hardware-key-setup-nonresident" href="/ssh-actually/n/hardware-key-setup-nonresident/"
+               hx-get="/ssh-actually/n/hardware-key-setup-nonresident/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/hardware-key-setup-nonresident/">&rarr; Setting Up a Non-Resident Key</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-generation" href="/ssh-actually/n/key-generation/"
+               hx-get="/ssh-actually/n/key-generation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-generation/">&rarr; Generating Keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="key-rotation" href="/ssh-actually/n/key-rotation/"
+               hx-get="/ssh-actually/n/key-rotation/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/key-rotation/">&rarr; Key Rotation</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="multiple-github-accounts" href="/ssh-actually/n/multiple-github-accounts/"
+               hx-get="/ssh-actually/n/multiple-github-accounts/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/multiple-github-accounts/">&rarr; Multiple Accounts, One Service</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deploying a Public Key · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="deploy-public-key"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Deploying a Public Key">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Deploying a Public Key</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/deploy-public-key/d2/"
+         hx-get="/ssh-actually/n/deploy-public-key/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Deploying means getting your <strong>public</strong> key into the server's <code>authorized_keys</code> file so the server trusts it. <code>ssh-copy-id</code> does it automatically — logs in with your current auth method, appends the key, sets correct permissions. You can also do it by hand.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <h3>automatic</h3>
+<pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_example.pub user@server
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>Logs in with current auth method</li>
+<li>Appends public key to <code>~/.ssh/authorized_keys</code> on server</li>
+<li>Sets correct permissions</li>
+</ul>
+<h3>manual</h3>
+<p>When to use: <code>ssh-copy-id</code> unavailable, or you need manual control.</p>
+<p>On the server:</p>
+<pre><code class="language-bash">mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys
+# Paste ENTIRE contents of id_example.pub (one line)
+chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+<h3>hardware-backed keys</h3>
+<p>Same as regular keys:</p>
+<pre><code class="language-bash">ssh-copy-id -i ~/.ssh/key_yk.pub user@server
+</code></pre>
+<p><strong>The server doesn't care that it's hardware-backed.</strong></p>
+<h3>test it</h3>
+<pre><code class="language-bash">ssh user@server
+</code></pre>
+<p>Success indicators: logs in without password prompt (may ask for passphrase if set), no errors.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="authorized-keys" href="/ssh-actually/n/authorized-keys/"
+               hx-get="/ssh-actually/n/authorized-keys/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/authorized-keys/">&rarr; authorized_keys</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="file-permissions" href="/ssh-actually/n/file-permissions/"
+               hx-get="/ssh-actually/n/file-permissions/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/file-permissions/">&rarr; SSH File Permissions</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&rarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

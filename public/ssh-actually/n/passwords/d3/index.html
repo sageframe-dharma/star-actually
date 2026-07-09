@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passwords (depth 3) · SSH, Actually</title>
+<link rel="stylesheet" href="/ssh-actually/assets/style.css">
+</head>
+<body data-base="/ssh-actually">
+<header class="site-head">
+  <a class="site-name" href="/ssh-actually/">SSH, Actually</a>
+  <span class="site-tagline">100% signal, 0% noise.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="passwords"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Passwords">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Passwords</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/passwords/d2/"
+         hx-get="/ssh-actually/n/passwords/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>password</strong> is a shared secret known by you <em>and</em> the service. That single word — <em>shared</em> — is the whole problem: the server has to store something that can unlock your account, which means the server can lose it.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The problems, concretely:</p>
+<ul>
+<li>Passwords <strong>can be stolen from servers</strong> — every breach dump is a pile of shared secrets the server was holding.</li>
+<li>Passwords <strong>can be reused</strong> — one stolen password opens every account it was recycled into.</li>
+<li>Passwords <strong>can be phished</strong> — anything you type, you can be tricked into typing on the wrong site.</li>
+<li>Passwords <strong>must be remembered</strong> — which pushes people toward short, reused, guessable secrets.</li>
+</ul>
+<p>One-time codes layer rotating secrets on top; they help, but the secret still lives on a server. The real fix is structural: replace shared secrets with key-pair cryptography, where the server verifies <strong>signatures, not secrets</strong>.</p>
+<blockquote>
+<p>Everything else in modern authentication exists because passwords are fundamentally weak.</p>
+</blockquote>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="fido2" href="/ssh-actually/n/fido2/"
+               hx-get="/ssh-actually/n/fido2/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/fido2/">&darr; FIDO2</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="mfa" href="/ssh-actually/n/mfa/"
+               hx-get="/ssh-actually/n/mfa/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/mfa/">&darr; Multi-Factor Authentication</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="modern-auth-landscape" href="/ssh-actually/n/modern-auth-landscape/"
+               hx-get="/ssh-actually/n/modern-auth-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/modern-auth-landscape/">&darr; The Modern Auth Landscape</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="one-time-codes" href="/ssh-actually/n/one-time-codes/"
+               hx-get="/ssh-actually/n/one-time-codes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/one-time-codes/">&darr; One-Time Codes</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="phishing-resistance" href="/ssh-actually/n/phishing-resistance/"
+               hx-get="/ssh-actually/n/phishing-resistance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/phishing-resistance/">&darr; Phishing Resistance</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="one-time-codes" href="/ssh-actually/n/one-time-codes/"
+               hx-get="/ssh-actually/n/one-time-codes/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/one-time-codes/">&rarr; One-Time Codes</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="passphrases" href="/ssh-actually/n/passphrases/"
+               hx-get="/ssh-actually/n/passphrases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/passphrases/">&rarr; Passphrases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="phishing-resistance" href="/ssh-actually/n/phishing-resistance/"
+               hx-get="/ssh-actually/n/phishing-resistance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/phishing-resistance/">&rarr; Phishing Resistance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="server-hardening" href="/ssh-actually/n/server-hardening/"
+               hx-get="/ssh-actually/n/server-hardening/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/server-hardening/">&rarr; Server Hardening</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/ssh-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/ssh-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/ssh-actually/assets/htmx.min.js"></script>
+<script src="/ssh-actually/assets/app.js"></script>
+</body>
+</html>

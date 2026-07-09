@@ -1,0 +1,186 @@
+<article class="node" id="content"
+  data-node-id="ssh-config-basics"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="SSH Config Basics">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">SSH Config Basics</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ssh-actually/n/ssh-config-basics/d3/"
+         hx-get="/ssh-actually/n/ssh-config-basics/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p><code>~/.ssh/config</code> is a <strong>named set of connection instructions</strong> — not a routing table for hostnames. Each block gives a nickname to a full set of connection details, so <code>ssh myserver</code> replaces a command line full of flags.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The basic structure:</p>
+<pre><code>Host nickname
+    HostName actual-server.com
+    User remote-username
+    Port 2222
+    IdentityFile ~/.ssh/specific_key
+    IdentitiesOnly yes
+</code></pre>
+<p>The fields:</p>
+<ul>
+<li><code>Host</code> — what you type: <code>ssh nickname</code></li>
+<li><code>HostName</code> — real address (DNS or IP)</li>
+<li><code>User</code> — remote username (defaults to your local username)</li>
+<li><code>Port</code> — SSH port (defaults to 22)</li>
+<li><code>IdentityFile</code> — which key to use</li>
+<li><code>IdentitiesOnly yes</code> — only try the specified keys</li>
+</ul>
+<p>The before/after is the whole sales pitch. Without config:</p>
+<pre><code class="language-bash">ssh -i ~/.ssh/id_work_yk -p 2222 tyro@work-server.company.com
+</code></pre>
+<p>With config: <code>ssh work</code>. Short memorable names, the correct key always used, port and username remembered — and git operations against configured hosts just work.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Three consequences follow from &quot;named instructions, not a routing table&quot;:</p>
+<ul>
+<li><strong>Host is a label you control.</strong> It doesn't have to match the real hostname — <code>HostName</code> handles that. This is what makes <strong>host aliases</strong> possible: two different names, two different keys, one actual server. Multi-account Git setups depend on it.</li>
+<li><strong>Blocks compose by pattern.</strong> Wildcards (<code>Host 192.168.1.*</code>, <code>Host *</code>) let you set per-network keys and global defaults, with the most specific match winning.</li>
+<li><strong><code>IdentitiesOnly</code> keeps SSH honest.</strong> Without it, SSH may try every key you own — leaking which keys you hold and tripping &quot;too many authentication failures.&quot; With it, each block presents exactly the key you named.</li>
+</ul>
+<p>When the resolved behavior surprises you, ask SSH itself: <code>ssh -G hostname</code> prints every option as finally resolved — which config rules matched and what values won.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&darr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&darr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="host-aliases" href="/ssh-actually/n/host-aliases/"
+               hx-get="/ssh-actually/n/host-aliases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-aliases/">&darr; Host Aliases</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="identities-only" href="/ssh-actually/n/identities-only/"
+               hx-get="/ssh-actually/n/identities-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/identities-only/">&darr; IdentitiesOnly</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&darr; Configuring Jump Hosts</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&darr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="proxy-jump" href="/ssh-actually/n/proxy-jump/"
+               hx-get="/ssh-actually/n/proxy-jump/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/proxy-jump/">&darr; ProxyJump</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&darr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&rarr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&rarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="host-aliases" href="/ssh-actually/n/host-aliases/"
+               hx-get="/ssh-actually/n/host-aliases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-aliases/">&rarr; Host Aliases</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="identities-only" href="/ssh-actually/n/identities-only/"
+               hx-get="/ssh-actually/n/identities-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/identities-only/">&rarr; IdentitiesOnly</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&rarr; Permission Denied</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="agent-forwarding" href="/ssh-actually/n/agent-forwarding/"
+               hx-get="/ssh-actually/n/agent-forwarding/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/agent-forwarding/">&uarr; Agent Forwarding</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="config-wildcards" href="/ssh-actually/n/config-wildcards/"
+               hx-get="/ssh-actually/n/config-wildcards/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/config-wildcards/">&uarr; Config Patterns and Wildcards</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-key-setup" href="/ssh-actually/n/first-key-setup/"
+               hx-get="/ssh-actually/n/first-key-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/first-key-setup/">&uarr; First-Time Key Setup</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="host-aliases" href="/ssh-actually/n/host-aliases/"
+               hx-get="/ssh-actually/n/host-aliases/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/host-aliases/">&uarr; Host Aliases</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="identities-only" href="/ssh-actually/n/identities-only/"
+               hx-get="/ssh-actually/n/identities-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/identities-only/">&uarr; IdentitiesOnly</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="jump-host-config" href="/ssh-actually/n/jump-host-config/"
+               hx-get="/ssh-actually/n/jump-host-config/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/jump-host-config/">&uarr; Configuring Jump Hosts</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="new-machine-setup" href="/ssh-actually/n/new-machine-setup/"
+               hx-get="/ssh-actually/n/new-machine-setup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/new-machine-setup/">&uarr; New Machine Setup</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="permission-denied" href="/ssh-actually/n/permission-denied/"
+               hx-get="/ssh-actually/n/permission-denied/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/permission-denied/">&uarr; Permission Denied</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="proxy-jump" href="/ssh-actually/n/proxy-jump/"
+               hx-get="/ssh-actually/n/proxy-jump/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/proxy-jump/">&uarr; ProxyJump</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ssh-debugging" href="/ssh-actually/n/ssh-debugging/"
+               hx-get="/ssh-actually/n/ssh-debugging/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ssh-actually/n/ssh-debugging/">&uarr; Debugging SSH</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

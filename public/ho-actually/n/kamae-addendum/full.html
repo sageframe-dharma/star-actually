@@ -17,8 +17,8 @@
 <main class="reading">
 <article class="node" id="content"
   data-node-id="kamae-addendum"
-  data-depth="3"
-  data-max-depth="3"
+  data-depth="4"
+  data-max-depth="4"
   data-title="Kamae addendum (kamae-N.M)">
 
   <header class="node-head">
@@ -28,13 +28,14 @@
     </div>
     <div class="depth-dial">
       
-      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
-      <span class="depth-label">depth 2/2</span>
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
       
       <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
-      <a class="depth-step depth-shallower" href="/ho-actually/n/kamae-addendum/d2/"
-         hx-get="/ho-actually/n/kamae-addendum/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/kamae-addendum/d3/"
+         hx-get="/ho-actually/n/kamae-addendum/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
     </div>
+    
   </header>
 
   <div class="layers">
@@ -49,6 +50,37 @@
 named part of a frozen Kamae document without editing it; carries the reopening
 justification, the declined alternatives, and the propagation record. Forward-only applied
 to architecture.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Anatomy.</strong> Filename: <code>ho-process/kamae-&lt;N&gt;.&lt;M&gt;-&lt;project&gt;-&lt;slug&gt;.md</code>, where N is the parent Kamae
+number and M increments per addendum (2.1, 2.2, …).</p>
+<p>Frontmatter (from the live instances):</p>
+<pre><code class="language-yaml">---
+created: 2026-07-01
+status: decided
+type: decision
+project: sharibako
+stage: kamae-2.1
+kamae-chain: seed → system-design → **injection-decision** → readme → ho-overview
+supersedes: kamae-2 §7 (partial — the &quot;no runtime injection&quot; architectural commitment)
+builds-on: kamae-1-sharibako-seed, kamae-2-sharibako-system-design
+next: reflected in kamae-1 seed (parti), kamae-4 (adds ho-04.5), README, SECURITY.md
+---
+</code></pre>
+<p>Field notes:</p>
+<ul>
+<li><strong><code>supersedes:</code> is section-precise.</strong> Not &quot;supersedes kamae-2&quot; — &quot;kamae-2 §7
+(partial — the specific line).&quot; The reader must be able to tell exactly which
+commitments fell and, by implication, which stand. The addendum body repeats this
+as prose: &quot;All other Kamae 2 commitments … stand unchanged.&quot;</li>
+<li><strong><code>kamae-chain:</code> shows the insertion position</strong> — where the addendum sits in the
+reading order, bolded.</li>
+<li><strong><code>next:</code> names the propagation set</strong> — every downstream document the decision was
+reflected into (see §4).</li>
+</ul>
+<p>Body sections (both instances follow this arc): […]</p>
 
     </section>
     

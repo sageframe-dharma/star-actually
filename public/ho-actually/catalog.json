@@ -10,7 +10,7 @@
       "entry_points": [
         "agent task"
       ],
-      "depth_levels": 4
+      "depth_levels": 5
     },
     {
       "id": "arc",
@@ -20,7 +20,7 @@
       "entry_points": [
         "arc"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "basis-of-design",
@@ -90,7 +90,7 @@
       "entry_points": [
         "cross-session continuity"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "dandori",
@@ -120,7 +120,7 @@
       "entry_points": [
         "design tuning"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "devlog",
@@ -130,7 +130,7 @@
       "entry_points": [
         "devlog"
       ],
-      "depth_levels": 4
+      "depth_levels": 5
     },
     {
       "id": "dogfood",
@@ -170,7 +170,7 @@
       "entry_points": [
         "ha"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "ho",
@@ -270,7 +270,7 @@
       "entry_points": [
         "kamae"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "kamae-addendum",
@@ -280,7 +280,7 @@
       "entry_points": [
         "kamae addendum"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "kokoroe",
@@ -370,7 +370,7 @@
       "entry_points": [
         "phase"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "precedential-thinking",
@@ -450,7 +450,7 @@
       "entry_points": [
         "ri"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "seed",
@@ -480,7 +480,7 @@
       "entry_points": [
         "shu"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "shu-ha-ri",
@@ -490,7 +490,7 @@
       "entry_points": [
         "shu-ha-ri"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "sidecar",
@@ -500,7 +500,7 @@
       "entry_points": [
         "sidecar"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "sidequest",
@@ -560,7 +560,7 @@
       "entry_points": [
         "state memory"
       ],
-      "depth_levels": 4
+      "depth_levels": 5
     },
     {
       "id": "state-summary-block",
@@ -600,7 +600,7 @@
       "entry_points": [
         "tiered understanding"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "tripwired",

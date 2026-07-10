@@ -17,8 +17,8 @@
 <main class="reading">
 <article class="node" id="content"
   data-node-id="devlog"
-  data-depth="4"
-  data-max-depth="4"
+  data-depth="5"
+  data-max-depth="5"
   data-title="devlog">
 
   <header class="node-head">
@@ -28,13 +28,14 @@
     </div>
     <div class="depth-dial">
       
-      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
-      <span class="depth-label">depth 3/3</span>
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
       
       <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
-      <a class="depth-step depth-shallower" href="/ho-actually/n/devlog/d3/"
-         hx-get="/ho-actually/n/devlog/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/devlog/d4/"
+         hx-get="/ho-actually/n/devlog/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
     </div>
+    
   </header>
 
   <div class="layers">
@@ -53,6 +54,15 @@ documents its function is carried by the Reflect phase (ha) or Results (ri).</p>
     </section>
     
     <section class="layer layer-4" data-depth="4">
+      <p><strong>What a Devlog Is.</strong> A devlog is a structured reflection written by the learner after completing a ho. It records what was built, what was understood, what was hard, and what's still unclear. It's not a project log (&quot;what I did today&quot;) and it's not a commit message (&quot;what changed&quot;). It's a learning document — the artifact that distinguishes &quot;I built this&quot; from &quot;AI built this while I watched.&quot;</p>
+<p>The devlog is the primary evidence of learning in the Ho System. Code can be generated. Tests can be generated. Configuration files can be generated. The devlog cannot be generated — it requires the learner to look back at their own experience and honestly assess what happened. An AI can write your code; it cannot write your reflection for you.</p>
+<p>Three properties define a devlog:</p>
+<p><strong>Honest.</strong> The devlog rewards accuracy, not performance. &quot;I don't understand how ffmpeg encoding works — it still feels like incantation&quot; is more valuable than &quot;I now have a solid grasp of the encoding pipeline.&quot; The first tells you exactly where the knowledge boundary is. The second tells you nothing.</p>
+<p><strong>Immediate.</strong> Written right after completing the ho, while the experience is fresh. Not the next day. Not &quot;later.&quot; The details that matter most — the moment of confusion that resolved into understanding, the AI suggestion you overrode and why, the gotcha that cost twenty minutes — evaporate quickly. […]</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
       <p><strong>The Devlog.</strong> The devlog deserves special attention because it changes the most across stages and it's the primary evidence of learning.</p>
 <p><strong>In shu,</strong> the devlog is a learning journal. What was built, what understanding tiers were achieved, challenges encountered, key learnings, files changed, confidence level. It's structured by template because the learner is developing the <em>habit</em> of reflection.</p>
 <p><strong>In ha,</strong> the devlog is a decision record. What was decided, what alternatives were considered, what the implementation revealed about the decision, what was removed (removal is a ha signature), how AI collaboration split between thinking and agent modes, confidence in judgment.</p>

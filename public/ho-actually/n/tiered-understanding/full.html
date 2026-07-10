@@ -17,8 +17,8 @@
 <main class="reading">
 <article class="node" id="content"
   data-node-id="tiered-understanding"
-  data-depth="3"
-  data-max-depth="3"
+  data-depth="4"
+  data-max-depth="4"
   data-title="tiered understanding">
 
   <header class="node-head">
@@ -28,13 +28,14 @@
     </div>
     <div class="depth-dial">
       
-      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
-      <span class="depth-label">depth 2/2</span>
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
       
       <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
-      <a class="depth-step depth-shallower" href="/ho-actually/n/tiered-understanding/d2/"
-         hx-get="/ho-actually/n/tiered-understanding/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/tiered-understanding/d3/"
+         hx-get="/ho-actually/n/tiered-understanding/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
     </div>
+    
   </header>
 
   <div class="layers">
@@ -49,6 +50,31 @@
 (use without investigating), Tier 2 Functional (configure, troubleshoot, explain — the
 default target), Tier 3 Deep (could redesign). Declaring tiers honestly is a core skill;
 tiers are declared in shu, self-assigned in ha, internalized in ri.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>The Three Tiers in Detail.</strong> ### Tier 1 — Black Box</p>
+<p><strong>Definition:</strong> The learner uses this component without understanding its internals. They know the inputs, the outputs, and the invocation pattern. They trust that it works.</p>
+<p><strong>What Tier 1 looks like in practice:</strong></p>
+<ul>
+<li>&quot;I call <code>model(frame)</code> and get detections back. I don't know how YOLO's neural network identifies objects.&quot;</li>
+<li>&quot;I run <code>ffmpeg -i input -c:v libx264 output</code> and get a compressed video. I don't know how H.264 encoding works.&quot;</li>
+<li>&quot;I use <code>collections.deque(maxlen=N)</code> as a ring buffer. I don't know how deque is implemented internally.&quot;</li>
+</ul>
+<p><strong>What Tier 1 is NOT:</strong></p>
+<ul>
+<li>It's not &quot;I've heard of it.&quot; Tier 1 requires functional usage — you can invoke it, you can read its output, you can pass it the right inputs.</li>
+<li>It's not &quot;I'm confused by it.&quot; If you can't use it at all, you don't have Tier 1 — you have a prerequisite gap.</li>
+</ul>
+<p><strong>When Tier 1 is appropriate:</strong></p>
+<ul>
+<li>Dependencies and libraries you consume but don't modify</li>
+<li>Infrastructure components you configure but don't build (Docker, CI/CD, CDN)</li>
+<li>Algorithms and protocols you use through standard interfaces</li>
+<li>Anything where the investment to reach Tier 2 doesn't pay off for the current work</li>
+</ul>
+<p><strong>The honest self-assessment test:</strong> &quot;If this component broke in a way I've never seen before, I would need help.&quot; That's Tier 1, and that's fine.</p>
 
     </section>
     

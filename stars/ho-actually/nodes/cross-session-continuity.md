@@ -3,7 +3,7 @@ id: cross-session-continuity
 title: cross-session continuity
 type: definition
 requires: []
-related: [hot-cold, state-memory, state-summary-block, working-memory-handoff]
+related: [devlog, forward-only, hot-cold, state-memory, state-summary-block, working-memory-handoff]
 entry_points: [cross-session continuity]
 summary: >
   Keeping track of where a build is between work sessions, especially when no person is there to remember it.

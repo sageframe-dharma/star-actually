@@ -3,7 +3,7 @@ id: forward-only
 title: forward-only
 type: concept
 requires: []
-related: [mutability, supersedes]
+related: [build-record, hot-cold, mutability, supersedes]
 entry_points: [forward-only]
 summary: >
   Finished work stays finished; a mistake is answered with a new document, never by editing the old one.

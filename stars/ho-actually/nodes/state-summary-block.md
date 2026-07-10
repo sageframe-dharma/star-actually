@@ -3,7 +3,7 @@ id: state-summary-block
 title: state-summary block
 type: definition
 requires: []
-related: [cross-session-continuity]
+related: [build-record, cross-session-continuity, project-lifecycle, state-memory]
 entry_points: [state-summary block]
 summary: >
   A short, fixed four-line status — done, next, blockers, and how far along — written at the end of every work session.

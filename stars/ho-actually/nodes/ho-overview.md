@@ -3,7 +3,7 @@ id: ho-overview
 title: ho overview
 type: definition
 requires: []
-related: [kamae, phase]
+related: [build-record, kamae, phase]
 entry_points: [ho overview]
 summary: >
   The build's directional plan, grouping the planned steps into themed clusters with checkpoints and named milestones.

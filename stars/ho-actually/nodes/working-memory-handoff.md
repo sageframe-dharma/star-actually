@@ -3,7 +3,7 @@ id: working-memory-handoff
 title: working-memory handoff
 type: definition
 requires: []
-related: [hot-cold, kamae, state-memory]
+related: [cross-session-continuity, hot-cold, kamae, state-memory]
 entry_points: [working-memory handoff]
 summary: >
   The detailed contents of the state-memory file that let the next session pick up exactly where the build left off.

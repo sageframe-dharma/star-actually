@@ -3,7 +3,7 @@ id: hot-cold
 title: hot / cold
 type: definition
 requires: []
-related: [build-record, forward-only, reflect, working-memory-handoff]
+related: [build-record, forward-only, mutability, reflect, working-memory-handoff]
 entry_points: [hot / cold]
 summary: >
   The split between a scratch memory you keep rewriting and the permanent record you never edit — with the rule that the permanent one always wins.

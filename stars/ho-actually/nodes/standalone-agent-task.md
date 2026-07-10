@@ -22,3 +22,12 @@ A self-contained agent task that belongs to no larger session — maintenance, a
 An AT outside any ho: maintenance, surgical fixes between hos,
 pre-ho exploration. Fully self-contained; `type: standalone-agent-task`; no parent fields.
 Filename `Standalone-AT-YYYY-MM-DD-slug.md`.
+
+<!-- depth:4 -->
+<!-- provenance: extracted -->
+**Standalone Tasks.** A task outside any ho: maintenance ("bump dependency X, fix any breaks"), surgical
+fixes between hos, pre-ho exploration ("inspect a real export and report on its
+schema"). Fully self-contained; no parent fields in the frontmatter. Common in
+ri-stage work and ongoing maintenance.
+
+---

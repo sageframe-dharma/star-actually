@@ -25,9 +25,9 @@ documents, `hos/`, `agent-tasks/`, and any project-specific layers (`learning/`,
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
-**Filenames and Location.** The four framing documents live in the project repo under `ho-process/`, with the README at the repo root.
+**Filenames and Location.** The single-instance Kamae documents live in the project repo under `ho-process/`, with the README at the repo root.
 
-**Pattern:** `kamae-<N>-<project>-<doctype>.md` for documents 1, 2, and 4. The README (Kamae 3) is the canonical repo-root `README.md` and does *not* take a `kamae-3-` prefix — it ships as the public face of the repository under its standard name.
+**Pattern:** `kamae-<N>-<project>-<doctype>.md` for documents 1, 2, 4, and 6. The README (Kamae 3) is the canonical repo-root `README.md` and does *not* take a `kamae-3-` prefix — it ships as the public face of the repository under its standard name.
 
 | Kamae | Document | Path |
 |---|---|---|
@@ -35,6 +35,7 @@ documents, `hos/`, `agent-tasks/`, and any project-specific layers (`learning/`,
 | 2 | System Design | `ho-process/kamae-2-<project>-system-design.md` |
 | 3 | README | `README.md` (repo root) |
 | 4 | Ho Overview | `ho-process/kamae-4-<project>-ho-overview.md` |
+| 6 | State Memory | `ho-process/kamae-6-<project>-state-memory.md` (§2.7) |
 
 `<project>` is the project's short slug in kebab-case (e.g., `shodo`, `hozo`, `kanyo`). It matches the slug used elsewhere in the project (repo name, package name) so the filenames are predictable from any one of them.
 

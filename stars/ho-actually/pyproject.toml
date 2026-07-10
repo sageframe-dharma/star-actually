@@ -17,9 +17,9 @@ dependencies = [
 
 [tool.uv.sources]
 # Local dev across the star-actually/ family: editable path to the engine.
-star-actually = { git = "git+ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git", tag = "v0.4.0" }
+star-actually = { git = "git+ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git", tag = "v0.4.1" }
 # CI / deploy: pin a reproducible engine tag instead (uncomment, comment the path).
-# star-actually = { git = "git+ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git", tag = "v0.4.0" }
+# star-actually = { git = "git+ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git", tag = "v0.4.1" }
 
 [dependency-groups]
 dev = [

@@ -100,7 +100,7 @@
       "entry_points": [
         "dandori"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "declared-compression",
@@ -130,7 +130,7 @@
       "entry_points": [
         "devlog"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "dogfood",
@@ -160,7 +160,7 @@
       "entry_points": [
         "eval"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "ha",
@@ -260,7 +260,7 @@
       "entry_points": [
         "kagen"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "kamae",
@@ -550,7 +550,7 @@
       "entry_points": [
         "standalone agent task"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "state-memory",
@@ -580,7 +580,7 @@
       "entry_points": [
         "supersedes"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "think-execute-reflect",

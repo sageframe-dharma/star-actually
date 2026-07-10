@@ -33,6 +33,16 @@
       "depth_levels": 4
     },
     {
+      "id": "build-record",
+      "title": "build record",
+      "type": "definition",
+      "summary": "A running, add-only list at the bottom of the build plan recording what each step actually finished and where the build stands.",
+      "entry_points": [
+        "build record"
+      ],
+      "depth_levels": 3
+    },
+    {
       "id": "builds-on",
       "title": "builds-on",
       "type": "procedure",
@@ -71,6 +81,16 @@
         "constitutive child"
       ],
       "depth_levels": 4
+    },
+    {
+      "id": "cross-session-continuity",
+      "title": "cross-session continuity",
+      "type": "definition",
+      "summary": "Keeping track of where a build is between work sessions, especially when no person is there to remember it.",
+      "entry_points": [
+        "cross-session continuity"
+      ],
+      "depth_levels": 3
     },
     {
       "id": "dandori",
@@ -213,6 +233,16 @@
       "depth_levels": 4
     },
     {
+      "id": "hot-cold",
+      "title": "hot / cold",
+      "type": "definition",
+      "summary": "The split between a scratch memory you keep rewriting and the permanent record you never edit — with the rule that the permanent one always wins.",
+      "entry_points": [
+        "hot / cold"
+      ],
+      "depth_levels": 4
+    },
+    {
       "id": "interaction-test",
       "title": "interaction test",
       "type": "definition",
@@ -236,7 +266,7 @@
       "id": "kamae",
       "title": "Kamae (構え)",
       "type": "concept",
-      "summary": "The ready stance and all the framing done before a build, producing a chain of documents that move from opinions to a session plan.",
+      "summary": "The ready stance and the chain of documents that keeps a build oriented — four written up front to frame it, two written as it runs to keep its place.",
       "entry_points": [
         "kamae"
       ],
@@ -351,6 +381,16 @@
         "precedential thinking"
       ],
       "depth_levels": 3
+    },
+    {
+      "id": "project-lifecycle",
+      "title": "project lifecycle",
+      "type": "definition",
+      "summary": "A one-word label for how far along a project is, from planning to shipped.",
+      "entry_points": [
+        "project lifecycle"
+      ],
+      "depth_levels": 4
     },
     {
       "id": "propagation-ledger",
@@ -513,6 +553,26 @@
       "depth_levels": 3
     },
     {
+      "id": "state-memory",
+      "title": "state memory (Kamae 6)",
+      "type": "definition",
+      "summary": "One always-present file per project holding where the build is, so any new session can pick it up.",
+      "entry_points": [
+        "state memory"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "state-summary-block",
+      "title": "state-summary block",
+      "type": "definition",
+      "summary": "A short, fixed four-line status — done, next, blockers, and how far along — written at the end of every work session.",
+      "entry_points": [
+        "state-summary block"
+      ],
+      "depth_levels": 3
+    },
+    {
       "id": "supersedes",
       "title": "supersedes",
       "type": "procedure",
@@ -583,6 +643,16 @@
         "how does ho work"
       ],
       "depth_levels": 3
+    },
+    {
+      "id": "working-memory-handoff",
+      "title": "working-memory handoff",
+      "type": "definition",
+      "summary": "The detailed contents of the state-memory file that let the next session pick up exactly where the build left off.",
+      "entry_points": [
+        "working-memory handoff"
+      ],
+      "depth_levels": 4
     }
   ]
 }

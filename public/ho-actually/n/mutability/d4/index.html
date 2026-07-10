@@ -49,9 +49,12 @@
 life. <strong>living</strong> — revised in place (README, overview, seed by dated revision, the Basis of
 Design). <strong>frozen</strong> — not edited in place, changed only by a superseding addendum (system
 design); thaw-able through the addendum mechanism, still governs the build. <strong>sealed</strong> —
-final, never changes (closed hos, sidequests, addenda, dogfood findings, devlogs/Reflect,
-executed ATs, propagation-ledger commits); a future document may <em>respond</em> but nothing
-supersedes it in force. Forward-only governs frozen and sealed; living is the declared exception.</p>
+final, the text never changes (closed hos, sidequests, addenda, dogfood findings,
+devlogs/Reflect, executed ATs, propagation-ledger commits, sealed decisions); reopening carries
+gravity — a sealed record is history (a future document may <em>respond</em>, nothing supersedes it in
+force), a sealed decision's force yields only to a deliberate, recorded supersession.
+Forward-only governs frozen and sealed; living is the declared exception — and the <strong>state
+memory (Kamae 6)</strong> is living <em>and non-canonical</em>: the hot posture.</p>
 
     </section>
     
@@ -59,33 +62,7 @@ supersedes it in force. Forward-only governs frozen and sealed; living is the de
       <p><strong>Mutability regimes (cross-cutting).</strong> Not every artifact has the same mutability. The corpus practices one axis with three
 values — <strong>living | frozen | sealed</strong> — and naming them removes a recurring ambiguity in
 forward-only's application: forward-only governs how <em>frozen</em> and <em>sealed</em> change
-(supersede forward, never edit), while <em>living</em> is the declared exception (edited in place).</p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Applies to</th>
-<th>Rule</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>living</strong></td>
-<td>README (kamae-3), ho overview (kamae-4), seed (kamae-1, see note), the Basis of Design (2.11)</td>
-<td>Edited in place as the project evolves. Overview edits are forward-looking only: dead numbers stay dead, checkpoint outcomes get recorded, historical entries aren't rewritten. &quot;Small frequent updates beat large rare ones&quot; (sharibako kamae-4).</td>
-</tr>
-<tr>
-<td><strong>frozen</strong></td>
-<td>System design (kamae-2)</td>
-<td>Not edited in place; changed only by a superseding addendum. Body preserved as-authored; a reader's-note pointer at the top names the addenda; the addenda carry the change (sharibako kamae-2 + 2.1 + 2.2). Thaw-able through the addendum mechanism, and still governs the build.</td>
-</tr>
-<tr>
-<td><strong>sealed</strong></td>
-<td>Closed hos, sidequests, addenda, dogfood findings, devlogs/Reflect, executed ATs, propagation-ledger commits</td>
-<td>Final — never changes. Typographical fixes only; anything that changes what the document <em>said</em> belongs in a new document. A future document may <em>respond</em> (forward-only), but nothing supersedes it in force — it is already history.</td>
-</tr>
-</tbody>
-</table>
+(supersede forward, never edit), while <em>living</em> is the declared exception (edited in place). […]</p>
 
     </section>
     
@@ -106,6 +83,14 @@ forward-only's application: forward-only governs how <em>frozen</em> and <em>sea
                hx-get="/ho-actually/n/forward-only/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/ho-actually/n/forward-only/">&rarr; forward-only</a></li>
         
+        <li><a class="nav-node nav-lateral" data-node-id="hot-cold" href="/ho-actually/n/hot-cold/"
+               hx-get="/ho-actually/n/hot-cold/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/hot-cold/">&rarr; hot / cold</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="kamae" href="/ho-actually/n/kamae/"
+               hx-get="/ho-actually/n/kamae/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/kamae/">&rarr; Kamae (構え)</a></li>
+        
         <li><a class="nav-node nav-lateral" data-node-id="reflect" href="/ho-actually/n/reflect/"
                hx-get="/ho-actually/n/reflect/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/ho-actually/n/reflect/">&rarr; Reflect</a></li>
@@ -113,6 +98,10 @@ forward-only's application: forward-only governs how <em>frozen</em> and <em>sea
         <li><a class="nav-node nav-lateral" data-node-id="seed" href="/ho-actually/n/seed/"
                hx-get="/ho-actually/n/seed/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/ho-actually/n/seed/">&rarr; seed</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="state-memory" href="/ho-actually/n/state-memory/"
+               hx-get="/ho-actually/n/state-memory/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/state-memory/">&rarr; state memory (Kamae 6)</a></li>
         
         <li><a class="nav-node nav-lateral" data-node-id="supersedes" href="/ho-actually/n/supersedes/"
                hx-get="/ho-actually/n/supersedes/d2.html" hx-target="#content" hx-swap="outerHTML"
@@ -129,6 +118,10 @@ forward-only's application: forward-only governs how <em>frozen</em> and <em>sea
         <li><a class="nav-node nav-backlink" data-node-id="forward-only" href="/ho-actually/n/forward-only/"
                hx-get="/ho-actually/n/forward-only/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/ho-actually/n/forward-only/">&uarr; forward-only</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hot-cold" href="/ho-actually/n/hot-cold/"
+               hx-get="/ho-actually/n/hot-cold/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/hot-cold/">&uarr; hot / cold</a></li>
         
       </ul>
     </section>

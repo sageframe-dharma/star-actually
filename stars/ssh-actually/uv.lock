@@ -499,7 +499,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "star-actually", editable = "../star-actually/engine" }]
+requires-dist = [{ name = "star-actually", git = "ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git?tag=v0.3.1" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -511,38 +511,12 @@ dev = [
 
 [[package]]
 name = "star-actually"
-version = "0.2.0"
-source = { editable = "../star-actually/engine" }
+version = "0.3.1"
+source = { git = "ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git?tag=v0.3.1#5e09fb0a1ac9993c5ac97599e6cdb3fcc8758a9e" }
 dependencies = [
     { name = "jinja2" },
     { name = "markdown-it-py" },
     { name = "pyyaml" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "jinja2", specifier = ">=3.1" },
-    { name = "markdown-it-py", specifier = ">=3.0" },
-    { name = "pyyaml", specifier = ">=6.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "anthropic", specifier = ">=0.40" },
-    { name = "fastapi", specifier = ">=0.115" },
-    { name = "httpx", specifier = ">=0.27" },
-    { name = "mypy", specifier = ">=1.13" },
-    { name = "pre-commit", specifier = ">=4.0" },
-    { name = "pytest", specifier = ">=8.0" },
-    { name = "pytest-cov", specifier = ">=5.0" },
-    { name = "ruff", specifier = ">=0.7" },
-    { name = "types-pyyaml", specifier = ">=6.0" },
-    { name = "uvicorn", specifier = ">=0.30" },
-]
-portal = [
-    { name = "anthropic", specifier = ">=0.40" },
-    { name = "fastapi", specifier = ">=0.115" },
-    { name = "uvicorn", specifier = ">=0.30" },
 ]
 
 [[package]]

@@ -299,6 +299,16 @@ def build_nodes(source: Path) -> list[Node]:
         seen_secs: set[tuple[str, str]] = set()
         for cm in CITATION_RE.finditer(e["citation"]):
             doc_slug, section = cm.group(1), cm.group(2)
+            if doc_slug in docs and not section:
+                # A clause that names a crawled doc but omits its §section pulls
+                # no layer — a silent juice leak (the `_(doc 2.1.)_` trailing-dot
+                # typo class). Surface it so the citation gets fixed upstream.
+                print(
+                    f"warning: {nid}: citation '{doc_slug} {cm.group(0).split()[1]}' "
+                    "has no §section; no depth layer pulled",
+                    file=sys.stderr,
+                )
+                continue
             if depth > MAX_DEPTH or doc_slug not in docs or not section:
                 continue
             key = (doc_slug, section)

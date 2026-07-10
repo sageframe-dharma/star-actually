@@ -27,6 +27,26 @@ architectural decisions inside), executor-portable (names its `model:`), **tripw
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
+**The Two Registers.** A ho document operates at the **architectural register**. It carries decisions, the
+reasoning behind them, deferred discoveries, and post-execution reflection. It is read
+by humans — the practitioner, future maintainers, anyone trying to understand why the
+system is the way it is. Its content is durable: it survives the project and gets
+revisited years later.
+
+An agent task operates at the **executable register**. It carries exact files, exact
+changes, exact acceptance criteria, exact verification commands. It is read primarily
+by an autonomous coding agent — and secondarily by the practitioner reviewing the
+agent's output. Its content is operational: once the work is committed and verified,
+the task's job is done.
+
+Mixing the registers in one document damages both. The architectural reasoning gets
+buried under schemas and signatures; the executable spec gets diluted by paragraphs of
+context the agent doesn't need. Extraction resolves the conflict structurally: each
+document speaks in one voice, and the relationship between them is preserved by
+explicit binding.
+
+<!-- depth:5 -->
+<!-- provenance: extracted -->
 **Agent tasks (ATs).** **Purpose:** the executable register — a surgical, command-verifiable spec an
 autonomous coding agent reads to execute one bounded unit of work. No architectural
 thinking inside; all decisions were extracted to the parent ho's Think phase.

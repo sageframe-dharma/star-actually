@@ -4,8 +4,10 @@
 The Ho System repo is the single source of truth. This crawl is **idempotent**:
 a deterministic parse, re-run whenever ho expands. It regenerates the *extracted*
 depth layers from source and **preserves** any hand-authored `synthesized`
-layers already in ``nodes/``. Depth layers are the practitioner's own prose,
-pulled forward — never generated.
+layers already in ``nodes/``, as well as curated frontmatter wiring (`related`
+is unioned with the generated edges; non-empty `requires` / `entry_points` are
+kept as-is). Depth layers are the practitioner's own prose, pulled forward —
+never generated.
 
 Where the depth comes from: the glossary gives surface (name, definition, use);
 the *juice* is the framework docs. Each glossary entry cites the exact section
@@ -190,9 +192,12 @@ def parse_glossary(path: Path) -> list[dict[str, str]]:
     ):
         definition = m.group("def").strip()
         citation = ""
-        cm = re.search(r"_\((.*?)\)_\s*$", definition)
+        # re.S: the glossary line-wraps long citation parentheticals; without
+        # DOTALL the capture dies at the newline and the entry silently loses
+        # its depth-4+ cited-section layers. Collapse the wrap to one line.
+        cm = re.search(r"_\((.*?)\)_\s*$", definition, re.S)
         if cm:
-            citation = cm.group(1)
+            citation = " ".join(cm.group(1).split())
             definition = definition[: cm.start()].strip()
         entries.append(
             {
@@ -375,10 +380,38 @@ def existing_synthesized(nid: str) -> list[tuple[int, str, str]]:
     return kept
 
 
+FM_LIST_RE = re.compile(r"^(requires|related|entry_points):\s*\[(.*)\]\s*$", re.M)
+
+
+def existing_frontmatter(nid: str) -> dict[str, list[str]]:
+    """Curated frontmatter lists already in nodes/<id>.md (hand-wired graph edges)."""
+    path = NODES_DIR / f"{nid}.md"
+    if not path.exists():
+        return {}
+    parts = path.read_text(encoding="utf-8").split("---", 2)
+    if len(parts) < 3:
+        return {}
+    return {
+        m.group(1): [s.strip() for s in m.group(2).split(",") if s.strip()]
+        for m in FM_LIST_RE.finditer(parts[1])
+    }
+
+
 def render(node: Node) -> str:
     layers = {d: (p, md) for d, p, md in node.layers}
     for d, prov, md in existing_synthesized(node.id):  # authored layers win
         layers[d] = (prov, md)
+
+    # Curation survives re-ingest: union hand-wired `related` edges with the
+    # generated ones; keep curated `requires` / `entry_points` when non-empty.
+    # (Extracted body layers still regenerate; synthesized layers still win.)
+    curated = existing_frontmatter(node.id)
+    if curated.get("related"):
+        node.related = sorted(dict.fromkeys(node.related + curated["related"]))
+    if curated.get("requires"):
+        node.requires = curated["requires"]
+    if curated.get("entry_points"):
+        node.entry_points = curated["entry_points"]
 
     fm = [
         "---",

@@ -38,15 +38,22 @@ NODES_DIR = Path(__file__).resolve().parent.parent / "nodes"
 ID_OVERRIDES = {
     "agent task (AT)": "agent-task",
     "architectural register / executable register": "registers",
+    "build record": "build-record",
+    "cross-session continuity": "cross-session-continuity",
     "eval (graded eval)": "graded-eval",
     "ho 0.5": "ho-0-5",
     "ho-process/": "ho-process",
+    "hot / cold": "hot-cold",
     "Kamae addendum (kamae-N.M)": "kamae-addendum",
     "mind / hand": "mind-hand",
     "notes/": "notes",
+    "project lifecycle": "project-lifecycle",
     "spike (design)": "spike",
+    "state memory (Kamae 6)": "state-memory",
+    "state-summary block": "state-summary-block",
     "Think / Execute / Reflect": "think-execute-reflect",
     "verification / validation": "verification-validation",
+    "working-memory handoff": "working-memory-handoff",
 }
 ROOT_ID = "what-is-ho-system"
 

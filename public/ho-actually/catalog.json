@@ -40,7 +40,7 @@
       "entry_points": [
         "build record"
       ],
-      "depth_levels": 3
+      "depth_levels": 5
     },
     {
       "id": "builds-on",
@@ -570,7 +570,7 @@
       "entry_points": [
         "state-summary block"
       ],
-      "depth_levels": 3
+      "depth_levels": 4
     },
     {
       "id": "supersedes",

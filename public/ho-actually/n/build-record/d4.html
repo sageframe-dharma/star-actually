@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>build record · Ho System, Actually</title>
-<link rel="stylesheet" href="/ho-actually/assets/style.css">
-</head>
-<body data-base="/ho-actually">
-<header class="site-head">
-  <a class="site-name" href="/ho-actually/">Ho System, Actually</a>
-  <span class="site-tagline">Build the software. Develop the judgment.</span>
-</header>
-
-<div class="rail" id="rail" aria-label="your path"></div>
-
-<main class="reading">
 <article class="node" id="content"
   data-node-id="build-record"
-  data-depth="5"
+  data-depth="4"
   data-max-depth="5"
   data-title="build record">
 
@@ -28,12 +11,13 @@
     </div>
     <div class="depth-dial">
       
-      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
-      <span class="depth-label">depth 4/4</span>
+      <span class="depth-gauge" aria-label="reading level 3 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 3/4</span>
       
-      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
-      <a class="depth-step depth-shallower" href="/ho-actually/n/build-record/d4/"
-         hx-get="/ho-actually/n/build-record/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+      <a class="depth-step depth-deeper" href="/ho-actually/n/build-record/d5/"
+         hx-get="/ho-actually/n/build-record/d5.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/build-record/d3/"
+         hx-get="/ho-actually/n/build-record/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
     </div>
   </header>
 
@@ -58,48 +42,6 @@ did, the counterpart to the <em>hot</em> <strong>working-memory handoff</strong>
 <p><strong>What it's NOT:</strong> The individual hos themselves. The Ho Overview says &quot;Ho 3 implements the backup workflow: wake, SSH, syncoid, verify, shutdown.&quot; It does NOT provide the step-by-step instructions for doing that work. Those come from writing the actual ho using the appropriate template.</p>
 <p><strong>What &quot;done&quot; looks like:</strong></p>
 <p>The Ho Overview should define: […]</p>
-
-    </section>
-    
-    <section class="layer layer-5" data-depth="5">
-      <p><strong>The Build Record (K4 Extension).</strong> The public counterpart to the hot file. An <strong>append-only build-record log grafted onto the tail
-of the K4 [[kamae-project-framing|ho overview]] (framework/structure/kamae-project-framing.md
-§2.4)</strong> — one entry per ho close and per replan checkpoint, each entry shaped as a
-state-summary block (§3) with prose around it. Cleaner than the hot file, no hashes or traps:
-the human's progress ledger.</p>
-<p>It differs from the hot file on three axes:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Working-memory file (§4)</th>
-<th>Build record (§8)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Audience</strong></td>
-<td>the next agent session</td>
-<td>the practitioner + future agents</td>
-</tr>
-<tr>
-<td><strong>Authority</strong></td>
-<td>hot, mutable, non-canonical</td>
-<td>cold, append-only, canonical</td>
-</tr>
-<tr>
-<td><strong>Altitude</strong></td>
-<td>dense, tactical, private</td>
-<td>narrative, strategic, public</td>
-</tr>
-</tbody>
-</table>
-<p>The build record turns K4 from a pure forward plan into a plan with a running record grown onto
-its tail — the forward plan above, the append-only ledger below. It is cold and forward-only:
-entries are added, never rewritten. The convention is specified in
-[[kamae-project-framing|kamae-project-framing §2.4]]
-(framework/structure/kamae-project-framing.md); this document names its role in continuity.</p>
-<hr />
 
     </section>
     
@@ -165,21 +107,3 @@ entries are added, never rewritten. The convention is specified in
     
   </nav>
 </article>
-
-</main>
-
-<footer class="action-bar" id="action-bar">
-  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
-  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
-  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
-  <span class="key-hint"><kbd>+</kbd> surface</span>
-  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
-  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
-  <span class="key-hint"><a href="/ho-actually/"><kbd>/</kbd> search</a></span>
-  <span class="key-hint"><a href="/ho-actually/help.html"><kbd>?</kbd> help</a></span>
-</footer>
-
-<script src="/ho-actually/assets/htmx.min.js"></script>
-<script src="/ho-actually/assets/app.js"></script>
-</body>
-</html>

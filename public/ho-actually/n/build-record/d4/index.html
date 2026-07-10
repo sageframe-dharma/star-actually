@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>build record (depth 2) · Ho System, Actually</title>
+<title>build record (depth 4) · Ho System, Actually</title>
 <link rel="stylesheet" href="/ho-actually/assets/style.css">
 </head>
 <body data-base="/ho-actually">
@@ -17,7 +17,7 @@
 <main class="reading">
 <article class="node" id="content"
   data-node-id="build-record"
-  data-depth="2"
+  data-depth="4"
   data-max-depth="5"
   data-title="build record">
 
@@ -28,12 +28,13 @@
     </div>
     <div class="depth-dial">
       
-      <span class="depth-gauge" aria-label="reading level 1 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
-      <span class="depth-label">depth 1/4</span>
+      <span class="depth-gauge" aria-label="reading level 3 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 3/4</span>
       
-      <a class="depth-step depth-deeper" href="/ho-actually/n/build-record/d3/"
-         hx-get="/ho-actually/n/build-record/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
-      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+      <a class="depth-step depth-deeper" href="/ho-actually/n/build-record/d5/"
+         hx-get="/ho-actually/n/build-record/d5.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/build-record/d3/"
+         hx-get="/ho-actually/n/build-record/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
     </div>
   </header>
 
@@ -41,6 +42,23 @@
     
     <section class="layer layer-2" data-depth="2">
       <p>A running, add-only list at the bottom of the build plan recording what each step actually finished and where the build stands.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The append-only log grafted onto the tail of the K4 <strong>ho overview</strong>: one
+entry per ho close and per replan checkpoint, each shaped as a <strong>state-summary block</strong>, never
+rewritten. Cold and forward-only — the human-facing, canonical ledger of what a build actually
+did, the counterpart to the <em>hot</em> <strong>working-memory handoff</strong>.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>Ho Overview.</strong> <strong>What it is:</strong> The sequence plan. What hos are needed, in what order, with what dependencies. This is the project arc made concrete — it turns the System Design and README scope into a buildable sequence of bounded sessions.</p>
+<p>The Ho Overview is possible precisely because the upstream documents have already made the hard decisions. You can't plan a build order for a system whose architecture is undecided. You can't scope sessions for a project whose boundaries are undefined. The Seed established the core idea. The System Design committed to architecture. The README defined scope. The Ho Overview sequences the execution.</p>
+<p><strong>What it's NOT:</strong> The individual hos themselves. The Ho Overview says &quot;Ho 3 implements the backup workflow: wake, SSH, syncoid, verify, shutdown.&quot; It does NOT provide the step-by-step instructions for doing that work. Those come from writing the actual ho using the appropriate template.</p>
+<p><strong>What &quot;done&quot; looks like:</strong></p>
+<p>The Ho Overview should define: […]</p>
 
     </section>
     
@@ -80,6 +98,29 @@
       </ul>
     </section>
     
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="forward-only" href="/ho-actually/n/forward-only/"
+               hx-get="/ho-actually/n/forward-only/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/forward-only/">&uarr; forward-only</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ho-overview" href="/ho-actually/n/ho-overview/"
+               hx-get="/ho-actually/n/ho-overview/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/ho-overview/">&uarr; ho overview</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="hot-cold" href="/ho-actually/n/hot-cold/"
+               hx-get="/ho-actually/n/hot-cold/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/hot-cold/">&uarr; hot / cold</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="state-summary-block" href="/ho-actually/n/state-summary-block/"
+               hx-get="/ho-actually/n/state-summary-block/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/state-summary-block/">&uarr; state-summary block</a></li>
+        
+      </ul>
+    </section>
     
   </nav>
 </article>

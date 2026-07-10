@@ -100,7 +100,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "star-actually", git = "ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git?tag=v0.3.1" }]
+requires-dist = [{ name = "star-actually", git = "ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git?tag=v0.4.0" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -512,8 +512,8 @@ wheels = [
 
 [[package]]
 name = "star-actually"
-version = "0.3.1"
-source = { git = "ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git?tag=v0.3.1#5e09fb0a1ac9993c5ac97599e6cdb3fcc8758a9e" }
+version = "0.4.0"
+source = { git = "ssh://git@github-no-kaji/sageframe-no-kaji/star-actually.git?tag=v0.4.0#896a96bdc72e6e93ba076c0169e8e6c51e4414ae" }
 dependencies = [
     { name = "jinja2" },
     { name = "markdown-it-py" },

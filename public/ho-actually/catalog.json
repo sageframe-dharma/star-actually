@@ -403,6 +403,17 @@
       "depth_levels": 4
     },
     {
+      "id": "readme",
+      "title": "README (Kamae 3)",
+      "type": "definition",
+      "summary": "The project's front-page description, written before the code exists as if the finished thing had already shipped — so the scope has to be decided in order to write it.",
+      "entry_points": [
+        "readme",
+        "kamae 3"
+      ],
+      "depth_levels": 4
+    },
+    {
       "id": "reflect",
       "title": "Reflect",
       "type": "definition",
@@ -581,6 +592,17 @@
         "supersedes"
       ],
       "depth_levels": 5
+    },
+    {
+      "id": "system-design",
+      "title": "system design (Kamae 2)",
+      "type": "definition",
+      "summary": "The document that settles how the system works — its parts, connections, and technology choices — before any code is written.",
+      "entry_points": [
+        "system design",
+        "kamae 2"
+      ],
+      "depth_levels": 4
     },
     {
       "id": "think-execute-reflect",

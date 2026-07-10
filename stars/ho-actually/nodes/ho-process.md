@@ -3,7 +3,7 @@ id: ho-process
 title: ho-process/
 type: definition
 requires: []
-related: [kamae]
+related: [kamae, readme]
 entry_points: [ho-process/]
 summary: >
   The project folder that holds the methodology's working artifacts — the framing documents, the session records, and the task specs.

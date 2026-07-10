@@ -3,7 +3,7 @@ id: mutability
 title: mutability (living / frozen / sealed)
 type: concept
 requires: []
-related: [dogfood, hot-cold, kamae, reflect, seed, state-memory, supersedes]
+related: [dogfood, hot-cold, kamae, readme, reflect, seed, state-memory, supersedes]
 entry_points: [mutability]
 summary: >
   The scale of how much an artifact may change over its life — living (revised freely), frozen (changed only by override), or sealed (never again).

@@ -20,10 +20,9 @@ source_url: "https://hosystem.sageframe.net"
 source_label: "the full framework at hosystem.sageframe.net"
 base_path: "/ho-actually"
 
-# The Kamae chain — the ordered document sequence. Two members are not yet
-# authored as nodes (system-design after seed, readme after that); they slot
-# into this list when they land. Order lives here, not in the nodes.
+# The Kamae chain — the ordered document sequence. Order lives here, not in
+# the nodes.
 chains:
   - id: "kamae-chain"
     title: "The Kamae chain"
-    nodes: ["seed", "ho-overview", "ho-document", "state-memory"]
+    nodes: ["seed", "system-design", "readme", "ho-overview", "ho-document", "state-memory"]

@@ -1,0 +1,121 @@
+<article class="node" id="content"
+  data-node-id="system-design"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="system design (Kamae 2)">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">system design (Kamae 2)</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/ho-actually/n/system-design/d3/"
+         hx-get="/ho-actually/n/system-design/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="kamae-chain">
+      <span class="chain-title">The Kamae chain</span>
+      <span class="chain-position">2/6</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="kamae-chain"
+         href="/ho-actually/n/seed/"
+         hx-get="/ho-actually/n/seed/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/ho-actually/n/seed/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="kamae-chain"
+         href="/ho-actually/n/readme/"
+         hx-get="/ho-actually/n/readme/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/ho-actually/n/readme/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The document that settles how the system works — its parts, connections, and technology choices — before any code is written.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The Kamae 2 document: the structured technical vision — major
+components and how they connect, data flow, technology stack with rationale, deployment
+model, scope boundaries. Turns the seed's architectural opinions into decisions, each
+traceable to the seed's core idea; no implementation details (those belong to individual
+hos). Frozen once committed — superseded by dated addenda (kamae-N.M), never edited in
+place.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p><strong>System Design.</strong> <strong>What it is:</strong> The structured technical vision. How the system works, what the major components are, how they connect, what technology choices anchor the architecture. Written for someone who needs to understand <em>what you're building</em> at a systems level.</p>
+<p>The System Design takes the seed's architectural opinions and turns them into decisions. The seed says &quot;I think I need a database and a web frontend, and here's why.&quot; The System Design says &quot;PostgreSQL, FastAPI, here's the data model, here's how the components connect.&quot; Every decision should be traceable back to the seed's core idea — if an architectural choice doesn't serve the project's stated purpose, it needs justification or removal.</p>
+<p><strong>What it's NOT:</strong> Implementation details. The System Design says &quot;the controller sends a Wake-on-LAN packet, waits for SSH, runs syncoid, and shuts down the remote machine.&quot; It does NOT say &quot;use paramiko with a 120-second timeout and poll every 5 seconds.&quot; Those decisions happen in individual hos.</p>
+<p><strong>What &quot;done&quot; looks like:</strong></p>
+<p>Someone reading this document should understand:</p>
+<ul>
+<li>The system architecture (major components and how they interact)</li>
+<li>Data flow (what goes in, what comes out, what's stored where)</li>
+<li>Technology stack (languages, frameworks, key libraries — with rationale)</li>
+<li>Deployment model (where does this run, how is it accessed)</li>
+<li>Scope boundaries (what's v1, what's future, what's explicitly out)</li>
+</ul>
+<p>A good System Design includes at least one architecture diagram (even ASCII art) showing the major components and their relationships. […]</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="basis-of-design" href="/ho-actually/n/basis-of-design/"
+               hx-get="/ho-actually/n/basis-of-design/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/basis-of-design/">&rarr; Basis of Design</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="kamae" href="/ho-actually/n/kamae/"
+               hx-get="/ho-actually/n/kamae/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/kamae/">&rarr; Kamae (構え)</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="kamae-addendum" href="/ho-actually/n/kamae-addendum/"
+               hx-get="/ho-actually/n/kamae-addendum/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/kamae-addendum/">&rarr; Kamae addendum (kamae-N.M)</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="readme" href="/ho-actually/n/readme/"
+               hx-get="/ho-actually/n/readme/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/readme/">&rarr; README (Kamae 3)</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="seed" href="/ho-actually/n/seed/"
+               hx-get="/ho-actually/n/seed/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/seed/">&rarr; seed</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="kamae" href="/ho-actually/n/kamae/"
+               hx-get="/ho-actually/n/kamae/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/kamae/">&uarr; Kamae (構え)</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="readme" href="/ho-actually/n/readme/"
+               hx-get="/ho-actually/n/readme/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/ho-actually/n/readme/">&uarr; README (Kamae 3)</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

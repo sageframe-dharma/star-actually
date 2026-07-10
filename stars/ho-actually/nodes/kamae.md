@@ -3,7 +3,7 @@ id: kamae
 title: Kamae (構え)
 type: concept
 requires: [what-is-ho-system]
-related: [ho-overview, seed, state-memory]
+related: [ho-overview, readme, seed, state-memory, system-design]
 entry_points: [kamae]
 summary: >
   The ready stance and the chain of documents that keeps a build oriented — four written up front to frame it, two written as it runs to keep its place.

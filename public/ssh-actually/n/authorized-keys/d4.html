@@ -24,32 +24,32 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p><code>~/.ssh/authorized_keys</code> is the file on the server that lists the public keys the server will accept for your account. The server stores <strong>only public keys</strong> — this file is where. Every key pair that can log you in has its public half on exactly this list.</p>
+      <p><code>~/.ssh/authorized_keys</code> is the file on the server that lists the public keys the server will accept for your account. The server stores <strong>only public keys</strong>—this file is where. Every key pair that can log you in has its public half on exactly this list.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
       <p>Two ways your public key gets there:</p>
-<p><strong>Automatic</strong> — <code>ssh-copy-id</code> logs in with your current auth method, appends the public key to <code>~/.ssh/authorized_keys</code> on the server, and sets correct permissions:</p>
+<p><strong>Automatic</strong>—<code>ssh-copy-id</code> logs in with your current auth method, appends the public key to <code>~/.ssh/authorized_keys</code> on the server, and sets correct permissions:</p>
 <pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_example.pub user@server
 </code></pre>
-<p><strong>Manual</strong> — when <code>ssh-copy-id</code> is unavailable, on the server:</p>
+<p><strong>Manual</strong>—when <code>ssh-copy-id</code> is unavailable, on the server:</p>
 <pre><code class="language-bash">mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 nano ~/.ssh/authorized_keys
 # Paste ENTIRE contents of id_example.pub (one line)
 chmod 600 ~/.ssh/authorized_keys
 </code></pre>
-<p>One key per line, the whole line. The permissions are not optional — if the file or its parent directories are writable by other users, SSH ignores it entirely.</p>
+<p>One key per line, the whole line. The permissions are not optional—if the file or its parent directories are writable by other users, SSH ignores it entirely.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p>Because <code>authorized_keys</code> is the trust anchor, most access discipline reduces to editing it:</p>
 <ul>
-<li><strong>Audit regularly.</strong> <code>cat ~/.ssh/authorized_keys</code> — remove old or unknown keys. Every line is a standing grant of access; stale entries are keys you forgot existed.</li>
+<li><strong>Audit regularly.</strong> <code>cat ~/.ssh/authorized_keys</code>—remove old or unknown keys. Every line is a standing grant of access; stale entries are keys you forgot existed.</li>
 <li><strong>Rotation ends here.</strong> Replacing a key means deploying the new public key, testing it, <em>then</em> removing the old line from every server's <code>authorized_keys</code>. Test before you revoke.</li>
-<li><strong>Compromise response starts here.</strong> Laptop stolen? Immediately remove that public key from all servers' <code>authorized_keys</code> files — that is the revocation mechanism; there is no other.</li>
+<li><strong>Compromise response starts here.</strong> Laptop stolen? Immediately remove that public key from all servers' <code>authorized_keys</code> files—that is the revocation mechanism; there is no other.</li>
 <li><strong>Comments earn their keep.</strong> A public key's comment (<code>username@device-year-purpose</code>) is what lets you tell lines apart when the audit happens years later.</li>
 </ul>
 <p>The file rewards the same habit as the rest of a hardened server: it should say exactly what you mean, and nothing you've forgotten.</p>

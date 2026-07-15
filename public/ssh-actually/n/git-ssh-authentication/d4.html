@@ -24,7 +24,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>With GitHub, GitLab, and similar services, SSH is used as <strong>authentication, not login</strong>. You never get a shell — you only prove identity, the service decides what you can access based on that identity, and each git operation is a separate authentication.</p>
+      <p>With GitHub, GitLab, and similar services, SSH is used as <strong>authentication, not login</strong>. You never get a shell—you only prove identity, the service decides what you can access based on that identity, and each git operation is a separate authentication.</p>
 
     </section>
     
@@ -52,10 +52,10 @@
 <ul>
 <li>No passwords ever transmitted</li>
 <li>No credentials to steal from GitHub's servers</li>
-<li>Phishing-resistant — you're not typing anything</li>
+<li>Phishing-resistant—you're not typing anything</li>
 </ul>
-<p><strong>Same cryptography — different purpose.</strong> This is why learning SSH well matters even if you never manage servers: every time you push code, you're using SSH authentication.</p>
-<p>The model has a distinctive fingerprint: because the service identifies you by <em>which key you presented</em>, the username in the URL is always just <code>git</code> — your actual identity comes from the key, not the username. And because authentication is a signature, not a typed secret, this is the same phishing-resistant shape that FIDO2 brought to the web — modern setups go one step further and back the git key with a hardware device.</p>
+<p><strong>Same cryptography—different purpose.</strong> This is why learning SSH well matters even if you never manage servers: every time you push code, you're using SSH authentication.</p>
+<p>The model has a distinctive fingerprint: because the service identifies you by <em>which key you presented</em>, the username in the URL is always just <code>git</code>—your actual identity comes from the key, not the username. And because authentication is a signature, not a typed secret, this is the same phishing-resistant shape that FIDO2 brought to the web—modern setups go one step further and back the git key with a hardware device.</p>
 
     </section>
     

@@ -35,8 +35,8 @@
 <blockquote>
 <p><strong>Hardware keys change <em>where authentication state lives</em>.</strong></p>
 </blockquote>
-<p>Traditional SSH puts <strong>all state on disk</strong> — the private key file is the full secret, copyable, losable. Hardware-backed SSH <strong>splits state</strong> between your computer and the hardware key. That split is the entire design.</p>
-<p>Mechanically, modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong> — the <code>ed25519-sk</code> key type uses FIDO2 as a signing oracle. SSH predates all of the modern web-auth machinery: it already uses key-pair cryptography, already knows the username, and does not need discovery. This is why SSH keys, WebAuthn, and passkeys feel related — they <em>are</em>.</p>
+<p>Traditional SSH puts <strong>all state on disk</strong>—the private key file is the full secret, copyable, losable. Hardware-backed SSH <strong>splits state</strong> between your computer and the hardware key. That split is the entire design.</p>
+<p>Mechanically, modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong>—the <code>ed25519-sk</code> key type uses FIDO2 as a signing oracle. SSH predates all of the modern web-auth machinery: it already uses key-pair cryptography, already knows the username, and does not need discovery. This is why SSH keys, WebAuthn, and passkeys feel related—they <em>are</em>.</p>
 
     </section>
     

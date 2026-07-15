@@ -30,17 +30,17 @@
     
     <section class="layer layer-3" data-depth="3">
       <p>A hardware security key can do four things, and understanding them dissolves most of the mystery:</p>
-<p><strong>1. Generate cryptographic secrets.</strong> A cryptographic secret is a large random number that is mathematically infeasible to guess. When a hardware key generates one, the secret is created <strong>inside the hardware</strong> — the operating system never sees it, it is never written to disk, it cannot be copied. You cannot steal what never existed outside the device.</p>
-<p><strong>2. Store secrets securely.</strong> Storage that cannot be read, copied, or dumped — even by the computer it's plugged into. Secrets live in tamper-resistant memory, there is no command to &quot;export&quot; them, and physical extraction is extremely difficult and usually destructive. The hardware key does <strong>not</strong> &quot;encrypt files.&quot; It simply <strong>refuses to give secrets away</strong>.</p>
-<p><strong>3. Require touch and/or PIN.</strong> This is about <strong>control</strong>, not identity — a physical press proves a human is present, and a device-enforced PIN limits who can ask.</p>
+<p><strong>1. Generate cryptographic secrets.</strong> A cryptographic secret is a large random number that is mathematically infeasible to guess. When a hardware key generates one, the secret is created <strong>inside the hardware</strong>—the operating system never sees it, it is never written to disk, it cannot be copied. You cannot steal what never existed outside the device.</p>
+<p><strong>2. Store secrets securely.</strong> Storage that cannot be read, copied, or dumped—even by the computer it's plugged into. Secrets live in tamper-resistant memory, there is no command to &quot;export&quot; them, and physical extraction is extremely difficult and usually destructive. The hardware key does <strong>not</strong> &quot;encrypt files.&quot; It simply <strong>refuses to give secrets away</strong>.</p>
+<p><strong>3. Require touch and/or PIN.</strong> This is about <strong>control</strong>, not identity—a physical press proves a human is present, and a device-enforced PIN limits who can ask.</p>
 <p><strong>4. Sign data without exposing secrets.</strong> The computer asks: <em>&quot;Please sign this challenge.&quot;</em> The hardware responds: <em>&quot;Here is a proof I signed it.&quot;</em> At no point does the computer get the private key, any reusable secret, or any material it could steal.</p>
 <p>Examples: YubiKey, SoloKey, Nitrokey. They are not &quot;USB passwords.&quot; They are <strong>cryptographic co-processors</strong>.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p>Why the device exists at all: key-pair cryptography is strong, but there's still a vulnerability — <strong>where the secret lives</strong>. Traditional SSH keys live on disk. That means malware can copy them, disk theft exposes them, and backups contain them. Passphrases help, but they're brute-forceable offline. Hardware security keys solve this by changing the rules entirely: the secret never exists anywhere software can reach.</p>
-<p>Because the underlying trick is generic — sign challenges without releasing the secret — one device can act as several things at once:</p>
+      <p>Why the device exists at all: key-pair cryptography is strong, but there's still a vulnerability—<strong>where the secret lives</strong>. Traditional SSH keys live on disk. That means malware can copy them, disk theft exposes them, and backups contain them. Passphrases help, but they're brute-forceable offline. Hardware security keys solve this by changing the rules entirely: the secret never exists anywhere software can reach.</p>
+<p>Because the underlying trick is generic—sign challenges without releasing the secret—one device can act as several things at once:</p>
 <ul>
 <li>an <strong>MFA device</strong> (second factor for logins)</li>
 <li>a <strong>passkey holder</strong> (storing discoverable FIDO2 credentials)</li>
@@ -52,7 +52,7 @@
     </section>
     
     <section class="layer layer-5" data-depth="5">
-      <p>The signature is the core magic. A <strong>signature</strong> is a mathematical proof that a specific secret exists and that the holder of that secret approved <em>this exact action</em>. Crucially, the secret never leaves the hardware — only the signature does.</p>
+      <p>The signature is the core magic. A <strong>signature</strong> is a mathematical proof that a specific secret exists and that the holder of that secret approved <em>this exact action</em>. Crucially, the secret never leaves the hardware—only the signature does.</p>
 <p>In key-pair terms:</p>
 <ul>
 <li>Public key → shared with servers</li>
@@ -69,7 +69,7 @@
 <blockquote>
 <p><strong>A physically enforced boundary where secrets can be used but never stolen.</strong></p>
 </blockquote>
-<p>Everything else — SSH, passkeys, PINs, touch — is just different ways of <em>asking</em> that boundary to prove something. Once you see it this way, the rest stops being obtuse.</p>
+<p>Everything else—SSH, passkeys, PINs, touch—is just different ways of <em>asking</em> that boundary to prove something. Once you see it this way, the rest stops being obtuse.</p>
 
     </section>
     

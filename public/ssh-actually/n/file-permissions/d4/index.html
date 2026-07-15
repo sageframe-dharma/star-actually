@@ -50,10 +50,10 @@
 <pre><code class="language-bash"># The .ssh directory itself
 chmod 700 ~/.ssh
 
-# Private keys — owner read/write only
+# Private keys—owner read/write only
 chmod 600 ~/.ssh/id_*
 
-# Public keys — owner read/write, others can read
+# Public keys—owner read/write, others can read
 chmod 644 ~/.ssh/id_*.pub
 
 # Config file
@@ -63,7 +63,7 @@ chmod 600 ~/.ssh/config
 chmod 644 ~/.ssh/known_hosts
 </code></pre>
 <h3>correct permissions (server side)</h3>
-<pre><code class="language-bash"># Home directory — must not be writable by others
+<pre><code class="language-bash"># Home directory—must not be writable by others
 chmod 755 ~/
 # Some servers require 700
 
@@ -80,9 +80,9 @@ chmod 600 ~/.ssh/authorized_keys
     <section class="layer layer-4" data-depth="4">
       <p>What this assumes, and where it connects:</p>
 <ul>
-<li>On the server side, if <code>authorized_keys</code> or its parent directories are writable by other users, SSH ignores the file entirely — the trust anchor itself must be tamper-proof, not just the secret.</li>
-<li><code>ssh-copy-id</code> sets correct permissions for you; the manual deployment method makes them your job. Keys copied to a new machine arrive with whatever permissions the copy gave them — set them explicitly.</li>
-<li>When permissions are wrong, the failure is <strong>silent</strong>: no error in normal mode, just &quot;Permission denied.&quot; The failure mode and its diagnosis path are their own node — this one carries the why and the correct numbers.</li>
+<li>On the server side, if <code>authorized_keys</code> or its parent directories are writable by other users, SSH ignores the file entirely—the trust anchor itself must be tamper-proof, not just the secret.</li>
+<li><code>ssh-copy-id</code> sets correct permissions for you; the manual deployment method makes them your job. Keys copied to a new machine arrive with whatever permissions the copy gave them—set them explicitly.</li>
+<li>When permissions are wrong, the failure is <strong>silent</strong>: no error in normal mode, just &quot;Permission denied.&quot; The failure mode and its diagnosis path are their own node—this one carries the why and the correct numbers.</li>
 </ul>
 
     </section>

@@ -27,4 +27,4 @@ and leaves a record.
 <!-- provenance: extracted -->
 **What Makes a Ho a Ho.** A ho (歩) is a bounded unit of work that produces something real and leaves a record of what happened. That definition holds across all three stages of the shu-ha-ri progression, even though the shape of the work changes dramatically.
 
-Five properties are invariant. If a piece of work has all five, it's a ho. If it's missing one, it's something else — a task, a note, a session that wasn't captured.
+Five properties are invariant. If a piece of work has all five, it's a ho. If it's missing one, it's something else—a task, a note, a session that wasn't captured.

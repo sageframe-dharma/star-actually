@@ -6,8 +6,8 @@ requires: [hardware-security-keys]
 related: [webauthn, passkeys, hardware-keys-ssh, slots]
 entry_points: [what can a yubikey do, which yubikey should I buy, yubikey security key vs 5 series, does the blue yubikey do ssh]
 summary: >
-  The conceptual capability map — OTP, FIDO/U2F, WebAuthn, passkeys, SSH signing,
-  PIV, OpenPGP — and how real models combine them.
+  The conceptual capability map—OTP, FIDO/U2F, WebAuthn, passkeys, SSH signing,
+  PIV, OpenPGP—and how real models combine them.
 ---
 
 <!-- depth:1 -->
@@ -16,7 +16,7 @@ Hardware Key Capabilities
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Modern hardware keys can support multiple independent roles. What follows is a **conceptual capability map**, not marketing tiers — different models enable different *combinations* of the same underlying capabilities.
+Modern hardware keys can support multiple independent roles. What follows is a **conceptual capability map**, not marketing tiers—different models enable different *combinations* of the same underlying capabilities.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -33,7 +33,7 @@ The capability map:
 | PIN enforcement | Rate-limited access | Stronger than passphrases |
 | Biometric unlock (optional) | Local identity check | Convenience layer |
 
-Using YubiKey as an example (not endorsement) — a simplified conceptual lineup:
+Using YubiKey as an example (not endorsement)—a simplified conceptual lineup:
 
 | Feature / Capability | Security Key (blue) | 5 Series | Bio |
 | --- | --- | --- | --- |

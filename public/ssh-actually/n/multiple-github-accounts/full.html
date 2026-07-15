@@ -41,13 +41,13 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>You have two GitHub accounts — personal and work — with one SSH key registered to each. Same hostname, same <code>git</code> username; SSH config matches on <strong>Host</strong>, so a single <code>Host github.com</code> block can only name one key. Whichever key it names, the other account breaks. You can't win — until you use <strong>host aliases</strong>.</p>
+      <p>You have two GitHub accounts—personal and work—with one SSH key registered to each. Same hostname, same <code>git</code> username; SSH config matches on <strong>Host</strong>, so a single <code>Host github.com</code> block can only name one key. Whichever key it names, the other account breaks. You can't win—until you use <strong>host aliases</strong>.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>Why it happens: when you run <code>git clone git@github.com:work-org/project.git</code>, SSH looks for a Host block matching <code>github.com</code>, finds one, and uses whatever key that block specifies. It does not know or care which GitHub account you mean. The only difference between your accounts is the key — but you've given SSH the same Host for both.</p>
-<p>The solution — one alias per account, both pointing at the real hostname:</p>
+      <p>Why it happens: when you run <code>git clone git@github.com:work-org/project.git</code>, SSH looks for a Host block matching <code>github.com</code>, finds one, and uses whatever key that block specifies. It does not know or care which GitHub account you mean. The only difference between your accounts is the key—but you've given SSH the same Host for both.</p>
+<p>The solution—one alias per account, both pointing at the real hostname:</p>
 <pre><code>Host github-personal
     HostName github.com
     IdentityFile ~/.ssh/github_personal
@@ -58,7 +58,7 @@ Host github-work
     IdentityFile ~/.ssh/github_work
     IdentitiesOnly yes
 </code></pre>
-<p>What changes in practice — clone URLs use the alias instead of <code>github.com</code>:</p>
+<p>What changes in practice—clone URLs use the alias instead of <code>github.com</code>:</p>
 <pre><code class="language-bash">git clone git@github-personal:my-user/my-repo.git
 git clone git@github-work:work-org/project.git
 </code></pre>
@@ -80,11 +80,11 @@ ssh -T git@github-work
     <section class="layer layer-4" data-depth="4">
       <p>The fix is three ideas composing, each carrying one piece:</p>
 <ul>
-<li><strong>Identity comes from the key</strong> (the <code>git@</code> username model) — that's <em>why</em> two accounts collide: nothing else in the connection distinguishes them.</li>
-<li><strong>Host is a label you control</strong> (host aliases) — that's <em>how</em> you give SSH two different names for the same place, each bound to a different key.</li>
-<li><strong><code>IdentitiesOnly yes</code></strong> in each block — that's what stops SSH from offering every key you own and letting the service accept whichever it recognizes first, which would quietly reintroduce the wrong-account problem.</li>
+<li><strong>Identity comes from the key</strong> (the <code>git@</code> username model)—that's <em>why</em> two accounts collide: nothing else in the connection distinguishes them.</li>
+<li><strong>Host is a label you control</strong> (host aliases)—that's <em>how</em> you give SSH two different names for the same place, each bound to a different key.</li>
+<li><strong><code>IdentitiesOnly yes</code></strong> in each block—that's what stops SSH from offering every key you own and letting the service accept whichever it recognizes first, which would quietly reintroduce the wrong-account problem.</li>
 </ul>
-<p>GitHub never sees the alias — it only sees <code>github.com</code> and your key. This works the same for GitLab, Bitbucket, or any service where you have multiple accounts. And it's the strongest argument for naming keys by purpose: <code>github_personal</code> and <code>github_work</code> make the two blocks self-documenting; two files named <code>id_rsa</code> and <code>id_rsa2</code> do not.</p>
+<p>GitHub never sees the alias—it only sees <code>github.com</code> and your key. This works the same for GitLab, Bitbucket, or any service where you have multiple accounts. And it's the strongest argument for naming keys by purpose: <code>github_personal</code> and <code>github_work</code> make the two blocks self-documenting; two files named <code>id_rsa</code> and <code>id_rsa2</code> do not.</p>
 
     </section>
     

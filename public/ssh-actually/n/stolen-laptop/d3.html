@@ -29,7 +29,7 @@
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p><strong>Recovery:</strong> immediately remove your public key from all servers' <code>authorized_keys</code> files. This is the one move that actually ends the threat — once no server trusts the stolen key, it is worthless regardless of what happens to the passphrase.</p>
+      <p><strong>Recovery:</strong> immediately remove your public key from all servers' <code>authorized_keys</code> files. This is the one move that actually ends the threat—once no server trusts the stolen key, it is worthless regardless of what happens to the passphrase.</p>
 <p>What the passphrase did and didn't buy you:</p>
 <ul>
 <li>It <strong>prevents immediate use</strong> if the file is stolen.</li>
@@ -38,11 +38,11 @@
 <blockquote>
 <p>If someone steals a private key file, they can brute-force the passphrase <strong>offline with unlimited attempts</strong>.</p>
 </blockquote>
-<p>So a strong passphrase (20+ characters) buys you <em>time</em> to revoke — not permanent safety. Treat the key as compromised from the moment the machine is gone and use that time.</p>
+<p>So a strong passphrase (20+ characters) buys you <em>time</em> to revoke—not permanent safety. Treat the key as compromised from the moment the machine is gone and use that time.</p>
 <p>Related disk-key losses with the same shape:</p>
 <ul>
-<li><strong>Forgot passphrase</strong> — cannot use the key; generate a new key pair and deploy it. Prevention: store the passphrase in a password manager.</li>
-<li><strong>Disk corruption/loss</strong> — lose access to all servers using that key; generate a new key pair and deploy (requires existing access or out-of-band auth). Prevention: back up keys to encrypted storage.</li>
+<li><strong>Forgot passphrase</strong>—cannot use the key; generate a new key pair and deploy it. Prevention: store the passphrase in a password manager.</li>
+<li><strong>Disk corruption/loss</strong>—lose access to all servers using that key; generate a new key pair and deploy (requires existing access or out-of-band auth). Prevention: back up keys to encrypted storage.</li>
 </ul>
 
     </section>

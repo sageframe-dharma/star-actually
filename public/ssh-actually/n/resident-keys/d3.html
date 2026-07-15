@@ -30,14 +30,14 @@
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>With a resident key, the hardware stores the private key <em>and</em> the key's identity. The computer stores <strong>nothing essential</strong> — only a <strong>stub</strong>, a small non-secret pointer file that tells SSH which resident key to use. The hardware key already knows <em>which</em> key you mean and <em>how</em> to use it. No reconstruction is required.</p>
+      <p>With a resident key, the hardware stores the private key <em>and</em> the key's identity. The computer stores <strong>nothing essential</strong>—only a <strong>stub</strong>, a small non-secret pointer file that tells SSH which resident key to use. The hardware key already knows <em>which</em> key you mean and <em>how</em> to use it. No reconstruction is required.</p>
 <p>The practical consequences: if you have the hardware key,</p>
 <ul>
 <li>the SSH key <strong>cannot be lost</strong></li>
 <li>no files are required to recover access</li>
 <li>stubs can be regenerated anywhere, on any machine, with <code>ssh-keygen -K</code></li>
 </ul>
-<p>A wiped laptop, a stolen disk, a fresh machine — none of it matters. Plug in the hardware key, regenerate the stubs, and you're back.</p>
+<p>A wiped laptop, a stolen disk, a fresh machine—none of it matters. Plug in the hardware key, regenerate the stubs, and you're back.</p>
 
     </section>
     

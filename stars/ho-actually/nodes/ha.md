@@ -25,11 +25,11 @@ shape for building sessions where architectural thinking precedes specifying.
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
-**Ha Stage — Break from the Form.** > _"You know enough to see where the form doesn't fit. Now reshape it."_
+**Ha Stage—Break from the Form.** > _"You know enough to see where the form doesn't fit. Now reshape it."_
 
 #### Learner Characteristics
 
-The ha-stage learner has context. They understand the project's architecture, can read code with reasonable comprehension, and have begun developing their own opinions about how things should work. Critically, they have started _questioning the AI's suggestions_ — not from insecurity, but from emerging judgment.
+The ha-stage learner has context. They understand the project's architecture, can read code with reasonable comprehension, and have begun developing their own opinions about how things should work. Critically, they have started _questioning the AI's suggestions_—not from insecurity, but from emerging judgment.
 
 Ha-stage learners:
 
@@ -37,7 +37,7 @@ Ha-stage learners:
 - Are making architectural decisions, not just executing prescribed ones
 - Notice when something feels wrong in the codebase before they can name the specific problem
 - Have internalized basic tool fluency (git, testing, linting) and no longer need step-by-step reminders
-- Are developing the capacity to scope their own work — they know what a reasonable session looks like
+- Are developing the capacity to scope their own work—they know what a reasonable session looks like
 
 #### Ho Characteristics
 

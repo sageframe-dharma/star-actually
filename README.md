@@ -1,4 +1,4 @@
-# star-actually — production
+# star-actually—production
 
 The public home of **`*, Actually`** and the built star sites. This repo is what
 Cloudflare Pages serves.
@@ -6,7 +6,7 @@ Cloudflare Pages serves.
 ## Layout
 
 ```
-public/            ← the deployable static site — Pages serves this (committed)
+public/            ← the deployable static site—Pages serves this (committed)
   index.html         the project homepage
   ssh-actually/      SSH, Actually
   ho-actually/       Ho System, Actually
@@ -18,7 +18,7 @@ build.sh           ← rebuild public/ from source
 ## Deploy
 
 Push. Point Cloudflare Pages at this repo with **output directory `public/`** and
-**no build command**. It's static — just files. Done.
+**no build command**. It's static—just files. Done.
 
 ## Rebuild
 
@@ -32,4 +32,4 @@ work under the subfolder. Run:
 ```
 
 It builds the homepage and every star into `public/`. The LLM receptionist is
-deferred — everything here is static.
+deferred—everything here is static.

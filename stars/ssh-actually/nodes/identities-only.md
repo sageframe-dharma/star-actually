@@ -6,7 +6,7 @@ requires: [ssh-config-basics]
 related: [multiple-github-accounts, ssh-debugging, config-wildcards]
 entry_points: [what does identitiesonly do, too many authentication failures, ssh tries wrong key]
 summary: >
-  Force SSH to present only the keys you named — prevents SSH trying every key
+  Force SSH to present only the keys you named—prevents SSH trying every key
   you own and the "too many authentication failures" it causes.
 ---
 
@@ -16,7 +16,7 @@ IdentitiesOnly
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-An SSH config option that forces SSH to use **only the identities explicitly listed** — the keys named in `IdentityFile` — instead of trying every key you have.
+An SSH config option that forces SSH to use **only the identities explicitly listed**—the keys named in `IdentityFile`—instead of trying every key you have.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -30,7 +30,7 @@ Host github.com
     IdentitiesOnly yes
 ```
 
-Best practice — set it globally, so *every* connection presents only what you deliberately configured:
+Best practice—set it globally, so *every* connection presents only what you deliberately configured:
 
 ```
 Host *

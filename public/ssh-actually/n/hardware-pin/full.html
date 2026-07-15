@@ -53,11 +53,11 @@
 <li>Locks or wipes after failures</li>
 <li>Cannot be brute-forced offline</li>
 </ul>
-<p>This is why a short PIN is acceptable where a short passphrase is not: a passphrase protects a <em>file</em>, which a thief can attack offline with unlimited attempts. A PIN protects a <em>physical device</em> with attempt limits — the enforcement lives in the same tamper-resistant hardware as the secrets.</p>
+<p>This is why a short PIN is acceptable where a short passphrase is not: a passphrase protects a <em>file</em>, which a thief can attack offline with unlimited attempts. A PIN protects a <em>physical device</em> with attempt limits—the enforcement lives in the same tamper-resistant hardware as the secrets.</p>
 <p>Setting or changing the PIN (YubiKey example):</p>
 <pre><code class="language-bash">ykman fido access change-pin
 </code></pre>
-<p>The forgot-PIN reality: if you forget the PIN, you cannot use the hardware key after the limited attempts run out — the key locks or wipes after too many failures (usually 8 attempts). There is no reset-by-email here; the lockout is the security feature working as designed. Store the PIN securely (a password manager is fine) and have a backup hardware key.</p>
+<p>The forgot-PIN reality: if you forget the PIN, you cannot use the hardware key after the limited attempts run out—the key locks or wipes after too many failures (usually 8 attempts). There is no reset-by-email here; the lockout is the security feature working as designed. Store the PIN securely (a password manager is fine) and have a backup hardware key.</p>
 
     </section>
     

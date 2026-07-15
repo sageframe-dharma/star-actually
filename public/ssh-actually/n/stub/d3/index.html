@@ -50,8 +50,8 @@
 <p>Regenerate stubs on any machine:</p>
 <pre><code class="language-bash">ssh-keygen -K
 </code></pre>
-<p>This scans the hardware key for resident credentials and creates stub files in the current directory — move them to <code>~/.ssh/</code> afterward. Use it on a fresh machine, after accidentally deleting stub files, or when migrating to a new computer.</p>
-<p>What loss means: a minor inconvenience only. Stub loss is five seconds of <code>ssh-keygen -K</code>. Compare the <strong>blob</strong> — the file a <em>non-resident</em> key depends on — whose loss is permanent. Both are non-secret and both are useless to a thief without the hardware; only the stub is regenerable. Backing up stubs is pointless — just regenerate.</p>
+<p>This scans the hardware key for resident credentials and creates stub files in the current directory—move them to <code>~/.ssh/</code> afterward. Use it on a fresh machine, after accidentally deleting stub files, or when migrating to a new computer.</p>
+<p>What loss means: a minor inconvenience only. Stub loss is five seconds of <code>ssh-keygen -K</code>. Compare the <strong>blob</strong>—the file a <em>non-resident</em> key depends on—whose loss is permanent. Both are non-secret and both are useless to a thief without the hardware; only the stub is regenerable. Backing up stubs is pointless—just regenerate.</p>
 
     </section>
     

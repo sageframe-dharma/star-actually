@@ -42,16 +42,16 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>trust boundary</strong> is the line around the place your secret lives. Everything inside the line can use — or lose — the secret; everything outside must ask. Where you draw the line decides who you are trusting: a key on disk trusts your entire operating system; a key in hardware trusts one physical object.</p>
+      <p>A <strong>trust boundary</strong> is the line around the place your secret lives. Everything inside the line can use—or lose—the secret; everything outside must ask. Where you draw the line decides who you are trusting: a key on disk trusts your entire operating system; a key in hardware trusts one physical object.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>The question &quot;how secure is my SSH setup?&quot; is really &quot;where does the secret live?&quot; — and there are only a few answers:</p>
+      <p>The question &quot;how secure is my SSH setup?&quot; is really &quot;where does the secret live?&quot;—and there are only a few answers:</p>
 <p><strong>On disk (traditional keys).</strong> The private key is a file. Malware can copy it, disk theft exposes it, backups contain it. A passphrase helps, but it's brute-forceable offline. The boundary is your whole OS: anything that can read your files is inside it.</p>
-<p><strong>On disk, dressed up (macOS Keychain).</strong> macOS stores passphrases in Keychain, unlocks them via Touch ID, auto-loads keys into the agent. It <em>feels</em> like hardware security; it is actually disk-based security plus OS trust. The private key still lives on disk — the boundary hasn't moved, it's just better furnished.</p>
+<p><strong>On disk, dressed up (macOS Keychain).</strong> macOS stores passphrases in Keychain, unlocks them via Touch ID, auto-loads keys into the agent. It <em>feels</em> like hardware security; it is actually disk-based security plus OS trust. The private key still lives on disk—the boundary hasn't moved, it's just better furnished.</p>
 <p><strong>In hardware.</strong> The secret is created inside the device, never written to disk, and cannot be copied. The boundary shrinks to a physical object you can hold.</p>
-<p><strong>Lent away (agent forwarding).</strong> The key stays home, but a remote machine can request signatures from your agent — the boundary temporarily extends to include a machine you may not control.</p>
+<p><strong>Lent away (agent forwarding).</strong> The key stays home, but a remote machine can request signatures from your agent—the boundary temporarily extends to include a machine you may not control.</p>
 
     </section>
     

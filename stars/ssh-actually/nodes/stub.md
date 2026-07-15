@@ -6,7 +6,7 @@ requires: [resident-keys]
 related: [blob, new-machine-setup, hardware-keys-ssh]
 entry_points: [what is a stub file, ssh-keygen -K, regenerate ssh key files, deleted my sk key file]
 summary: >
-  The regenerable pointer — a small non-secret file that tells SSH which
+  The regenerable pointer—a small non-secret file that tells SSH which
   resident key to use. Delete it freely; regenerate anywhere with ssh-keygen -K.
 ---
 
@@ -28,6 +28,6 @@ Regenerate stubs on any machine:
 ssh-keygen -K
 ```
 
-This scans the hardware key for resident credentials and creates stub files in the current directory — move them to `~/.ssh/` afterward. Use it on a fresh machine, after accidentally deleting stub files, or when migrating to a new computer.
+This scans the hardware key for resident credentials and creates stub files in the current directory—move them to `~/.ssh/` afterward. Use it on a fresh machine, after accidentally deleting stub files, or when migrating to a new computer.
 
-What loss means: a minor inconvenience only. Stub loss is five seconds of `ssh-keygen -K`. Compare the **blob** — the file a *non-resident* key depends on — whose loss is permanent. Both are non-secret and both are useless to a thief without the hardware; only the stub is regenerable. Backing up stubs is pointless — just regenerate.
+What loss means: a minor inconvenience only. Stub loss is five seconds of `ssh-keygen -K`. Compare the **blob**—the file a *non-resident* key depends on—whose loss is permanent. Both are non-secret and both are useless to a thief without the hardware; only the stub is regenerable. Backing up stubs is pointless—just regenerate.

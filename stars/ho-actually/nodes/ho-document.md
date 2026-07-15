@@ -6,7 +6,7 @@ requires: []
 related: [ho-process, kamae, reflect, shape]
 entry_points: [ho document]
 summary: >
-  The written scope for one working session — its decisions, boundaries, and checks — read by the person doing the work.
+  The written scope for one working session—its decisions, boundaries, and checks—read by the person doing the work.
 ---
 
 <!-- depth:1 -->
@@ -15,7 +15,7 @@ ho document
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The written scope for one working session — its decisions, boundaries, and checks — read by the person doing the work.
+The written scope for one working session—its decisions, boundaries, and checks—read by the person doing the work.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

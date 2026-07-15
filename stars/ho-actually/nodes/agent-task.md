@@ -29,13 +29,13 @@ architectural decisions inside), executor-portable (names its `model:`), **tripw
 <!-- provenance: extracted -->
 **The Two Registers.** A ho document operates at the **architectural register**. It carries decisions, the
 reasoning behind them, deferred discoveries, and post-execution reflection. It is read
-by humans — the practitioner, future maintainers, anyone trying to understand why the
+by humans—the practitioner, future maintainers, anyone trying to understand why the
 system is the way it is. Its content is durable: it survives the project and gets
 revisited years later.
 
 An agent task operates at the **executable register**. It carries exact files, exact
 changes, exact acceptance criteria, exact verification commands. It is read primarily
-by an autonomous coding agent — and secondarily by the practitioner reviewing the
+by an autonomous coding agent—and secondarily by the practitioner reviewing the
 agent's output. Its content is operational: once the work is committed and verified,
 the task's job is done.
 
@@ -47,7 +47,7 @@ explicit binding.
 
 <!-- depth:5 -->
 <!-- provenance: extracted -->
-**Agent tasks (ATs).** **Purpose:** the executable register — a surgical, command-verifiable spec an
+**Agent tasks (ATs).** **Purpose:** the executable register—a surgical, command-verifiable spec an
 autonomous coding agent reads to execute one bounded unit of work. No architectural
 thinking inside; all decisions were extracted to the parent ho's Think phase.
 **Authored by:** the kamae-5 skill's embedded dandori toolkit (child tasks) or the
@@ -58,14 +58,13 @@ practitioner directly via the standalone dandori skill (standalone tasks).
  requires a decision, the decision belongs upstream in the ho.
 2. **Executor-portable.** Because there is no thinking in it, the AT can be dispatched
  to a cheaper model, a subagent, or any executor that reliably follows a procedural
- spec. Every AT names its executor in the `model:` frontmatter field — an unset
+ spec. Every AT names its executor in the `model:` frontmatter field—an unset
  model is an unmade decision. This is the operating discipline's model-choice-by-task
  principle made concrete.
-3. **Escalating.** The AT is autonomous *until it finds something new*. A surprise —
- schema mismatch, wrong assumption in the spec, unanticipated dependency — halts the
+3. **Escalating.** The AT is autonomous *until it finds something new*. A surprise—schema mismatch, wrong assumption in the spec, unanticipated dependency—halts the
  run and surfaces the finding to the practitioner. No silent architectural decisions
  inside an AT (kokoroe guideline 4, "Halt and surface"; `Stop Condition` sections
  name the anticipated surprises, the rule covers the unanticipated ones).
 4. **One commit.** Each AT lands as a single commit, prefixed `ho-NN:` for child
  tasks, referencing the spec ID. The git log reads as a sequence of ATs grouped by
- ho — the split's visible signature. […]
+ ho—the split's visible signature. […]

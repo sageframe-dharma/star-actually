@@ -20,13 +20,13 @@ Naming honestly how well you grasp something, on a three-step scale from use-it-
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 Calibrated comprehension in three declared tiers: Tier 1 Black Box
-(use without investigating), Tier 2 Functional (configure, troubleshoot, explain — the
+(use without investigating), Tier 2 Functional (configure, troubleshoot, explain—the
 default target), Tier 3 Deep (could redesign). Declaring tiers honestly is a core skill;
 tiers are declared in shu, self-assigned in ha, internalized in ri.
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
-**The Three Tiers in Detail.** ### Tier 1 — Black Box
+**The Three Tiers in Detail.** ### Tier 1—Black Box
 
 **Definition:** The learner uses this component without understanding its internals. They know the inputs, the outputs, and the invocation pattern. They trust that it works.
 
@@ -38,8 +38,8 @@ tiers are declared in shu, self-assigned in ha, internalized in ri.
 
 **What Tier 1 is NOT:**
 
-- It's not "I've heard of it." Tier 1 requires functional usage — you can invoke it, you can read its output, you can pass it the right inputs.
-- It's not "I'm confused by it." If you can't use it at all, you don't have Tier 1 — you have a prerequisite gap.
+- It's not "I've heard of it." Tier 1 requires functional usage—you can invoke it, you can read its output, you can pass it the right inputs.
+- It's not "I'm confused by it." If you can't use it at all, you don't have Tier 1—you have a prerequisite gap.
 
 **When Tier 1 is appropriate:**
 

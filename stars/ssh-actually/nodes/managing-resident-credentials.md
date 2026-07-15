@@ -6,7 +6,7 @@ requires: [resident-keys, slots]
 related: [hardware-key-setup-resident, stub, lost-hardware-key]
 entry_points: [list keys on yubikey, ykman fido credentials, delete resident key, yubikey slots full]
 summary: >
-  Housekeeping on the device — ykman list/delete, checking slot usage,
+  Housekeeping on the device—ykman list/delete, checking slot usage,
   freeing slots, and the slot-limit recovery path.
 ---
 
@@ -16,7 +16,7 @@ Managing Resident Credentials
 
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Resident credentials live on the hardware key itself, so managing them means talking to the device — with `ykman` — not editing files. The housekeeping: list what's stored, delete what you no longer need, free slots when you hit the limit.
+Resident credentials live on the hardware key itself, so managing them means talking to the device—with `ykman`—not editing files. The housekeeping: list what's stored, delete what you no longer need, free slots when you hit the limit.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

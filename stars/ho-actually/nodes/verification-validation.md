@@ -6,7 +6,7 @@ requires: [what-is-ho-system]
 related: [dogfood, graded-eval, interaction-test, smoke-test]
 entry_points: [verification / validation]
 summary: >
-  The two halves of quality — verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.
+  The two halves of quality—verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.
 ---
 
 <!-- depth:1 -->
@@ -15,14 +15,13 @@ verification / validation
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The two halves of quality — verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.
+The two halves of quality—verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 The two halves of quality. **Verification** asks _did we
-build it right?_ (matches spec) — tests, lint, self-review, cross-agent review, human
-architectural review. **Validation** asks _did we build the right thing, and is it good?_ —
-the four modalities (smoke test, interaction test, eval, dogfood). A passing verification
+build it right?_ (matches spec)—tests, lint, self-review, cross-agent review, human
+architectural review. **Validation** asks _did we build the right thing, and is it good?_—the four modalities (smoke test, interaction test, eval, dogfood). A passing verification
 stack is not validation.
 
 <!-- depth:4 -->

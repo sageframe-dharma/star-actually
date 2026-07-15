@@ -41,7 +41,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>SSH refuses to connect and warns that the remote host's identification has changed. <code>~/.ssh/known_hosts</code> stores server fingerprints to prevent <strong>MITM attacks</strong> (man-in-the-middle — someone intercepting your connection and impersonating the server), and this warning means the server you reached is presenting a different fingerprint than the one on record.</p>
+      <p>SSH refuses to connect and warns that the remote host's identification has changed. <code>~/.ssh/known_hosts</code> stores server fingerprints to prevent <strong>MITM attacks</strong> (man-in-the-middle—someone intercepting your connection and impersonating the server), and this warning means the server you reached is presenting a different fingerprint than the one on record.</p>
 
     </section>
     
@@ -52,7 +52,7 @@
 <li>Server OS reinstalled</li>
 <li>IP address reused</li>
 </ul>
-<p>The fix — remove the stale entry from <code>known_hosts</code>:</p>
+<p>The fix—remove the stale entry from <code>known_hosts</code>:</p>
 <pre><code class="language-bash">ssh-keygen -R server-name
 ssh-keygen -R 192.0.2.10
 </code></pre>
@@ -67,7 +67,7 @@ Are you sure you want to continue connecting (yes/no)?
 <li>Type <code>yes</code> if fingerprint matches</li>
 <li>Server added to known_hosts</li>
 </ol>
-<p><strong>Security note:</strong> typing <code>yes</code> blindly defeats MITM protection. The warning exists precisely to catch the case where the &quot;changed&quot; server is actually an attacker in the middle — if you can't explain <em>why</em> the key changed (no rebuild, no reinstall, no IP reuse you know of), stop and verify before you clear the entry.</p>
+<p><strong>Security note:</strong> typing <code>yes</code> blindly defeats MITM protection. The warning exists precisely to catch the case where the &quot;changed&quot; server is actually an attacker in the middle—if you can't explain <em>why</em> the key changed (no rebuild, no reinstall, no IP reuse you know of), stop and verify before you clear the entry.</p>
 
     </section>
     

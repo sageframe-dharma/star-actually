@@ -26,7 +26,7 @@ pattern is the **sidecar directory**; the artifact is a **sidecar record**.
 <!-- depth:4 -->
 <!-- provenance: extracted -->
 **What compresses: the Kamae chain, usually to zero.** An external contribution does not get a seed, system design, README, or overview.
-**The upstream issue substitutes for all four** — it states the problem (seed), the
+**The upstream issue substitutes for all four**—it states the problem (seed), the
 host codebase states the architecture (system design), the host README states scope,
 and the PR's own bounded goal is the sequence. The supacode case ran two hos against
 GitHub issue #442 with no Kamae documents; the ho frontmatter carries the
@@ -37,8 +37,8 @@ branch: osc11-per-pane-backgrounds
 issue: https://github.com/supabitapp/supacode/issues/442
 ```
 
-If a contribution grows past what an issue can anchor — multi-PR arcs, architectural
-proposals — write the missing thinking as an RFC *in the host project's format*, not
+If a contribution grows past what an issue can anchor—multi-PR arcs, architectural
+proposals—write the missing thinking as an RFC *in the host project's format*, not
 as a Kamae document in their tree.
 
 <!-- depth:5 -->

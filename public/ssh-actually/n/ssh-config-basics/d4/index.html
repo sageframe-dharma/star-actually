@@ -41,7 +41,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p><code>~/.ssh/config</code> is a <strong>named set of connection instructions</strong> — not a routing table for hostnames. Each block gives a nickname to a full set of connection details, so <code>ssh myserver</code> replaces a command line full of flags.</p>
+      <p><code>~/.ssh/config</code> is a <strong>named set of connection instructions</strong>—not a routing table for hostnames. Each block gives a nickname to a full set of connection details, so <code>ssh myserver</code> replaces a command line full of flags.</p>
 
     </section>
     
@@ -56,28 +56,28 @@
 </code></pre>
 <p>The fields:</p>
 <ul>
-<li><code>Host</code> — what you type: <code>ssh nickname</code></li>
-<li><code>HostName</code> — real address (DNS or IP)</li>
-<li><code>User</code> — remote username (defaults to your local username)</li>
-<li><code>Port</code> — SSH port (defaults to 22)</li>
-<li><code>IdentityFile</code> — which key to use</li>
-<li><code>IdentitiesOnly yes</code> — only try the specified keys</li>
+<li><code>Host</code>—what you type: <code>ssh nickname</code></li>
+<li><code>HostName</code>—real address (DNS or IP)</li>
+<li><code>User</code>—remote username (defaults to your local username)</li>
+<li><code>Port</code>—SSH port (defaults to 22)</li>
+<li><code>IdentityFile</code>—which key to use</li>
+<li><code>IdentitiesOnly yes</code>—only try the specified keys</li>
 </ul>
 <p>The before/after is the whole sales pitch. Without config:</p>
 <pre><code class="language-bash">ssh -i ~/.ssh/id_work_yk -p 2222 tyro@work-server.company.com
 </code></pre>
-<p>With config: <code>ssh work</code>. Short memorable names, the correct key always used, port and username remembered — and git operations against configured hosts just work.</p>
+<p>With config: <code>ssh work</code>. Short memorable names, the correct key always used, port and username remembered—and git operations against configured hosts just work.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p>Three consequences follow from &quot;named instructions, not a routing table&quot;:</p>
 <ul>
-<li><strong>Host is a label you control.</strong> It doesn't have to match the real hostname — <code>HostName</code> handles that. This is what makes <strong>host aliases</strong> possible: two different names, two different keys, one actual server. Multi-account Git setups depend on it.</li>
+<li><strong>Host is a label you control.</strong> It doesn't have to match the real hostname—<code>HostName</code> handles that. This is what makes <strong>host aliases</strong> possible: two different names, two different keys, one actual server. Multi-account Git setups depend on it.</li>
 <li><strong>Blocks compose by pattern.</strong> Wildcards (<code>Host 192.168.1.*</code>, <code>Host *</code>) let you set per-network keys and global defaults, with the most specific match winning.</li>
-<li><strong><code>IdentitiesOnly</code> keeps SSH honest.</strong> Without it, SSH may try every key you own — leaking which keys you hold and tripping &quot;too many authentication failures.&quot; With it, each block presents exactly the key you named.</li>
+<li><strong><code>IdentitiesOnly</code> keeps SSH honest.</strong> Without it, SSH may try every key you own—leaking which keys you hold and tripping &quot;too many authentication failures.&quot; With it, each block presents exactly the key you named.</li>
 </ul>
-<p>When the resolved behavior surprises you, ask SSH itself: <code>ssh -G hostname</code> prints every option as finally resolved — which config rules matched and what values won.</p>
+<p>When the resolved behavior surprises you, ask SSH itself: <code>ssh -G hostname</code> prints every option as finally resolved—which config rules matched and what values won.</p>
 
     </section>
     

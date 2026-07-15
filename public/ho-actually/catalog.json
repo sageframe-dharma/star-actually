@@ -156,7 +156,7 @@
       "id": "graded-eval",
       "title": "eval (graded eval)",
       "type": "definition",
-      "summary": "A human-graded check of output quality — correctness, clarity, judgment — where a pass/fail machine won't do.",
+      "summary": "A human-graded check of output quality—correctness, clarity, judgment—where a pass/fail machine won't do.",
       "entry_points": [
         "eval"
       ],
@@ -206,7 +206,7 @@
       "id": "ho-document",
       "title": "ho document",
       "type": "definition",
-      "summary": "The written scope for one working session — its decisions, boundaries, and checks — read by the person doing the work.",
+      "summary": "The written scope for one working session—its decisions, boundaries, and checks—read by the person doing the work.",
       "entry_points": [
         "ho document"
       ],
@@ -226,7 +226,7 @@
       "id": "ho-process",
       "title": "ho-process/",
       "type": "definition",
-      "summary": "The project folder that holds the methodology's working artifacts — the framing documents, the session records, and the task specs.",
+      "summary": "The project folder that holds the methodology's working artifacts—the framing documents, the session records, and the task specs.",
       "entry_points": [
         "ho-process/"
       ],
@@ -236,7 +236,7 @@
       "id": "hot-cold",
       "title": "hot / cold",
       "type": "definition",
-      "summary": "The split between a scratch memory you keep rewriting and the permanent record you never edit — with the rule that the permanent one always wins.",
+      "summary": "The split between a scratch memory you keep rewriting and the permanent record you never edit—with the rule that the permanent one always wins.",
       "entry_points": [
         "hot / cold"
       ],
@@ -256,7 +256,7 @@
       "id": "kagen",
       "title": "kagen (加減)",
       "type": "definition",
-      "summary": "The felt-right amount for a value — its correct degree, found by feel rather than by rule.",
+      "summary": "The felt-right amount for a value—its correct degree, found by feel rather than by rule.",
       "entry_points": [
         "kagen"
       ],
@@ -266,7 +266,7 @@
       "id": "kamae",
       "title": "Kamae (構え)",
       "type": "concept",
-      "summary": "The ready stance and the chain of documents that keeps a build oriented — four written up front to frame it, two written as it runs to keep its place.",
+      "summary": "The ready stance and the chain of documents that keeps a build oriented—four written up front to frame it, two written as it runs to keep its place.",
       "entry_points": [
         "kamae"
       ],
@@ -286,7 +286,7 @@
       "id": "kokoroe",
       "title": "kokoroe (心得)",
       "type": "concept",
-      "summary": "The built-in care an executing agent works under — read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.",
+      "summary": "The built-in care an executing agent works under—read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.",
       "entry_points": [
         "kokoroe"
       ],
@@ -326,7 +326,7 @@
       "id": "mutability",
       "title": "mutability (living / frozen / sealed)",
       "type": "concept",
-      "summary": "The scale of how much an artifact may change over its life — living (revised freely), frozen (changed only by override), or sealed (never again).",
+      "summary": "The scale of how much an artifact may change over its life—living (revised freely), frozen (changed only by override), or sealed (never again).",
       "entry_points": [
         "mutability"
       ],
@@ -346,7 +346,7 @@
       "id": "orientation-ho",
       "title": "orientation ho",
       "type": "definition",
-      "summary": "A framing-only session — setting conditions, primers, and handoff — with no building work inside it.",
+      "summary": "A framing-only session—setting conditions, primers, and handoff—with no building work inside it.",
       "entry_points": [
         "orientation ho"
       ],
@@ -366,7 +366,7 @@
       "id": "phase",
       "title": "phase",
       "type": "concept",
-      "summary": "A named stage of work, used at three scales — the whole project's progression, a cluster of related sessions, and the steps within a single session.",
+      "summary": "A named stage of work, used at three scales—the whole project's progression, a cluster of related sessions, and the steps within a single session.",
       "entry_points": [
         "phase"
       ],
@@ -406,7 +406,7 @@
       "id": "readme",
       "title": "README (Kamae 3)",
       "type": "definition",
-      "summary": "The project's front-page description, written before the code exists as if the finished thing had already shipped — so the scope has to be decided in order to write it.",
+      "summary": "The project's front-page description, written before the code exists as if the finished thing had already shipped—so the scope has to be decided in order to write it.",
       "entry_points": [
         "readme",
         "kamae 3"
@@ -497,7 +497,7 @@
       "id": "shu-ha-ri",
       "title": "shu-ha-ri (守破離)",
       "type": "concept",
-      "summary": "The three-stage path of mastery — follow the form, break from it deliberately, then transcend it — held separately for each skill.",
+      "summary": "The three-stage path of mastery—follow the form, break from it deliberately, then transcend it—held separately for each skill.",
       "entry_points": [
         "shu-ha-ri"
       ],
@@ -527,7 +527,7 @@
       "id": "smoke-test",
       "title": "smoke test",
       "type": "definition",
-      "summary": "An agent walking through the real feature to confirm it works — the floor other checks must clear, never the final word.",
+      "summary": "An agent walking through the real feature to confirm it works—the floor other checks must clear, never the final word.",
       "entry_points": [
         "smoke test"
       ],
@@ -557,7 +557,7 @@
       "id": "standalone-agent-task",
       "title": "standalone agent task",
       "type": "definition",
-      "summary": "A self-contained agent task that belongs to no larger session — maintenance, a surgical fix, or early exploration.",
+      "summary": "A self-contained agent task that belongs to no larger session—maintenance, a surgical fix, or early exploration.",
       "entry_points": [
         "standalone agent task"
       ],
@@ -577,7 +577,7 @@
       "id": "state-summary-block",
       "title": "state-summary block",
       "type": "definition",
-      "summary": "A short, fixed four-line status — done, next, blockers, and how far along — written at the end of every work session.",
+      "summary": "A short, fixed four-line status—done, next, blockers, and how far along—written at the end of every work session.",
       "entry_points": [
         "state-summary block"
       ],
@@ -597,7 +597,7 @@
       "id": "system-design",
       "title": "system design (Kamae 2)",
       "type": "definition",
-      "summary": "The document that settles how the system works — its parts, connections, and technology choices — before any code is written.",
+      "summary": "The document that settles how the system works—its parts, connections, and technology choices—before any code is written.",
       "entry_points": [
         "system design",
         "kamae 2"
@@ -608,7 +608,7 @@
       "id": "think-execute-reflect",
       "title": "Think / Execute / Reflect",
       "type": "concept",
-      "summary": "The fixed three-part rhythm of a building session — decide first, build second, then judge honestly what happened.",
+      "summary": "The fixed three-part rhythm of a building session—decide first, build second, then judge honestly what happened.",
       "entry_points": [
         "think / execute / reflect"
       ],
@@ -648,7 +648,7 @@
       "id": "verification-validation",
       "title": "verification / validation",
       "type": "concept",
-      "summary": "The two halves of quality — verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.",
+      "summary": "The two halves of quality—verification asks whether it was built right, validation asks whether the right thing was built and whether it's any good.",
       "entry_points": [
         "verification / validation"
       ],

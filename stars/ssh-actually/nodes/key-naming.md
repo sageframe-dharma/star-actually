@@ -6,7 +6,7 @@ requires: [key-pairs]
 related: [key-generation, blob, multiple-github-accounts]
 entry_points: [how should I name ssh keys, ssh key naming convention, what is the ssh key comment, id_rsa vs custom names]
 summary: >
-  Names are for humans, not computers — clarity, intent, and scope in key
+  Names are for humans, not computers—clarity, intent, and scope in key
   filenames, plus why the comment field earns its keep.
 ---
 
@@ -36,10 +36,10 @@ What *doesn't* matter: matching filenames across machines, keeping names secret,
 
 Why naming matters in practice:
 
-- **For blobs** (non-resident hardware keys): you must preserve these files. Clear names help you identify what you're backing up — losing a blob means generating a new key.
+- **For blobs** (non-resident hardware keys): you must preserve these files. Clear names help you identify what you're backing up—losing a blob means generating a new key.
 - **For human sanity**: when you have 5+ keys, unclear names create confusion. `id_rsa` tells you nothing about purpose; `github_personal_yk` tells you everything.
 
-For public keys, the filename doesn't matter (they're deployed to servers) — the **comment inside the public key** matters more:
+For public keys, the filename doesn't matter (they're deployed to servers)—the **comment inside the public key** matters more:
 
 ```
 ssh-ed25519 AAAA... tyro@laptop-2024-github

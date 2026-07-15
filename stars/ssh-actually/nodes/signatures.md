@@ -6,7 +6,7 @@ requires: [key-pairs]
 related: [fido2, hardware-security-keys, known-hosts]
 entry_points: [what is a cryptographic signature, how does ssh prove identity, challenge response, how does the server verify me]
 summary: >
-  The challenge–sign–verify flow — proof of possession that never reveals the
+  The challenge–sign–verify flow—proof of possession that never reveals the
   secret. The missing piece that makes key pairs usable.
 ---
 
@@ -38,12 +38,12 @@ That's the whole authentication. No secret travels; only the proof does.
 <!-- provenance: synthesized -->
 Challenge–sign–verify is the one flow that repeats everywhere key-pair cryptography shows up:
 
-- **Hardware security keys** run the same flow with the signing moved inside the device. The computer asks: *"Please sign this challenge."* The hardware responds: *"Here is a proof I signed it."* The secret never leaves the hardware — only the signature does.
+- **Hardware security keys** run the same flow with the signing moved inside the device. The computer asks: *"Please sign this challenge."* The hardware responds: *"Here is a proof I signed it."* The secret never leaves the hardware—only the signature does.
 - **FIDO2** brought the same shift to the web: the service verifies a *signature*, not a secret.
-- **Agent forwarding** is this flow stretched across machines — the challenge travels back to your local agent for signing, and the signature travels forward.
+- **Agent forwarding** is this flow stretched across machines—the challenge travels back to your local agent for signing, and the signature travels forward.
 - **Known hosts** is the same verification pointed the other way: the server proves *its* identity to you, and your client checks the proof against a stored fingerprint.
 
-Once you can see the challenge and the signature in each of these, none of them is a new idea — just a new place to stand.
+Once you can see the challenge and the signature in each of these, none of them is a new idea—just a new place to stand.
 
 <!-- depth:5 -->
 <!-- provenance: extracted -->
@@ -69,4 +69,4 @@ Client (has private key)              Server (has public key)
 
 **The private key NEVER travels over the network.** The server verifies the signature using your public key, but never sees your private key.
 
-What a signature proves, stated fully: a specific secret exists, and the holder of that secret approved *this exact action*. That second half matters — a signature is bound to the challenge it signed, so it can't be replayed against a different one.
+What a signature proves, stated fully: a specific secret exists, and the holder of that secret approved *this exact action*. That second half matters—a signature is bound to the challenge it signed, so it can't be replayed against a different one.

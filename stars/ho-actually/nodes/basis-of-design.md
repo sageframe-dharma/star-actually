@@ -20,10 +20,9 @@ The one file that holds a project's settled design values as explicit numbers, t
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 The single file holding a project's landed design decisions as
-explicit numeric parameters — the source of truth the tuners land into, the spikes
+explicit numeric parameters—the source of truth the tuners land into, the spikes
 validate against, and the implementation ports from. Holds the _frozen_ values at any
-moment (the _living_ happens in the **propagation ledger**): the file itself is living —
-propagated with named-reason commits only — while each landed value is frozen until a
+moment (the _living_ happens in the **propagation ledger**): the file itself is living—propagated with named-reason commits only—while each landed value is frozen until a
 propagation moves it. Generalizes past visual to any
 design parameter, interaction thresholds included. Named from the AEC term of art; not a
 "register" (see _architectural register_).

@@ -50,7 +50,7 @@
 framing), <code>dev</code> (building, not yet user-exercised), <code>beta</code> (real users or the practitioner
 driving it, hardening), <code>production</code> (shipped, in use). The fourth field of the
 <strong>state-summary block</strong>. Orthogonal to the practitioner's <strong>shu-ha-ri</strong> stage and to the
-<code>stage:</code> Kamae field — and deliberately not named &quot;status,&quot; which belongs to a document's own
+<code>stage:</code> Kamae field—and deliberately not named &quot;status,&quot; which belongs to a document's own
 <code>status:</code> frontmatter state.</p>
 
     </section>
@@ -59,22 +59,21 @@ driving it, hardening), <code>production</code> (shipped, in use). The fourth fi
       <p><strong>The State-Summary Block.</strong> Every ho closes, and every session ends, with a <strong>state-summary block</strong>: four fields, fixed
 order, fixed labels. It is the answer to <em>&quot;where is this build, in one glance?&quot;</em></p>
 <pre><code>**STATE-SUMMARY**
-- **COMPLETED** — what was just finished this session/stretch.
-- **NEXT** — the single clear pointer to what comes next.
-- **ACTION ITEMS / BLOCKS** — open items needing action, and anything blocking progress. A
+- **COMPLETED**—what was just finished this session/stretch.
+- **NEXT**—the single clear pointer to what comes next.
+- **ACTION ITEMS / BLOCKS**—open items needing action, and anything blocking progress. A
  blocked build must say so loudly here (`BLOCKED: …`), never bury it. Write `none` when clear.
-- **PROJECT LIFECYCLE** — `kamae` | `dev` | `beta` | `production`.
+- **PROJECT LIFECYCLE**—`kamae` | `dev` | `beta` | `production`.
 </code></pre>
 <p><strong>The four fields are verbatim and ordered.</strong> The block leads with the literal token
 <code>STATE-SUMMARY</code> and the four labels in this sequence. This is deliberate: the block is a <strong>hook
 surface</strong>. A greppable, fixed-shape block lets ntfy alerts, dashboards, the practitioner's
 memory system, or any other tool extract build state without parsing prose. Free-form status
-notes are not this; the value is in the fixed form. Keep it that way even when it feels rigid —
-the rigidity is what makes it machine-findable.</p>
+notes are not this; the value is in the fixed form. Keep it that way even when it feels rigid—the rigidity is what makes it machine-findable.</p>
 <p><strong>Project lifecycle</strong> is where the <em>thing being built</em> sits in its life. It is orthogonal to
-the two &quot;stage&quot; notions in the framework — [[shu-ha-ri|shu-ha-ri]]
+the two &quot;stage&quot; notions in the framework—[[shu-ha-ri|shu-ha-ri]]
 (framework/structure/shu-ha-ri.md) is the <em>practitioner's</em> skill stage, and the <code>stage:</code>
-frontmatter field is the <em>Kamae</em> position — and it is unrelated to the <code>status:</code> frontmatter
+frontmatter field is the <em>Kamae</em> position—and it is unrelated to the <code>status:</code> frontmatter
 field, which is a <em>document's</em> own state (<code>draft</code>, <code>complete</code>, <code>stable</code>). The word &quot;status&quot; was
 deliberately kept off this field to avoid that collision: […]</p>
 

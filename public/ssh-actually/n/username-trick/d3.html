@@ -24,7 +24,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The username in <code>git@github.com</code> and <code>git@gitlab.com</code> is always <code>git</code> — for everyone. The service doesn't care about your account username; it cares about <strong>which SSH key you presented</strong>. Your <strong>actual</strong> identity comes from the key, not the username.</p>
+      <p>The username in <code>git@github.com</code> and <code>git@gitlab.com</code> is always <code>git</code>—for everyone. The service doesn't care about your account username; it cares about <strong>which SSH key you presented</strong>. Your <strong>actual</strong> identity comes from the key, not the username.</p>
 
     </section>
     
@@ -40,8 +40,8 @@
 <pre><code class="language-bash">ssh -T git@github.com
 # → Hi username! You've successfully authenticated...
 </code></pre>
-<p>You typed <code>git</code>; the greeting names <em>you</em> — because the key you presented is registered to your account.</p>
-<p>One consequence trips up almost everyone eventually: since the username and hostname are identical for every account on the service, <strong>the key is the only thing that distinguishes two accounts</strong>. That's the trap behind multi-account setups — and why the fix (host aliases) works by changing which key gets presented, not the username.</p>
+<p>You typed <code>git</code>; the greeting names <em>you</em>—because the key you presented is registered to your account.</p>
+<p>One consequence trips up almost everyone eventually: since the username and hostname are identical for every account on the service, <strong>the key is the only thing that distinguishes two accounts</strong>. That's the trap behind multi-account setups—and why the fix (host aliases) works by changing which key gets presented, not the username.</p>
 
     </section>
     

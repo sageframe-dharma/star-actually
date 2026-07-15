@@ -24,14 +24,14 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The split between a scratch memory you keep rewriting and the permanent record you never edit — with the rule that the permanent one always wins.</p>
+      <p>The split between a scratch memory you keep rewriting and the permanent record you never edit—with the rule that the permanent one always wins.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>The two temperatures of a build's memory. <strong>hot</strong> — mutable, non-canonical,
+      <p>The two temperatures of a build's memory. <strong>hot</strong>—mutable, non-canonical,
 overwritten every pause: the working-memory handoff file, its live queues and <code>NEXT:</code> pointer.
-<strong>cold</strong> — sealed and canonical: git, Reflect, the build record. On conflict the cold record
+<strong>cold</strong>—sealed and canonical: git, Reflect, the build record. On conflict the cold record
 wins; forward-only governs cold, and hot is exempt because it is not the record. A finding lives
 hot, then graduates cold at ho close (the hot/cold finding lifecycle); a sealed decision banks
 cold at the moment of sealing, the hot copy a cache.</p>
@@ -39,12 +39,12 @@ cold at the moment of sealing, the hot copy a cache.</p>
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p><strong>Authority — Hot and Cold.</strong> The working-memory file duplicates state that also lives in the build record, the Reflect
+      <p><strong>Authority—Hot and Cold.</strong> The working-memory file duplicates state that also lives in the build record, the Reflect
 phases, and the git log. That duplication is only safe under an explicit authority rule:</p>
 <blockquote>
 <p><strong>The working-memory file is HOT: mutable, non-canonical, a fast-pickup cache derived from
-and subordinate to the cold canonical record.</strong> The cold record — the git history, the per-ho
-<strong>Reflect</strong>, and the <strong>build record</strong> (§8) — is the source of truth. When the hot file and the
+and subordinate to the cold canonical record.</strong> The cold record—the git history, the per-ho
+<strong>Reflect</strong>, and the <strong>build record</strong> (§8)—is the source of truth. When the hot file and the
 cold record disagree, the <strong>cold record wins</strong>, and the hot file is corrected to match.</p>
 </blockquote>
 <p>The hot file is an <em>index</em> of state optimized for fast reconstitution, never the record itself.

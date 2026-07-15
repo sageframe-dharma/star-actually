@@ -6,7 +6,7 @@ requires: [key-pairs, passwords]
 related: [webauthn, passkeys, hardware-security-keys, phishing-resistance]
 entry_points: [what is fido2, fido2 vs password, how does fido2 work, fido2 and ssh]
 summary: >
-  The cryptographic shift for the web — the server verifies a signature, not a
+  The cryptographic shift for the web—the server verifies a signature, not a
   secret; key-pair cryptography replacing shared secrets everywhere.
 ---
 
@@ -26,10 +26,10 @@ FIDO2 replaces shared secrets with **key-pair cryptography**. Instead of storing
 
 You encounter FIDO2 wearing several different outfits:
 
-- **WebAuthn** — the browser API that lets websites use it
-- **Passkeys** — discoverable FIDO2 credentials, made user-friendly and synced by platforms
-- **Hardware security keys** — FIDO2 with physical enforcement
-- **Hardware-backed SSH keys** (`ed25519-sk`) — SSH using FIDO2 hardware as signing devices
+- **WebAuthn**—the browser API that lets websites use it
+- **Passkeys**—discoverable FIDO2 credentials, made user-friendly and synced by platforms
+- **Hardware security keys**—FIDO2 with physical enforcement
+- **Hardware-backed SSH keys** (`ed25519-sk`)—SSH using FIDO2 hardware as signing devices
 
 The confusion around these names exists because the technologies evolved incrementally, not coherently. They are all one idea.
 
@@ -43,7 +43,7 @@ The mental model that keeps the whole landscape coherent:
 - **Hardware keys** = physical enforcement
 - **SSH** = FIDO2 without the browser
 
-SSH predates all of this. It has used key-pair cryptography since the 1990s; the web kept using passwords, then slowly caught up to where SSH already was — with different names and different contexts. SSH already knows the username and doesn't need discovery, so modern SSH simply reuses **FIDO2 hardware keys as signing devices**. That's why hardware SSH keys aren't a "new" technology — they're SSH and FIDO2 meeting in the middle, and why the same YubiKey works for web logins *and* SSH.
+SSH predates all of this. It has used key-pair cryptography since the 1990s; the web kept using passwords, then slowly caught up to where SSH already was—with different names and different contexts. SSH already knows the username and doesn't need discovery, so modern SSH simply reuses **FIDO2 hardware keys as signing devices**. That's why hardware SSH keys aren't a "new" technology—they're SSH and FIDO2 meeting in the middle, and why the same YubiKey works for web logins *and* SSH.
 
 Everything modern converges on one principle:
 

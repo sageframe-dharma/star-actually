@@ -24,7 +24,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>One command — <code>ssh-keygen</code> — creates every kind of key pair. The choices that matter are the <strong>algorithm</strong> (<code>-t ed25519</code> for disk keys, <code>-t ed25519-sk</code> for hardware-backed keys), the <strong>filename</strong> (<code>-f</code>), the <strong>comment</strong> (<code>-C</code>), and whether to set a <strong>passphrase</strong>.</p>
+      <p>One command—<code>ssh-keygen</code>—creates every kind of key pair. The choices that matter are the <strong>algorithm</strong> (<code>-t ed25519</code> for disk keys, <code>-t ed25519-sk</code> for hardware-backed keys), the <strong>filename</strong> (<code>-f</code>), the <strong>comment</strong> (<code>-C</code>), and whether to set a <strong>passphrase</strong>.</p>
 
     </section>
     
@@ -39,16 +39,16 @@
 </ul>
 <p>Options:</p>
 <ul>
-<li><code>-t ed25519</code> — Key algorithm (modern, recommended)</li>
-<li><code>-f ~/.ssh/id_example</code> — Name of key files</li>
-<li><code>-C &quot;comment&quot;</code> — Metadata label (optional but helpful)</li>
+<li><code>-t ed25519</code>—Key algorithm (modern, recommended)</li>
+<li><code>-f ~/.ssh/id_example</code>—Name of key files</li>
+<li><code>-C &quot;comment&quot;</code>—Metadata label (optional but helpful)</li>
 </ul>
 <p>When prompted for passphrase:</p>
 <ul>
 <li>Enter strong passphrase (20+ characters) for security</li>
 <li>OR press Enter for no passphrase (convenient but risky)</li>
 </ul>
-<p>For hardware-backed keys the algorithm changes to <code>-t ed25519-sk</code> (with <code>-O resident</code> for resident keys) — the setup procedures for those have their own nodes.</p>
+<p>For hardware-backed keys the algorithm changes to <code>-t ed25519-sk</code> (with <code>-O resident</code> for resident keys)—the setup procedures for those have their own nodes.</p>
 <h3>change passphrase on existing key</h3>
 <pre><code class="language-bash">ssh-keygen -p -f ~/.ssh/id_example
 </code></pre>

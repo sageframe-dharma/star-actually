@@ -7,7 +7,7 @@ related: [stub, hardware-security-keys, key-pairs, recovery-planning]
 entry_points: [blob file, sk key file, what is the file on disk for a hardware key]
 summary: >
   The non-secret file on disk that a non-resident hardware key needs to
-  reconstruct its private key. Not a secret — but lose it and the key is gone.
+  reconstruct its private key. Not a secret—but lose it and the key is gone.
 ---
 
 <!-- depth:1 -->
@@ -22,13 +22,13 @@ A **non-secret, opaque data file** stored on disk that identifies *which* key yo
 <!-- provenance: extracted -->
 The blob is *not* a private key. It is more like a **recipe card** the hardware key knows how to interpret.
 
-A non-resident key is not stored anywhere. The hardware key contains a master secret; the blob contains key-specific metadata; combined — only inside the hardware, only when authorized — they reconstruct the same private key every time. A signature is produced, and the derived key is immediately discarded. At no point does the private key exist as a file.
+A non-resident key is not stored anywhere. The hardware key contains a master secret; the blob contains key-specific metadata; combined—only inside the hardware, only when authorized—they reconstruct the same private key every time. A signature is produced, and the derived key is immediately discarded. At no point does the private key exist as a file.
 
-What this costs you: the blob **must** be preserved. Losing the blob permanently destroys access — the hardware key cannot rediscover the key on its own.
+What this costs you: the blob **must** be preserved. Losing the blob permanently destroys access—the hardware key cannot rediscover the key on its own.
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
-The blob is one half of the resident/non-resident tradeoff — its counterpart is the **stub**, the regenerable pointer file that resident keys use.
+The blob is one half of the resident/non-resident tradeoff—its counterpart is the **stub**, the regenerable pointer file that resident keys use.
 
 > **Non-resident keys trade discoverability for scalability.**
 

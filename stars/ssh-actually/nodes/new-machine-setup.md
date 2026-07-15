@@ -6,7 +6,7 @@ requires: [key-pairs, ssh-config-basics]
 related: [stub, blob, file-permissions, first-key-setup]
 entry_points: [ssh on a new laptop, restore ssh access new machine, migrate ssh keys, fresh install ssh setup]
 summary: >
-  Fresh laptop, restore access — three workflows side by side: regenerate
+  Fresh laptop, restore access—three workflows side by side: regenerate
   stubs (resident), restore blobs (non-resident), restore keys + permissions (disk).
 ---
 
@@ -16,7 +16,7 @@ New Machine Setup
 
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Fresh laptop, and you need your SSH access back. The workflow depends on where your authentication state lives: **resident** keys regenerate their stubs from the hardware, **non-resident** keys restore their blobs from backup, **disk-based** keys restore the keys themselves — and then the permissions must be fixed.
+Fresh laptop, and you need your SSH access back. The workflow depends on where your authentication state lives: **resident** keys regenerate their stubs from the hardware, **non-resident** keys restore their blobs from backup, **disk-based** keys restore the keys themselves—and then the permissions must be fixed.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

@@ -6,7 +6,7 @@ requires: [fido2]
 related: [passkeys, hardware-security-keys, phishing-resistance]
 entry_points: [what is webauthn, webauthn vs fido2, how do browsers do passwordless login]
 summary: >
-  The browser API that lets websites use FIDO2 — the bridge between web pages
+  The browser API that lets websites use FIDO2—the bridge between web pages
   and authenticators, phishing-resistant by design.
 ---
 

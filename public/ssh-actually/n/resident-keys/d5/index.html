@@ -46,14 +46,14 @@
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>With a resident key, the hardware stores the private key <em>and</em> the key's identity. The computer stores <strong>nothing essential</strong> — only a <strong>stub</strong>, a small non-secret pointer file that tells SSH which resident key to use. The hardware key already knows <em>which</em> key you mean and <em>how</em> to use it. No reconstruction is required.</p>
+      <p>With a resident key, the hardware stores the private key <em>and</em> the key's identity. The computer stores <strong>nothing essential</strong>—only a <strong>stub</strong>, a small non-secret pointer file that tells SSH which resident key to use. The hardware key already knows <em>which</em> key you mean and <em>how</em> to use it. No reconstruction is required.</p>
 <p>The practical consequences: if you have the hardware key,</p>
 <ul>
 <li>the SSH key <strong>cannot be lost</strong></li>
 <li>no files are required to recover access</li>
 <li>stubs can be regenerated anywhere, on any machine, with <code>ssh-keygen -K</code></li>
 </ul>
-<p>A wiped laptop, a stolen disk, a fresh machine — none of it matters. Plug in the hardware key, regenerate the stubs, and you're back.</p>
+<p>A wiped laptop, a stolen disk, a fresh machine—none of it matters. Plug in the hardware key, regenerate the stubs, and you're back.</p>
 
     </section>
     
@@ -70,7 +70,7 @@
 <blockquote>
 <p><strong>Resident keys trade scalability for permanence.</strong></p>
 </blockquote>
-<p>The mirror image of non-resident keys, which trade the other way — unlimited keys, but a blob on disk you must preserve. A resident key consumes one of the device's intentionally scarce slots (typically 25–32 total); in exchange, the state that matters lives entirely in the hardware, where it cannot be lost with a disk.</p>
+<p>The mirror image of non-resident keys, which trade the other way—unlimited keys, but a blob on disk you must preserve. A resident key consumes one of the device's intentionally scarce slots (typically 25–32 total); in exchange, the state that matters lives entirely in the hardware, where it cannot be lost with a disk.</p>
 <p>Resident keys are ideal for:</p>
 <ul>
 <li>critical infrastructure</li>
@@ -94,7 +94,7 @@
 <li>The signature is returned</li>
 <li>The private key never leaves the hardware</li>
 </ol>
-<p>Compare the non-resident flow — <code>Client → Blob → Hardware Key → Signature → Server</code> — and notice what's missing here: the required disk file. That is what &quot;discoverable&quot; means mechanically: the device can enumerate its own resident credentials, which is why <code>ssh-keygen -K</code> can rebuild your stub files from nothing but the plugged-in key. The stub is required by SSH at connection time, but it is <em>derived</em> state, not <em>essential</em> state — deleting it costs you five seconds, not a key.</p>
+<p>Compare the non-resident flow—<code>Client → Blob → Hardware Key → Signature → Server</code>—and notice what's missing here: the required disk file. That is what &quot;discoverable&quot; means mechanically: the device can enumerate its own resident credentials, which is why <code>ssh-keygen -K</code> can rebuild your stub files from nothing but the plugged-in key. The stub is required by SSH at connection time, but it is <em>derived</em> state, not <em>essential</em> state—deleting it costs you five seconds, not a key.</p>
 <p>Side by side:</p>
 <pre><code class="language-text">NON-RESIDENT                    RESIDENT
 ════════════                    ════════

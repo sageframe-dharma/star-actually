@@ -34,10 +34,10 @@
 <pre><code class="language-bash"># The .ssh directory itself
 chmod 700 ~/.ssh
 
-# Private keys — owner read/write only
+# Private keys—owner read/write only
 chmod 600 ~/.ssh/id_*
 
-# Public keys — owner read/write, others can read
+# Public keys—owner read/write, others can read
 chmod 644 ~/.ssh/id_*.pub
 
 # Config file
@@ -47,7 +47,7 @@ chmod 600 ~/.ssh/config
 chmod 644 ~/.ssh/known_hosts
 </code></pre>
 <h3>correct permissions (server side)</h3>
-<pre><code class="language-bash"># Home directory — must not be writable by others
+<pre><code class="language-bash"># Home directory—must not be writable by others
 chmod 755 ~/
 # Some servers require 700
 

@@ -29,7 +29,7 @@
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p><strong>Session</strong> — a period of time during which authentication remains valid.</p>
+      <p><strong>Session</strong>—a period of time during which authentication remains valid.</p>
 <p>Agent caching:</p>
 <ul>
 <li>avoids repeated typing</li>
@@ -47,8 +47,8 @@ ssh-add -D                  # remove all keys from the agent
     <section class="layer layer-4" data-depth="4">
       <p>The agent is a small idea with long shadows:</p>
 <ul>
-<li><strong>It's why macOS feels magical.</strong> macOS stores passphrases in Keychain, unlocks them via Touch ID, and auto-loads keys into <code>ssh-agent</code>. The invisibility is the agent working, not a different security model — the key still lives on disk.</li>
-<li><strong>It's what agent forwarding forwards.</strong> Forwarding lets a remote server request signatures from <em>your local</em> agent. Convenient across hops — and the reason a compromised intermediate can sign as you for the length of your session. The agent's power is exactly what gets lent.</li>
+<li><strong>It's why macOS feels magical.</strong> macOS stores passphrases in Keychain, unlocks them via Touch ID, and auto-loads keys into <code>ssh-agent</code>. The invisibility is the agent working, not a different security model—the key still lives on disk.</li>
+<li><strong>It's what agent forwarding forwards.</strong> Forwarding lets a remote server request signatures from <em>your local</em> agent. Convenient across hops—and the reason a compromised intermediate can sign as you for the length of your session. The agent's power is exactly what gets lent.</li>
 <li><strong>It's the first thing to check when the wrong key wins.</strong> SSH will offer agent-loaded keys during authentication; <code>ssh-add -l</code> tells you what's actually loaded, which is a standard early step when debugging why SSH presented a key you didn't expect.</li>
 </ul>
 

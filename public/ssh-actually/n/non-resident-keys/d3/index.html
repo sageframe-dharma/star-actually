@@ -42,18 +42,18 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>non-resident SSH key</strong> is a hardware-backed SSH key where the hardware key does not store the key's identity, does not remember the key exists, and the private key is <strong>never stored anywhere — not on disk, not on the hardware</strong>. Instead, the private key is <strong>derived on demand</strong> by the hardware key using a file called a blob.</p>
+      <p>A <strong>non-resident SSH key</strong> is a hardware-backed SSH key where the hardware key does not store the key's identity, does not remember the key exists, and the private key is <strong>never stored anywhere—not on disk, not on the hardware</strong>. Instead, the private key is <strong>derived on demand</strong> by the hardware key using a file called a blob.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>The confusion usually comes from the phrase <em>&quot;the key isn't stored on the hardware.&quot;</em> That's true — but incomplete. A non-resident key is <strong>not stored</strong> anywhere. Instead:</p>
+      <p>The confusion usually comes from the phrase <em>&quot;the key isn't stored on the hardware.&quot;</em> That's true—but incomplete. A non-resident key is <strong>not stored</strong> anywhere. Instead:</p>
 <ul>
 <li>the hardware key contains a <strong>master secret</strong></li>
 <li>the blob (a non-secret, opaque file on disk) contains <strong>key-specific metadata</strong></li>
 <li>the hardware key combines its internal master secret with the blob to <strong>reconstruct the same private key every time</strong></li>
 </ul>
-<p>This happens <strong>only inside the hardware</strong>, and only when authorized. The blob is not a private key — it is more like a <strong>recipe card</strong> the hardware key knows how to interpret. It cannot be used without the hardware, and cannot be reverse-engineered into a private key.</p>
+<p>This happens <strong>only inside the hardware</strong>, and only when authorized. The blob is not a private key—it is more like a <strong>recipe card</strong> the hardware key knows how to interpret. It cannot be used without the hardware, and cannot be reverse-engineered into a private key.</p>
 
     </section>
     

@@ -52,8 +52,8 @@
 <blockquote>
 <p><strong>Hardware keys change <em>where authentication state lives</em>.</strong></p>
 </blockquote>
-<p>Traditional SSH puts <strong>all state on disk</strong> — the private key file is the full secret, copyable, losable. Hardware-backed SSH <strong>splits state</strong> between your computer and the hardware key. That split is the entire design.</p>
-<p>Mechanically, modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong> — the <code>ed25519-sk</code> key type uses FIDO2 as a signing oracle. SSH predates all of the modern web-auth machinery: it already uses key-pair cryptography, already knows the username, and does not need discovery. This is why SSH keys, WebAuthn, and passkeys feel related — they <em>are</em>.</p>
+<p>Traditional SSH puts <strong>all state on disk</strong>—the private key file is the full secret, copyable, losable. Hardware-backed SSH <strong>splits state</strong> between your computer and the hardware key. That split is the entire design.</p>
+<p>Mechanically, modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong>—the <code>ed25519-sk</code> key type uses FIDO2 as a signing oracle. SSH predates all of the modern web-auth machinery: it already uses key-pair cryptography, already knows the username, and does not need discovery. This is why SSH keys, WebAuthn, and passkeys feel related—they <em>are</em>.</p>
 
     </section>
     
@@ -76,7 +76,7 @@ Hardware-backed SSH
 └──────────────────┘       └────────────────┘
 </code></pre>
 <p>With the disk key: lose the file → access is gone; copy the file → attacker can authenticate. With the hardware key: the <strong>secret never becomes a file</strong>, the computer cannot authenticate alone, and physical presence is required every time.</p>
-<p>Two concepts carry the whole model from here: <strong>state</strong> (anything that must be remembered for authentication to keep working) and <strong>slots</strong> (the scarce protected storage inside the device). The two kinds of hardware SSH key — resident and non-resident — are just two answers to &quot;which side of the split holds the state?&quot;</p>
+<p>Two concepts carry the whole model from here: <strong>state</strong> (anything that must be remembered for authentication to keep working) and <strong>slots</strong> (the scarce protected storage inside the device). The two kinds of hardware SSH key—resident and non-resident—are just two answers to &quot;which side of the split holds the state?&quot;</p>
 
     </section>
     

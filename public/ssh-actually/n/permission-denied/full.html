@@ -41,12 +41,12 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>SSH is opinionated about file permissions. If permissions are wrong, SSH <strong>silently refuses to use the key</strong> — no error message in normal mode, just &quot;Permission denied.&quot; This is the single most common cause of &quot;my key doesn't work&quot; problems.</p>
+      <p>SSH is opinionated about file permissions. If permissions are wrong, SSH <strong>silently refuses to use the key</strong>—no error message in normal mode, just &quot;Permission denied.&quot; This is the single most common cause of &quot;my key doesn't work&quot; problems.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>Why SSH cares: if a private key file is readable by other users, it might already be compromised. SSH would rather fail than use a key it can't trust. The same applies to <code>authorized_keys</code> on the server — if the file or its parent directories are writable by others, SSH ignores it entirely.</p>
+      <p>Why SSH cares: if a private key file is readable by other users, it might already be compromised. SSH would rather fail than use a key it can't trust. The same applies to <code>authorized_keys</code> on the server—if the file or its parent directories are writable by others, SSH ignores it entirely.</p>
 <p>Fix all permissions at once, locally:</p>
 <pre><code class="language-bash">chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
@@ -65,9 +65,9 @@ chmod 600 ~/.ssh/authorized_keys
     <section class="layer layer-4" data-depth="4">
       <p>When key auth fails silently, the diagnosis path is:</p>
 <ol>
-<li><strong>Verbose output:</strong> <code>ssh -vvv user@server</code> — look for lines containing &quot;Permissions&quot;, &quot;ignored&quot;, or &quot;bad ownership&quot;.</li>
+<li><strong>Verbose output:</strong> <code>ssh -vvv user@server</code>—look for lines containing &quot;Permissions&quot;, &quot;ignored&quot;, or &quot;bad ownership&quot;.</li>
 <li><strong>Server-side logs</strong> (requires existing access): <code>sudo tail -20 /var/log/auth.log</code> or <code>sudo journalctl -u sshd -n 20</code>. The server logs exactly why it rejected the key.</li>
-<li><strong>Ownership:</strong> <code>ls -la ~/.ssh/</code> — everything should be owned by your user. Root-owned files in <code>~/.ssh</code> are a common artifact of running <code>ssh-keygen</code> with <code>sudo</code>.</li>
+<li><strong>Ownership:</strong> <code>ls -la ~/.ssh/</code>—everything should be owned by your user. Root-owned files in <code>~/.ssh</code> are a common artifact of running <code>ssh-keygen</code> with <code>sudo</code>.</li>
 </ol>
 <p>Common patterns:</p>
 <table>

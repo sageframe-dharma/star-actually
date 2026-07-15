@@ -6,7 +6,7 @@ requires: [key-pairs, authorized-keys]
 related: [key-naming, recovery-planning, hardware-keys-ssh]
 entry_points: [how often should I rotate ssh keys, do ssh keys expire, replace an ssh key, left a job with keys on machines]
 summary: >
-  Keys never expire on their own — rotation is a manual discipline: when to do
+  Keys never expire on their own—rotation is a manual discipline: when to do
   it, the test-before-revoke order, and how hardware keys change the calculus.
 ---
 
@@ -16,7 +16,7 @@ Key Rotation
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Replacing an existing SSH key with a new one, either on a planned schedule or in response to a security event. Keys don't expire on their own — SSH has no built-in expiration mechanism. A key generated in 2019 works identically in 2029. This is a feature — and a risk.
+Replacing an existing SSH key with a new one, either on a planned schedule or in response to a security event. Keys don't expire on their own—SSH has no built-in expiration mechanism. A key generated in 2019 works identically in 2029. This is a feature—and a risk.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -48,7 +48,7 @@ The critical step is **3 before 4**. Test before you revoke. Otherwise a mistake
 <!-- provenance: extracted -->
 Why rotate at all: rotation limits the damage from keys you forgot existed, keys on machines you no longer control, keys whose passphrases may have been compromised without your knowledge, and `authorized_keys` files on servers that have accumulated stale entries.
 
-What most people actually do: nothing. They generate a key once, use it everywhere, and forget about it. This works until it doesn't. **Rotation is insurance — boring until the moment you need it.**
+What most people actually do: nothing. They generate a key once, use it everywhere, and forget about it. This works until it doesn't. **Rotation is insurance—boring until the moment you need it.**
 
 Hardware-backed keys change the rotation calculus:
 

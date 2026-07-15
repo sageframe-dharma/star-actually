@@ -49,13 +49,13 @@
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>You do <strong>not</strong> need to be new to computers to be confused by this. The confusion exists because these technologies evolved <strong>incrementally, not coherently</strong> — independently, and never properly unified in documentation.</p>
+      <p>You do <strong>not</strong> need to be new to computers to be confused by this. The confusion exists because these technologies evolved <strong>incrementally, not coherently</strong>—independently, and never properly unified in documentation.</p>
 <p>Modern authentication is built from <strong>layers</strong>, each solving a different problem:</p>
 <ol>
-<li><strong>Identity</strong> — who are you claiming to be?</li>
-<li><strong>Proof</strong> — how do you prove that claim?</li>
-<li><strong>Transport</strong> — how does that proof travel safely?</li>
-<li><strong>Enforcement</strong> — what limits abuse or theft?</li>
+<li><strong>Identity</strong>—who are you claiming to be?</li>
+<li><strong>Proof</strong>—how do you prove that claim?</li>
+<li><strong>Transport</strong>—how does that proof travel safely?</li>
+<li><strong>Enforcement</strong>—what limits abuse or theft?</li>
 </ol>
 <p>Different technologies live at different layers; confusion happens when they get lumped together. How the pieces fit:</p>
 <ul>
@@ -78,14 +78,14 @@
 <li><strong>Hardware keys</strong> = physical enforcement</li>
 <li><strong>SSH</strong> = FIDO2 without the browser</li>
 </ul>
-<p>Where SSH fits: SSH predates all of this. It has used key-pair cryptography since 1995; the web kept using passwords, then slowly caught up to where SSH already was — with different names and different contexts. SSH already knows the username and doesn't need discovery, so modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong>.</p>
-<p>That single family tree — key-pair cryptography at the root, branching to SSH on one side and FIDO2 (WebAuthn → passkeys, hardware keys, <code>ed25519-sk</code>) on the other — explains the things that otherwise feel like coincidence:</p>
+<p>Where SSH fits: SSH predates all of this. It has used key-pair cryptography since 1995; the web kept using passwords, then slowly caught up to where SSH already was—with different names and different contexts. SSH already knows the username and doesn't need discovery, so modern SSH simply reuses <strong>FIDO2 hardware keys as signing devices</strong>.</p>
+<p>That single family tree—key-pair cryptography at the root, branching to SSH on one side and FIDO2 (WebAuthn → passkeys, hardware keys, <code>ed25519-sk</code>) on the other—explains the things that otherwise feel like coincidence:</p>
 <ul>
-<li>Why hardware SSH keys aren't a &quot;new&quot; technology — they're SSH and FIDO2 meeting in the middle</li>
+<li>Why hardware SSH keys aren't a &quot;new&quot; technology—they're SSH and FIDO2 meeting in the middle</li>
 <li>Why the same YubiKey works for web logins <em>and</em> SSH</li>
 <li>Why touch + PIN feels similar whether you're logging into a website or authenticating to a server</li>
 </ul>
-<p>The legacy branch — passwords, then OTP layered on top — is fundamentally weaker for one reason: the server stores secrets. The modern branch stores none; the server verifies <strong>signatures, not secrets</strong>.</p>
+<p>The legacy branch—passwords, then OTP layered on top—is fundamentally weaker for one reason: the server stores secrets. The modern branch stores none; the server verifies <strong>signatures, not secrets</strong>.</p>
 
     </section>
     

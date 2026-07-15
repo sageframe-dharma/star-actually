@@ -6,7 +6,7 @@ requires: [git-ssh-authentication]
 related: [host-aliases, multiple-github-accounts]
 entry_points: [why is the username always git, git@github.com meaning, how does github know who I am]
 summary: >
-  Why the username is always git — the service identifies you by which key you
+  Why the username is always git—the service identifies you by which key you
   present, not by the username you type.
 ---
 
@@ -16,7 +16,7 @@ The git@ Username
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The username in `git@github.com` and `git@gitlab.com` is always `git` — for everyone. The service doesn't care about your account username; it cares about **which SSH key you presented**. Your **actual** identity comes from the key, not the username.
+The username in `git@github.com` and `git@gitlab.com` is always `git`—for everyone. The service doesn't care about your account username; it cares about **which SSH key you presented**. Your **actual** identity comes from the key, not the username.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -34,6 +34,6 @@ ssh -T git@github.com
 # → Hi username! You've successfully authenticated...
 ```
 
-You typed `git`; the greeting names *you* — because the key you presented is registered to your account.
+You typed `git`; the greeting names *you*—because the key you presented is registered to your account.
 
-One consequence trips up almost everyone eventually: since the username and hostname are identical for every account on the service, **the key is the only thing that distinguishes two accounts**. That's the trap behind multi-account setups — and why the fix (host aliases) works by changing which key gets presented, not the username.
+One consequence trips up almost everyone eventually: since the username and hostname are identical for every account on the service, **the key is the only thing that distinguishes two accounts**. That's the trap behind multi-account setups—and why the fix (host aliases) works by changing which key gets presented, not the username.

@@ -25,23 +25,23 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p><code>~/.ssh/authorized_keys</code> is the file on the server that lists the public keys the server will accept for your account. The server stores <strong>only public keys</strong> — this file is where. Every key pair that can log you in has its public half on exactly this list.</p>
+      <p><code>~/.ssh/authorized_keys</code> is the file on the server that lists the public keys the server will accept for your account. The server stores <strong>only public keys</strong>—this file is where. Every key pair that can log you in has its public half on exactly this list.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
       <p>Two ways your public key gets there:</p>
-<p><strong>Automatic</strong> — <code>ssh-copy-id</code> logs in with your current auth method, appends the public key to <code>~/.ssh/authorized_keys</code> on the server, and sets correct permissions:</p>
+<p><strong>Automatic</strong>—<code>ssh-copy-id</code> logs in with your current auth method, appends the public key to <code>~/.ssh/authorized_keys</code> on the server, and sets correct permissions:</p>
 <pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_example.pub user@server
 </code></pre>
-<p><strong>Manual</strong> — when <code>ssh-copy-id</code> is unavailable, on the server:</p>
+<p><strong>Manual</strong>—when <code>ssh-copy-id</code> is unavailable, on the server:</p>
 <pre><code class="language-bash">mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 nano ~/.ssh/authorized_keys
 # Paste ENTIRE contents of id_example.pub (one line)
 chmod 600 ~/.ssh/authorized_keys
 </code></pre>
-<p>One key per line, the whole line. The permissions are not optional — if the file or its parent directories are writable by other users, SSH ignores it entirely.</p>
+<p>One key per line, the whole line. The permissions are not optional—if the file or its parent directories are writable by other users, SSH ignores it entirely.</p>
 
     </section>
     

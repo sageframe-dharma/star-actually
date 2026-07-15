@@ -20,7 +20,7 @@ An **SSH agent** is a background process that holds your unlocked private keys f
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
-**Session** — a period of time during which authentication remains valid.
+**Session**—a period of time during which authentication remains valid.
 
 Agent caching:
 
@@ -40,6 +40,6 @@ ssh-add -D                  # remove all keys from the agent
 <!-- provenance: synthesized -->
 The agent is a small idea with long shadows:
 
-- **It's why macOS feels magical.** macOS stores passphrases in Keychain, unlocks them via Touch ID, and auto-loads keys into `ssh-agent`. The invisibility is the agent working, not a different security model — the key still lives on disk.
-- **It's what agent forwarding forwards.** Forwarding lets a remote server request signatures from *your local* agent. Convenient across hops — and the reason a compromised intermediate can sign as you for the length of your session. The agent's power is exactly what gets lent.
+- **It's why macOS feels magical.** macOS stores passphrases in Keychain, unlocks them via Touch ID, and auto-loads keys into `ssh-agent`. The invisibility is the agent working, not a different security model—the key still lives on disk.
+- **It's what agent forwarding forwards.** Forwarding lets a remote server request signatures from *your local* agent. Convenient across hops—and the reason a compromised intermediate can sign as you for the length of your session. The agent's power is exactly what gets lent.
 - **It's the first thing to check when the wrong key wins.** SSH will offer agent-loaded keys during authentication; `ssh-add -l` tells you what's actually loaded, which is a standard early step when debugging why SSH presented a key you didn't expect.

@@ -41,42 +41,41 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A human-graded check of output quality — correctness, clarity, judgment — where a pass/fail machine won't do.</p>
+      <p>A human-graded check of output quality—correctness, clarity, judgment—where a pass/fail machine won't do.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>A validation modality (c): a human-graded pass on <em>output quality</em>
-— correctness, clarity, judgment — that needs discernment rather than a pass/fail robot.
+      <p>A validation modality (c): a human-graded pass on <em>output quality</em>—correctness, clarity, judgment—that needs discernment rather than a pass/fail robot.
 Produces a graded-eval record (a <code>type: eval-handoff</code> + <code>type: eval-results</code> pair). What
 earlier drafts mislabeled a &quot;smoke test.&quot;</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p><strong>The Validation Layer.</strong> The verification stack answers one question: <strong>did we build it <em>right</em>?</strong> — does the code match the spec. Every layer in Section 2 serves that question. It is only half of quality.</p>
-<p>The other half is <strong>validation</strong>: <strong>did we build the <em>right thing</em>, and is it <em>good</em>?</strong> A system can pass every test, clear every linter, and survive cross-agent and human architectural review — and still be the wrong thing, or a right thing that is confusing, unpleasant, or useless in real hands. Verification cannot catch this, because verification measures conformance to a spec, and the spec itself is what validation interrogates.</p>
-<p>This is Section 1's thesis extended. The research there — that humans overestimate AI-assisted work — was about correctness. It holds at least as strongly for goodness. An agent reporting &quot;the feature works&quot; is reporting that it ran; it is not reporting that the feature is <em>good</em>, because good is not a property the agent is positioned to judge. Validation is the antidote to overconfidence about goodness, exactly as verification is the antidote to overconfidence about correctness.</p>
+      <p><strong>The Validation Layer.</strong> The verification stack answers one question: <strong>did we build it <em>right</em>?</strong>—does the code match the spec. Every layer in Section 2 serves that question. It is only half of quality.</p>
+<p>The other half is <strong>validation</strong>: <strong>did we build the <em>right thing</em>, and is it <em>good</em>?</strong> A system can pass every test, clear every linter, and survive cross-agent and human architectural review—and still be the wrong thing, or a right thing that is confusing, unpleasant, or useless in real hands. Verification cannot catch this, because verification measures conformance to a spec, and the spec itself is what validation interrogates.</p>
+<p>This is Section 1's thesis extended. The research there—that humans overestimate AI-assisted work—was about correctness. It holds at least as strongly for goodness. An agent reporting &quot;the feature works&quot; is reporting that it ran; it is not reporting that the feature is <em>good</em>, because good is not a property the agent is positioned to judge. Validation is the antidote to overconfidence about goodness, exactly as verification is the antidote to overconfidence about correctness.</p>
 
     </section>
     
     <section class="layer layer-5" data-depth="5">
-      <p><strong>Eval (graded eval) <em>(canonical-provisional — adopt on 2nd use)</em>.</strong> <strong>Purpose:</strong> a graded pass on <em>output quality</em> — correctness, clarity, judgment — the
+      <p><strong>Eval (graded eval) <em>(canonical-provisional—adopt on 2nd use)</em>.</strong> <strong>Purpose:</strong> a graded pass on <em>output quality</em>—correctness, clarity, judgment—the
 validation modality that needs human discernment rather than a pass/fail robot (2.7 §3). A
 regression floor plus a new-capability set, with a grader/observer split and a corpus-delta
 check. Two paired documents in practice: a self-contained <em>handoff</em> framing the pass, and a
 <em>results</em> document recording graded outcomes.
 <strong>Frontmatter:</strong> <code>type: eval-handoff</code>, <code>type: eval-results</code>.
 <strong>Location / instances:</strong> shodo main arc and Subproject-A; the instances carry the historical
-<code>smoke-handoff</code> / <code>smoke-results</code> tokens — new instances use <code>eval-handoff</code> / <code>eval-results</code>
+<code>smoke-handoff</code> / <code>smoke-results</code> tokens—new instances use <code>eval-handoff</code> / <code>eval-results</code>
 (the <code>smoke-</code> token is dropped, as <code>smoke-sidequest-</code> was). Produced by the project-local
-<code>ho-smoke-collaborator</code> skill — a promotion candidate, re-scoped to the validation modalities
+<code>ho-smoke-collaborator</code> skill—a promotion candidate, re-scoped to the validation modalities
 it serves (IDEA-004); it self-describes as &quot;a sibling to the Kamae authoring skills: it feeds
 Kamae 5's Reflect phase without writing it.&quot;</p>
 <blockquote>
 <p><strong>Name correction (D19).</strong> This entry is what earlier drafts mislabeled a &quot;smoke test.&quot; In
-the validation layer (2.7 §3) the <em>smoke test</em> is the agent-run function check — a
-<em>practice</em>, not an artifact — while this human-graded output-quality pass is the <strong>eval</strong>.</p>
+the validation layer (2.7 §3) the <em>smoke test</em> is the agent-run function check—a
+<em>practice</em>, not an artifact—while this human-graded output-quality pass is the <strong>eval</strong>.</p>
 </blockquote>
 
     </section>

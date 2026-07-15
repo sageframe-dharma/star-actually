@@ -6,7 +6,7 @@ requires: []
 related: [what-is-ho-system]
 entry_points: [kokoroe]
 summary: >
-  The built-in care an executing agent works under — read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.
+  The built-in care an executing agent works under—read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.
 ---
 
 <!-- depth:1 -->
@@ -15,7 +15,7 @@ kokoroe (心得)
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The built-in care an executing agent works under — read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.
+The built-in care an executing agent works under—read the context first, treat the spec as its authority, check by command, and stop and surface on surprise.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

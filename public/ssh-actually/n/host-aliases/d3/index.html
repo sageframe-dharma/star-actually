@@ -42,18 +42,18 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>In SSH config, <code>Host</code> is a <strong>nickname</strong> and <code>HostName</code> is the <strong>actual address</strong>. They don't have to match. A host alias is a Host name you invent — it connects wherever its <code>HostName</code> says.</p>
+      <p>In SSH config, <code>Host</code> is a <strong>nickname</strong> and <code>HostName</code> is the <strong>actual address</strong>. They don't have to match. A host alias is a Host name you invent—it connects wherever its <code>HostName</code> says.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>An alias block looks like any other config block — the only trick is that the label is made up:</p>
+      <p>An alias block looks like any other config block—the only trick is that the label is made up:</p>
 <pre><code>Host github-personal
     HostName github.com
     IdentityFile ~/.ssh/github_personal
     IdentitiesOnly yes
 </code></pre>
-<p>Connecting with <code>ssh github-personal</code> — or a git URL like <code>git@github-personal:my-user/my-repo.git</code> — still reaches <code>github.com</code>; that's what <code>HostName</code> handles. But SSH matched the block by the alias you typed, so it presents the key <em>that block</em> names.</p>
+<p>Connecting with <code>ssh github-personal</code>—or a git URL like <code>git@github-personal:my-user/my-repo.git</code>—still reaches <code>github.com</code>; that's what <code>HostName</code> handles. But SSH matched the block by the alias you typed, so it presents the key <em>that block</em> names.</p>
 <p>The service never sees the alias. It only sees the <code>HostName</code> you connected to and the key you presented. The alias exists purely on your machine, in your config.</p>
 
     </section>

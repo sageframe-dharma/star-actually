@@ -24,17 +24,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>password</strong> is a shared secret known by you <em>and</em> the service. That single word — <em>shared</em> — is the whole problem: the server has to store something that can unlock your account, which means the server can lose it.</p>
+      <p>A <strong>password</strong> is a shared secret known by you <em>and</em> the service. That single word—<em>shared</em>—is the whole problem: the server has to store something that can unlock your account, which means the server can lose it.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
       <p>The problems, concretely:</p>
 <ul>
-<li>Passwords <strong>can be stolen from servers</strong> — every breach dump is a pile of shared secrets the server was holding.</li>
-<li>Passwords <strong>can be reused</strong> — one stolen password opens every account it was recycled into.</li>
-<li>Passwords <strong>can be phished</strong> — anything you type, you can be tricked into typing on the wrong site.</li>
-<li>Passwords <strong>must be remembered</strong> — which pushes people toward short, reused, guessable secrets.</li>
+<li>Passwords <strong>can be stolen from servers</strong>—every breach dump is a pile of shared secrets the server was holding.</li>
+<li>Passwords <strong>can be reused</strong>—one stolen password opens every account it was recycled into.</li>
+<li>Passwords <strong>can be phished</strong>—anything you type, you can be tricked into typing on the wrong site.</li>
+<li>Passwords <strong>must be remembered</strong>—which pushes people toward short, reused, guessable secrets.</li>
 </ul>
 <p>One-time codes layer rotating secrets on top; they help, but the secret still lives on a server. The real fix is structural: replace shared secrets with key-pair cryptography, where the server verifies <strong>signatures, not secrets</strong>.</p>
 <blockquote>

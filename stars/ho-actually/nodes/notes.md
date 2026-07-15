@@ -28,7 +28,7 @@ intentions ahead of you.**
 <!-- provenance: extracted -->
 **Filenames and Location.** The single-instance Kamae documents live in the project repo under `ho-process/`, with the README at the repo root.
 
-**Pattern:** `kamae-<N>-<project>-<doctype>.md` for documents 1, 2, 4, and 6. The README (Kamae 3) is the canonical repo-root `README.md` and does *not* take a `kamae-3-` prefix — it ships as the public face of the repository under its standard name.
+**Pattern:** `kamae-<N>-<project>-<doctype>.md` for documents 1, 2, 4, and 6. The README (Kamae 3) is the canonical repo-root `README.md` and does *not* take a `kamae-3-` prefix—it ships as the public face of the repository under its standard name.
 
 | Kamae | Document | Path |
 |---|---|---|

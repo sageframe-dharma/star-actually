@@ -50,16 +50,16 @@
 <pre><code>UseKeychain yes          # Store passphrase in Keychain
 AddKeysToAgent yes       # Auto-add to ssh-agent
 </code></pre>
-<p>With these set, you type the passphrase once; after that, Keychain supplies it and the agent caches the unlocked key. This is the same session-caching mechanism SSH supports everywhere — <code>ssh-agent</code> and OS keychains — which avoids repeated typing, expires when the session ends, and requires a background process. macOS just wires it all together so smoothly that the passphrase seems to vanish.</p>
+<p>With these set, you type the passphrase once; after that, Keychain supplies it and the agent caches the unlocked key. This is the same session-caching mechanism SSH supports everywhere—<code>ssh-agent</code> and OS keychains—which avoids repeated typing, expires when the session ends, and requires a background process. macOS just wires it all together so smoothly that the passphrase seems to vanish.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p>The trap in the convenience is a <strong>trust-boundary misread</strong>. Touch ID before an SSH connection looks exactly like touching a hardware key — but the two prove different things. On a Mac, the fingerprint unlocks the <em>Keychain entry that holds your passphrase</em>; the private key is an ordinary encrypted file on disk, and anything with sufficient access to your unlocked OS can reach it. With a hardware key, the secret physically cannot leave the device.</p>
+      <p>The trap in the convenience is a <strong>trust-boundary misread</strong>. Touch ID before an SSH connection looks exactly like touching a hardware key—but the two prove different things. On a Mac, the fingerprint unlocks the <em>Keychain entry that holds your passphrase</em>; the private key is an ordinary encrypted file on disk, and anything with sufficient access to your unlocked OS can reach it. With a hardware key, the secret physically cannot leave the device.</p>
 <p>So the boundary you are trusting is the operating system, not a physical object:</p>
 <ul>
-<li><strong>Disk key + Keychain</strong> — you trust macOS, everything running on it, and your disk encryption. Convenient, reasonable for most people, but a compromised machine compromises the key.</li>
-<li><strong>Hardware key</strong> — you trust a physical object that will sign but never export. A compromised machine can <em>use</em> the key while it's plugged in and touched, but can never copy it.</li>
+<li><strong>Disk key + Keychain</strong>—you trust macOS, everything running on it, and your disk encryption. Convenient, reasonable for most people, but a compromised machine compromises the key.</li>
+<li><strong>Hardware key</strong>—you trust a physical object that will sign but never export. A compromised machine can <em>use</em> the key while it's plugged in and touched, but can never copy it.</li>
 </ul>
 <p>If you want the security that the Touch ID prompt <em>feels</em> like it's giving you, that's what hardware-backed keys are for.</p>
 

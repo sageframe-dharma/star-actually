@@ -7,7 +7,7 @@ related: [resident-vs-non-resident, hardware-keys-ssh, passphrases, first-key-se
 entry_points: [which ssh key setup should I use, do I need a hardware key, disk key or hardware key, best ssh setup for github]
 summary: >
   The decision guide: disk-based key with passphrase, hardware-backed resident,
-  or hardware-backed non-resident — chosen by situation, not by maximalism.
+  or hardware-backed non-resident—chosen by situation, not by maximalism.
 ---
 
 <!-- depth:1 -->
@@ -16,7 +16,7 @@ Choosing an Approach
 
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-There are three viable setups: a **disk-based key with a strong passphrase**, a **hardware-backed resident key**, and a **hardware-backed non-resident key**. Which one you want depends on your situation — how many servers, whether you already own a hardware key, how much recovery capability you need — not on reaching for the maximum.
+There are three viable setups: a **disk-based key with a strong passphrase**, a **hardware-backed resident key**, and a **hardware-backed non-resident key**. Which one you want depends on your situation—how many servers, whether you already own a hardware key, how much recovery capability you need—not on reaching for the maximum.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -68,8 +68,8 @@ Do you need to authenticate to Git services?
 <!-- provenance: synthesized -->
 The pattern behind the trees:
 
-- **Disk-based key with passphrase** is the answer when you're learning or when the footprint is small — one laptop, one or two servers. Simple, secure enough, and still much stronger than passwords. Master the basics first; the hardware setups make more sense once the disk-based model is familiar.
-- **Hardware-backed resident keys** are the answer when losing access is the disaster you're designing against — company infrastructure, critical servers. Best security, survives laptop wipes, physical presence required. The cost: a scarce slot per key, and the obligation to keep a duplicate on a second device.
-- **Hardware-backed non-resident keys** are the answer when keys multiply — git hosting, dozens of servers and services. Unlimited keys, no passwords ever. The cost: you must preserve the blob files.
+- **Disk-based key with passphrase** is the answer when you're learning or when the footprint is small—one laptop, one or two servers. Simple, secure enough, and still much stronger than passwords. Master the basics first; the hardware setups make more sense once the disk-based model is familiar.
+- **Hardware-backed resident keys** are the answer when losing access is the disaster you're designing against—company infrastructure, critical servers. Best security, survives laptop wipes, physical presence required. The cost: a scarce slot per key, and the obligation to keep a duplicate on a second device.
+- **Hardware-backed non-resident keys** are the answer when keys multiply—git hosting, dozens of servers and services. Unlimited keys, no passwords ever. The cost: you must preserve the blob files.
 
-Notice what the git tree assumes: if you already own a hardware key, non-resident is simply better for git hosting — there is no tradeoff to weigh there. The genuinely close call is **resident vs non-resident** for server access, and that decision surface has its own node.
+Notice what the git tree assumes: if you already own a hardware key, non-resident is simply better for git hosting—there is no tradeoff to weigh there. The genuinely close call is **resident vs non-resident** for server access, and that decision surface has its own node.

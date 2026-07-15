@@ -6,7 +6,7 @@ requires: [what-ssh-is]
 related: [signatures, host-key-changed, ssh-debugging]
 entry_points: [what is known_hosts, authenticity of host can't be established, should I type yes, ssh fingerprint check]
 summary: >
-  The other direction of trust — you verify the server. Fingerprints, the
+  The other direction of trust—you verify the server. Fingerprints, the
   first-connection prompt, and MITM protection.
 ---
 
@@ -16,7 +16,7 @@ Known Hosts
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-`~/.ssh/known_hosts` stores server fingerprints. Its purpose: prevent MITM attacks — someone impersonating the server you meant to reach — by verifying server identity on every connection.
+`~/.ssh/known_hosts` stores server fingerprints. Its purpose: prevent MITM attacks—someone impersonating the server you meant to reach—by verifying server identity on every connection.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -50,6 +50,6 @@ SSH trust runs in both directions, and `known_hosts` is the half most people nev
 - `authorized_keys` on the server answers *"should I trust this client?"*
 - `known_hosts` on your machine answers *"is this really the server I think it is?"*
 
-Both use the same mechanism — the server holds a key pair too, and proves possession by signature; the fingerprint you stored is how your client recognizes its public key. Without this check, someone between you and the server could impersonate it and quietly relay everything you type.
+Both use the same mechanism—the server holds a key pair too, and proves possession by signature; the fingerprint you stored is how your client recognizes its public key. Without this check, someone between you and the server could impersonate it and quietly relay everything you type.
 
-Which is why the scary warning — `REMOTE HOST IDENTIFICATION HAS CHANGED` — deserves a moment of respect before you fix it. Legitimate causes exist (server rebuilt, OS reinstalled, IP reused), and `ssh-keygen -R hostname` clears the stale entry. But the warning exists to catch exactly the attack this file defends against; verify before you delete.
+Which is why the scary warning—`REMOTE HOST IDENTIFICATION HAS CHANGED`—deserves a moment of respect before you fix it. Legitimate causes exist (server rebuilt, OS reinstalled, IP reused), and `ssh-keygen -R hostname` clears the stale entry. But the warning exists to catch exactly the attack this file defends against; verify before you delete.

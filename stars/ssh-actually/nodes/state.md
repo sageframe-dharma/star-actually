@@ -6,7 +6,7 @@ requires: [hardware-keys-ssh]
 related: [slots, trust-boundaries, resident-vs-non-resident]
 entry_points: [what is authentication state, what must be remembered for ssh to work, where does auth state live]
 summary: >
-  Anything that must be remembered for authentication to keep working — lose it
+  Anything that must be remembered for authentication to keep working—lose it
   and auth fails, copy it and auth can be stolen.
 ---
 
@@ -26,6 +26,6 @@ Examples of state:
 - a password stored by a service
 - a cryptographic secret stored inside hardware
 
-You cannot eliminate state — you can only **choose where it lives**.
+You cannot eliminate state—you can only **choose where it lives**.
 
 That choice is the entire design space. Traditional SSH puts all state on disk. Hardware-backed SSH splits state between your computer and the hardware key. Resident and non-resident keys are two different answers to the same question: which side of that split remembers the key?

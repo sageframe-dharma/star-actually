@@ -67,16 +67,16 @@
 <li>cannot be reused elsewhere</li>
 <li>cannot be brute-forced remotely</li>
 </ul>
-<p>Disabling password login removes the entire category of remote guessing attacks. Disabling direct root login means an attacker needs both a working key <em>and</em> a way to escalate — <code>sudo</code> from a normal account keeps escalation visible and revocable.</p>
+<p>Disabling password login removes the entire category of remote guessing attacks. Disabling direct root login means an attacker needs both a working key <em>and</em> a way to escalate—<code>sudo</code> from a normal account keeps escalation visible and revocable.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p>Hardening is the server-side half of the key-pair bargain:</p>
 <ul>
-<li>The server stores <strong>only public keys</strong> — its list of who to trust lives in <code>authorized_keys</code>, which is why auditing that file <em>is</em> auditing access. A hardened server with a stale <code>authorized_keys</code> is only half hardened.</li>
+<li>The server stores <strong>only public keys</strong>—its list of who to trust lives in <code>authorized_keys</code>, which is why auditing that file <em>is</em> auditing access. A hardened server with a stale <code>authorized_keys</code> is only half hardened.</li>
 <li>Passwords are the structural weakness the whole arrangement exists to remove: a shared secret the server can lose. Key-only access means there is nothing on the server worth stealing.</li>
-<li>Key-only cuts both ways: get the order right. Deploy your key, <strong>test that key login works</strong>, and only then turn password login off — the same test-before-revoke discipline as key rotation. A permissions mistake that makes SSH silently refuse your key (&quot;Permission denied&quot;) on a password-disabled server is a lockout, not an inconvenience.</li>
+<li>Key-only cuts both ways: get the order right. Deploy your key, <strong>test that key login works</strong>, and only then turn password login off—the same test-before-revoke discipline as key rotation. A permissions mistake that makes SSH silently refuse your key (&quot;Permission denied&quot;) on a password-disabled server is a lockout, not an inconvenience.</li>
 </ul>
 
     </section>

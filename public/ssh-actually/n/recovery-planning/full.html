@@ -41,7 +41,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Every authentication setup should be built with its own failure in mind: keys get lost, disks die, passphrases and PINs get forgotten. Recovery planning means deciding — <strong>before</strong> anything breaks — how you will get back in. Security you can't recover from isn't strength; it's fragility with good cryptography.</p>
+      <p>Every authentication setup should be built with its own failure in mind: keys get lost, disks die, passphrases and PINs get forgotten. Recovery planning means deciding—<strong>before</strong> anything breaks—how you will get back in. Security you can't recover from isn't strength; it's fragility with good cryptography.</p>
 
     </section>
     
@@ -87,11 +87,11 @@
     <section class="layer layer-4" data-depth="4">
       <p>Recovery planning is the practical face of a question that runs through the whole graph: <strong>where does authentication state live, and what happens when that place is destroyed?</strong></p>
 <ul>
-<li>A <strong>disk key</strong>'s state is a file — its recovery story is backups (encrypted) plus the ability to revoke fast when the file falls into the wrong hands.</li>
-<li>A <strong>non-resident hardware key</strong> splits state between device and blob — its recovery story is blob backups plus an accepted cost of regenerating keys if the device dies.</li>
-<li>A <strong>resident key</strong> puts all state in the device — its recovery story <em>must</em> be a duplicate device, because nothing else can reconstruct it. This is why the resident-vs-non-resident choice is really a recovery-planning choice.</li>
+<li>A <strong>disk key</strong>'s state is a file—its recovery story is backups (encrypted) plus the ability to revoke fast when the file falls into the wrong hands.</li>
+<li>A <strong>non-resident hardware key</strong> splits state between device and blob—its recovery story is blob backups plus an accepted cost of regenerating keys if the device dies.</li>
+<li>A <strong>resident key</strong> puts all state in the device—its recovery story <em>must</em> be a duplicate device, because nothing else can reconstruct it. This is why the resident-vs-non-resident choice is really a recovery-planning choice.</li>
 </ul>
-<p>The supporting hygiene compounds here: <strong>one key per purpose</strong> (don't reuse keys across contexts — easier to revoke when needed), <strong>regularly audit <code>authorized_keys</code> on servers</strong> (remove old and unknown keys), and <strong>name keys clearly</strong> (makes revocation easier). Each of these turns a future emergency from an investigation into a checklist. And the untested plan is the one that fails: a backup key you've never authenticated with, a blob backup you've never restored, a PIN you <em>think</em> you remember — none of those are recovery paths yet. Test them while nothing is wrong.</p>
+<p>The supporting hygiene compounds here: <strong>one key per purpose</strong> (don't reuse keys across contexts—easier to revoke when needed), <strong>regularly audit <code>authorized_keys</code> on servers</strong> (remove old and unknown keys), and <strong>name keys clearly</strong> (makes revocation easier). Each of these turns a future emergency from an investigation into a checklist. And the untested plan is the one that fails: a backup key you've never authenticated with, a blob backup you've never restored, a PIN you <em>think</em> you remember—none of those are recovery paths yet. Test them while nothing is wrong.</p>
 
     </section>
     

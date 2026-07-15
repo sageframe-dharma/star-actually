@@ -25,15 +25,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A feature that lets a remote server request signatures from the SSH agent running on your local machine — without copying the private key to that server.</p>
+      <p>A feature that lets a remote server request signatures from the SSH agent running on your local machine—without copying the private key to that server.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>You SSH from your laptop to Server A. From Server A, you need to SSH to Server B. Server B trusts your key — but your key is on your laptop, not on Server A.</p>
+      <p>You SSH from your laptop to Server A. From Server A, you need to SSH to Server B. Server B trusts your key—but your key is on your laptop, not on Server A.</p>
 <p>With agent forwarding enabled, Server A sends the authentication challenge <strong>back through the SSH connection</strong> to your laptop. Your laptop's agent signs it, the signature travels back through Server A to Server B, and Server B grants access. The private key <strong>never leaves your laptop</strong>.</p>
 <p>Why it's useful: one key, multiple hops, no private keys copied to servers, feels transparent.</p>
-<p>Why it's dangerous: while you are connected with forwarding enabled, <strong>anyone with root on Server A can use your agent</strong>. They cannot steal the key — it never arrives. But they can ask your agent to sign things. Any things. Silently, for as long as your session is open.</p>
+<p>Why it's dangerous: while you are connected with forwarding enabled, <strong>anyone with root on Server A can use your agent</strong>. They cannot steal the key—it never arrives. But they can ask your agent to sign things. Any things. Silently, for as long as your session is open.</p>
 
     </section>
     

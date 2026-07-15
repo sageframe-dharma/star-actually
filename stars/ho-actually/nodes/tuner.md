@@ -19,7 +19,7 @@ A live control that lets you move a visual or behavioral value and watch it chan
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
-A live control exposing a visual or behavioral parameter — "never hard-code a
+A live control exposing a visual or behavioral parameter—"never hard-code a
 visual value before you've seen it move"; a named tuner is a named design decision. Tuners
 serve the by-feel pass of a **landing ho**, which lands their values at their **kagen** and
 locks them as committed defaults.

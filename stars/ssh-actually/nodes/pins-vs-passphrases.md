@@ -27,7 +27,7 @@ The comparison, spelled out:
 - protects a file
 - brute-forceable offline
 
-If someone steals a private key file, they can brute-force the passphrase **offline with unlimited attempts** — on their hardware, at their pace, with no lockout.
+If someone steals a private key file, they can brute-force the passphrase **offline with unlimited attempts**—on their hardware, at their pace, with no lockout.
 
 **PIN:**
 
@@ -38,4 +38,4 @@ If someone steals a private key file, they can brute-force the passphrase **offl
 
 An attacker with your PIN but not your device has nothing. An attacker with your device but not your PIN gets a handful of guesses before the key locks or wipes. There is no offline attack, because the thing being guessed against is tamper-resistant hardware, not a file that can be copied and hammered forever.
 
-This is why a 6-digit PIN on a hardware key is stronger in practice than a short passphrase on a disk key: the strength was never in the code's length — it's in *what enforces the guessing rules*.
+This is why a 6-digit PIN on a hardware key is stronger in practice than a short passphrase on a disk key: the strength was never in the code's length—it's in *what enforces the guessing rules*.

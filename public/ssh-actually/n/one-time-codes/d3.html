@@ -33,9 +33,9 @@
       <p>How it works: a <strong>shared secret</strong> exists between you and the service; time or counters generate changing codes from it; you type the current code after your password.</p>
 <p>The delivery mechanism matters more than people expect:</p>
 <ul>
-<li><strong>SMS codes</strong> — a short numeric code texted to a phone number. Weak: SMS is vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone <em>number</em> — not the physical device — is the security anchor, which is a fundamental design flaw.</li>
-<li><strong>Authenticator apps (TOTP)</strong> — an app generates a rotating code from a shared secret and the current time. Better: codes are short-lived and never transmitted over the network. Still flawed: they are <strong>phishable and replayable</strong> — an attacker who tricks you into entering the code can immediately use it.</li>
-<li><strong>Enterprise tokens</strong> — centrally managed hardware or software tokens with short validity windows, logging, and rapid revocation. Stronger operationally, but still <strong>code-based</strong>, so real-time phishing remains possible.</li>
+<li><strong>SMS codes</strong>—a short numeric code texted to a phone number. Weak: SMS is vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone <em>number</em>—not the physical device—is the security anchor, which is a fundamental design flaw.</li>
+<li><strong>Authenticator apps (TOTP)</strong>—an app generates a rotating code from a shared secret and the current time. Better: codes are short-lived and never transmitted over the network. Still flawed: they are <strong>phishable and replayable</strong>—an attacker who tricks you into entering the code can immediately use it.</li>
+<li><strong>Enterprise tokens</strong>—centrally managed hardware or software tokens with short validity windows, logging, and rapid revocation. Stronger operationally, but still <strong>code-based</strong>, so real-time phishing remains possible.</li>
 </ul>
 
     </section>

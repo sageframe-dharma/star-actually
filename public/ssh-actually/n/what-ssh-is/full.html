@@ -52,18 +52,18 @@
 <li>someone may be listening</li>
 <li>someone may try to impersonate you</li>
 </ul>
-<p>SSH solves this by requiring <strong>cryptographic proof</strong> before access is granted. SSH normally does <strong>not</strong> use passwords — it uses key-pair cryptography: the server never learns your secret, and only you can prove you have it.</p>
+<p>SSH solves this by requiring <strong>cryptographic proof</strong> before access is granted. SSH normally does <strong>not</strong> use passwords—it uses key-pair cryptography: the server never learns your secret, and only you can prove you have it.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p>SSH shows up in two roles, and confusing them is where most misunderstanding starts:</p>
 <ul>
-<li><strong>Server login</strong> (the traditional model) — you get a shell, you run commands, the connection stays open. This is what &quot;hardening a server&quot; is about: passwords off, keys only.</li>
-<li><strong>Authentication only</strong> (the Git hosting model) — GitHub, GitLab. You never get a shell; you only prove identity, and each git operation is a separate proof. <strong>Same cryptography, different purpose.</strong></li>
+<li><strong>Server login</strong> (the traditional model)—you get a shell, you run commands, the connection stays open. This is what &quot;hardening a server&quot; is about: passwords off, keys only.</li>
+<li><strong>Authentication only</strong> (the Git hosting model)—GitHub, GitLab. You never get a shell; you only prove identity, and each git operation is a separate proof. <strong>Same cryptography, different purpose.</strong></li>
 </ul>
-<p>SSH also predates everything it now resembles. It has used key-pair cryptography since the 1990s, while the web kept using passwords; the web slowly caught up to where SSH already was — with different names (FIDO2, WebAuthn, passkeys) and different contexts.</p>
-<p>The mental model to keep: SSH proves <strong>possession</strong>, not identity — and servers never store secrets.</p>
+<p>SSH also predates everything it now resembles. It has used key-pair cryptography since the 1990s, while the web kept using passwords; the web slowly caught up to where SSH already was—with different names (FIDO2, WebAuthn, passkeys) and different contexts.</p>
+<p>The mental model to keep: SSH proves <strong>possession</strong>, not identity—and servers never store secrets.</p>
 
     </section>
     

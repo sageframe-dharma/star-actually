@@ -6,7 +6,7 @@ requires: [passwords]
 related: [mfa, mfa-strength-ladder, phishing-resistance]
 entry_points: [what is totp, are authenticator apps secure, why is sms 2fa bad, can otp codes be phished]
 summary: >
-  OTP/TOTP/SMS as layered defense on top of shared secrets — rotating codes
+  OTP/TOTP/SMS as layered defense on top of shared secrets—rotating codes
   help, but they remain phishable and replayable, and the secret still lives
   on a server.
 ---
@@ -25,15 +25,15 @@ How it works: a **shared secret** exists between you and the service; time or co
 
 The delivery mechanism matters more than people expect:
 
-- **SMS codes** — a short numeric code texted to a phone number. Weak: SMS is vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone *number* — not the physical device — is the security anchor, which is a fundamental design flaw.
-- **Authenticator apps (TOTP)** — an app generates a rotating code from a shared secret and the current time. Better: codes are short-lived and never transmitted over the network. Still flawed: they are **phishable and replayable** — an attacker who tricks you into entering the code can immediately use it.
-- **Enterprise tokens** — centrally managed hardware or software tokens with short validity windows, logging, and rapid revocation. Stronger operationally, but still **code-based**, so real-time phishing remains possible.
+- **SMS codes**—a short numeric code texted to a phone number. Weak: SMS is vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone *number*—not the physical device—is the security anchor, which is a fundamental design flaw.
+- **Authenticator apps (TOTP)**—an app generates a rotating code from a shared secret and the current time. Better: codes are short-lived and never transmitted over the network. Still flawed: they are **phishable and replayable**—an attacker who tricks you into entering the code can immediately use it.
+- **Enterprise tokens**—centrally managed hardware or software tokens with short validity windows, logging, and rapid revocation. Stronger operationally, but still **code-based**, so real-time phishing remains possible.
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
 Where one-time codes sit in the larger landscape: they are **layered defense, not a structural fix**. The two limits are the same limits passwords have, just softened:
 
-- **Codes can still be phished.** Anything you type, you can be tricked into typing on the wrong site — and a live attacker relays it in real time.
+- **Codes can still be phished.** Anything you type, you can be tricked into typing on the wrong site—and a live attacker relays it in real time.
 - **Secrets still exist on servers.** TOTP works because the server holds the same shared secret your app does. The server can still lose it.
 
-That is why every code-based method — email link, SMS, TOTP, enterprise tokens — sits below the cryptographic tiers on the MFA strength ladder. FIDO2 and its descendants don't rotate the shared secret faster; they **remove it**. The server verifies a signature instead, and there is nothing to type, capture, or replay.
+That is why every code-based method—email link, SMS, TOTP, enterprise tokens—sits below the cryptographic tiers on the MFA strength ladder. FIDO2 and its descendants don't rotate the shared secret faster; they **remove it**. The server verifies a signature instead, and there is nothing to type, capture, or replay.

@@ -36,8 +36,8 @@
     
     <section class="layer layer-3" data-depth="3">
       <p>The two halves, precisely:</p>
-<p><strong>Private key</strong> — a secret file that proves your identity. If stolen, it can be used to impersonate you.</p>
-<p><strong>Public key</strong> — a non-secret file used by a server to verify signatures.</p>
+<p><strong>Private key</strong>—a secret file that proves your identity. If stolen, it can be used to impersonate you.</p>
+<p><strong>Public key</strong>—a non-secret file used by a server to verify signatures.</p>
 <p>The rules that follow:</p>
 <ul>
 <li>The private key <strong>must never be shared</strong></li>
@@ -50,11 +50,11 @@
     
     <section class="layer layer-4" data-depth="4">
       <p>Everything around key pairs is answering one of two questions:</p>
-<p><strong>How do you prove possession?</strong> By itself a key pair proves nothing — the missing piece is the <strong>signature</strong>: the server sends a challenge, your private key signs it, the public key verifies. That flow is what makes the pair usable.</p>
+<p><strong>How do you prove possession?</strong> By itself a key pair proves nothing—the missing piece is the <strong>signature</strong>: the server sends a challenge, your private key signs it, the public key verifies. That flow is what makes the pair usable.</p>
 <p><strong>Where does the private key live?</strong> This is the real security question, because the answer sets who you must trust:</p>
 <ul>
-<li>On disk (traditional) — protected at rest by a <strong>passphrase</strong>, at the mercy of your OS and anything running on it.</li>
-<li>Inside a hardware key — usable, never extractable.</li>
+<li>On disk (traditional)—protected at rest by a <strong>passphrase</strong>, at the mercy of your OS and anything running on it.</li>
+<li>Inside a hardware key—usable, never extractable.</li>
 </ul>
 <p>The public key's home is simpler: the server keeps it in <code>authorized_keys</code>, its list of keys it will accept. Losing a public key costs nothing; it can always be re-shared.</p>
 

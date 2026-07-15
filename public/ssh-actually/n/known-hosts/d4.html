@@ -24,7 +24,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p><code>~/.ssh/known_hosts</code> stores server fingerprints. Its purpose: prevent MITM attacks — someone impersonating the server you meant to reach — by verifying server identity on every connection.</p>
+      <p><code>~/.ssh/known_hosts</code> stores server fingerprints. Its purpose: prevent MITM attacks—someone impersonating the server you meant to reach—by verifying server identity on every connection.</p>
 
     </section>
     
@@ -54,8 +54,8 @@ ssh-keygen -H -f ~/.ssh/known_hosts    # hash entries (obscures which servers yo
 <li><code>authorized_keys</code> on the server answers <em>&quot;should I trust this client?&quot;</em></li>
 <li><code>known_hosts</code> on your machine answers <em>&quot;is this really the server I think it is?&quot;</em></li>
 </ul>
-<p>Both use the same mechanism — the server holds a key pair too, and proves possession by signature; the fingerprint you stored is how your client recognizes its public key. Without this check, someone between you and the server could impersonate it and quietly relay everything you type.</p>
-<p>Which is why the scary warning — <code>REMOTE HOST IDENTIFICATION HAS CHANGED</code> — deserves a moment of respect before you fix it. Legitimate causes exist (server rebuilt, OS reinstalled, IP reused), and <code>ssh-keygen -R hostname</code> clears the stale entry. But the warning exists to catch exactly the attack this file defends against; verify before you delete.</p>
+<p>Both use the same mechanism—the server holds a key pair too, and proves possession by signature; the fingerprint you stored is how your client recognizes its public key. Without this check, someone between you and the server could impersonate it and quietly relay everything you type.</p>
+<p>Which is why the scary warning—<code>REMOTE HOST IDENTIFICATION HAS CHANGED</code>—deserves a moment of respect before you fix it. Legitimate causes exist (server rebuilt, OS reinstalled, IP reused), and <code>ssh-keygen -R hostname</code> clears the stale entry. But the warning exists to catch exactly the attack this file defends against; verify before you delete.</p>
 
     </section>
     

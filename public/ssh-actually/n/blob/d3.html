@@ -31,8 +31,8 @@
     
     <section class="layer layer-3" data-depth="3">
       <p>The blob is <em>not</em> a private key. It is more like a <strong>recipe card</strong> the hardware key knows how to interpret.</p>
-<p>A non-resident key is not stored anywhere. The hardware key contains a master secret; the blob contains key-specific metadata; combined — only inside the hardware, only when authorized — they reconstruct the same private key every time. A signature is produced, and the derived key is immediately discarded. At no point does the private key exist as a file.</p>
-<p>What this costs you: the blob <strong>must</strong> be preserved. Losing the blob permanently destroys access — the hardware key cannot rediscover the key on its own.</p>
+<p>A non-resident key is not stored anywhere. The hardware key contains a master secret; the blob contains key-specific metadata; combined—only inside the hardware, only when authorized—they reconstruct the same private key every time. A signature is produced, and the derived key is immediately discarded. At no point does the private key exist as a file.</p>
+<p>What this costs you: the blob <strong>must</strong> be preserved. Losing the blob permanently destroys access—the hardware key cannot rediscover the key on its own.</p>
 
     </section>
     

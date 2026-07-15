@@ -38,7 +38,7 @@ ssh -vvv user@server    # Maximum detail
 <h3>Check what config resolved</h3>
 <pre><code class="language-bash">ssh -G hostname
 </code></pre>
-<p>Shows all resolved options, which config rules matched, and the final values used. Use case: debugging unexpected SSH behavior — this is how you find out SSH is using a different key than you think.</p>
+<p>Shows all resolved options, which config rules matched, and the final values used. Use case: debugging unexpected SSH behavior—this is how you find out SSH is using a different key than you think.</p>
 <h3>Inspect the agent</h3>
 <pre><code class="language-bash">ssh-add -l
 </code></pre>
@@ -53,7 +53,7 @@ sudo journalctl -u sshd -n 20
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p>The workflow is a funnel — each tool narrows where the problem lives:</p>
+      <p>The workflow is a funnel—each tool narrows where the problem lives:</p>
 <table>
 <thead>
 <tr>
@@ -76,17 +76,17 @@ sudo journalctl -u sshd -n 20
 <tr>
 <td>Is the key loaded and unlocked?</td>
 <td><code>ssh-add -l</code></td>
-<td>Agent problems — key never added, agent not running</td>
+<td>Agent problems—key never added, agent not running</td>
 </tr>
 <tr>
 <td>Client says fine, server says no?</td>
 <td>server auth logs</td>
-<td>Permissions and ownership on the server side — the silent-refusal territory of &quot;Permission denied&quot;</td>
+<td>Permissions and ownership on the server side—the silent-refusal territory of &quot;Permission denied&quot;</td>
 </tr>
 </tbody>
 </table>
 <p>Two supporting checks for hardware-backed setups: <code>ssh -V</code> (hardware keys require OpenSSH 8.2+) and <code>lsusb | grep -i yubikey</code> to verify the device is detected at all.</p>
-<p>The habit worth building: <strong>read the verbose output before changing anything.</strong> Most &quot;my key doesn't work&quot; problems announce their cause in <code>ssh -vvv</code> — a key not tried, a file ignored for bad permissions, a config block that never matched.</p>
+<p>The habit worth building: <strong>read the verbose output before changing anything.</strong> Most &quot;my key doesn't work&quot; problems announce their cause in <code>ssh -vvv</code>—a key not tried, a file ignored for bad permissions, a config block that never matched.</p>
 
     </section>
     

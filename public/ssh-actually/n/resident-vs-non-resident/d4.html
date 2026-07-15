@@ -77,7 +77,7 @@
 </tbody>
 </table>
 <p>*Non-resident keys use blobs (required, not regenerable), not stubs. Only resident keys have stubs, which can be regenerated on any machine.</p>
-<p>Neither puts a secret on disk. The question is which <em>non-secret</em> file sits there — a blob you must preserve, or a stub you can throw away — and whether the key consumes a scarce hardware slot.</p>
+<p>Neither puts a secret on disk. The question is which <em>non-secret</em> file sits there—a blob you must preserve, or a stub you can throw away—and whether the key consumes a scarce hardware slot.</p>
 
     </section>
     
@@ -114,8 +114,8 @@
 </tr>
 </tbody>
 </table>
-<p>Why the table falls this way: resident keys survive disk loss and work on fresh machines with nothing but the hardware — ideal for critical infrastructure and long-lived access, where recovery matters more than quantity — but each one consumes a slot, and slots are intentionally scarce. Non-resident keys are unlimited and use no slots, but you accept responsibility for preserving the blob, with no recovery if it's lost.</p>
-<p>The failure modes mirror too. Lose the <em>disk</em>: resident keys are fine (regenerate stubs), non-resident keys die with their blobs unless you backed them up. Lose the <em>hardware</em>: both are gone — which is why the recovery plan (a backup hardware key, or backed-up blobs plus a new device) matters no matter which side you choose.</p>
+<p>Why the table falls this way: resident keys survive disk loss and work on fresh machines with nothing but the hardware—ideal for critical infrastructure and long-lived access, where recovery matters more than quantity—but each one consumes a slot, and slots are intentionally scarce. Non-resident keys are unlimited and use no slots, but you accept responsibility for preserving the blob, with no recovery if it's lost.</p>
+<p>The failure modes mirror too. Lose the <em>disk</em>: resident keys are fine (regenerate stubs), non-resident keys die with their blobs unless you backed them up. Lose the <em>hardware</em>: both are gone—which is why the recovery plan (a backup hardware key, or backed-up blobs plus a new device) matters no matter which side you choose.</p>
 
     </section>
     

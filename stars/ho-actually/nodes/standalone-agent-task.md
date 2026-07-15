@@ -6,7 +6,7 @@ requires: []
 related: [what-is-ho-system]
 entry_points: [standalone agent task]
 summary: >
-  A self-contained agent task that belongs to no larger session — maintenance, a surgical fix, or early exploration.
+  A self-contained agent task that belongs to no larger session—maintenance, a surgical fix, or early exploration.
 ---
 
 <!-- depth:1 -->
@@ -15,7 +15,7 @@ standalone agent task
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-A self-contained agent task that belongs to no larger session — maintenance, a surgical fix, or early exploration.
+A self-contained agent task that belongs to no larger session—maintenance, a surgical fix, or early exploration.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

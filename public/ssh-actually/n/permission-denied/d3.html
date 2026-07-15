@@ -25,12 +25,12 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>SSH is opinionated about file permissions. If permissions are wrong, SSH <strong>silently refuses to use the key</strong> — no error message in normal mode, just &quot;Permission denied.&quot; This is the single most common cause of &quot;my key doesn't work&quot; problems.</p>
+      <p>SSH is opinionated about file permissions. If permissions are wrong, SSH <strong>silently refuses to use the key</strong>—no error message in normal mode, just &quot;Permission denied.&quot; This is the single most common cause of &quot;my key doesn't work&quot; problems.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>Why SSH cares: if a private key file is readable by other users, it might already be compromised. SSH would rather fail than use a key it can't trust. The same applies to <code>authorized_keys</code> on the server — if the file or its parent directories are writable by others, SSH ignores it entirely.</p>
+      <p>Why SSH cares: if a private key file is readable by other users, it might already be compromised. SSH would rather fail than use a key it can't trust. The same applies to <code>authorized_keys</code> on the server—if the file or its parent directories are writable by others, SSH ignores it entirely.</p>
 <p>Fix all permissions at once, locally:</p>
 <pre><code class="language-bash">chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*

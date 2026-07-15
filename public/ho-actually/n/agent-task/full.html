@@ -57,12 +57,12 @@ architectural decisions inside), executor-portable (names its <code>model:</code
     <section class="layer layer-4" data-depth="4">
       <p><strong>The Two Registers.</strong> A ho document operates at the <strong>architectural register</strong>. It carries decisions, the
 reasoning behind them, deferred discoveries, and post-execution reflection. It is read
-by humans — the practitioner, future maintainers, anyone trying to understand why the
+by humans—the practitioner, future maintainers, anyone trying to understand why the
 system is the way it is. Its content is durable: it survives the project and gets
 revisited years later.</p>
 <p>An agent task operates at the <strong>executable register</strong>. It carries exact files, exact
 changes, exact acceptance criteria, exact verification commands. It is read primarily
-by an autonomous coding agent — and secondarily by the practitioner reviewing the
+by an autonomous coding agent—and secondarily by the practitioner reviewing the
 agent's output. Its content is operational: once the work is committed and verified,
 the task's job is done.</p>
 <p>Mixing the registers in one document damages both. The architectural reasoning gets
@@ -74,7 +74,7 @@ explicit binding.</p>
     </section>
     
     <section class="layer layer-5" data-depth="5">
-      <p><strong>Agent tasks (ATs).</strong> <strong>Purpose:</strong> the executable register — a surgical, command-verifiable spec an
+      <p><strong>Agent tasks (ATs).</strong> <strong>Purpose:</strong> the executable register—a surgical, command-verifiable spec an
 autonomous coding agent reads to execute one bounded unit of work. No architectural
 thinking inside; all decisions were extracted to the parent ho's Think phase.
 <strong>Authored by:</strong> the kamae-5 skill's embedded dandori toolkit (child tasks) or the
@@ -85,17 +85,16 @@ practitioner directly via the standalone dandori skill (standalone tasks).
 requires a decision, the decision belongs upstream in the ho.</li>
 <li><strong>Executor-portable.</strong> Because there is no thinking in it, the AT can be dispatched
 to a cheaper model, a subagent, or any executor that reliably follows a procedural
-spec. Every AT names its executor in the <code>model:</code> frontmatter field — an unset
+spec. Every AT names its executor in the <code>model:</code> frontmatter field—an unset
 model is an unmade decision. This is the operating discipline's model-choice-by-task
 principle made concrete.</li>
-<li><strong>Escalating.</strong> The AT is autonomous <em>until it finds something new</em>. A surprise —
-schema mismatch, wrong assumption in the spec, unanticipated dependency — halts the
+<li><strong>Escalating.</strong> The AT is autonomous <em>until it finds something new</em>. A surprise—schema mismatch, wrong assumption in the spec, unanticipated dependency—halts the
 run and surfaces the finding to the practitioner. No silent architectural decisions
 inside an AT (kokoroe guideline 4, &quot;Halt and surface&quot;; <code>Stop Condition</code> sections
 name the anticipated surprises, the rule covers the unanticipated ones).</li>
 <li><strong>One commit.</strong> Each AT lands as a single commit, prefixed <code>ho-NN:</code> for child
 tasks, referencing the spec ID. The git log reads as a sequence of ATs grouped by
-ho — the split's visible signature. […]</li>
+ho—the split's visible signature. […]</li>
 </ol>
 
     </section>

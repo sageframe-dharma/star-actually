@@ -6,7 +6,7 @@ requires: [key-pairs]
 related: [key-generation, deploy-public-key, ssh-config-basics, permission-denied]
 entry_points: [set up ssh keys for the first time, ssh without a password, quick start ssh key, how do I stop typing my server password]
 summary: >
-  The end-to-end quick start — generate, deploy with ssh-copy-id, test, add a
+  The end-to-end quick start—generate, deploy with ssh-copy-id, test, add a
   config block; passwordless server access from zero.
 ---
 

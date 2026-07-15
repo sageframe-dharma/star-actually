@@ -25,9 +25,9 @@ revised deliberately with dated notes.
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
-**The Project Seed.** **What it is:** The core idea of the project — the philosophical foundation from which everything else follows. The seed captures the problem, the landscape of what exists, the vision, the audience, the constraints, an initial architectural opinion, and honest self-assessment of what the builder knows and wants to learn. It is the product of precedential thinking: research, reflection, and genuine engagement with the problem space.
+**The Project Seed.** **What it is:** The core idea of the project—the philosophical foundation from which everything else follows. The seed captures the problem, the landscape of what exists, the vision, the audience, the constraints, an initial architectural opinion, and honest self-assessment of what the builder knows and wants to learn. It is the product of precedential thinking: research, reflection, and genuine engagement with the problem space.
 
-**What it's NOT:** A brainstorming dump. The seed is structured enough that someone else — a collaborator, an AI, a future version of yourself — can read it and understand what you're trying to build and why. Enthusiasm is welcome. Messiness is fine in places. But the seed should reflect understanding of the territory, not just excitement about the destination.
+**What it's NOT:** A brainstorming dump. The seed is structured enough that someone else—a collaborator, an AI, a future version of yourself—can read it and understand what you're trying to build and why. Enthusiasm is welcome. Messiness is fine in places. But the seed should reflect understanding of the territory, not just excitement about the destination.
 
 **What "done" looks like:**
 

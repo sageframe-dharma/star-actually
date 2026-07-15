@@ -13,7 +13,7 @@ author: "Andrew T Marcus"
 receptionist: false  # static build; the /ask backend is not deployed
 blurb: >
   The Ho System is a methodology for building production-quality software with AI
-  as an implementation partner — for people who think in systems. Work proceeds in
+  as an implementation partner—for people who think in systems. Work proceeds in
   bounded steps (hos), framed before it is built (kamae), and verified at every
   close. This site is that framework, decomposed into a navigable graph.
 source_url: "https://hosystem.sageframe.net"

@@ -57,10 +57,10 @@ Hardware-backed keys:  ~/.ssh/purpose_yk
 <p>What <em>doesn't</em> matter: matching filenames across machines, keeping names secret, or following someone else's convention if you have your own system.</p>
 <p>Why naming matters in practice:</p>
 <ul>
-<li><strong>For blobs</strong> (non-resident hardware keys): you must preserve these files. Clear names help you identify what you're backing up — losing a blob means generating a new key.</li>
+<li><strong>For blobs</strong> (non-resident hardware keys): you must preserve these files. Clear names help you identify what you're backing up—losing a blob means generating a new key.</li>
 <li><strong>For human sanity</strong>: when you have 5+ keys, unclear names create confusion. <code>id_rsa</code> tells you nothing about purpose; <code>github_personal_yk</code> tells you everything.</li>
 </ul>
-<p>For public keys, the filename doesn't matter (they're deployed to servers) — the <strong>comment inside the public key</strong> matters more:</p>
+<p>For public keys, the filename doesn't matter (they're deployed to servers)—the <strong>comment inside the public key</strong> matters more:</p>
 <pre><code>ssh-ed25519 AAAA... tyro@laptop-2024-github
 </code></pre>
 <p>A good comment format is <code>username@device-year-purpose</code>. It helps identify keys in server logs, makes <code>authorized_keys</code> management easier, and is useful when you have multiple keys.</p>

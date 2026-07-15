@@ -42,26 +42,26 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A feature that lets a remote server request signatures from the SSH agent running on your local machine — without copying the private key to that server.</p>
+      <p>A feature that lets a remote server request signatures from the SSH agent running on your local machine—without copying the private key to that server.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>You SSH from your laptop to Server A. From Server A, you need to SSH to Server B. Server B trusts your key — but your key is on your laptop, not on Server A.</p>
+      <p>You SSH from your laptop to Server A. From Server A, you need to SSH to Server B. Server B trusts your key—but your key is on your laptop, not on Server A.</p>
 <p>With agent forwarding enabled, Server A sends the authentication challenge <strong>back through the SSH connection</strong> to your laptop. Your laptop's agent signs it, the signature travels back through Server A to Server B, and Server B grants access. The private key <strong>never leaves your laptop</strong>.</p>
 <p>Why it's useful: one key, multiple hops, no private keys copied to servers, feels transparent.</p>
-<p>Why it's dangerous: while you are connected with forwarding enabled, <strong>anyone with root on Server A can use your agent</strong>. They cannot steal the key — it never arrives. But they can ask your agent to sign things. Any things. Silently, for as long as your session is open.</p>
+<p>Why it's dangerous: while you are connected with forwarding enabled, <strong>anyone with root on Server A can use your agent</strong>. They cannot steal the key—it never arrives. But they can ask your agent to sign things. Any things. Silently, for as long as your session is open.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p>Agent forwarding is one of three answers to the same problem, and understanding it means seeing all three:</p>
 <ul>
-<li><strong>Copy your private key to Server A</strong> — don't. The key now exists on two machines, and everyone with root on Server A can copy it. Multiplied attack surface, zero gain.</li>
-<li><strong>Agent forwarding</strong> — the key stays home, but its <em>power</em> travels. Server A can't steal the key; it can <em>use</em> it, against any server that trusts you, for the duration of the session.</li>
-<li><strong>ProxyJump</strong> — the intermediate becomes a dumb network relay. It never sees your key, never talks to your agent, cannot sign as you. This is almost always the better answer.</li>
+<li><strong>Copy your private key to Server A</strong>—don't. The key now exists on two machines, and everyone with root on Server A can copy it. Multiplied attack surface, zero gain.</li>
+<li><strong>Agent forwarding</strong>—the key stays home, but its <em>power</em> travels. Server A can't steal the key; it can <em>use</em> it, against any server that trusts you, for the duration of the session.</li>
+<li><strong>ProxyJump</strong>—the intermediate becomes a dumb network relay. It never sees your key, never talks to your agent, cannot sign as you. This is almost always the better answer.</li>
 </ul>
-<p>The decision hinges on one question: <strong>do you trust the intermediate machine with the power to act as you?</strong> Your own homelab, briefly — maybe. Shared infrastructure, cloud hosts, anything you don't fully control — no. Hardware keys tilt the answer further: forwarding behavior with hardware-backed keys varies and can be unreliable, while ProxyJump works cleanly.</p>
+<p>The decision hinges on one question: <strong>do you trust the intermediate machine with the power to act as you?</strong> Your own homelab, briefly—maybe. Shared infrastructure, cloud hosts, anything you don't fully control—no. Hardware keys tilt the answer further: forwarding behavior with hardware-backed keys varies and can be unreliable, while ProxyJump works cleanly.</p>
 
     </section>
     

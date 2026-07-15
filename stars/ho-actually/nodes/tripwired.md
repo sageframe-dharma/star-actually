@@ -22,14 +22,14 @@ Built to run on its own within set bounds but stop and raise a flag the instant 
 The property that makes an agent task safe to delegate: autonomous within its
 bounds, but the moment it hits something unanticipated it halts and surfaces rather than
 adapting. Bounded autonomy with a halt-and-surface tripwire. _Escalation_ is the mechanism;
-_tripwired_ is the property — "ATs are safe to delegate because they are tripwired."
+_tripwired_ is the property—"ATs are safe to delegate because they are tripwired."
 
 <!-- depth:4 -->
 <!-- provenance: extracted -->
-**Escalating — autonomous until something new surfaces.** The AT is executed autonomously — *unless it finds something new*. When execution
-surfaces something the ho didn't anticipate — a schema mismatch, a wrong assumption in
+**Escalating—autonomous until something new surfaces.** The AT is executed autonomously—*unless it finds something new*. When execution
+surfaces something the ho didn't anticipate—a schema mismatch, a wrong assumption in
 the spec, a real-data shape that contradicts the fixtures, an unanticipated
-dependency — the executing agent stops and surfaces the finding. It does not adapt
+dependency—the executing agent stops and surfaces the finding. It does not adapt
 silently, does not rationalize the surprise as "probably fine," and does not acquire
 architectural authority because something feels suboptimal mid-execution.
 
@@ -47,7 +47,7 @@ at the AT layer. The decision that comes back goes to the practitioner (or a hea
 model in a discursive session); its resolution lands in the parent ho (see §6), and
 execution resumes against the updated record.
 
-This property — bounded autonomy with a halt-and-surface tripwire — is what makes an AT
+This property—bounded autonomy with a halt-and-surface tripwire—is what makes an AT
 safe to delegate to a cheaper executor: the AT is **tripwired**. *Escalation* is the
 mechanism; *tripwired* is the property. It is the word to reach for in the explanatory
-sentence — "ATs are safe to delegate because they are tripwired."
+sentence—"ATs are safe to delegate because they are tripwired."

@@ -41,12 +41,12 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Encoding the bastion path in <code>~/.ssh/config</code> with <code>ProxyJump</code>, so SSH routes through the intermediate automatically — you type <code>ssh production-db</code> and the hop just happens, no flags.</p>
+      <p>Encoding the bastion path in <code>~/.ssh/config</code> with <code>ProxyJump</code>, so SSH routes through the intermediate automatically—you type <code>ssh production-db</code> and the hop just happens, no flags.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>The basic pattern — one block for the destination, one for the bastion it rides through:</p>
+      <p>The basic pattern—one block for the destination, one for the bastion it rides through:</p>
 <pre><code>Host production-db
     HostName 10.0.1.50
     User dbadmin
@@ -57,7 +57,7 @@ Host bastion
     User tyro
     IdentityFile ~/.ssh/id_work
 </code></pre>
-<p>Connect with <code>ssh production-db</code> — SSH automatically connects through bastion.</p>
+<p>Connect with <code>ssh production-db</code>—SSH automatically connects through bastion.</p>
 <p>At scale, combine <code>ProxyJump</code> with wildcards to define whole environments at once:</p>
 <pre><code>Host bastion
     HostName bastion.company.com
@@ -90,7 +90,7 @@ Host staging-web1
 ssh prod-web1     # Automatically goes through bastion
 ssh staging-web1  # Direct connection, different key
 </code></pre>
-<p>Every <code>prod-*</code> host inherits the jump, the user, and the key from the wildcard block; the per-host blocks only carry what differs (the address). Staging gets its own key and no bastion — the pattern boundaries <em>are</em> the environment boundaries.</p>
+<p>Every <code>prod-*</code> host inherits the jump, the user, and the key from the wildcard block; the per-host blocks only carry what differs (the address). Staging gets its own key and no bastion—the pattern boundaries <em>are</em> the environment boundaries.</p>
 
     </section>
     

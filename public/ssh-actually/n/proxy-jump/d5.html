@@ -24,7 +24,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>An SSH feature that routes your connection through an intermediate server <strong>without giving that server access to your agent</strong> — the intermediate opens a TCP tunnel, and your client authenticates directly with the destination through it. The secure alternative to agent forwarding for multi-hop SSH.</p>
+      <p>An SSH feature that routes your connection through an intermediate server <strong>without giving that server access to your agent</strong>—the intermediate opens a TCP tunnel, and your client authenticates directly with the destination through it. The secure alternative to agent forwarding for multi-hop SSH.</p>
 
     </section>
     
@@ -43,14 +43,14 @@
 <li>SSH opens a connection to the jump host</li>
 <li>The jump host opens a <strong>TCP tunnel</strong> to the destination</li>
 <li>Your SSH client authenticates <strong>directly</strong> with the destination through the tunnel</li>
-<li>The jump host sees encrypted traffic — nothing else</li>
+<li>The jump host sees encrypted traffic—nothing else</li>
 </ol>
 <p>The jump host never sees your key, never talks to your agent, cannot use your credentials. It is just a network relay.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p>ProxyJump is the third of three answers to &quot;my key is on my laptop but I need to hop through a machine&quot; — the other two being <em>copy the key to the intermediate</em> (don't) and <em>agent forwarding</em> (the key stays home but its power travels). The comparison:</p>
+      <p>ProxyJump is the third of three answers to &quot;my key is on my laptop but I need to hop through a machine&quot;—the other two being <em>copy the key to the intermediate</em> (don't) and <em>agent forwarding</em> (the key stays home but its power travels). The comparison:</p>
 <table>
 <thead>
 <tr>
@@ -87,15 +87,15 @@
 </tr>
 </tbody>
 </table>
-<p>When to use ProxyJump instead of forwarding: <strong>almost always</strong>. Especially any server you don't fully control, any multi-hop path through shared infrastructure, any cloud or work environment — and any time hardware keys are involved, because agent forwarding behavior with hardware keys varies and can be unreliable while ProxyJump works cleanly.</p>
+<p>When to use ProxyJump instead of forwarding: <strong>almost always</strong>. Especially any server you don't fully control, any multi-hop path through shared infrastructure, any cloud or work environment—and any time hardware keys are involved, because agent forwarding behavior with hardware keys varies and can be unreliable while ProxyJump works cleanly.</p>
 
     </section>
     
     <section class="layer layer-5" data-depth="5">
       <p>What &quot;just a network relay&quot; actually buys you.</p>
-<p>The tunnel carries a second, fully encrypted SSH connection — client to destination, end to end. The destination's authentication challenge travels through the jump host as ciphertext and is answered by <em>your local client</em>, so the cryptographic conversation has no party in the middle. There is nothing for the intermediate to steal (it never sees key material) and nothing for it to borrow (it never gets a channel to your agent, so it cannot ask for signatures the way a forwarding-enabled intermediate can).</p>
-<p>That collapses the trust question. With agent forwarding, you must trust the intermediate with <strong>the power to act as you</strong> — anyone with root there can sign as you for the life of your session. With ProxyJump, the worst a hostile jump host can do is refuse to carry your traffic. Compromising it gets an attacker a view of encrypted bytes, not an identity.</p>
-<p>This is also why hardware-backed keys and ProxyJump pair so well: the signing happens where it always does — between your local client and your device, touch and PIN included. No remote machine ever needs to talk to your agent or your hardware, so nothing about the hop changes the ceremony.</p>
+<p>The tunnel carries a second, fully encrypted SSH connection—client to destination, end to end. The destination's authentication challenge travels through the jump host as ciphertext and is answered by <em>your local client</em>, so the cryptographic conversation has no party in the middle. There is nothing for the intermediate to steal (it never sees key material) and nothing for it to borrow (it never gets a channel to your agent, so it cannot ask for signatures the way a forwarding-enabled intermediate can).</p>
+<p>That collapses the trust question. With agent forwarding, you must trust the intermediate with <strong>the power to act as you</strong>—anyone with root there can sign as you for the life of your session. With ProxyJump, the worst a hostile jump host can do is refuse to carry your traffic. Compromising it gets an attacker a view of encrypted bytes, not an identity.</p>
+<p>This is also why hardware-backed keys and ProxyJump pair so well: the signing happens where it always does—between your local client and your device, touch and PIN included. No remote machine ever needs to talk to your agent or your hardware, so nothing about the hop changes the ceremony.</p>
 <p>The design lesson generalizes: when a path must cross a machine you don't control, prefer the option that hands that machine <strong>packets</strong> over any option that hands it <strong>authority</strong>.</p>
 
     </section>

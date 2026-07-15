@@ -47,28 +47,28 @@
     
     <section class="layer layer-3" data-depth="3">
       <p>A validation modality (d): learning the tool by <em>actually using it</em> on a real
-task, as a real user. Produces a <strong>dogfood finding</strong> — the practitioner's real query, the
-attempts, the ranked results, the finding — which is a record (terminal on creation), not
+task, as a real user. Produces a <strong>dogfood finding</strong>—the practitioner's real query, the
+attempts, the ranked results, the finding—which is a record (terminal on creation), not
 work, and feeds later hos' Think phases. Human-run; a validation modality, not verification.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p><strong>The Validation Layer.</strong> The verification stack answers one question: <strong>did we build it <em>right</em>?</strong> — does the code match the spec. Every layer in Section 2 serves that question. It is only half of quality.</p>
-<p>The other half is <strong>validation</strong>: <strong>did we build the <em>right thing</em>, and is it <em>good</em>?</strong> A system can pass every test, clear every linter, and survive cross-agent and human architectural review — and still be the wrong thing, or a right thing that is confusing, unpleasant, or useless in real hands. Verification cannot catch this, because verification measures conformance to a spec, and the spec itself is what validation interrogates.</p>
-<p>This is Section 1's thesis extended. The research there — that humans overestimate AI-assisted work — was about correctness. It holds at least as strongly for goodness. An agent reporting &quot;the feature works&quot; is reporting that it ran; it is not reporting that the feature is <em>good</em>, because good is not a property the agent is positioned to judge. Validation is the antidote to overconfidence about goodness, exactly as verification is the antidote to overconfidence about correctness.</p>
+      <p><strong>The Validation Layer.</strong> The verification stack answers one question: <strong>did we build it <em>right</em>?</strong>—does the code match the spec. Every layer in Section 2 serves that question. It is only half of quality.</p>
+<p>The other half is <strong>validation</strong>: <strong>did we build the <em>right thing</em>, and is it <em>good</em>?</strong> A system can pass every test, clear every linter, and survive cross-agent and human architectural review—and still be the wrong thing, or a right thing that is confusing, unpleasant, or useless in real hands. Verification cannot catch this, because verification measures conformance to a spec, and the spec itself is what validation interrogates.</p>
+<p>This is Section 1's thesis extended. The research there—that humans overestimate AI-assisted work—was about correctness. It holds at least as strongly for goodness. An agent reporting &quot;the feature works&quot; is reporting that it ran; it is not reporting that the feature is <em>good</em>, because good is not a property the agent is positioned to judge. Validation is the antidote to overconfidence about goodness, exactly as verification is the antidote to overconfidence about correctness.</p>
 
     </section>
     
     <section class="layer layer-5" data-depth="5">
-      <p><strong>Dogfood finding <em>(canonical-provisional — adopt on 2nd use)</em>.</strong> <strong>Purpose:</strong> a real-use finding — the practitioner's actual query <em>as a user</em>, the attempts,
+      <p><strong>Dogfood finding <em>(canonical-provisional—adopt on 2nd use)</em>.</strong> <strong>Purpose:</strong> a real-use finding—the practitioner's actual query <em>as a user</em>, the attempts,
 the ranked results, and the finding that falls out (2.7 §3, modality <em>d</em>). Documents a real
 hunt, not planned work; nothing to execute. Named after the <em>finding</em>.
-<strong>Lifecycle:</strong> <code>recorded</code> — terminal on creation. Never &quot;completed&quot;; it is evidence, and its
+<strong>Lifecycle:</strong> <code>recorded</code>—terminal on creation. Never &quot;completed&quot;; it is evidence, and its
 findings feed later hos' Think phases.
 <strong>Location:</strong> <code>ho-process/hos/</code>. shodo's instances are the mislabeled
 <code>ho-&lt;NN&gt;-smoke-sidequest-&lt;M&gt;-&lt;slug&gt;.md</code> files; the <code>smoke-sidequest</code> token predates this
-correction — new instances drop <code>sidequest</code>.
+correction—new instances drop <code>sidequest</code>.
 <strong>Instances:</strong> shodo (5 with frontmatter + 2 pre-convention drafts).</p>
 <blockquote>
 <p>The earlier &quot;sidequest frontmatter schema&quot; open question (two variants in shodo) is

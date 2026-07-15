@@ -6,8 +6,8 @@ requires: [non-resident-keys]
 related: [hardware-key-setup-resident, blob, git-ssh-authentication, key-naming]
 entry_points: [yubikey with github, set up non-resident ssh key, hardware key for git, ed25519-sk github setup]
 summary: >
-  Quick start for non-resident keys — generate ed25519-sk, register with
-  GitHub/GitLab, config block, test — and the blob-backup obligation.
+  Quick start for non-resident keys—generate ed25519-sk, register with
+  GitHub/GitLab, config block, test—and the blob-backup obligation.
 ---
 
 <!-- depth:1 -->
@@ -16,7 +16,7 @@ Setting Up a Non-Resident Key
 
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The setup for hardware-backed SSH where keys are **derived on demand** rather than stored: generate an `ed25519-sk` key, register the public key with the service, and take on the one obligation that comes with it — the blob file must be preserved.
+The setup for hardware-backed SSH where keys are **derived on demand** rather than stored: generate an `ed25519-sk` key, register the public key with the service, and take on the one obligation that comes with it—the blob file must be preserved.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

@@ -6,7 +6,7 @@ requires: [resident-keys]
 related: [hardware-key-setup-nonresident, recovery-planning, managing-resident-credentials, hardware-pin]
 entry_points: [set up resident ssh key, yubikey resident key howto, ssh-keygen -O resident, backup yubikey setup]
 summary: >
-  Quick start for resident keys — generate with -O resident, PIN, deploy,
+  Quick start for resident keys—generate with -O resident, PIN, deploy,
   test, and the critical step everyone skips: the duplicate on a second device.
 ---
 
@@ -16,7 +16,7 @@ Setting Up a Resident Key
 
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The setup for hardware-backed SSH where the key lives **inside** the device: generate with `-O resident`, deploy like any key, and — the step that is not optional — create a duplicate resident key on a second hardware key so losing the first one isn't lockout.
+The setup for hardware-backed SSH where the key lives **inside** the device: generate with `-O resident`, deploy like any key, and—the step that is not optional—create a duplicate resident key on a second hardware key so losing the first one isn't lockout.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

@@ -6,7 +6,7 @@ requires: [key-pairs, authorized-keys]
 related: [first-key-setup, file-permissions, permission-denied]
 entry_points: [ssh-copy-id, add my key to a server, manually add key to authorized_keys, deploy public key]
 summary: >
-  Getting your public key onto the server — ssh-copy-id, the manual
+  Getting your public key onto the server—ssh-copy-id, the manual
   authorized_keys method, and the permissions that must accompany it.
 ---
 
@@ -16,7 +16,7 @@ Deploying a Public Key
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Deploying means getting your **public** key into the server's `authorized_keys` file so the server trusts it. `ssh-copy-id` does it automatically — logs in with your current auth method, appends the key, sets correct permissions. You can also do it by hand.
+Deploying means getting your **public** key into the server's `authorized_keys` file so the server trusts it. `ssh-copy-id` does it automatically—logs in with your current auth method, appends the key, sets correct permissions. You can also do it by hand.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->

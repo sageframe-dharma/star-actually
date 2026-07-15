@@ -39,7 +39,7 @@ type: decision
 project: sharibako
 stage: kamae-2.1
 kamae-chain: seed → system-design → **injection-decision** → readme → ho-overview
-supersedes: kamae-2 §7 (partial — the "no runtime injection" architectural commitment)
+supersedes: kamae-2 §7 (partial—the "no runtime injection" architectural commitment)
 builds-on: kamae-1-sharibako-seed, kamae-2-sharibako-system-design
 next: reflected in kamae-1 seed (parti), kamae-4 (adds ho-04.5), README, SECURITY.md
 ---
@@ -47,13 +47,13 @@ next: reflected in kamae-1 seed (parti), kamae-4 (adds ho-04.5), README, SECURIT
 
 Field notes:
 
-- **`supersedes:` is section-precise.** Not "supersedes kamae-2" — "kamae-2 §7
- (partial — the specific line)." The reader must be able to tell exactly which
+- **`supersedes:` is section-precise.** Not "supersedes kamae-2"—"kamae-2 §7
+ (partial—the specific line)." The reader must be able to tell exactly which
  commitments fell and, by implication, which stand. The addendum body repeats this
  as prose: "All other Kamae 2 commitments … stand unchanged."
-- **`kamae-chain:` shows the insertion position** — where the addendum sits in the
+- **`kamae-chain:` shows the insertion position**—where the addendum sits in the
  reading order, bolded.
-- **`next:` names the propagation set** — every downstream document the decision was
+- **`next:` names the propagation set**—every downstream document the decision was
  reflected into (see §4).
 
 Body sections (both instances follow this arc): […]

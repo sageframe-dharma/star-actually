@@ -65,12 +65,12 @@
     <section class="layer layer-4" data-depth="4">
       <p>Challenge–sign–verify is the one flow that repeats everywhere key-pair cryptography shows up:</p>
 <ul>
-<li><strong>Hardware security keys</strong> run the same flow with the signing moved inside the device. The computer asks: <em>&quot;Please sign this challenge.&quot;</em> The hardware responds: <em>&quot;Here is a proof I signed it.&quot;</em> The secret never leaves the hardware — only the signature does.</li>
+<li><strong>Hardware security keys</strong> run the same flow with the signing moved inside the device. The computer asks: <em>&quot;Please sign this challenge.&quot;</em> The hardware responds: <em>&quot;Here is a proof I signed it.&quot;</em> The secret never leaves the hardware—only the signature does.</li>
 <li><strong>FIDO2</strong> brought the same shift to the web: the service verifies a <em>signature</em>, not a secret.</li>
-<li><strong>Agent forwarding</strong> is this flow stretched across machines — the challenge travels back to your local agent for signing, and the signature travels forward.</li>
+<li><strong>Agent forwarding</strong> is this flow stretched across machines—the challenge travels back to your local agent for signing, and the signature travels forward.</li>
 <li><strong>Known hosts</strong> is the same verification pointed the other way: the server proves <em>its</em> identity to you, and your client checks the proof against a stored fingerprint.</li>
 </ul>
-<p>Once you can see the challenge and the signature in each of these, none of them is a new idea — just a new place to stand.</p>
+<p>Once you can see the challenge and the signature in each of these, none of them is a new idea—just a new place to stand.</p>
 
     </section>
     
@@ -93,7 +93,7 @@
         │    (✗ denied if invalid)            │
 </code></pre>
 <p><strong>The private key NEVER travels over the network.</strong> The server verifies the signature using your public key, but never sees your private key.</p>
-<p>What a signature proves, stated fully: a specific secret exists, and the holder of that secret approved <em>this exact action</em>. That second half matters — a signature is bound to the challenge it signed, so it can't be replayed against a different one.</p>
+<p>What a signature proves, stated fully: a specific secret exists, and the holder of that secret approved <em>this exact action</em>. That second half matters—a signature is bound to the challenge it signed, so it can't be replayed against a different one.</p>
 
     </section>
     

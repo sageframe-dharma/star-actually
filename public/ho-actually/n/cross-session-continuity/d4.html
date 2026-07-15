@@ -30,8 +30,8 @@
     
     <section class="layer layer-3" data-depth="3">
       <p>Carrying a build's thread across sessions when the human is not
-the one holding it. Continuity is <em>implicit</em> everywhere — the cold record (git, Reflect, the
-build record) carries the thread as a side effect of being well-kept — and <em>explicit</em> in one
+the one holding it. Continuity is <em>implicit</em> everywhere—the cold record (git, Reflect, the
+build record) carries the thread as a side effect of being well-kept—and <em>explicit</em> in one
 place: the <strong>state memory (Kamae 6)</strong>, always present, with the universal <strong>state-summary
 block</strong> at its top and the <strong>working-memory handoff</strong> body grown by event-gated accretion.
 Kept honest by the freshness, <strong>hot / cold</strong>, and graduated-compaction disciplines. Promoted
@@ -45,15 +45,15 @@ arrives with no context and reads its way in: the README, the system design, the
 the relevant ho, the code. The bounded-session discipline keeps each session in clean context;
 the [[devlog|Reflect phase]] (framework/structure/devlog.md) banks what each ho learned; the
 forward-only principle keeps the record honest; <code>builds-on:</code> frontmatter gives the reading
-order. That model works — and it rests on an assumption the framework never states out loud:
+order. That model works—and it rests on an assumption the framework never states out loud:
 <strong>a human carries the thread.</strong> The practitioner remembers the last session, holds the
 architectural intent, drives planning mode, and is the watching presence that catches drift.
 The [[operating-discipline|operating discipline]] (practitioner/operating-discipline.md) names
-this directly — <em>&quot;the practitioner is the continuity,&quot;</em> <em>&quot;the presence is the verification.&quot;</em></p>
+this directly—<em>&quot;the practitioner is the continuity,&quot;</em> <em>&quot;the presence is the verification.&quot;</em></p>
 <p>Remove the human from between sessions and two roles the whole model rests on vanish: <strong>holding
 intent across sessions</strong>, and <strong>being the verification presence</strong>. The
-pālana pilot — the first fully autonomous Ho build ([[continuity-discipline|5.3]]
-(examples/palana-autonomous/continuity-discipline.md)) — ran a multi-session build where the
+pālana pilot—the first fully autonomous Ho build ([[continuity-discipline|5.3]]
+(examples/palana-autonomous/continuity-discipline.md))—ran a multi-session build where the
 agent's context window was wiped between sessions and the agent itself had to reconstitute the
 entire build state from written artifacts alone. It evolved a system to fill exactly that gap.
 This document promotes the load-bearing parts of that system into doctrine. […]</p>

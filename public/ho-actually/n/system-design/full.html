@@ -55,30 +55,30 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The document that settles how the system works — its parts, connections, and technology choices — before any code is written.</p>
+      <p>The document that settles how the system works—its parts, connections, and technology choices—before any code is written.</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>The Kamae 2 document: the structured technical vision — major
+      <p>The Kamae 2 document: the structured technical vision—major
 components and how they connect, data flow, technology stack with rationale, deployment
 model, scope boundaries. Turns the seed's architectural opinions into decisions, each
 traceable to the seed's core idea; no implementation details (those belong to individual
-hos). Frozen once committed — superseded by dated addenda (kamae-N.M), never edited in
+hos). Frozen once committed—superseded by dated addenda (kamae-N.M), never edited in
 place.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p><strong>System Design.</strong> <strong>What it is:</strong> The structured technical vision. How the system works, what the major components are, how they connect, what technology choices anchor the architecture. Written for someone who needs to understand <em>what you're building</em> at a systems level.</p>
-<p>The System Design takes the seed's architectural opinions and turns them into decisions. The seed says &quot;I think I need a database and a web frontend, and here's why.&quot; The System Design says &quot;PostgreSQL, FastAPI, here's the data model, here's how the components connect.&quot; Every decision should be traceable back to the seed's core idea — if an architectural choice doesn't serve the project's stated purpose, it needs justification or removal.</p>
+<p>The System Design takes the seed's architectural opinions and turns them into decisions. The seed says &quot;I think I need a database and a web frontend, and here's why.&quot; The System Design says &quot;PostgreSQL, FastAPI, here's the data model, here's how the components connect.&quot; Every decision should be traceable back to the seed's core idea—if an architectural choice doesn't serve the project's stated purpose, it needs justification or removal.</p>
 <p><strong>What it's NOT:</strong> Implementation details. The System Design says &quot;the controller sends a Wake-on-LAN packet, waits for SSH, runs syncoid, and shuts down the remote machine.&quot; It does NOT say &quot;use paramiko with a 120-second timeout and poll every 5 seconds.&quot; Those decisions happen in individual hos.</p>
 <p><strong>What &quot;done&quot; looks like:</strong></p>
 <p>Someone reading this document should understand:</p>
 <ul>
 <li>The system architecture (major components and how they interact)</li>
 <li>Data flow (what goes in, what comes out, what's stored where)</li>
-<li>Technology stack (languages, frameworks, key libraries — with rationale)</li>
+<li>Technology stack (languages, frameworks, key libraries—with rationale)</li>
 <li>Deployment model (where does this run, how is it accessed)</li>
 <li>Scope boundaries (what's v1, what's future, what's explicitly out)</li>
 </ul>

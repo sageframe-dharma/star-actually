@@ -32,9 +32,9 @@
       <p>How it works: a <strong>shared secret</strong> exists between you and the service; time or counters generate changing codes from it; you type the current code after your password.</p>
 <p>The delivery mechanism matters more than people expect:</p>
 <ul>
-<li><strong>SMS codes</strong> — a short numeric code texted to a phone number. Weak: SMS is vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone <em>number</em> — not the physical device — is the security anchor, which is a fundamental design flaw.</li>
-<li><strong>Authenticator apps (TOTP)</strong> — an app generates a rotating code from a shared secret and the current time. Better: codes are short-lived and never transmitted over the network. Still flawed: they are <strong>phishable and replayable</strong> — an attacker who tricks you into entering the code can immediately use it.</li>
-<li><strong>Enterprise tokens</strong> — centrally managed hardware or software tokens with short validity windows, logging, and rapid revocation. Stronger operationally, but still <strong>code-based</strong>, so real-time phishing remains possible.</li>
+<li><strong>SMS codes</strong>—a short numeric code texted to a phone number. Weak: SMS is vulnerable to SIM-swapping, carrier attacks, interception, and social engineering. The phone <em>number</em>—not the physical device—is the security anchor, which is a fundamental design flaw.</li>
+<li><strong>Authenticator apps (TOTP)</strong>—an app generates a rotating code from a shared secret and the current time. Better: codes are short-lived and never transmitted over the network. Still flawed: they are <strong>phishable and replayable</strong>—an attacker who tricks you into entering the code can immediately use it.</li>
+<li><strong>Enterprise tokens</strong>—centrally managed hardware or software tokens with short validity windows, logging, and rapid revocation. Stronger operationally, but still <strong>code-based</strong>, so real-time phishing remains possible.</li>
 </ul>
 
     </section>
@@ -42,10 +42,10 @@
     <section class="layer layer-4" data-depth="4">
       <p>Where one-time codes sit in the larger landscape: they are <strong>layered defense, not a structural fix</strong>. The two limits are the same limits passwords have, just softened:</p>
 <ul>
-<li><strong>Codes can still be phished.</strong> Anything you type, you can be tricked into typing on the wrong site — and a live attacker relays it in real time.</li>
+<li><strong>Codes can still be phished.</strong> Anything you type, you can be tricked into typing on the wrong site—and a live attacker relays it in real time.</li>
 <li><strong>Secrets still exist on servers.</strong> TOTP works because the server holds the same shared secret your app does. The server can still lose it.</li>
 </ul>
-<p>That is why every code-based method — email link, SMS, TOTP, enterprise tokens — sits below the cryptographic tiers on the MFA strength ladder. FIDO2 and its descendants don't rotate the shared secret faster; they <strong>remove it</strong>. The server verifies a signature instead, and there is nothing to type, capture, or replay.</p>
+<p>That is why every code-based method—email link, SMS, TOTP, enterprise tokens—sits below the cryptographic tiers on the MFA strength ladder. FIDO2 and its descendants don't rotate the shared secret faster; they <strong>remove it</strong>. The server verifies a signature instead, and there is nothing to type, capture, or replay.</p>
 
     </section>
     

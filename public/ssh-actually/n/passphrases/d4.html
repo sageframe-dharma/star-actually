@@ -24,7 +24,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>passphrase</strong> is a secret used to encrypt a private key <strong>at rest</strong> on disk. It is not a password for a server — it protects the key file itself.</p>
+      <p>A <strong>passphrase</strong> is a secret used to encrypt a private key <strong>at rest</strong> on disk. It is not a password for a server—it protects the key file itself.</p>
 
     </section>
     
@@ -43,17 +43,17 @@
 <blockquote>
 <p>If someone steals a private key file, they can brute-force the passphrase <strong>offline with unlimited attempts</strong>.</p>
 </blockquote>
-<p>That's why strength matters — 20+ characters, stored in a password manager. The tradeoff is honest: no passphrase → convenient, unsafe; passphrase → safer, annoying.</p>
-<p>And if you forget it: there is no recovery. You cannot use the key. Generate a new key pair and deploy it to your servers — which is exactly why the passphrase belongs in a password manager.</p>
+<p>That's why strength matters—20+ characters, stored in a password manager. The tradeoff is honest: no passphrase → convenient, unsafe; passphrase → safer, annoying.</p>
+<p>And if you forget it: there is no recovery. You cannot use the key. Generate a new key pair and deploy it to your servers—which is exactly why the passphrase belongs in a password manager.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
       <p>The passphrase sits at the center of three tradeoffs:</p>
 <ul>
-<li><strong>The annoyance has a fix.</strong> Retyping the passphrase every connection is what <strong>SSH agents</strong> exist for — the agent caches the unlocked key for a session. macOS goes further and makes the whole thing invisible (Keychain + Touch ID), which is convenience, not a stronger boundary.</li>
+<li><strong>The annoyance has a fix.</strong> Retyping the passphrase every connection is what <strong>SSH agents</strong> exist for—the agent caches the unlocked key for a session. macOS goes further and makes the whole thing invisible (Keychain + Touch ID), which is convenience, not a stronger boundary.</li>
 <li><strong>The comparison that clarifies it.</strong> A passphrase protects a <em>file</em>, brute-forceable offline with unlimited attempts. A hardware PIN protects a <em>physical device</em>, with attempt limits enforced inside the hardware. That asymmetry is why a 6-digit PIN can safely replace a 40-character passphrase.</li>
-<li><strong>What it says about where you stand.</strong> Needing a passphrase at all is a symptom of the disk-based trust boundary: the secret is a copyable file, so it needs armor. Hardware keys remove the file entirely — and the passphrase with it.</li>
+<li><strong>What it says about where you stand.</strong> Needing a passphrase at all is a symptom of the disk-based trust boundary: the secret is a copyable file, so it needs armor. Hardware keys remove the file entirely—and the passphrase with it.</li>
 </ul>
 
     </section>

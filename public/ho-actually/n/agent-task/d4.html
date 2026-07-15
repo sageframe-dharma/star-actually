@@ -41,12 +41,12 @@ architectural decisions inside), executor-portable (names its <code>model:</code
     <section class="layer layer-4" data-depth="4">
       <p><strong>The Two Registers.</strong> A ho document operates at the <strong>architectural register</strong>. It carries decisions, the
 reasoning behind them, deferred discoveries, and post-execution reflection. It is read
-by humans — the practitioner, future maintainers, anyone trying to understand why the
+by humans—the practitioner, future maintainers, anyone trying to understand why the
 system is the way it is. Its content is durable: it survives the project and gets
 revisited years later.</p>
 <p>An agent task operates at the <strong>executable register</strong>. It carries exact files, exact
 changes, exact acceptance criteria, exact verification commands. It is read primarily
-by an autonomous coding agent — and secondarily by the practitioner reviewing the
+by an autonomous coding agent—and secondarily by the practitioner reviewing the
 agent's output. Its content is operational: once the work is committed and verified,
 the task's job is done.</p>
 <p>Mixing the registers in one document damages both. The architectural reasoning gets

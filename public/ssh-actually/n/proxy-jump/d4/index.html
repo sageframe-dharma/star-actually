@@ -42,7 +42,7 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>An SSH feature that routes your connection through an intermediate server <strong>without giving that server access to your agent</strong> — the intermediate opens a TCP tunnel, and your client authenticates directly with the destination through it. The secure alternative to agent forwarding for multi-hop SSH.</p>
+      <p>An SSH feature that routes your connection through an intermediate server <strong>without giving that server access to your agent</strong>—the intermediate opens a TCP tunnel, and your client authenticates directly with the destination through it. The secure alternative to agent forwarding for multi-hop SSH.</p>
 
     </section>
     
@@ -61,14 +61,14 @@
 <li>SSH opens a connection to the jump host</li>
 <li>The jump host opens a <strong>TCP tunnel</strong> to the destination</li>
 <li>Your SSH client authenticates <strong>directly</strong> with the destination through the tunnel</li>
-<li>The jump host sees encrypted traffic — nothing else</li>
+<li>The jump host sees encrypted traffic—nothing else</li>
 </ol>
 <p>The jump host never sees your key, never talks to your agent, cannot use your credentials. It is just a network relay.</p>
 
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p>ProxyJump is the third of three answers to &quot;my key is on my laptop but I need to hop through a machine&quot; — the other two being <em>copy the key to the intermediate</em> (don't) and <em>agent forwarding</em> (the key stays home but its power travels). The comparison:</p>
+      <p>ProxyJump is the third of three answers to &quot;my key is on my laptop but I need to hop through a machine&quot;—the other two being <em>copy the key to the intermediate</em> (don't) and <em>agent forwarding</em> (the key stays home but its power travels). The comparison:</p>
 <table>
 <thead>
 <tr>
@@ -105,7 +105,7 @@
 </tr>
 </tbody>
 </table>
-<p>When to use ProxyJump instead of forwarding: <strong>almost always</strong>. Especially any server you don't fully control, any multi-hop path through shared infrastructure, any cloud or work environment — and any time hardware keys are involved, because agent forwarding behavior with hardware keys varies and can be unreliable while ProxyJump works cleanly.</p>
+<p>When to use ProxyJump instead of forwarding: <strong>almost always</strong>. Especially any server you don't fully control, any multi-hop path through shared infrastructure, any cloud or work environment—and any time hardware keys are involved, because agent forwarding behavior with hardware keys varies and can be unreliable while ProxyJump works cleanly.</p>
 
     </section>
     

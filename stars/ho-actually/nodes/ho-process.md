@@ -6,7 +6,7 @@ requires: []
 related: [kamae, readme]
 entry_points: [ho-process/]
 summary: >
-  The project folder that holds the methodology's working artifacts — the framing documents, the session records, and the task specs.
+  The project folder that holds the methodology's working artifacts—the framing documents, the session records, and the task specs.
 ---
 
 <!-- depth:1 -->
@@ -15,7 +15,7 @@ ho-process/
 
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The project folder that holds the methodology's working artifacts — the framing documents, the session records, and the task specs.
+The project folder that holds the methodology's working artifacts—the framing documents, the session records, and the task specs.
 
 <!-- depth:3 -->
 <!-- provenance: extracted -->
@@ -27,7 +27,7 @@ documents, `hos/`, `agent-tasks/`, and any project-specific layers (`learning/`,
 <!-- provenance: extracted -->
 **Filenames and Location.** The single-instance Kamae documents live in the project repo under `ho-process/`, with the README at the repo root.
 
-**Pattern:** `kamae-<N>-<project>-<doctype>.md` for documents 1, 2, 4, and 6. The README (Kamae 3) is the canonical repo-root `README.md` and does *not* take a `kamae-3-` prefix — it ships as the public face of the repository under its standard name.
+**Pattern:** `kamae-<N>-<project>-<doctype>.md` for documents 1, 2, 4, and 6. The README (Kamae 3) is the canonical repo-root `README.md` and does *not* take a `kamae-3-` prefix—it ships as the public face of the repository under its standard name.
 
 | Kamae | Document | Path |
 |---|---|---|

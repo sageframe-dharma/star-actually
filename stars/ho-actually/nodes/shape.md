@@ -21,4 +21,4 @@ The structural form a session document takes, chosen at authoring time, describi
 <!-- provenance: extracted -->
 The structural form of a per-ho document: orientation, ha, ri, or shu. Chosen by
 ordered questions at authoring time; determines the document's sections. A shape is not a
-stage label — it describes the document, not the practitioner.
+stage label—it describes the document, not the practitioner.

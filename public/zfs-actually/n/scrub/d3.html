@@ -36,16 +36,18 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The word is active—you scrub a thing to clean it—so the naive model
-makes scrub the repair process. <strong>Actually, a scrub is a forced read: &quot;a
-normal scrub examines all data in the specified pools and verifies each
-block's checksum&quot; (zpool-scrub(8)).</strong> Detection was always going to happen
-on read; the scrub's contribution is reading the data <em>nothing else reads</em>,
-so cold corruption is found while the redundancy to fix it still exists.</p>
-<p>Repair happens only where a second good copy lives: &quot;for replicated (mirror,
-raidz, or draid) devices, ZFS automatically repairs any damage discovered.&quot;
-Scrub a redundancy-less vdev and ZFS hands you a list of what rotted—named
-files, even—and can heal none of it.</p>
+      <p>The word sounds like cleaning—you scrub a thing to fix it up. <strong>Actually,
+a scrub is a read-through: ZFS reads every piece of data the pool holds
+and checks every fingerprint</strong> (&quot;a normal scrub examines all data in the
+specified pools and verifies each block's checksum&quot;—zpool-scrub(8)). Why
+force that? Because ZFS checks data whenever it's read anyway—but the
+files nobody has opened in three years never get read. Data can quietly go
+bad while sitting untouched, and a scrub visits it <em>while a spare copy
+still exists to fix it with</em>.</p>
+<p>The fixing itself only happens where a spare copy lives: &quot;for replicated
+(mirror, raidz, or draid) devices, ZFS automatically repairs any damage
+discovered.&quot; Scrub a setup with no spare copies and ZFS hands you a list
+of what went bad—named files, even—and can heal none of it.</p>
 
     </section>
     

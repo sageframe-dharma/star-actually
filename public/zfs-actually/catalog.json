@@ -6,7 +6,7 @@
       "id": "arc",
       "title": "The ARC",
       "type": "concept",
-      "summary": "ZFS's adaptive read cache—the reason your RAM looks full, and why that's the system working, not leaking.",
+      "summary": "ZFS's reading cache—the reason your machine's memory looks full, and why that's the system working, not leaking.",
       "entry_points": [
         "zfs is eating my ram",
         "why is my memory full",
@@ -20,7 +20,7 @@
       "id": "ashift",
       "title": "Ashift",
       "type": "concept",
-      "summary": "The sector-size assumption baked into a vdev at creation—immutable forever, and the one setting a wrong guess makes permanent. Use 12.",
+      "summary": "ZFS's recorded guess about a disk's true cell size—made once, when a disk team is created, and permanent forever. The one setting a wrong guess makes unfixable. Use 12.",
       "entry_points": [
         "what is ashift",
         "ashift 9 vs 12",
@@ -34,7 +34,7 @@
       "id": "checksums",
       "title": "Checksums",
       "type": "concept",
-      "summary": "Every block verified on every read, with the checksum stored apart from the data—detection is unconditional; repair needs a second good copy.",
+      "summary": "A tiny fingerprint for every piece of data, re-checked on every read—so a lying disk gets caught in the act. Noticing damage is guaranteed; fixing it needs a spare copy.",
       "entry_points": [
         "how does zfs detect corruption",
         "what is bit rot",
@@ -48,7 +48,7 @@
       "id": "compression",
       "title": "Compression",
       "type": "concept",
-      "summary": "LZ4 is so fast the old space-vs-CPU trade runs backward—compression on is the default posture, and it often makes the pool faster.",
+      "summary": "Squeezing data used to cost speed to save space. ZFS's method is so fast the trade runs backward—leave it on, and it often makes things faster.",
       "entry_points": [
         "should i enable compression",
         "is compression slow",
@@ -61,7 +61,7 @@
       "id": "copy-on-write",
       "title": "Copy-on-Write",
       "type": "concept",
-      "summary": "ZFS never overwrites a live block—every write lands on fresh space and pointers flip atomically. Not a safety feature; the ontology everything else stands on.",
+      "summary": "ZFS never writes over existing data—every change lands on fresh space first, then takes effect in one clean switch. The habit everything else stands on.",
       "entry_points": [
         "what is copy on write",
         "what is cow",
@@ -75,7 +75,7 @@
       "id": "dataset",
       "title": "Datasets",
       "type": "concept",
-      "summary": "Not folders and not partitions—nearly-free policy boundaries carved from the pool's shared space. The unit of properties, snapshots, and replication. Make many.",
+      "summary": "A named slice of the pool that looks like a folder but carries its own rules—its own settings, limits, and history. Costs nothing to make. Make many.",
       "entry_points": [
         "what is a dataset",
         "dataset vs directory",
@@ -89,7 +89,7 @@
       "id": "dedup",
       "title": "Deduplication",
       "type": "concept",
-      "summary": "Sounds free because checksums already exist—actually a standing RAM tax on every write, forever, that loses to plain compression in almost every homelab.",
+      "summary": "Storing each duplicate piece of data only once—sounds free, actually costs a standing memory tax on every write, forever. Plain compression wins in almost every home setup.",
       "entry_points": [
         "should i enable dedup",
         "zfs dedup ram",
@@ -102,7 +102,7 @@
       "id": "ecc-question",
       "title": "The ECC Question",
       "type": "concept",
-      "summary": "\"ZFS without ECC eats your data\" is the loudest myth in homelab ZFS—the scrub-of-death mechanism doesn't survive inspection, per the co-creator himself.",
+      "summary": "\"ZFS without special error-checking memory will eat your data\" is the loudest myth in ZFS—it doesn't survive inspection, per the co-creator himself.",
       "entry_points": [
         "do i need ecc ram for zfs",
         "scrub of death",
@@ -144,7 +144,7 @@
       "id": "first-pool",
       "title": "Your First Pool",
       "type": "procedure",
-      "summary": "The creation decisions in the order they lock in: vdev shape and ashift are forever, everything else is a property. One command, four judgments.",
+      "summary": "Creating a pool is one command and four judgments—two of them permanent (how the disks are teamed, and the disk cell-size setting), the rest changeable over coffee.",
       "entry_points": [
         "how to create a pool",
         "zpool create",
@@ -157,7 +157,7 @@
       "id": "free-space-discipline",
       "title": "The Free-Space Discipline",
       "type": "concept",
-      "summary": "On a CoW pool, free space isn't headroom—it's the workshop floor every write operates on. Fill the pool and the pool gets permanently grumpier.",
+      "summary": "On ZFS, empty space isn't spare room—it's the workshop floor every change is made on. Fill the pool and it gets permanently grumpier.",
       "entry_points": [
         "how full can a zfs pool get",
         "pool slow when full",
@@ -170,7 +170,7 @@
       "id": "l2arc",
       "title": "L2ARC",
       "type": "definition",
-      "summary": "The ARC's spillover tier on SSD—every block it caches costs ARC RAM for the index, so it's a measured fix for proven ARC misses, not free speed.",
+      "summary": "A second-tier cache on a fast drive—not free speed, because indexing it spends the memory cache that's actually fast. A measured fix for a proven problem, not an upgrade.",
       "entry_points": [
         "should i add a cache drive",
         "what is l2arc",
@@ -183,7 +183,7 @@
       "id": "mirror",
       "title": "Mirrors",
       "type": "concept",
-      "summary": "Two-plus disks holding identical copies—half your capacity for the best IOPS, the fastest resilvers, and the most flexible growth. The workhorse layout for VM and database pools.",
+      "summary": "Two or more disks holding identical copies of everything—half the space, in exchange for the best speed, the fastest recovery, and the most freedom to change your mind later.",
       "entry_points": [
         "mirror vs raidz",
         "should i use mirrors",
@@ -196,7 +196,7 @@
       "id": "mountpoints",
       "title": "Mountpoints",
       "type": "concept",
-      "summary": "ZFS mounts itself—the mountpoint is a property of the dataset, stored in the pool, traveling with the data. fstab isn't empty by accident.",
+      "summary": "Where a dataset appears in your folders is a setting stored on the dataset itself—the location travels with the data, not with the machine.",
       "entry_points": [
         "zfs not in fstab",
         "how do zfs mounts work",
@@ -209,7 +209,7 @@
       "id": "pool",
       "title": "The Pool",
       "type": "concept",
-      "summary": "One shared reservoir of storage built from vdevs—not a big partition, and not where redundancy lives.",
+      "summary": "All your disks, combined into one shared pot of storage—and the surprise inside the word: the pool itself keeps no spare copies.",
       "entry_points": [
         "what is a zpool",
         "what is a pool",
@@ -236,7 +236,7 @@
       "id": "property-inheritance",
       "title": "Property Inheritance",
       "type": "definition",
-      "summary": "Properties set on a dataset flow down its subtree until overridden—policy is written once at the right altitude, not per-dataset.",
+      "summary": "Settings flow downhill: set once on a parent dataset, every child follows until one is told otherwise. There is no central settings file—the tree is the settings.",
       "entry_points": [
         "how do zfs properties work",
         "zfs set inherit",
@@ -249,7 +249,7 @@
       "id": "proxmox-zfs",
       "title": "ZFS Under Proxmox",
       "type": "scenario",
-      "summary": "What the installer actually built: an rpool for the OS, zvols per VM disk, and an ARC that shares RAM with your VMs—the homelab's most common ZFS, decoded.",
+      "summary": "What the Proxmox installer actually built: a pool for the operating system, a raw virtual disk per VM, and a cache that shares memory with your machines—the most common accidental ZFS, decoded.",
       "entry_points": [
         "proxmox zfs",
         "what is rpool",
@@ -262,7 +262,7 @@
       "id": "raidz",
       "title": "RAIDZ",
       "type": "concept",
-      "summary": "Parity redundancy that fixed RAID5's write hole—but a RAIDZ vdev delivers roughly one disk of IOPS no matter how wide. Bulk storage, not VM storage.",
+      "summary": "Protection by recovery math instead of full copies—more usable space than mirrors, but a RAIDZ team moves at one disk's pace for scattered small requests. Big libraries, not virtual machines.",
       "entry_points": [
         "raidz vs raid5",
         "what is raidz",
@@ -276,7 +276,7 @@
       "id": "raidz-expansion",
       "title": "RAIDZ Expansion",
       "type": "definition",
-      "summary": "Since OpenZFS 2.3 you can widen a RAIDZ vdev live—with caveats: old data keeps its old parity ratio, and type still can't change.",
+      "summary": "Adding one more disk to an existing RAIDZ team—impossible for a decade, possible since early 2025, with fine print about how much space you actually get back.",
       "entry_points": [
         "can i add a disk to raidz",
         "grow raidz",
@@ -289,7 +289,7 @@
       "id": "recordsize",
       "title": "Recordsize",
       "type": "concept",
-      "summary": "Not the disk's block size—the maximum logical block per file, set per dataset. It matters when small random I/O lands inside big files, and it only touches new files.",
+      "summary": "The size of the chunks ZFS stores files in—adjustable per dataset. It matters when programs change small pieces inside huge files, and changing it only affects files written afterward.",
       "entry_points": [
         "what is recordsize",
         "recordsize vs block size",
@@ -316,7 +316,7 @@
       "id": "resilver",
       "title": "Resilvering",
       "type": "concept",
-      "summary": "ZFS's rebuild—but it copies live data, not disk sectors, verifying every block against its checksum. Emptier pool, shorter rebuild, smaller second-failure window.",
+      "summary": "How ZFS refills a replacement disk—copying only real data, checking every piece as it goes. A half-full pool recovers in half the time, and the time matters.",
       "entry_points": [
         "what is resilvering",
         "resilver vs rebuild",
@@ -342,7 +342,7 @@
       "id": "sanoid-syncoid",
       "title": "Sanoid and Syncoid",
       "type": "concept",
-      "summary": "Not a backup daemon—two thin tools: sanoid is policy over snapshot/destroy, syncoid is orchestration over send/recv. Judgment on top of primitives you can run by hand.",
+      "summary": "Not one \"backup system\"—two small helpers: sanoid takes and prunes snapshots on a schedule; syncoid ships them to another machine. Both just automate things you can do by hand.",
       "entry_points": [
         "what is sanoid",
         "what is syncoid",
@@ -356,7 +356,7 @@
       "id": "scrub",
       "title": "Scrubs",
       "type": "concept",
-      "summary": "A forced read of everything, so checksums can catch silent damage while redundancy still exists to repair it. Detection is unconditional; repair isn't.",
+      "summary": "A scheduled read-through of everything the pool holds, so quiet damage in untouched data gets found while a spare copy still exists to fix it. Finding is guaranteed; fixing isn't.",
       "entry_points": [
         "what does scrub do",
         "does scrub fix bit rot",
@@ -369,7 +369,7 @@
       "id": "send-recv",
       "title": "Send and Receive",
       "type": "concept",
-      "summary": "Not rsync with extra steps—a serialized exact snapshot state, with incrementals diffed by block birth-time. rsync approximates sameness; recv is sameness.",
+      "summary": "How a frozen moment travels to another machine—an exact copy, and after the first trip, only what changed. Not a file-comparing sync tool: it already knows what's different.",
       "entry_points": [
         "what is zfs send",
         "zfs send vs rsync",
@@ -382,7 +382,7 @@
       "id": "snapshot",
       "title": "Snapshots",
       "type": "concept",
-      "summary": "A snapshot copies nothing—it's a named pin on blocks that already exist. Free at creation; the cost arrives later, as the present diverges from the pinned past.",
+      "summary": "A frozen moment of a dataset that copies nothing—it just keeps the past from being thrown away. Free to take; the cost arrives slowly, as the present drifts from the moment you kept.",
       "entry_points": [
         "what is a snapshot",
         "how do snapshots work",
@@ -396,7 +396,7 @@
       "id": "snapshot-space",
       "title": "Snapshots and Disappearing Space",
       "type": "troubleshooting",
-      "summary": "You deleted the files and the space didn't come back—because snapshots still reference them. The space moved ledgers; it didn't free.",
+      "summary": "You deleted the files and the free space barely moved—because snapshots are still holding those files. The space changed owners; it didn't come back.",
       "entry_points": [
         "deleted files but no space freed",
         "zfs delete not freeing space",
@@ -423,7 +423,7 @@
       "id": "vdev",
       "title": "The Vdev",
       "type": "concept",
-      "summary": "The unit of redundancy—and therefore the unit of failure. The pool survives any disk its vdevs can absorb, and dies with any vdev it can't.",
+      "summary": "The small team of disks that back each other up—where protection actually lives, and therefore where failure actually lives. Lose one whole team, lose the whole pool.",
       "entry_points": [
         "what is a vdev",
         "where does redundancy live",
@@ -451,7 +451,7 @@
       "id": "what-zfs-is",
       "title": "What ZFS Is",
       "type": "concept",
-      "summary": "Not a filesystem with features—the whole storage stack rebuilt around one act of distrust: assume the hardware lies, verify everything, never depend on an overwrite.",
+      "summary": "A system for storing data built around one promise: what you put in comes back exactly—or ZFS tells you, loudly, instead of silently handing you something broken.",
       "entry_points": [
         "what is zfs",
         "is zfs a filesystem",
@@ -465,7 +465,7 @@
       "id": "zil-slog",
       "title": "ZIL and SLOG",
       "type": "concept",
-      "summary": "Not a write cache—a crash-recovery log that's written constantly and read exactly once, after a crash. A SLOG only moves it to faster media, and only synchronous writes care.",
+      "summary": "Not a fast lane for writes—a diary of promises, written constantly and read exactly once: after a crash. A SLOG just moves the diary to a faster drive, and only promise-me-now writes ever use it.",
       "entry_points": [
         "what is the zil",
         "what is a slog",
@@ -493,7 +493,7 @@
       "id": "zvol",
       "title": "Zvols",
       "type": "definition",
-      "summary": "A dataset wearing a block-device face—pool-backed raw volumes with snapshots and send/recv, no filesystem-in-a-file. What Proxmox gives VMs.",
+      "summary": "A slice of the pool that pretends to be a blank disk instead of a folder— what virtual machines get handed. Still checked, snapshotted, and copied like everything else.",
       "entry_points": [
         "what is a zvol",
         "zvol vs dataset",

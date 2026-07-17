@@ -17,18 +17,19 @@ summary: >
 Replacing a Disk
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The instinct when `zpool status` shows a dead disk is either panic-speed or
-paralysis. **Actually, a degraded pool is stable and serving—the
-procedure is unhurried, and the failure mode that actually bites is
-imprecision: pulling the *wrong* disk from a machine full of identical
-drives.** The command itself is one line: `zpool replace` "is equivalent to
-attaching new-device, waiting for it to resilver, and then detaching device"
-(zpool-replace(8)). Everything around that line is about being sure which
-physical object you're touching.
+A disk has died. The instinct is either panicked speed or frozen
+paralysis. **Actually, a pool that lost a disk is stable and still
+serving—the procedure is unhurried, and the danger that actually bites
+people is imprecision: pulling the *wrong* disk out of a machine full of
+identical-looking drives.** The command itself is one line: `zpool
+replace` "is equivalent to attaching new-device, waiting for it to
+resilver, and then detaching device" (zpool-replace(8)). Everything around
+that one line is about being absolutely sure which physical object you're
+touching.
 
-⚠ **DESTRUCTIVE**—verify before running: `zpool replace` repartitions the
-new device, and pulling a wrong disk from a degraded RAIDZ1 or two-way
-mirror kills the pool. Semantics per zpool-replace(8).
+⚠ **DESTRUCTIVE**—verify before running: `zpool replace` wipes and takes
+over the new disk, and pulling the wrong disk from a pool that's already
+down one can kill the pool. Semantics per zpool-replace(8).
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 The procedure:

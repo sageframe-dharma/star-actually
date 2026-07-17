@@ -10,18 +10,21 @@ entry_points:
   - zfs ssd cache
   - does l2arc help
 summary: >
-  The ARC's spillover tier on SSD—every block it caches costs ARC RAM for
-  the index, so it's a measured fix for proven ARC misses, not free speed.
+  A second-tier cache on a fast drive—not free speed, because indexing it
+  spends the memory cache that's actually fast. A measured fix for a proven
+  problem, not an upgrade.
 ---
 <!-- depth:1 -->
 L2ARC
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The forum instinct: spare NVMe + slow pool = add a cache drive, because more
-cache is always better. **Actually, L2ARC is not free speed—its index
-lives in RAM, so every block cached on the SSD eats a slice of the ARC**,
-the cache that's actually fast. On a modest-RAM machine you can end up
-trading excellent cache (RAM) for mediocre cache (SSD) and calling it an
+The instinct: the pool is slow, there's a spare fast drive (an SSD) in the
+drawer, so add it as a cache—more cache is always better. **Actually,
+L2ARC—a second-tier cache on that fast drive—is not free speed.** Here's
+the catch: ZFS must keep a catalog *in memory* of everything parked on the
+cache drive. Every piece cached on the SSD spends a little of the memory
+cache—the one that's actually fast. On a machine without much memory, you
+can end up trading excellent cache for mediocre cache and calling it an
 upgrade.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->

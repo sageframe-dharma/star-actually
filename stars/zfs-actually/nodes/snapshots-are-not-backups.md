@@ -18,17 +18,17 @@ summary: >
 Snapshots Are Not Backups
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The feeling is earned: hourlies, dailies, monthlies on every dataset—you
-can recover anything from any point in time. That's what backups *do*, so
-surely you have backups. **Actually, ask one question of any protection
-scheme: what failures does it survive?** A snapshot lives on the same disks,
-in the same pool, behind the same controller, in the same building, under
-the same admin as the data. Pool death, fire, theft, ransomware with root, a
-fat-fingered `zpool destroy`—the snapshot dies in every scenario the word
-"backup" exists for.
+The feeling is earned: snapshots every hour, every day, every month—you
+can bring back anything from any point in time. That's what backups *do*,
+so surely you have backups. **Actually, ask one question of anything that
+claims to protect you: which disasters does it survive?** A snapshot lives
+on the same disks, in the same machine, in the same building, under the
+same hands as the data itself. Fire, theft, the whole pool dying, malicious
+software that gets full control, one catastrophic mistyped command—the
+snapshot dies in every single scenario the word "backup" exists for.
 
-Snapshots answer "the *data* changed wrongly." Backups answer "the *place*
-failed." Different questions.
+Snapshots answer "the *data* went wrong." Backups answer "the *place* went
+wrong." Different questions, and you need answers to both.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 What snapshots are, said positively: the **versioning half** of a backup

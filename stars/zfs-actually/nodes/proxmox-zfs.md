@@ -10,21 +10,25 @@ entry_points:
   - proxmox vm disks zfs
   - proxmox storage explained
 summary: >
-  What the installer actually built: an rpool for the OS, zvols per VM disk,
-  and an ARC that shares RAM with your VMs—the homelab's most common ZFS,
-  decoded.
+  What the Proxmox installer actually built: a pool for the operating
+  system, a raw virtual disk per VM, and a cache that shares memory with
+  your machines—the most common accidental ZFS, decoded.
 ---
 <!-- depth:1 -->
 ZFS Under Proxmox
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-This is how most homelabs run ZFS for years without meeting it: Proxmox
-offered "ZFS" at install, VMs appeared, storage worked. The naive model—VM disks are image files on a filesystem somewhere—sends you hunting for
-qcow2 files that don't exist. **Actually, Proxmox carved each VM disk
-directly from the pool as a zvol** (a block device, not a file), and the
-mysterious `rpool` is just the pool the installer made for the OS itself.
-*(Operational source: the practitioner's own Proxmox Docker hosts run
-exactly this stack.)*
+**Proxmox** is a popular system for running virtual machines—computers
+simulated in software—on one physical box, and it offers ZFS during
+installation. This is how most home servers end up running ZFS for years
+without their owners ever meeting it: click yes, machines appear, storage
+works. The natural assumption—each virtual machine's disk is a big file
+sitting in a folder somewhere—sends you hunting for files that don't
+exist. **Actually, Proxmox carves each virtual machine's disk straight
+from the pool** (a zvol—a slice of the pool pretending to be a real
+disk), and the mysterious `rpool` is just the pool the installer made for
+the operating system itself. *(Operational source: the practitioner's own
+Proxmox hosts run exactly this stack.)*
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 Decoding a typical host:

@@ -10,24 +10,25 @@ entry_points:
   - lz4 zfs
   - zfs compression ratio
 summary: >
-  LZ4 is so fast the old space-vs-CPU trade runs backward—compression on is
-  the default posture, and it often makes the pool faster.
+  Squeezing data used to cost speed to save space. ZFS's method is so fast
+  the trade runs backward—leave it on, and it often makes things faster.
 ---
 <!-- depth:1 -->
 Compression
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The inherited model: compression trades CPU for space—a tax you pay only
-when the space is worth it. **Actually, with LZ4 the trade usually runs
-backward: compressing costs less time than reading and writing the extra
-uncompressed bytes would**, so compression frequently makes the pool
-*faster*. It early-aborts on incompressible data (media files cost you
-almost nothing), and it's the OpenZFS default posture—"set
-compression=lz4 on your pools' root datasets so that all datasets inherit it
-unless you have a reason not to enable it" (OpenZFS docs).
+The inherited belief: squeezing data to save space costs speed—a tax you
+pay only when the space is worth it. **Actually, the method ZFS uses (named
+LZ4) is so fast that the trade usually runs backward: squeezing the data
+takes less time than writing and reading the extra unsqueezed bytes
+would.** Compression frequently makes storage *faster*. It also gives up
+quickly on data that won't squeeze (photos and video are already
+compressed), so those cost you almost nothing. Leaving it on everywhere is
+the official recommendation—"set compression=lz4 on your pools' root
+datasets... unless you have a reason not to enable it" (OpenZFS docs).
 
-Your 90s-CPU intuition about gzip was correct *then*. The hardware moved;
-the intuition didn't.
+Your decades-old instinct about slow compression was correct *when you
+formed it*. The hardware moved; the instinct didn't.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Operating it:

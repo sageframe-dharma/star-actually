@@ -11,21 +11,23 @@ entry_points:
   - usedbysnapshots
   - pool full but datasets small
 summary: >
-  You deleted the files and the space didn't come back—because snapshots
-  still reference them. The space moved ledgers; it didn't free.
+  You deleted the files and the free space barely moved—because snapshots
+  are still holding those files. The space changed owners; it didn't come
+  back.
 ---
 <!-- depth:1 -->
 Snapshots and Disappearing Space
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The lived version: you clear 100GB of artifacts to free space, run
-`zfs list`, and almost nothing came back. Forty years of filesystems said
-deleting frees space. **Actually, deletion only frees blocks that nothing
-references—and every snapshot taken while those files existed still
-references them.** The space didn't leak; it moved from the dataset's ledger
-to the snapshots' ledger. Deleting files in the present cannot unpin the
-past. *(Operational source: the practitioner's own hourly-snapshot dataset
-doing exactly this.)*
+The lived version: you delete a hundred gigabytes of junk to free up room,
+check the free space—and almost nothing came back. A lifetime of computers
+said deleting frees space. **Actually, deleting a file only frees its space
+if *nothing else is still holding it*—and every snapshot taken while those
+files existed is still holding them.** That's what a snapshot is: a promise
+that a past moment won't be thrown away. The space didn't leak; its
+ownership moved from your live files to the snapshots. Deleting things in
+the present cannot un-keep the past. *(Operational source: the
+practitioner's own hourly-snapshot dataset doing exactly this.)*
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The diagnostic, in order:

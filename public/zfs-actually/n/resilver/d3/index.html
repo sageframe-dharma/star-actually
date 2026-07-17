@@ -56,13 +56,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A hardware RAID rebuild copies every sector, start to end, because the
-controller has no idea which sectors matter. <strong>Actually, ZFS <em>is</em> the
-filesystem—it knows exactly which blocks are live, so a resilver copies
-data, not disk</strong> (&quot;resilvering only examines data that ZFS knows to be out
-of date&quot;—zpool-scrub(8)), and verifies each block against its checksum as
-it goes. A half-full vdev resilvers in roughly half the time—and the time
-matters, because the resilver window is when your margin is thinnest.</p>
+      <p><strong>Resilvering</strong> is what happens after you swap in a replacement disk: ZFS
+refills it from the surviving team members. Older storage systems rebuild a
+replacement by blindly copying the entire disk, end to end, because they
+have no idea which parts hold anything. <strong>ZFS knows exactly what's real
+data, so a resilver copies the data—not the disk</strong>—and fingerprint-checks
+every piece as it goes (&quot;resilvering only examines data that ZFS knows to
+be out of date&quot;—zpool-scrub(8)). A half-full pool recovers in roughly half
+the time. And the time genuinely matters: until the resilver finishes,
+you're running with less protection than you paid for.</p>
 
     </section>
     

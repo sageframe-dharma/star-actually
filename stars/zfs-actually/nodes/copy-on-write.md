@@ -11,25 +11,26 @@ entry_points:
   - does zfs overwrite data
   - why are snapshots cheap
 summary: >
-  ZFS never overwrites a live block—every write lands on fresh space and
-  pointers flip atomically. Not a safety feature; the ontology everything
-  else stands on.
+  ZFS never writes over existing data—every change lands on fresh space
+  first, then takes effect in one clean switch. The habit everything else
+  stands on.
 ---
 <!-- depth:1 -->
 Copy-on-Write
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The naive parse of "copy-on-write" is a safety feature—something like
-journaling, keeping a copy in case a change goes wrong. **Actually,
-copy-on-write means ZFS never overwrites a live block, ever.** When you
-"change" a file, ZFS writes new blocks somewhere fresh, then atomically flips
-pointers so the new blocks become the truth. The old blocks aren't defended
-or recovered—they're simply never touched.
+The name suggests a safety net—keeping a spare copy in case a change goes
+wrong. **Actually, copy-on-write means ZFS never writes over existing data.
+Ever.** When you "change" a file, ZFS writes the new version onto fresh,
+empty space, and then—in one clean, instant switch—makes the new version
+the official one. The old data isn't protected or repaired; it's simply
+never touched.
 
-The consequence: at every instant, the on-disk state is *some* complete,
-consistent moment. A write either fully happened or never happened. There is
-no torn middle—which is why there's no fsck, and no journal replaying
-half-finished work.
+The consequence is enormous for something so simple: at every moment, what's
+on disk is *some* complete, correct state. A change either fully happened
+or never happened—there is no half-finished middle. This is why a ZFS
+machine that loses power mid-write doesn't need a repair pass afterward:
+there is nothing half-done to repair.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 You feel CoW everywhere before you can name it:

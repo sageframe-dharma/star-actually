@@ -25,13 +25,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>This is how most homelabs run ZFS for years without meeting it: Proxmox
-offered &quot;ZFS&quot; at install, VMs appeared, storage worked. The naive model—VM disks are image files on a filesystem somewhere—sends you hunting for
-qcow2 files that don't exist. <strong>Actually, Proxmox carved each VM disk
-directly from the pool as a zvol</strong> (a block device, not a file), and the
-mysterious <code>rpool</code> is just the pool the installer made for the OS itself.
-<em>(Operational source: the practitioner's own Proxmox Docker hosts run
-exactly this stack.)</em></p>
+      <p><strong>Proxmox</strong> is a popular system for running virtual machines—computers
+simulated in software—on one physical box, and it offers ZFS during
+installation. This is how most home servers end up running ZFS for years
+without their owners ever meeting it: click yes, machines appear, storage
+works. The natural assumption—each virtual machine's disk is a big file
+sitting in a folder somewhere—sends you hunting for files that don't
+exist. <strong>Actually, Proxmox carves each virtual machine's disk straight
+from the pool</strong> (a zvol—a slice of the pool pretending to be a real
+disk), and the mysterious <code>rpool</code> is just the pool the installer made for
+the operating system itself. <em>(Operational source: the practitioner's own
+Proxmox hosts run exactly this stack.)</em></p>
 
     </section>
     

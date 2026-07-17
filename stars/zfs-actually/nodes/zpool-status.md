@@ -18,12 +18,15 @@ summary: >
 Reading zpool status
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Red words in status output mean crisis in most systems, so **DEGRADED**
-reads as "half-broken, touching it might tip it over." **Actually, DEGRADED
-means the design is working: redundancy absorbed a failure and the pool is
-serving normally, with less margin.** The output is a calm document—state,
-cause, and almost always an explicit recommended action in the `action:`
-line. It tells you what to do; the skill is believing it.
+`zpool status` is the command that shows the pool's health report. Scary
+capitalized words in a report mean crisis in most of computing, so
+**DEGRADED** reads as "half-broken—touching it might tip it over."
+**Actually, DEGRADED means the design is working: a disk failed, the spare
+copies absorbed it, and the pool is running normally with less safety
+margin than before.** The report itself is a calm document—what state
+things are in, what caused it, and almost always an explicit recommended
+next step, written right there in an `action:` line. It tells you what to
+do; the skill is believing it.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The reading order:

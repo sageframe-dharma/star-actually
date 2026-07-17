@@ -52,16 +52,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The naive parse of &quot;copy-on-write&quot; is a safety feature—something like
-journaling, keeping a copy in case a change goes wrong. <strong>Actually,
-copy-on-write means ZFS never overwrites a live block, ever.</strong> When you
-&quot;change&quot; a file, ZFS writes new blocks somewhere fresh, then atomically flips
-pointers so the new blocks become the truth. The old blocks aren't defended
-or recovered—they're simply never touched.</p>
-<p>The consequence: at every instant, the on-disk state is <em>some</em> complete,
-consistent moment. A write either fully happened or never happened. There is
-no torn middle—which is why there's no fsck, and no journal replaying
-half-finished work.</p>
+      <p>The name suggests a safety net—keeping a spare copy in case a change goes
+wrong. <strong>Actually, copy-on-write means ZFS never writes over existing data.
+Ever.</strong> When you &quot;change&quot; a file, ZFS writes the new version onto fresh,
+empty space, and then—in one clean, instant switch—makes the new version
+the official one. The old data isn't protected or repaired; it's simply
+never touched.</p>
+<p>The consequence is enormous for something so simple: at every moment, what's
+on disk is <em>some</em> complete, correct state. A change either fully happened
+or never happened—there is no half-finished middle. This is why a ZFS
+machine that loses power mid-write doesn't need a repair pass afterward:
+there is nothing half-done to repair.</p>
 
     </section>
     

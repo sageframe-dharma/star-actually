@@ -11,23 +11,25 @@ entry_points:
   - how many datasets should i make
   - why separate datasets per service
 summary: >
-  Not folders and not partitions—nearly-free policy boundaries carved from
-  the pool's shared space. The unit of properties, snapshots, and
-  replication. Make many.
+  A named slice of the pool that looks like a folder but carries its own
+  rules—its own settings, limits, and history. Costs nothing to make.
+  Make many.
 ---
 <!-- depth:1 -->
 Datasets
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **dataset** is a filesystem carved out of the pool—it mounts, it holds
-files, it looks like a directory from the outside. The naive model says it's
-either a fancy folder or a small partition. **Actually, a dataset is a policy
-boundary**: it has no fixed size (all datasets share the pool's one
-reservoir), costs almost nothing to create, and is the unit at which
-everything interesting happens—properties, quotas, snapshots, replication.
+A **dataset** is a named slice of the pool. From the outside it looks and
+acts like a folder—it holds files, it appears in your folder tree. The
+difference: **a dataset is the thing ZFS applies rules to.** Each one can
+have its own settings (compress or not), its own space limits, its own
+frozen moments in time, its own copy schedule to another machine. A plain
+folder can have none of that.
 
-The posture correction: on ext4 you'd make a directory; on ZFS you should
-usually make a dataset. Make many.
+Two facts make them easy to love: a dataset has no fixed size (they all
+share the pool's one pot), and creating one costs nothing. So the habit to
+build: where you'd normally make a folder, consider making a dataset.
+Make many.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The rule of thumb: **anything you might want to snapshot, replicate, quota,

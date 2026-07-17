@@ -11,21 +11,28 @@ entry_points:
   - is raidz slow
   - how many disks raidz
 summary: >
-  Parity redundancy that fixed RAID5's write hole—but a RAIDZ vdev delivers
-  roughly one disk of IOPS no matter how wide. Bulk storage, not VM storage.
+  Protection by recovery math instead of full copies—more usable space than
+  mirrors, but a RAIDZ team moves at one disk's pace for scattered small
+  requests. Big libraries, not virtual machines.
 ---
 <!-- depth:1 -->
 RAIDZ
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-"RAIDZ is RAID5 with a Z" is half right, and each half matters. The parity
-arithmetic is the same shape—RAIDZ1/2/3 survive one/two/three disk
-failures per vdev. **Actually, two things separate it. RAIDZ closed RAID5's
-write hole** (the crash-between-data-and-parity corruption that haunted
-hardware RAID)—CoW and variable-width stripes mean no read-modify-write
-and no torn parity, ever. **And a RAIDZ vdev delivers roughly one disk's
-worth of random IOPS, no matter how many disks are in it**—the fact the
-capacity math hides and the performance math is ruled by.
+**RAIDZ** protects a team of disks with recovery math instead of full
+copies: alongside your data it stores enough extra information that if a
+disk dies, everything on it can be *recomputed* from the survivors. RAIDZ1
+survives one dead disk, RAIDZ2 two, RAIDZ3 three—and you keep much more
+usable space than mirrors give you.
+
+Two things the space math hides. First, the good news: ZFS fixed the famous
+flaw of older systems built this way (a crash at the wrong instant could
+silently corrupt them—the "write hole"; ZFS's never-overwrite habit makes
+it impossible). Second, the catch that decides real setups: **a RAIDZ team,
+no matter how many disks are in it, handles scattered small requests at
+roughly the pace of a single disk**—because every request needs the whole
+team. Wonderful for big libraries read start-to-finish; wrong for virtual
+machines and databases.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Choosing within the family:

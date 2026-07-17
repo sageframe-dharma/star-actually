@@ -56,11 +56,13 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The forum instinct: spare NVMe + slow pool = add a cache drive, because more
-cache is always better. <strong>Actually, L2ARC is not free speed—its index
-lives in RAM, so every block cached on the SSD eats a slice of the ARC</strong>,
-the cache that's actually fast. On a modest-RAM machine you can end up
-trading excellent cache (RAM) for mediocre cache (SSD) and calling it an
+      <p>The instinct: the pool is slow, there's a spare fast drive (an SSD) in the
+drawer, so add it as a cache—more cache is always better. <strong>Actually,
+L2ARC—a second-tier cache on that fast drive—is not free speed.</strong> Here's
+the catch: ZFS must keep a catalog <em>in memory</em> of everything parked on the
+cache drive. Every piece cached on the SSD spends a little of the memory
+cache—the one that's actually fast. On a machine without much memory, you
+can end up trading excellent cache for mediocre cache and calling it an
 upgrade.</p>
 
     </section>

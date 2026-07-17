@@ -11,23 +11,27 @@ entry_points:
   - do i need a slog
   - sync writes slow
 summary: >
-  Not a write cache—a crash-recovery log that's written constantly and read
-  exactly once, after a crash. A SLOG only moves it to faster media, and only
-  synchronous writes care.
+  Not a fast lane for writes—a diary of promises, written constantly and
+  read exactly once: after a crash. A SLOG just moves the diary to a faster
+  drive, and only promise-me-now writes ever use it.
 ---
 <!-- depth:1 -->
 ZIL and SLOG
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The naive model—writes land on the fast SLOG first, then flush to the slow
-pool—is a write *cache*, and it's wrong in every part. **Actually, the ZIL
-(ZFS Intent Log) is a crash log: written constantly, and in normal operation
-never read at all.** It's read exactly once—at pool import after a crash,
-to replay acknowledged writes that hadn't reached their final home ("On
-system startup, ZFS reads the ZIL and replays any pending transactions"—Klara). Data does not flow *through* it; writes stage in RAM regardless.
+Some programs, before they continue, demand a promise: *"confirm this is
+safely on disk—now."* The **ZIL** (ZFS Intent Log) is the diary where ZFS
+records those promises the instant it makes them. Here's the part everyone
+gets backwards: the diary is **written constantly and, in normal life,
+never read at all.** It's read exactly once—when the machine starts up
+after a crash, to make good on promises made just before the lights went
+out ("On system startup, ZFS reads the ZIL and replays any pending
+transactions"—Klara). Data does not travel *through* it on the way to
+disk; it is insurance, not a fast lane.
 
-A **SLOG** is nothing but the ZIL relocated to a fast dedicated device.
-Every pool already has a ZIL without one, living on the pool's own disks.
+A **SLOG** is nothing more than that diary moved onto a fast dedicated
+drive. Every pool already has the diary without one, kept on the pool's
+own disks.
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 The part that decides whether you should care: **only synchronous writes

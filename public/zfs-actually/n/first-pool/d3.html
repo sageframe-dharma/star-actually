@@ -36,14 +36,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Guides present <code>zpool create</code> as setup—type it, get storage, move on.
-<strong>Actually, that one command makes the only decisions in ZFS you can't
-revise: the vdev shape and the ashift.</strong> Everything else—compression,
-mountpoints, quotas, datasets—is a property you can change over morning
-coffee. The discipline is knowing which decisions are the foundation pour
-and giving them the ten deliberate minutes they deserve.</p>
-<p>⚠ <strong>DESTRUCTIVE</strong>—<code>zpool create</code> repartitions the named devices. A typo'd
-device name destroys a disk's contents. Verify with <code>ls -l /dev/disk/by-id/</code> before running.</p>
+      <p>Guides present <code>zpool create</code>—the command that builds a pool—as mere
+setup: type it, get storage, move on. <strong>Actually, that one command makes
+the only decisions in ZFS you can never revise: how the disks are teamed
+(mirrors or RAIDZ), and the disk cell-size setting (ashift).</strong> Everything
+else—compression, locations, space limits, datasets—can be changed over
+morning coffee. The discipline is knowing which decisions are the
+foundation pour and giving them the ten deliberate minutes they deserve.</p>
+<p>⚠ <strong>DESTRUCTIVE</strong>—<code>zpool create</code> wipes and takes over the disks you name.
+One mistyped disk name destroys that disk's contents. Verify with <code>ls -l /dev/disk/by-id/</code> before running.</p>
 
     </section>
     

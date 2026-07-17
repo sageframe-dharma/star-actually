@@ -10,25 +10,27 @@ entry_points:
   - how often to scrub
   - zpool scrub
 summary: >
-  A forced read of everything, so checksums can catch silent damage while
-  redundancy still exists to repair it. Detection is unconditional; repair
-  isn't.
+  A scheduled read-through of everything the pool holds, so quiet damage in
+  untouched data gets found while a spare copy still exists to fix it.
+  Finding is guaranteed; fixing isn't.
 ---
 <!-- depth:1 -->
 Scrubs
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The word is active—you scrub a thing to clean it—so the naive model
-makes scrub the repair process. **Actually, a scrub is a forced read: "a
-normal scrub examines all data in the specified pools and verifies each
-block's checksum" (zpool-scrub(8)).** Detection was always going to happen
-on read; the scrub's contribution is reading the data *nothing else reads*,
-so cold corruption is found while the redundancy to fix it still exists.
+The word sounds like cleaning—you scrub a thing to fix it up. **Actually,
+a scrub is a read-through: ZFS reads every piece of data the pool holds
+and checks every fingerprint** ("a normal scrub examines all data in the
+specified pools and verifies each block's checksum"—zpool-scrub(8)). Why
+force that? Because ZFS checks data whenever it's read anyway—but the
+files nobody has opened in three years never get read. Data can quietly go
+bad while sitting untouched, and a scrub visits it *while a spare copy
+still exists to fix it with*.
 
-Repair happens only where a second good copy lives: "for replicated (mirror,
-raidz, or draid) devices, ZFS automatically repairs any damage discovered."
-Scrub a redundancy-less vdev and ZFS hands you a list of what rotted—named
-files, even—and can heal none of it.
+The fixing itself only happens where a spare copy lives: "for replicated
+(mirror, raidz, or draid) devices, ZFS automatically repairs any damage
+discovered." Scrub a setup with no spare copies and ZFS hands you a list
+of what went bad—named files, even—and can heal none of it.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The practice: `zpool scrub tank`, online, background, throttled behind real

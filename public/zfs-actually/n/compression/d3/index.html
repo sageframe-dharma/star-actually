@@ -56,16 +56,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The inherited model: compression trades CPU for space—a tax you pay only
-when the space is worth it. <strong>Actually, with LZ4 the trade usually runs
-backward: compressing costs less time than reading and writing the extra
-uncompressed bytes would</strong>, so compression frequently makes the pool
-<em>faster</em>. It early-aborts on incompressible data (media files cost you
-almost nothing), and it's the OpenZFS default posture—&quot;set
-compression=lz4 on your pools' root datasets so that all datasets inherit it
-unless you have a reason not to enable it&quot; (OpenZFS docs).</p>
-<p>Your 90s-CPU intuition about gzip was correct <em>then</em>. The hardware moved;
-the intuition didn't.</p>
+      <p>The inherited belief: squeezing data to save space costs speed—a tax you
+pay only when the space is worth it. <strong>Actually, the method ZFS uses (named
+LZ4) is so fast that the trade usually runs backward: squeezing the data
+takes less time than writing and reading the extra unsqueezed bytes
+would.</strong> Compression frequently makes storage <em>faster</em>. It also gives up
+quickly on data that won't squeeze (photos and video are already
+compressed), so those cost you almost nothing. Leaving it on everywhere is
+the official recommendation—&quot;set compression=lz4 on your pools' root
+datasets... unless you have a reason not to enable it&quot; (OpenZFS docs).</p>
+<p>Your decades-old instinct about slow compression was correct <em>when you
+formed it</em>. The hardware moved; the instinct didn't.</p>
 
     </section>
     

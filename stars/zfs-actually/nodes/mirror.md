@@ -10,20 +10,22 @@ entry_points:
   - zfs mirror
   - mirrors for vms
 summary: >
-  Two-plus disks holding identical copies—half your capacity for the best
-  IOPS, the fastest resilvers, and the most flexible growth. The
-  workhorse layout for VM and database pools.
+  Two or more disks holding identical copies of everything—half the space,
+  in exchange for the best speed, the fastest recovery, and the most
+  freedom to change your mind later.
 ---
 <!-- depth:1 -->
 Mirrors
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **mirror vdev** is two (or more) disks holding identical copies of every
-block. Capacity math makes it look like the naive option—you "lose" half
-your disks. **Actually, the capacity you give up buys the three things
-parity can't sell you**: reads served by any member (IOPS scale with disk
-count), resilvers that are a straight copy from a healthy twin, and vdevs
-you can grow, split, and rearrange with the least ceremony in ZFS.
+A **mirror** is the simplest disk team: two (or more) disks holding
+identical copies of everything. The space math makes it look like the
+wasteful option—you "lose" half your disks to copies. **Actually, the
+space you give up buys the three things the clever alternative can't
+sell you**: reads answered by whichever disk is free (so two disks are
+roughly twice as fast to read from), the quickest possible recovery when a
+disk dies (just copy from the healthy twin), and the most freedom in all
+of ZFS to grow and rearrange later.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Where mirrors are simply the right answer: **pools whose workload is random

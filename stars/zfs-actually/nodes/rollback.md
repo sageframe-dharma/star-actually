@@ -18,12 +18,12 @@ summary: >
 Rollback
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Proxmox-style VM snapshots teach a seductive model: the timeline is a
-scrubber bar—jump to Tuesday, look around, jump forward again. **Actually,
-`zfs rollback` is demolition, not navigation: making Tuesday the present
-destroys everything after Tuesday**—the data since, and every later
-snapshot. Permanently. There is no roll forward, because forward no longer
-exists.
+Other tools teach a seductive model of time travel: the timeline is a
+scrubber bar—jump back to Tuesday, look around, jump forward again,
+nothing lost. **Actually, `zfs rollback` is demolition, not navigation:
+making Tuesday the present destroys everything after Tuesday**—all the
+data since, and every later snapshot. Permanently. There is no jumping
+forward again, because forward no longer exists.
 
 ⚠ **DESTRUCTIVE**—verify before running. The `-r` flag doesn't protect
 later snapshots; it *confirms* their destruction (rollback to a non-latest

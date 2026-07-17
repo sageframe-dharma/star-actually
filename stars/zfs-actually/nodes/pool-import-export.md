@@ -18,12 +18,15 @@ summary: >
 Import and Export
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The fear comes from RAID history: array configuration lives in a controller
-or an OS file, and when *that* dies, the disks become a puzzle. **Actually,
-a ZFS pool's entire self-description—vdev layout, properties, dataset
-tree, mountpoints—lives on the member disks themselves, as labels.** A
-dead motherboard is a hardware errand, not a data event: move the disks to
-any machine running OpenZFS, `zpool import tank`, and everything arrives—including where it all mounts.
+The fear is an old and reasonable one: with traditional storage setups,
+the *description* of how disks fit together often lives in the machine—in
+a special controller card or a settings file—and when the machine dies,
+the disks become a jigsaw puzzle with no picture on the box. **Actually, a
+ZFS pool writes its entire self-description onto the disks themselves**:
+how they're teamed, what datasets exist, every setting, every location.
+A dead computer is a hardware errand, not a data emergency: move the disks
+into any machine running ZFS, type one import command, and everything
+arrives—including where it all shows up in your folders.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The verbs:

@@ -39,12 +39,14 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>mirror vdev</strong> is two (or more) disks holding identical copies of every
-block. Capacity math makes it look like the naive option—you &quot;lose&quot; half
-your disks. <strong>Actually, the capacity you give up buys the three things
-parity can't sell you</strong>: reads served by any member (IOPS scale with disk
-count), resilvers that are a straight copy from a healthy twin, and vdevs
-you can grow, split, and rearrange with the least ceremony in ZFS.</p>
+      <p>A <strong>mirror</strong> is the simplest disk team: two (or more) disks holding
+identical copies of everything. The space math makes it look like the
+wasteful option—you &quot;lose&quot; half your disks to copies. <strong>Actually, the
+space you give up buys the three things the clever alternative can't
+sell you</strong>: reads answered by whichever disk is free (so two disks are
+roughly twice as fast to read from), the quickest possible recovery when a
+disk dies (just copy from the healthy twin), and the most freedom in all
+of ZFS to grow and rearrange later.</p>
 
     </section>
     

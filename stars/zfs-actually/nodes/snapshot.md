@@ -11,23 +11,25 @@ entry_points:
   - why are snapshots instant
   - zfs snapshot cost
 summary: >
-  A snapshot copies nothing—it's a named pin on blocks that already exist.
-  Free at creation; the cost arrives later, as the present diverges from the
-  pinned past.
+  A frozen moment of a dataset that copies nothing—it just keeps the past
+  from being thrown away. Free to take; the cost arrives slowly, as the
+  present drifts from the moment you kept.
 ---
 <!-- depth:1 -->
 Snapshots
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The word "snapshot" sounds like a photograph—a captured duplicate of a
-moment, costing what the data costs. **Actually, a ZFS snapshot copies
-nothing.** Copy-on-write means the current state of a dataset is a tree of
-blocks that were never going to be overwritten anyway; a snapshot is just a
-named pointer to that tree, plus a promise: *don't garbage-collect these
-blocks while I hold them.* Creation is instant and free at any size.
+A **snapshot** freezes a dataset at a moment in time, so you can look at—
+or return to—exactly how things were. The word sounds like a photograph: a
+duplicate, costing what the data costs. **Actually, a ZFS snapshot copies
+nothing.** Because ZFS never writes over existing data anyway, everything
+the dataset looked like a moment ago is *already sitting on disk*. A
+snapshot is just a name attached to that moment, plus a promise: *don't
+throw any of this away while I'm holding it.* Taking one is instant and
+free, no matter how much data is involved.
 
-The cost is deferred, not absent: it accrues later, as the live dataset
-diverges from the pinned past and the old blocks can't be freed.
+The cost is deferred, not absent: it builds up slowly, as the live data
+drifts away from the kept moment and the old pieces can't be thrown out.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Living with them:

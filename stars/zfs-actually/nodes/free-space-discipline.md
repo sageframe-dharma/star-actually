@@ -10,21 +10,24 @@ entry_points:
   - zfs 80 percent rule
   - fragmentation zfs
 summary: >
-  On a CoW pool, free space isn't headroom—it's the workshop floor every
-  write operates on. Fill the pool and the pool gets permanently grumpier.
+  On ZFS, empty space isn't spare room—it's the workshop floor every change
+  is made on. Fill the pool and it gets permanently grumpier.
 ---
 <!-- depth:1 -->
 The Free-Space Discipline
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Intuition says a 95%-full disk is just a disk with less room—capacity and
-speed are separate ledgers. On ordinary filesystems that's *mostly* true.
-**Actually, copy-on-write makes free space a working resource: every write—including "overwrites," including deletions—needs fresh space to land.**
-A full pool forces the allocator to hunt for scraps, writes fragment into
-whatever gaps exist, and the pool slows down in a way that doesn't fully
-undo when you free space later, because the fragmentation already happened.
+Intuition says a nearly-full disk is just a disk with less room—how full
+it is and how fast it is are separate questions. On ordinary systems
+that's *mostly* true. **Actually, because ZFS never writes over existing
+data, every change needs fresh, empty space to land on—even "overwrites,"
+even deletions.** A full pool forces ZFS to hunt for scraps of room; new
+data gets shredded into whatever gaps exist; and the pool slows down in a
+way that doesn't fully recover when you free space later, because the
+scattering already happened.
 
-Free space isn't headroom. It's the workshop floor CoW does its work on.
+Empty space isn't spare room. It's the workshop floor every change is
+made on.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Operating numbers, honestly labeled as heuristics: keep general-purpose

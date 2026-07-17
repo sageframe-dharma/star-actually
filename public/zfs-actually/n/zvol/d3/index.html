@@ -42,12 +42,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>zvol</strong> is a dataset that presents as a raw block device instead of a
-filesystem—a virtual disk carved from the pool, appearing at
-<code>/dev/zvol/tank/...</code>. The naive hunt—&quot;where's the file for my VM's disk?&quot;—finds nothing because <strong>there is no file</strong>: no qcow2, no image format, no
-filesystem-in-a-file. The consumer (a VM, iSCSI, swap) formats the block
-device however it likes, and underneath it's still ZFS: checksummed,
-snapshottable, sendable, thin by default.</p>
+      <p>A <strong>zvol</strong> is a slice of the pool that pretends to be a blank disk instead
+of a folder of files. You hand it to something that wants a whole disk of
+its own—most often a virtual machine (a computer simulated in software)—
+and that thing formats and uses it exactly as if it were real hardware.</p>
+<p>The confusion it resolves: people go hunting for &quot;the file&quot; that holds
+their virtual machine's disk and find nothing—<strong>because there is no file.</strong>
+The virtual disk is carved straight from the pool. And underneath the
+pretense it's still ZFS: fingerprint-checked, freezable in time, copyable
+to another machine, like everything else in the pool.</p>
 
     </section>
     

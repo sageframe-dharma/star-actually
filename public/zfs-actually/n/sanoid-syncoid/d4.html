@@ -35,17 +35,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Configured once, together, in one file, they blur into a single mental
-object: &quot;the backup system.&quot; <strong>Actually, they're two separate, thin tools
-wrapping two ZFS primitives you can run by hand.</strong> &quot;Sanoid is a
-policy-driven snapshot management tool&quot; (its README)—a scheduler over
-<code>zfs snapshot</code> and <code>zfs destroy</code>: take hourlies/dailies/monthlies, prune on
-retention. Syncoid &quot;facilitates the asynchronous incremental replication of
-ZFS filesystems&quot;—an orchestrator over <code>zfs send | zfs recv</code>: find the
-common snapshot, ship the increment, retry sanely.</p>
-<p>Neither adds storage machinery. It's cron-shaped judgment on top of
-snapshots—which is why understanding snapshots and send/recv <em>is</em>
-understanding these tools.</p>
+      <p>Set up once, together, in one file, they blur into a single mental object:
+&quot;the backup system.&quot; <strong>Actually, they're two separate, small helpers, each
+automating one thing you can do by hand.</strong> <strong>Sanoid</strong> is the
+snapshot-taker: &quot;a policy-driven snapshot management tool&quot; (its README)—it
+takes snapshots on a schedule (hourly, daily, monthly) and deletes old ones
+according to rules you set. <strong>Syncoid</strong> is the shipper: it &quot;facilitates the
+asynchronous incremental replication of ZFS filesystems&quot;—it finds the last
+moment both machines share, and sends over only what's new since.</p>
+<p>Neither adds any storage machinery of its own. They're scheduling and
+judgment layered on top of snapshots and send/receive—which is why
+understanding those two ideas <em>is</em> understanding these tools.</p>
 
     </section>
     

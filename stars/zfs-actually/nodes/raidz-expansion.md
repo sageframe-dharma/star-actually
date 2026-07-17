@@ -10,19 +10,21 @@ entry_points:
   - raidz expansion
   - expand vdev
 summary: >
-  Since OpenZFS 2.3 you can widen a RAIDZ vdev live—with caveats: old data
-  keeps its old parity ratio, and type still can't change.
+  Adding one more disk to an existing RAIDZ team—impossible for a decade,
+  possible since early 2025, with fine print about how much space you
+  actually get back.
 ---
 <!-- depth:1 -->
 RAIDZ Expansion
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Two absolutes circulate: "of course arrays grow" (appliance intuition) and
-"ZFS RAIDZ can never grow" (a decade of forum truth). **Actually, both are
-stale: since OpenZFS 2.3 (January 2025), RAIDZ expansion lets you "add new
-devices to an existing RAIDZ pool, increasing storage capacity without
-downtime"** (release notes)—`zpool attach` a disk to a RAIDZ vdev and it
-widens, live, while the pool serves.
+Can you add one more disk to an existing RAIDZ team when you need more
+room? Two confident answers circulate: "of course—storage grows" (what
+store-bought boxes teach) and "never—ZFS locks the team size forever" (a
+decade of forum truth). **Actually, both are stale: since early 2025
+(OpenZFS version 2.3), you can "add new devices to an existing RAIDZ pool,
+increasing storage capacity without downtime"** (release notes)—one
+command, while everything keeps running.
 
 When reading ZFS advice, check the date. This feature made years of
 confident guidance obsolete overnight, and the forums have long memories.

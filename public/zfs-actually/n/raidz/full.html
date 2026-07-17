@@ -55,14 +55,19 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>&quot;RAIDZ is RAID5 with a Z&quot; is half right, and each half matters. The parity
-arithmetic is the same shape—RAIDZ1/2/3 survive one/two/three disk
-failures per vdev. <strong>Actually, two things separate it. RAIDZ closed RAID5's
-write hole</strong> (the crash-between-data-and-parity corruption that haunted
-hardware RAID)—CoW and variable-width stripes mean no read-modify-write
-and no torn parity, ever. <strong>And a RAIDZ vdev delivers roughly one disk's
-worth of random IOPS, no matter how many disks are in it</strong>—the fact the
-capacity math hides and the performance math is ruled by.</p>
+      <p><strong>RAIDZ</strong> protects a team of disks with recovery math instead of full
+copies: alongside your data it stores enough extra information that if a
+disk dies, everything on it can be <em>recomputed</em> from the survivors. RAIDZ1
+survives one dead disk, RAIDZ2 two, RAIDZ3 three—and you keep much more
+usable space than mirrors give you.</p>
+<p>Two things the space math hides. First, the good news: ZFS fixed the famous
+flaw of older systems built this way (a crash at the wrong instant could
+silently corrupt them—the &quot;write hole&quot;; ZFS's never-overwrite habit makes
+it impossible). Second, the catch that decides real setups: <strong>a RAIDZ team,
+no matter how many disks are in it, handles scattered small requests at
+roughly the pace of a single disk</strong>—because every request needs the whole
+team. Wonderful for big libraries read start-to-finish; wrong for virtual
+machines and databases.</p>
 
     </section>
     

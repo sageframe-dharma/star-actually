@@ -11,23 +11,27 @@ entry_points:
   - how does self healing work
   - checksum error zfs
 summary: >
-  Every block verified on every read, with the checksum stored apart from the
-  data—detection is unconditional; repair needs a second good copy.
+  A tiny fingerprint for every piece of data, re-checked on every read—so
+  a lying disk gets caught in the act. Noticing damage is guaranteed;
+  fixing it needs a spare copy.
 ---
 <!-- depth:1 -->
 Checksums
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The naive model: "RAID protects my data, and corruption announces itself as
-errors." **Actually, disks lie silently**—they return wrong bits while
-reporting success—and traditional RAID can't even ask which of its copies
-is right. ZFS checksums every block and verifies on **every read**, so wrong
-data cannot travel: it's caught the moment anything touches it.
+A **checksum** is a tiny fingerprint computed from a piece of data. ZFS
+fingerprints everything it writes, and every time it reads anything back,
+it re-computes the fingerprint and compares. Why bother? Because **disks
+sometimes lie**: they age, they glitch, and they can hand back subtly wrong
+data while reporting that everything is fine. Storage systems that keep
+duplicate copies but no fingerprints can't even tell which copy is the
+right one. With fingerprints, wrong data gets caught the moment anything
+touches it.
 
-Hold the two powers apart, because everything downstream depends on the
-split: **checksums detect, unconditionally. Repair requires a second good
-copy**—a mirror, RAIDZ parity. Detection without redundancy tells you what
-you lost; it can't give it back.
+Hold two powers apart, because everything downstream depends on the split:
+**noticing damage is guaranteed, everywhere, always. Fixing damage requires
+a spare copy to fix it from.** Fingerprints without spare copies can only
+tell you what you lost—they can't give it back.
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 Where you meet them: `zpool status` has three error columns—READ, WRITE,

@@ -10,23 +10,24 @@ entry_points:
   - dedup worth it
   - fast dedup
 summary: >
-  Sounds free because checksums already exist—actually a standing RAM tax
-  on every write, forever, that loses to plain compression in almost every
-  homelab.
+  Storing each duplicate piece of data only once—sounds free, actually
+  costs a standing memory tax on every write, forever. Plain compression
+  wins in almost every home setup.
 ---
 <!-- depth:1 -->
 Deduplication
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The reasoning feels airtight: ZFS already checksums every block, so noticing
-duplicates should be nearly free—flip it on, especially with all these
-similar VMs. **Actually, dedup requires the table of every written block's
-hash to be consulted on every write—which means held in RAM—and each
-entry costs "slightly more than 320 bytes of memory" (OpenZFS docs),
-forever, per unique block.** When the table outgrows RAM, "each cache miss
-will require reading a random block from disk"—writes go random-read slow,
-which is the storage equivalent of walking with your shoelaces tied
-together.
+**Deduplication** means storing each identical piece of data only once,
+however many times it appears. The reasoning for turning it on feels
+airtight: ZFS already fingerprints everything it writes, so *noticing*
+duplicates should be nearly free. **Actually, noticing isn't the cost—
+remembering is.** Dedup requires a directory of every piece ever written,
+consulted on every single write, which means kept in fast memory: a few
+hundred bytes per entry ("slightly more than 320 bytes of memory"—OpenZFS
+docs), forever. When that directory outgrows memory, every write has to go
+ask the slow disks first—the storage equivalent of walking with your
+shoelaces tied together.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Run the arithmetic before the feature: a few TB of unique 128K blocks is

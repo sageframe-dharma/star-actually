@@ -38,11 +38,13 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>ZFS trains you to expect mutability—nearly everything is a property you
-can change anytime. <strong>Ashift is the exception: the sector size a vdev
-assumes, baked into its on-disk format at creation—&quot;it is set at vdev
-creation and it is immutable&quot; (OpenZFS docs).</strong> It's a power of two: ashift=9
-means 512-byte sectors, ashift=12 means 4K.</p>
+      <p>Disks secretly do all their work in fixed-size cells (called <em>sectors</em>),
+and <strong>ashift</strong> is ZFS's recorded guess about how big a disk's cells really
+are. Nearly everything in ZFS can be changed later; <strong>ashift is the
+exception—it's decided once, when a team of disks is created, and can
+never be changed</strong> (&quot;it is set at vdev creation and it is immutable&quot;—
+OpenZFS docs). The two values you'll see: ashift=9 means tiny old-style
+512-byte cells; ashift=12 means the modern 4-kilobyte kind.</p>
 <p>That's why the guides scream about one small number: it's the single
 decision in ZFS that is actually a foundation pour.</p>
 

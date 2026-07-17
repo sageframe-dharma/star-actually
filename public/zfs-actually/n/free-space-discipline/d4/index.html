@@ -52,13 +52,16 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Intuition says a 95%-full disk is just a disk with less room—capacity and
-speed are separate ledgers. On ordinary filesystems that's <em>mostly</em> true.
-<strong>Actually, copy-on-write makes free space a working resource: every write—including &quot;overwrites,&quot; including deletions—needs fresh space to land.</strong>
-A full pool forces the allocator to hunt for scraps, writes fragment into
-whatever gaps exist, and the pool slows down in a way that doesn't fully
-undo when you free space later, because the fragmentation already happened.</p>
-<p>Free space isn't headroom. It's the workshop floor CoW does its work on.</p>
+      <p>Intuition says a nearly-full disk is just a disk with less room—how full
+it is and how fast it is are separate questions. On ordinary systems
+that's <em>mostly</em> true. <strong>Actually, because ZFS never writes over existing
+data, every change needs fresh, empty space to land on—even &quot;overwrites,&quot;
+even deletions.</strong> A full pool forces ZFS to hunt for scraps of room; new
+data gets shredded into whatever gaps exist; and the pool slows down in a
+way that doesn't fully recover when you free space later, because the
+scattering already happened.</p>
+<p>Empty space isn't spare room. It's the workshop floor every change is
+made on.</p>
 
     </section>
     

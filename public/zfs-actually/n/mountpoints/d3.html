@@ -25,14 +25,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>You go looking for how your datasets mount, open /etc/fstab, and find
-nothing. Decades of muscle memory say that file is the source of truth.
-<strong>Actually, ZFS mounts itself: the mountpoint is a <em>property of the
-dataset</em>, stored inside the pool, inherited down the tree.</strong> <code>zfs set mountpoint=/srv/media tank/media</code> is the entire edit; at import, ZFS mounts
-everything where its properties say it belongs.</p>
-<p>The deeper shift: fstab describes storage <em>to the OS</em>. A ZFS pool carries
-its own description—the configuration lives with the data, not with the
-machine.</p>
+      <p>A <strong>mountpoint</strong> is where a piece of storage shows up in your folder tree—
+the address at which its contents appear. On most systems, those addresses
+live in a settings file on the machine (on Linux, <code>/etc/fstab</code>), and
+people trained there go looking for it and find it empty. <strong>Actually, ZFS
+handles this itself: where a dataset appears is a setting stored <em>on the
+dataset</em>, inside the pool.</strong> One command changes it, and children follow
+their parent unless told otherwise.</p>
+<p>The deeper shift is worth pausing on: the machine's settings file
+describes storage <em>to that machine</em>. A ZFS pool carries its own
+description—so the layout travels with the data, not with the computer it
+happens to be plugged into.</p>
 
     </section>
     

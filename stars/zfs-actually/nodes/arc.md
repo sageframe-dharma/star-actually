@@ -11,18 +11,20 @@ entry_points:
   - should i limit arc
   - zfs ram usage
 summary: >
-  ZFS's adaptive read cache—the reason your RAM looks full, and why that's
-  the system working, not leaking.
+  ZFS's reading cache—the reason your machine's memory looks full, and why
+  that's the system working, not leaking.
 ---
 <!-- depth:1 -->
 The ARC
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-You look at htop on a ZFS machine, see nearly all RAM in use on a quiet
-system, and conclude something is leaking. **Actually, that's the ARC—the
-Adaptive Replacement Cache—and it is supposed to be huge.** Free RAM does
-nothing for anyone; the ARC turns it into read speed, and it yields when
-applications genuinely need the memory back.
+You check a ZFS machine's system monitor, see nearly all the memory in use
+on a quiet day, and conclude something is broken. **Actually, that's the
+ARC—ZFS's reading cache—and it is supposed to be huge.** The ARC keeps
+recently and frequently read data parked in memory, where fetching it again
+is thousands of times faster than going back to the disks. Memory sitting
+empty helps no one; ZFS puts it to work—and gives it back when your
+programs genuinely need it.
 
 The correction under the correction: the memory bar you've read as a fuel
 gauge all your life is the wrong instrument here. Full is the healthy state.

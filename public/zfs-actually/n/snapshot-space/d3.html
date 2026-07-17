@@ -39,14 +39,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The lived version: you clear 100GB of artifacts to free space, run
-<code>zfs list</code>, and almost nothing came back. Forty years of filesystems said
-deleting frees space. <strong>Actually, deletion only frees blocks that nothing
-references—and every snapshot taken while those files existed still
-references them.</strong> The space didn't leak; it moved from the dataset's ledger
-to the snapshots' ledger. Deleting files in the present cannot unpin the
-past. <em>(Operational source: the practitioner's own hourly-snapshot dataset
-doing exactly this.)</em></p>
+      <p>The lived version: you delete a hundred gigabytes of junk to free up room,
+check the free space—and almost nothing came back. A lifetime of computers
+said deleting frees space. <strong>Actually, deleting a file only frees its space
+if <em>nothing else is still holding it</em>—and every snapshot taken while those
+files existed is still holding them.</strong> That's what a snapshot is: a promise
+that a past moment won't be thrown away. The space didn't leak; its
+ownership moved from your live files to the snapshots. Deleting things in
+the present cannot un-keep the past. <em>(Operational source: the
+practitioner's own hourly-snapshot dataset doing exactly this.)</em></p>
 
     </section>
     

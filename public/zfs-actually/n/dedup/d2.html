@@ -24,15 +24,16 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The reasoning feels airtight: ZFS already checksums every block, so noticing
-duplicates should be nearly free—flip it on, especially with all these
-similar VMs. <strong>Actually, dedup requires the table of every written block's
-hash to be consulted on every write—which means held in RAM—and each
-entry costs &quot;slightly more than 320 bytes of memory&quot; (OpenZFS docs),
-forever, per unique block.</strong> When the table outgrows RAM, &quot;each cache miss
-will require reading a random block from disk&quot;—writes go random-read slow,
-which is the storage equivalent of walking with your shoelaces tied
-together.</p>
+      <p><strong>Deduplication</strong> means storing each identical piece of data only once,
+however many times it appears. The reasoning for turning it on feels
+airtight: ZFS already fingerprints everything it writes, so <em>noticing</em>
+duplicates should be nearly free. <strong>Actually, noticing isn't the cost—
+remembering is.</strong> Dedup requires a directory of every piece ever written,
+consulted on every single write, which means kept in fast memory: a few
+hundred bytes per entry (&quot;slightly more than 320 bytes of memory&quot;—OpenZFS
+docs), forever. When that directory outgrows memory, every write has to go
+ask the slow disks first—the storage equivalent of walking with your
+shoelaces tied together.</p>
 
     </section>
     

@@ -55,12 +55,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The naive slot for &quot;replication tool&quot; is rsync-shaped: walk the tree,
-compare, copy what changed. <strong>Actually, <code>zfs send</code> serializes a snapshot—an exact, block-level, point-in-time state of a dataset—into a stream,
-and <code>zfs recv</code> reconstructs it perfectly on any pool</strong>: every file,
-property, and the snapshot itself. No walking, no comparing, no &quot;mostly the
-same.&quot; rsync approximates sameness file-by-file over a live, shifting
-target; recv <em>is</em> sameness, of a frozen moment.</p>
+      <p><strong>Send and receive</strong> are how a snapshot—a frozen moment of a dataset—
+travels to another machine. <code>send</code> turns the moment into a flowing copy;
+<code>receive</code>, on the other end, rebuilds it perfectly: every file, every
+setting, the snapshot itself. And after the first full trip, ZFS ships
+<em>only what changed</em> between one moment and the next.</p>
+<p>The mental slot to avoid: this is not a file-syncing tool with extra
+steps. Sync tools (like rsync) <em>hunt</em> for differences—walking every
+folder, comparing files, approximating sameness against a moving target.
+ZFS doesn't hunt, because it already <em>knows</em> exactly what changed between
+two frozen moments. The copy isn't approximately the same; it <strong>is</strong> the
+same.</p>
 
     </section>
     

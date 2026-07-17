@@ -41,14 +41,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Every dataset carries dozens of <strong>properties</strong>—compression, recordsize,
-quota, mountpoint—and each one either was set <em>here</em> or is <strong>inherited</strong>
-from the nearest ancestor that set it. You don't configure datasets; you
-configure the <em>tree</em>, at the highest node where the policy is true, and let
-it flow down.</p>
-<p>The small actually: there's no global config file to hunt for. The pool's
-root dataset <em>is</em> the global config, and every deviation is local, visible,
-and attributed.</p>
+      <p>Every dataset carries dozens of <strong>properties</strong>—settings like whether to
+squeeze its data, how much space it may use, where it appears in your
+folders. Datasets sit in a family tree, and each setting either was set
+<em>right here</em> or is <strong>inherited</strong> from the nearest ancestor that set it.
+So you don't configure each dataset; you set a rule once, at the highest
+point in the tree where it's true, and everything below follows.</p>
+<p>The small surprise: there is no central settings file to hunt for. The top
+of the tree <em>is</em> the settings, and every local exception is visible and
+signed—you can always ask a dataset where a setting came from.</p>
 
     </section>
     

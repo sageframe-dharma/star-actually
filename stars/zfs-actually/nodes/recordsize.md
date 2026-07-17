@@ -11,21 +11,23 @@ entry_points:
   - recordsize 1m
   - zfs tuning
 summary: >
-  Not the disk's block size—the maximum logical block per file, set per
-  dataset. It matters when small random I/O lands inside big files, and it
-  only touches new files.
+  The size of the chunks ZFS stores files in—adjustable per dataset. It
+  matters when programs change small pieces inside huge files, and changing
+  it only affects files written afterward.
 ---
 <!-- depth:1 -->
 Recordsize
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Your brain has one slot for "block size" and the disk's sectors are sitting
-in it. **Actually, recordsize is a policy knob, not a hardware fact: the
-*maximum* logical block ZFS will use for a file's data, set per dataset,
-default 128K** ("ZFS datasets use an internal recordsize of 128KB by
-default"—OpenZFS docs). Small files simply use smaller blocks; the setting
-caps, it doesn't pad. The hardware-sector story lives one node over, in
-ashift.
+ZFS stores each file in chunks, and **recordsize** is the setting that says
+how big those chunks may get—adjustable for each dataset, with a default
+of 128 kilobytes ("ZFS datasets use an internal recordsize of 128KB by
+default"—OpenZFS docs). It's a ceiling, not a straitjacket: small files
+simply use smaller chunks; nothing gets padded.
+
+The mix-up to avoid: this is *not* about the disk's hardware. Recordsize is
+a choice you make per dataset, changeable anytime; the hardware story is a
+different setting (ashift, one page over) with very different rules.
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 When it matters: **applications doing small random I/O inside large files.**

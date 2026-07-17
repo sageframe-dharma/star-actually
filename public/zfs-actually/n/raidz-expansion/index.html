@@ -41,12 +41,13 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Two absolutes circulate: &quot;of course arrays grow&quot; (appliance intuition) and
-&quot;ZFS RAIDZ can never grow&quot; (a decade of forum truth). <strong>Actually, both are
-stale: since OpenZFS 2.3 (January 2025), RAIDZ expansion lets you &quot;add new
-devices to an existing RAIDZ pool, increasing storage capacity without
-downtime&quot;</strong> (release notes)—<code>zpool attach</code> a disk to a RAIDZ vdev and it
-widens, live, while the pool serves.</p>
+      <p>Can you add one more disk to an existing RAIDZ team when you need more
+room? Two confident answers circulate: &quot;of course—storage grows&quot; (what
+store-bought boxes teach) and &quot;never—ZFS locks the team size forever&quot; (a
+decade of forum truth). <strong>Actually, both are stale: since early 2025
+(OpenZFS version 2.3), you can &quot;add new devices to an existing RAIDZ pool,
+increasing storage capacity without downtime&quot;</strong> (release notes)—one
+command, while everything keeps running.</p>
 <p>When reading ZFS advice, check the date. This feature made years of
 confident guidance obsolete overnight, and the forums have long memories.</p>
 

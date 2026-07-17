@@ -11,18 +11,21 @@ entry_points:
   - 4k sectors zfs
   - ashift wrong
 summary: >
-  The sector-size assumption baked into a vdev at creation—immutable
-  forever, and the one setting a wrong guess makes permanent. Use 12.
+  ZFS's recorded guess about a disk's true cell size—made once, when a disk
+  team is created, and permanent forever. The one setting a wrong guess
+  makes unfixable. Use 12.
 ---
 <!-- depth:1 -->
 Ashift
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-ZFS trains you to expect mutability—nearly everything is a property you
-can change anytime. **Ashift is the exception: the sector size a vdev
-assumes, baked into its on-disk format at creation—"it is set at vdev
-creation and it is immutable" (OpenZFS docs).** It's a power of two: ashift=9
-means 512-byte sectors, ashift=12 means 4K.
+Disks secretly do all their work in fixed-size cells (called *sectors*),
+and **ashift** is ZFS's recorded guess about how big a disk's cells really
+are. Nearly everything in ZFS can be changed later; **ashift is the
+exception—it's decided once, when a team of disks is created, and can
+never be changed** ("it is set at vdev creation and it is immutable"—
+OpenZFS docs). The two values you'll see: ashift=9 means tiny old-style
+512-byte cells; ashift=12 means the modern 4-kilobyte kind.
 
 That's why the guides scream about one small number: it's the single
 decision in ZFS that is actually a foundation pour.

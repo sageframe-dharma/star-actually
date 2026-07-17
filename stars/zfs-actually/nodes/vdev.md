@@ -11,21 +11,25 @@ entry_points:
   - is my pool safe
   - single disk vdev
 summary: >
-  The unit of redundancy—and therefore the unit of failure. The pool
-  survives any disk its vdevs can absorb, and dies with any vdev it can't.
+  The small team of disks that back each other up—where protection actually
+  lives, and therefore where failure actually lives. Lose one whole team,
+  lose the whole pool.
 ---
 <!-- depth:1 -->
 The Vdev
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **vdev** (virtual device) is a group of disks bound together with a
-redundancy scheme—a mirrored pair, a RAIDZ set, or (dangerously) a single
-bare disk. The pool is built by striping across vdevs.
+A **vdev** ("virtual device") is a small team of disks that back each other
+up. A team might be two disks keeping identical copies (a *mirror*), a
+group of disks sharing recovery math so any one can die (*RAIDZ*), or—
+dangerously—one lone disk backing up nothing. A pool is built by joining
+teams together.
 
-Here is the sentence this entire site most wants you to hold: **redundancy
-lives inside each vdev, never between vdevs—so losing any one vdev loses
-the whole pool.** Not degraded. Gone. The pool striped every dataset's blocks
-across all its vdevs, so a dead vdev is a bite out of everything.
+Here is the sentence this entire site most wants you to hold: **spare
+copies exist only *inside* each team, never between teams—so losing any
+one whole team loses the whole pool.** Not damaged. Gone. The pool spread
+everyone's data across all its teams, so a dead team is a bite out of
+everything.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 This is why the classic homelab move—"the pool's getting full, I'll just

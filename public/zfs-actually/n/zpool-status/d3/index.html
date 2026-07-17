@@ -53,12 +53,15 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Red words in status output mean crisis in most systems, so <strong>DEGRADED</strong>
-reads as &quot;half-broken, touching it might tip it over.&quot; <strong>Actually, DEGRADED
-means the design is working: redundancy absorbed a failure and the pool is
-serving normally, with less margin.</strong> The output is a calm document—state,
-cause, and almost always an explicit recommended action in the <code>action:</code>
-line. It tells you what to do; the skill is believing it.</p>
+      <p><code>zpool status</code> is the command that shows the pool's health report. Scary
+capitalized words in a report mean crisis in most of computing, so
+<strong>DEGRADED</strong> reads as &quot;half-broken—touching it might tip it over.&quot;
+<strong>Actually, DEGRADED means the design is working: a disk failed, the spare
+copies absorbed it, and the pool is running normally with less safety
+margin than before.</strong> The report itself is a calm document—what state
+things are in, what caused it, and almost always an explicit recommended
+next step, written right there in an <code>action:</code> line. It tells you what to
+do; the skill is believing it.</p>
 
     </section>
     

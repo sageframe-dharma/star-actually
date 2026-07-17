@@ -11,9 +11,9 @@ entry_points:
   - why is zfs different
   - why do people love zfs
 summary: >
-  Not a filesystem with features—the whole storage stack rebuilt around one
-  act of distrust: assume the hardware lies, verify everything, never depend
-  on an overwrite.
+  A system for storing data built around one promise: what you put in comes
+  back exactly—or ZFS tells you, loudly, instead of silently handing you
+  something broken.
 ---
 <!-- depth:1 -->
 What ZFS Is

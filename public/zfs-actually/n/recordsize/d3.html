@@ -39,13 +39,14 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Your brain has one slot for &quot;block size&quot; and the disk's sectors are sitting
-in it. <strong>Actually, recordsize is a policy knob, not a hardware fact: the
-<em>maximum</em> logical block ZFS will use for a file's data, set per dataset,
-default 128K</strong> (&quot;ZFS datasets use an internal recordsize of 128KB by
-default&quot;—OpenZFS docs). Small files simply use smaller blocks; the setting
-caps, it doesn't pad. The hardware-sector story lives one node over, in
-ashift.</p>
+      <p>ZFS stores each file in chunks, and <strong>recordsize</strong> is the setting that says
+how big those chunks may get—adjustable for each dataset, with a default
+of 128 kilobytes (&quot;ZFS datasets use an internal recordsize of 128KB by
+default&quot;—OpenZFS docs). It's a ceiling, not a straitjacket: small files
+simply use smaller chunks; nothing gets padded.</p>
+<p>The mix-up to avoid: this is <em>not</em> about the disk's hardware. Recordsize is
+a choice you make per dataset, changeable anytime; the hardware story is a
+different setting (ashift, one page over) with very different rules.</p>
 
     </section>
     

@@ -42,15 +42,18 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The naive model: &quot;RAID protects my data, and corruption announces itself as
-errors.&quot; <strong>Actually, disks lie silently</strong>—they return wrong bits while
-reporting success—and traditional RAID can't even ask which of its copies
-is right. ZFS checksums every block and verifies on <strong>every read</strong>, so wrong
-data cannot travel: it's caught the moment anything touches it.</p>
-<p>Hold the two powers apart, because everything downstream depends on the
-split: <strong>checksums detect, unconditionally. Repair requires a second good
-copy</strong>—a mirror, RAIDZ parity. Detection without redundancy tells you what
-you lost; it can't give it back.</p>
+      <p>A <strong>checksum</strong> is a tiny fingerprint computed from a piece of data. ZFS
+fingerprints everything it writes, and every time it reads anything back,
+it re-computes the fingerprint and compares. Why bother? Because <strong>disks
+sometimes lie</strong>: they age, they glitch, and they can hand back subtly wrong
+data while reporting that everything is fine. Storage systems that keep
+duplicate copies but no fingerprints can't even tell which copy is the
+right one. With fingerprints, wrong data gets caught the moment anything
+touches it.</p>
+<p>Hold two powers apart, because everything downstream depends on the split:
+<strong>noticing damage is guaranteed, everywhere, always. Fixing damage requires
+a spare copy to fix it from.</strong> Fingerprints without spare copies can only
+tell you what you lost—they can't give it back.</p>
 
     </section>
     

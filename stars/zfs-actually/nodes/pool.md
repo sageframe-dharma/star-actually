@@ -11,22 +11,24 @@ entry_points:
   - how is a pool structured
   - is a pool a partition
 summary: >
-  One shared reservoir of storage built from vdevs—not a big partition, and
-  not where redundancy lives.
+  All your disks, combined into one shared pot of storage—and the surprise
+  inside the word: the pool itself keeps no spare copies.
 ---
 <!-- depth:1 -->
 The Pool
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The naive model—*a pool is a big partition*—will let you operate for a
-long time without being true. **Actually, a pool is a reservoir**: you hand
-ZFS whole disks, arranged into vdevs, and get back one undifferentiated pot
-of capacity that everything on top shares. Nothing inside a pool has a fixed
-size—no partitioning, no pre-allocation, no "resize the volume" ever again.
+The **pool** is what ZFS turns your disks into: one shared pot of storage
+that the whole machine draws from. You hand ZFS the disks; it hands you
+back a single supply of space. You never carve it up in advance, never
+decide sizes ahead of time, never "resize" anything again—everything on the
+machine simply shares the pot.
 
-The dangerous half of the correction: the pool is **not** where redundancy
-lives. That's the vdev's job, one layer down—and the distinction is the
-difference between a safe layout and a time bomb.
+The surprise hiding inside the word: **the pool itself keeps no spare
+copies of anything.** Protection against a dead disk lives one level down,
+inside the small teams of disks the pool is built from (called *vdevs*—the
+next idea to meet). That distinction is the difference between a safe setup
+and a time bomb, which is why it gets its own page.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The containment hierarchy, once and cleanly:

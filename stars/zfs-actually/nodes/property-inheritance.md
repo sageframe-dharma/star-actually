@@ -10,22 +10,24 @@ entry_points:
   - where do i set compression
   - property inheritance
 summary: >
-  Properties set on a dataset flow down its subtree until overridden—policy
-  is written once at the right altitude, not per-dataset.
+  Settings flow downhill: set once on a parent dataset, every child follows
+  until one is told otherwise. There is no central settings file—the tree
+  is the settings.
 ---
 <!-- depth:1 -->
 Property Inheritance
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Every dataset carries dozens of **properties**—compression, recordsize,
-quota, mountpoint—and each one either was set *here* or is **inherited**
-from the nearest ancestor that set it. You don't configure datasets; you
-configure the *tree*, at the highest node where the policy is true, and let
-it flow down.
+Every dataset carries dozens of **properties**—settings like whether to
+squeeze its data, how much space it may use, where it appears in your
+folders. Datasets sit in a family tree, and each setting either was set
+*right here* or is **inherited** from the nearest ancestor that set it.
+So you don't configure each dataset; you set a rule once, at the highest
+point in the tree where it's true, and everything below follows.
 
-The small actually: there's no global config file to hunt for. The pool's
-root dataset *is* the global config, and every deviation is local, visible,
-and attributed.
+The small surprise: there is no central settings file to hunt for. The top
+of the tree *is* the settings, and every local exception is visible and
+signed—you can always ask a dataset where a setting came from.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The three verbs:

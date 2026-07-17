@@ -10,21 +10,23 @@ entry_points:
   - how long does resilver take
   - resilver slow
 summary: >
-  ZFS's rebuild—but it copies live data, not disk sectors, verifying every
-  block against its checksum. Emptier pool, shorter rebuild, smaller
-  second-failure window.
+  How ZFS refills a replacement disk—copying only real data, checking every
+  piece as it goes. A half-full pool recovers in half the time, and the
+  time matters.
 ---
 <!-- depth:1 -->
 Resilvering
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-A hardware RAID rebuild copies every sector, start to end, because the
-controller has no idea which sectors matter. **Actually, ZFS *is* the
-filesystem—it knows exactly which blocks are live, so a resilver copies
-data, not disk** ("resilvering only examines data that ZFS knows to be out
-of date"—zpool-scrub(8)), and verifies each block against its checksum as
-it goes. A half-full vdev resilvers in roughly half the time—and the time
-matters, because the resilver window is when your margin is thinnest.
+**Resilvering** is what happens after you swap in a replacement disk: ZFS
+refills it from the surviving team members. Older storage systems rebuild a
+replacement by blindly copying the entire disk, end to end, because they
+have no idea which parts hold anything. **ZFS knows exactly what's real
+data, so a resilver copies the data—not the disk**—and fingerprint-checks
+every piece as it goes ("resilvering only examines data that ZFS knows to
+be out of date"—zpool-scrub(8)). A half-full pool recovers in roughly half
+the time. And the time genuinely matters: until the resilver finishes,
+you're running with less protection than you paid for.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Living through one: the pool stays up and serving—a resilver is a

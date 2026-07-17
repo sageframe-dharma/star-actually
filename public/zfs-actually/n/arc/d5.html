@@ -35,11 +35,13 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>You look at htop on a ZFS machine, see nearly all RAM in use on a quiet
-system, and conclude something is leaking. <strong>Actually, that's the ARC—the
-Adaptive Replacement Cache—and it is supposed to be huge.</strong> Free RAM does
-nothing for anyone; the ARC turns it into read speed, and it yields when
-applications genuinely need the memory back.</p>
+      <p>You check a ZFS machine's system monitor, see nearly all the memory in use
+on a quiet day, and conclude something is broken. <strong>Actually, that's the
+ARC—ZFS's reading cache—and it is supposed to be huge.</strong> The ARC keeps
+recently and frequently read data parked in memory, where fetching it again
+is thousands of times faster than going back to the disks. Memory sitting
+empty helps no one; ZFS puts it to work—and gives it back when your
+programs genuinely need it.</p>
 <p>The correction under the correction: the memory bar you've read as a fuel
 gauge all your life is the wrong instrument here. Full is the healthy state.</p>
 

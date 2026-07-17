@@ -10,19 +10,24 @@ entry_points:
   - where are my vm disks
   - block device zfs
 summary: >
-  A dataset wearing a block-device face—pool-backed raw volumes with
-  snapshots and send/recv, no filesystem-in-a-file. What Proxmox gives VMs.
+  A slice of the pool that pretends to be a blank disk instead of a folder—
+  what virtual machines get handed. Still checked, snapshotted, and copied
+  like everything else.
 ---
 <!-- depth:1 -->
 Zvols
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **zvol** is a dataset that presents as a raw block device instead of a
-filesystem—a virtual disk carved from the pool, appearing at
-`/dev/zvol/tank/...`. The naive hunt—"where's the file for my VM's disk?"—finds nothing because **there is no file**: no qcow2, no image format, no
-filesystem-in-a-file. The consumer (a VM, iSCSI, swap) formats the block
-device however it likes, and underneath it's still ZFS: checksummed,
-snapshottable, sendable, thin by default.
+A **zvol** is a slice of the pool that pretends to be a blank disk instead
+of a folder of files. You hand it to something that wants a whole disk of
+its own—most often a virtual machine (a computer simulated in software)—
+and that thing formats and uses it exactly as if it were real hardware.
+
+The confusion it resolves: people go hunting for "the file" that holds
+their virtual machine's disk and find nothing—**because there is no file.**
+The virtual disk is carved straight from the pool. And underneath the
+pretense it's still ZFS: fingerprint-checked, freezable in time, copyable
+to another machine, like everything else in the pool.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Where you meet them: **Proxmox carves one zvol per VM disk** (that's why

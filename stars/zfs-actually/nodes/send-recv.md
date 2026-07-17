@@ -10,20 +10,26 @@ entry_points:
   - incremental replication
   - how to copy a dataset to another machine
 summary: >
-  Not rsync with extra steps—a serialized exact snapshot state, with
-  incrementals diffed by block birth-time. rsync approximates sameness; recv
-  is sameness.
+  How a frozen moment travels to another machine—an exact copy, and after
+  the first trip, only what changed. Not a file-comparing sync tool: it
+  already knows what's different.
 ---
 <!-- depth:1 -->
 Send and Receive
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The naive slot for "replication tool" is rsync-shaped: walk the tree,
-compare, copy what changed. **Actually, `zfs send` serializes a snapshot—an exact, block-level, point-in-time state of a dataset—into a stream,
-and `zfs recv` reconstructs it perfectly on any pool**: every file,
-property, and the snapshot itself. No walking, no comparing, no "mostly the
-same." rsync approximates sameness file-by-file over a live, shifting
-target; recv *is* sameness, of a frozen moment.
+**Send and receive** are how a snapshot—a frozen moment of a dataset—
+travels to another machine. `send` turns the moment into a flowing copy;
+`receive`, on the other end, rebuilds it perfectly: every file, every
+setting, the snapshot itself. And after the first full trip, ZFS ships
+*only what changed* between one moment and the next.
+
+The mental slot to avoid: this is not a file-syncing tool with extra
+steps. Sync tools (like rsync) *hunt* for differences—walking every
+folder, comparing files, approximating sameness against a moving target.
+ZFS doesn't hunt, because it already *knows* exactly what changed between
+two frozen moments. The copy isn't approximately the same; it **is** the
+same.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The shape of use:

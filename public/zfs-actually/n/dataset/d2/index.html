@@ -55,14 +55,16 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>dataset</strong> is a filesystem carved out of the pool—it mounts, it holds
-files, it looks like a directory from the outside. The naive model says it's
-either a fancy folder or a small partition. <strong>Actually, a dataset is a policy
-boundary</strong>: it has no fixed size (all datasets share the pool's one
-reservoir), costs almost nothing to create, and is the unit at which
-everything interesting happens—properties, quotas, snapshots, replication.</p>
-<p>The posture correction: on ext4 you'd make a directory; on ZFS you should
-usually make a dataset. Make many.</p>
+      <p>A <strong>dataset</strong> is a named slice of the pool. From the outside it looks and
+acts like a folder—it holds files, it appears in your folder tree. The
+difference: <strong>a dataset is the thing ZFS applies rules to.</strong> Each one can
+have its own settings (compress or not), its own space limits, its own
+frozen moments in time, its own copy schedule to another machine. A plain
+folder can have none of that.</p>
+<p>Two facts make them easy to love: a dataset has no fixed size (they all
+share the pool's one pot), and creating one costs nothing. So the habit to
+build: where you'd normally make a folder, consider making a dataset.
+Make many.</p>
 
     </section>
     

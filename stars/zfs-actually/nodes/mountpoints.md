@@ -10,23 +10,25 @@ entry_points:
   - change mountpoint
   - where is zfs mount configured
 summary: >
-  ZFS mounts itself—the mountpoint is a property of the dataset, stored in
-  the pool, traveling with the data. fstab isn't empty by accident.
+  Where a dataset appears in your folders is a setting stored on the
+  dataset itself—the location travels with the data, not with the machine.
 ---
 <!-- depth:1 -->
 Mountpoints
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-You go looking for how your datasets mount, open /etc/fstab, and find
-nothing. Decades of muscle memory say that file is the source of truth.
-**Actually, ZFS mounts itself: the mountpoint is a *property of the
-dataset*, stored inside the pool, inherited down the tree.** `zfs set
-mountpoint=/srv/media tank/media` is the entire edit; at import, ZFS mounts
-everything where its properties say it belongs.
+A **mountpoint** is where a piece of storage shows up in your folder tree—
+the address at which its contents appear. On most systems, those addresses
+live in a settings file on the machine (on Linux, `/etc/fstab`), and
+people trained there go looking for it and find it empty. **Actually, ZFS
+handles this itself: where a dataset appears is a setting stored *on the
+dataset*, inside the pool.** One command changes it, and children follow
+their parent unless told otherwise.
 
-The deeper shift: fstab describes storage *to the OS*. A ZFS pool carries
-its own description—the configuration lives with the data, not with the
-machine.
+The deeper shift is worth pausing on: the machine's settings file
+describes storage *to that machine*. A ZFS pool carries its own
+description—so the layout travels with the data, not with the computer it
+happens to be plugged into.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Working with it:

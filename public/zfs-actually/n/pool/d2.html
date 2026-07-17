@@ -38,14 +38,16 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The naive model—<em>a pool is a big partition</em>—will let you operate for a
-long time without being true. <strong>Actually, a pool is a reservoir</strong>: you hand
-ZFS whole disks, arranged into vdevs, and get back one undifferentiated pot
-of capacity that everything on top shares. Nothing inside a pool has a fixed
-size—no partitioning, no pre-allocation, no &quot;resize the volume&quot; ever again.</p>
-<p>The dangerous half of the correction: the pool is <strong>not</strong> where redundancy
-lives. That's the vdev's job, one layer down—and the distinction is the
-difference between a safe layout and a time bomb.</p>
+      <p>The <strong>pool</strong> is what ZFS turns your disks into: one shared pot of storage
+that the whole machine draws from. You hand ZFS the disks; it hands you
+back a single supply of space. You never carve it up in advance, never
+decide sizes ahead of time, never &quot;resize&quot; anything again—everything on the
+machine simply shares the pot.</p>
+<p>The surprise hiding inside the word: <strong>the pool itself keeps no spare
+copies of anything.</strong> Protection against a dead disk lives one level down,
+inside the small teams of disks the pool is built from (called <em>vdevs</em>—the
+next idea to meet). That distinction is the difference between a safe setup
+and a time bomb, which is why it gets its own page.</p>
 
     </section>
     

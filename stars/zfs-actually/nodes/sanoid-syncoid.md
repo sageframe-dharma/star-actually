@@ -11,26 +11,26 @@ entry_points:
   - zfs backup automation
   - snapshot policy
 summary: >
-  Not a backup daemon—two thin tools: sanoid is policy over
-  snapshot/destroy, syncoid is orchestration over send/recv. Judgment on top
-  of primitives you can run by hand.
+  Not one "backup system"—two small helpers: sanoid takes and prunes
+  snapshots on a schedule; syncoid ships them to another machine. Both just
+  automate things you can do by hand.
 ---
 <!-- depth:1 -->
 Sanoid and Syncoid
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Configured once, together, in one file, they blur into a single mental
-object: "the backup system." **Actually, they're two separate, thin tools
-wrapping two ZFS primitives you can run by hand.** "Sanoid is a
-policy-driven snapshot management tool" (its README)—a scheduler over
-`zfs snapshot` and `zfs destroy`: take hourlies/dailies/monthlies, prune on
-retention. Syncoid "facilitates the asynchronous incremental replication of
-ZFS filesystems"—an orchestrator over `zfs send | zfs recv`: find the
-common snapshot, ship the increment, retry sanely.
+Set up once, together, in one file, they blur into a single mental object:
+"the backup system." **Actually, they're two separate, small helpers, each
+automating one thing you can do by hand.** **Sanoid** is the
+snapshot-taker: "a policy-driven snapshot management tool" (its README)—it
+takes snapshots on a schedule (hourly, daily, monthly) and deletes old ones
+according to rules you set. **Syncoid** is the shipper: it "facilitates the
+asynchronous incremental replication of ZFS filesystems"—it finds the last
+moment both machines share, and sends over only what's new since.
 
-Neither adds storage machinery. It's cron-shaped judgment on top of
-snapshots—which is why understanding snapshots and send/recv *is*
-understanding these tools.
+Neither adds any storage machinery of its own. They're scheduling and
+judgment layered on top of snapshots and send/receive—which is why
+understanding those two ideas *is* understanding these tools.
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 The working setup (the practitioner's homelab runs exactly this shape):

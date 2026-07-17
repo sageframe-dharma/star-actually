@@ -10,22 +10,24 @@ entry_points:
   - set up zfs
   - first zfs setup
 summary: >
-  The creation decisions in the order they lock in: vdev shape and ashift are
-  forever, everything else is a property. One command, four judgments.
+  Creating a pool is one command and four judgments—two of them permanent
+  (how the disks are teamed, and the disk cell-size setting), the rest
+  changeable over coffee.
 ---
 <!-- depth:1 -->
 Your First Pool
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Guides present `zpool create` as setup—type it, get storage, move on.
-**Actually, that one command makes the only decisions in ZFS you can't
-revise: the vdev shape and the ashift.** Everything else—compression,
-mountpoints, quotas, datasets—is a property you can change over morning
-coffee. The discipline is knowing which decisions are the foundation pour
-and giving them the ten deliberate minutes they deserve.
+Guides present `zpool create`—the command that builds a pool—as mere
+setup: type it, get storage, move on. **Actually, that one command makes
+the only decisions in ZFS you can never revise: how the disks are teamed
+(mirrors or RAIDZ), and the disk cell-size setting (ashift).** Everything
+else—compression, locations, space limits, datasets—can be changed over
+morning coffee. The discipline is knowing which decisions are the
+foundation pour and giving them the ten deliberate minutes they deserve.
 
-⚠ **DESTRUCTIVE**—`zpool create` repartitions the named devices. A typo'd
-device name destroys a disk's contents. Verify with `ls -l
+⚠ **DESTRUCTIVE**—`zpool create` wipes and takes over the disks you name.
+One mistyped disk name destroys that disk's contents. Verify with `ls -l
 /dev/disk/by-id/` before running.
 <!-- depth:3 -->
 <!-- provenance: extracted -->

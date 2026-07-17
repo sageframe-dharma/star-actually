@@ -10,22 +10,26 @@ entry_points:
   - zfs without ecc
   - is non ecc ram dangerous
 summary: >
-  "ZFS without ECC eats your data" is the loudest myth in homelab ZFS—the
-  scrub-of-death mechanism doesn't survive inspection, per the co-creator
+  "ZFS without special error-checking memory will eat your data" is the
+  loudest myth in ZFS—it doesn't survive inspection, per the co-creator
   himself.
 ---
 <!-- depth:1 -->
 The ECC Question
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-The claim arrives with total confidence: running ZFS on non-ECC RAM is
-reckless—a scrub with bad memory will "correct" your good data into
-garbage, pool-wide. It has the *shape* of expert knowledge: specific,
-counterintuitive, scary. **Actually, here's Matt Ahrens, co-creator of ZFS:
-"There's nothing special about ZFS that requires/encourages the use of ECC
-RAM more so than any other filesystem."** ECC is good engineering—for
-every filesystem equally. ZFS on consumer RAM is still *safer* than ext4 on
-the same RAM, because everything ZFS verifies is still being verified.
+First, the term: **ECC memory** is a pricier kind of computer memory,
+common in servers, that catches its own rare internal errors; ordinary
+computers use memory that doesn't. The claim you'll meet arrives with total
+confidence: running ZFS on ordinary memory is reckless—its self-repair
+process, fed by faulty memory, will "fix" your good data into garbage. The
+claim has the *shape* of expert knowledge: specific, counterintuitive,
+scary. **Actually, here's Matt Ahrens, co-creator of ZFS: "There's nothing
+special about ZFS that requires/encourages the use of ECC RAM more so than
+any other filesystem."** ECC memory is good engineering—for every system
+equally. ZFS on an ordinary computer is still *safer* than an ordinary
+filesystem on that same computer, because everything ZFS checks is still
+being checked.
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 Why the "scrub of death" fails on inspection: for a scrub to overwrite good

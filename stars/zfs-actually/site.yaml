@@ -7,7 +7,7 @@ domain_word: "ZFS"
 tagline: "Storage you can finally reason about."
 prompt: "What do you want to know about ZFS, actually?"
 url: "https://star-actually.sageframe.net/zfs-actually"
-root_node: "what-zfs-is"
+root_node: "what-a-filesystem-is"
 repo: "https://github.com/sageframe-dharma/star-actually"
 author: "Andrew T Marcus"
 receptionist: false  # static build; the /ask backend is not deployed
@@ -25,6 +25,15 @@ base_path: "/zfs-actually"
 # The trails—curated journeys through the graph. The graph is the terrain;
 # these are the routes worth walking in order.
 chains:
+  - id: "from-zero"
+    title: "Start from zero: what a filesystem is, and why ZFS exists"
+    nodes:
+      [
+        "what-a-filesystem-is",
+        "filesystem-history",
+        "filesystem-landscape",
+        "what-zfs-is",
+      ]
   - id: "build-first-pool"
     title: "Build your first pool with intent"
     nodes:

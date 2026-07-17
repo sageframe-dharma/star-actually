@@ -202,3 +202,30 @@ own live arc.*
 - **Why it felt right:** VirtualBox/ESXi habits—a VM disk is a big file you can locate and copy.
 - **Resolved by:** node `proxmox-zfs` (and `zvol`)
 - **Actually:** Proxmox carves each VM disk out of the pool as a *zvol*—a dataset that presents as a raw block device instead of a filesystem. No file, no image format, no filesystem-in-a-file overhead; and each VM disk is individually snapshottable/sendable like any dataset. The rpool is the installer's pool for the OS itself. My "datasets and services" model and Proxmox's "zvols and VMs" model are the same machinery wearing two faces.
+
+---
+
+*The entries below arrived after handoff, from the first reader test of the
+built site. They are the reader's questions, not the practitioner's—and Q29
+is the finding that forced the boundary correction.*
+
+## Q29 · the reader isn't me   [phase: P4] [status: resolved]
+- **Asked:** (first reader test of the site) "There's still no initial base—what even IS a filesystem? This feels confusing. We need to be able to start from absolute basics."
+- **Naive model:** The P0 boundary assumed the reader shares the practitioner's starting point: someone already *operating* ZFS who lacks the model. The instance's ground floor was set at "What ZFS Is," which silently assumes the reader knows what a filesystem is, what RAID is, what a volume manager is.
+- **Why it felt right:** The arc's origin story was "I run ZFS through automation and don't hold the model"—so every node was aimed at that person. Authoring from your own arrival is the default failure of expertise: the boundary of your own confusion feels like the boundary of everyone's.
+- **Resolved by:** node `what-a-filesystem-is` (new root), plus `filesystem-history`, `filesystem-landscape`, and the "Start from zero" chain
+- **Actually:** A `*, Actually` serves *arrivals*, and arrivals don't share your history. The root must sit at the true ground floor—the reader who needs altitude can climb; the reader who doesn't can search past it. Reader agency includes the reader who knows nothing yet.
+
+## Q30 · what is a filesystem, actually   [phase: P4] [status: resolved]
+- **Asked:** What even is a filesystem? I've formatted drives and seen NTFS and ext4 in dropdowns, but I couldn't define the thing.
+- **Naive model:** "My files are on the disk"—the disk somehow inherently contains files and folders.
+- **Why it felt right:** Every interface shows files as *things in a place*; nothing in daily computing ever exposes the bookkeeping layer.
+- **Resolved by:** node `what-a-filesystem-is`
+- **Actually:** The disk holds only numbered blocks and has no idea what a file is. The filesystem is the ledger that invents files, names, and folders on top of anonymous blocks—lose the ledger and the blocks remain, meaning nothing.
+
+## Q31 · why are there so many filesystems   [phase: P4] [status: resolved]
+- **Asked:** FAT32, NTFS, ext4, APFS, ZFS—why does this keep happening? Are the old ones just bad?
+- **Naive model:** Filesystems are versions—newer replaces older, and the old ones persist out of laziness.
+- **Why it felt right:** That's how most software works; "why hasn't everyone upgraded" is usually a fair question.
+- **Resolved by:** node `filesystem-history` (and `filesystem-landscape`)
+- **Actually:** Filesystem history is a chain of disasters and answers—simple ledgers lost to crashes, journaling answered crashes, the integrity generation (ZFS) answered lying hardware. Each older generation survives exactly where its trade-offs still fit: FAT32 rules camera cards *because* simplicity is the feature there. They're not versions; they're different answers to different disasters.

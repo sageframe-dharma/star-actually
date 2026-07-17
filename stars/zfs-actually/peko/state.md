@@ -1,11 +1,18 @@
 # Peko State—ZFS
 
-**Phase:** P4 · handoff (arc closed)
+**Phase:** P4 · handoff (arc closed; post-handoff reader-test correction applied)
 **NEXT:** arc complete—finishing pass done in the same session; instance
 built to `dist/` and deployed into `public/zfs-actually`. Note: this arc was
 *simulated*—authored as Andrew's plausible learning path for comparison
 against his own live Peko arc. When the live arc runs, diff its questions.md
 against this one; the divergences are the interesting part.
+
+**Post-handoff correction (Q29):** the first reader test caught a P0
+boundary error—the reader was drawn as the practitioner (already operating
+ZFS), so the graph had no ground floor. Three foundation nodes added
+(`what-a-filesystem-is`, `filesystem-history`, `filesystem-landscape`), the
+root moved to `what-a-filesystem-is`, and a first chain ("Start from zero")
+now carries the absolute-beginner journey into `what-zfs-is`.
 
 ## Coverage checklist (D7—heuristic proposes, practitioner disposes)
 - [x] every questions.md entry has a resolving node
@@ -19,6 +26,9 @@ against this one; the divergences are the interesting part.
 ## Node ledger
 | id | title | depths | provenance |
 |----|-------|--------|------------|
+| what-a-filesystem-is | What a Filesystem Is | 1–5 | synthesized |
+| filesystem-history | A Short History of Filesystems | 1–4 | synthesized |
+| filesystem-landscape | The Filesystem Landscape | 1–4 | synthesized |
 | what-zfs-is | What ZFS Is | 1–5 | synthesized |
 | pool | The Pool | 1–4 | synthesized |
 | vdev | The Vdev | 1–5 | synthesized |
@@ -54,7 +64,7 @@ against this one; the divergences are the interesting part.
 | first-pool | Your First Pool | 1–4 | mixed |
 | proxmox-zfs | ZFS Under Proxmox | 1–4 | mixed |
 
-34 nodes · root `what-zfs-is` · 4 chains declared in site.yaml.
+37 nodes · root `what-a-filesystem-is` · 5 chains declared in site.yaml.
 
 ## Open threads
 - Encryption and dRAID parked outside the boundary (see notes.md).

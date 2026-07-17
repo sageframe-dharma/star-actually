@@ -1,6 +1,21 @@
 # Notes—ZFS
 
-_Last rewritten: P4 · handoff_
+_Last rewritten: P4 · handoff + reader-test correction_
+
+## The correction that came from outside the arc
+
+The first reader test of the built site caught the arc's blind spot: the
+instance assumed its reader was the practitioner—someone already running
+ZFS who lacked only the model. A reader starting from zero hit "What ZFS
+Is" and had nowhere to stand: *filesystem*, *RAID*, and *volume manager*
+were all load-bearing and all undefined. The fix widened the boundary
+downward: a true ground floor (`what-a-filesystem-is`, now the root), a
+history node (each filesystem generation answers the previous one's
+disaster), a landscape node (the comparables, one honest line each), and a
+"Start from zero" chain that walks a newcomer from "what is a filesystem"
+to "why ZFS exists." The lesson, recorded as Q29: authoring from your own
+arrival is the default failure of expertise—the boundary of your confusion
+is not the boundary of everyone's.
 
 ## What ZFS turned out to be
 

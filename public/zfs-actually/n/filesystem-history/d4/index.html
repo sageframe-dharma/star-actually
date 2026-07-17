@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Short History of Filesystems (depth 4) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="filesystem-history"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="A Short History of Filesystems">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">A Short History of Filesystems</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/filesystem-history/d3/"
+         hx-get="/zfs-actually/n/filesystem-history/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="from-zero">
+      <span class="chain-title">Start from zero: what a filesystem is, and why ZFS exists</span>
+      <span class="chain-position">2/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="from-zero"
+         href="/zfs-actually/n/what-a-filesystem-is/"
+         hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-a-filesystem-is/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="from-zero"
+         href="/zfs-actually/n/filesystem-landscape/"
+         hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-landscape/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Filesystem history looks like a parade of product names—FAT, ext2, NTFS,
+ZFS. <strong>Actually, it's a chain of disasters and answers.</strong> Three generations,
+each built to survive the failure that ruined the one before:</p>
+<ol>
+<li><strong>Simple ledgers</strong> (1970s–80s: FAT, early Unix filesystems). Fast and
+tiny. But lose power mid-write and the ledger itself ends up
+half-updated—scrambled records, orphaned files, a repair tool run at
+every boot, and sometimes real loss.</li>
+<li><strong>Journaling</strong> (1990s: NTFS, ext3, XFS). Before touching the ledger,
+write a short note—a <em>journal</em> entry—saying what you're about to do.
+After a crash, replay the notes. The ledger stays honest. This
+generation still runs most of the world.</li>
+<li><strong>Integrity</strong> (2000s onward: ZFS first at full scale, then Btrfs and
+Apple's APFS). Journaling protects the ledger from <em>crashes</em>—but it
+still trusts whatever the disk returns. This generation assumes the
+hardware itself can lie, and verifies everything.</li>
+</ol>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>You can date any filesystem you meet by which disaster it answers:</p>
+<ul>
+<li><strong>FAT32 / exFAT</strong> (generation 1) still rule USB sticks and camera
+cards—not out of nostalgia, but because when every device must read
+every stick, <em>simplicity is the feature</em>.</li>
+<li><strong>ext4, XFS, NTFS</strong> (generation 2) are the workhorses under most Linux
+and Windows machines today: journaled, fast, thoroughly debugged, and
+still fundamentally trusting of the disk.</li>
+<li><strong>ZFS, Btrfs, APFS</strong> (generation 3) each took the new assumptions
+somewhere different: ZFS to servers and many disks, APFS to the SSD in
+your Mac, Btrfs into the mainline Linux kernel.</li>
+</ul>
+<p>The practical takeaway is calm: the older generations aren't wrong or
+obsolete—each survives exactly where its trade-offs fit. But when a machine
+holds years of data that must stay verifiably intact, generation 3 is the
+one built for that job.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The fine print that sorts real understanding from a timeline:</p>
+<ul>
+<li><strong>Journaling protects the ledger, not your data.</strong> Most journaling
+filesystems journal only the <em>bookkeeping</em> (metadata), not file
+contents—a crash can still leave a file's contents half-written even
+though the records are tidy. &quot;Crash-consistent&quot; and &quot;your data is
+intact&quot; are different promises, and the gap between them is exactly
+where generation 3 begins.</li>
+<li><strong>The fsck ritual</strong>—the repair tool that checked whole disks at
+boot—shaped a generation of habits. Journaling made it rare; the
+copy-on-write design (next stop on this trail) made it structurally
+unnecessary: a ledger that is never edited in place can't be caught
+half-edited.</li>
+<li><strong>Why generation 3 took until the 2000s</strong>: verifying everything costs
+memory and computation that 1980s hardware couldn't spare, and the
+silent-corruption problem only became visible at scale—when you hold
+enough terabytes for long enough, &quot;the disk sometimes returns wrong
+bytes without any error&quot; stops being folklore and starts being a
+statistic.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&rarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&rarr; The Filesystem Landscape</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-a-filesystem-is" href="/zfs-actually/n/what-a-filesystem-is/"
+               hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-a-filesystem-is/">&rarr; What a Filesystem Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&uarr; The Filesystem Landscape</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="what-a-filesystem-is" href="/zfs-actually/n/what-a-filesystem-is/"
+               hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-a-filesystem-is/">&uarr; What a Filesystem Is</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

@@ -2,14 +2,13 @@
 id: what-zfs-is
 title: What ZFS Is
 type: concept
-requires: []
-related: [pool, copy-on-write, checksums]
+requires: [what-a-filesystem-is]
+related: [pool, copy-on-write, checksums, filesystem-landscape]
 entry_points:
   - what is zfs
   - is zfs a filesystem
   - what layer is zfs
   - why is zfs different
-  - zfs vs ext4
   - why do people love zfs
 summary: >
   Not a filesystem with features—the whole storage stack rebuilt around one
@@ -21,8 +20,12 @@ What ZFS Is
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
 You'll want to call ZFS a filesystem, because that's the word the ecosystem
-uses. **Actually, ZFS is the entire storage stack in one system**—the
-volume manager, the RAID layer, and the filesystem, merged on purpose.
+uses. **Actually, ZFS is the entire storage stack in one system.** The jobs
+that are normally three separate tools—the filesystem (the ledger that
+turns blocks into files), the volume manager (the software that gathers
+many disks into one usable space), and the RAID layer (the software that
+keeps redundant copies so a dead disk costs nothing)—are merged, on
+purpose, into one.
 
 Everything else you'll meet—pools, checksums, snapshots, scrubs—falls out
 of one founding assumption: **your hardware is lying to you.** Disks return
@@ -30,9 +33,10 @@ wrong data without error, controllers drop writes, power dies mid-operation.
 ZFS is what storage looks like when you refuse to trust any of it.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
-In practice this means you stop juggling tools. There's no `fdisk`, no
-`mdadm`, no `lvcreate`, no `mkfs`, no `fstab` entry. Two commands cover almost
-everything:
+In practice this means you stop juggling tools. The usual parade of
+single-purpose utilities—one to partition the disk, one to build the RAID,
+one to create volumes, one to format, one config file to mount—simply
+isn't there. Two commands cover almost everything:
 
 - **`zpool`**—the physical side: disks, redundancy, health.
 - **`zfs`**—the logical side: datasets, properties, snapshots, replication.

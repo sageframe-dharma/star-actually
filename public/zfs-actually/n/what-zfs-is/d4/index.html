@@ -37,6 +37,17 @@
          hx-get="/zfs-actually/n/what-zfs-is/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
     </div>
     
+    <div class="chain-strip" data-chain-id="from-zero">
+      <span class="chain-title">Start from zero: what a filesystem is, and why ZFS exists</span>
+      <span class="chain-position">4/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="from-zero"
+         href="/zfs-actually/n/filesystem-landscape/"
+         hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-landscape/">&larr; prev</a>
+      <span class="chain-step chain-next is-disabled" aria-disabled="true">next &rarr;</span>
+    </div>
+    
     <div class="chain-strip" data-chain-id="build-first-pool">
       <span class="chain-title">Build your first pool with intent</span>
       <span class="chain-position">1/9</span>
@@ -54,8 +65,12 @@
     
     <section class="layer layer-2" data-depth="2">
       <p>You'll want to call ZFS a filesystem, because that's the word the ecosystem
-uses. <strong>Actually, ZFS is the entire storage stack in one system</strong>—the
-volume manager, the RAID layer, and the filesystem, merged on purpose.</p>
+uses. <strong>Actually, ZFS is the entire storage stack in one system.</strong> The jobs
+that are normally three separate tools—the filesystem (the ledger that
+turns blocks into files), the volume manager (the software that gathers
+many disks into one usable space), and the RAID layer (the software that
+keeps redundant copies so a dead disk costs nothing)—are merged, on
+purpose, into one.</p>
 <p>Everything else you'll meet—pools, checksums, snapshots, scrubs—falls out
 of one founding assumption: <strong>your hardware is lying to you.</strong> Disks return
 wrong data without error, controllers drop writes, power dies mid-operation.
@@ -64,9 +79,10 @@ ZFS is what storage looks like when you refuse to trust any of it.</p>
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>In practice this means you stop juggling tools. There's no <code>fdisk</code>, no
-<code>mdadm</code>, no <code>lvcreate</code>, no <code>mkfs</code>, no <code>fstab</code> entry. Two commands cover almost
-everything:</p>
+      <p>In practice this means you stop juggling tools. The usual parade of
+single-purpose utilities—one to partition the disk, one to build the RAID,
+one to create volumes, one to format, one config file to mount—simply
+isn't there. Two commands cover almost everything:</p>
 <ul>
 <li><strong><code>zpool</code></strong>—the physical side: disks, redundancy, health.</li>
 <li><strong><code>zfs</code></strong>—the logical side: datasets, properties, snapshots, replication.</li>
@@ -139,6 +155,10 @@ data checksums and redundancy—the single-device convictions only).</p>
                hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/zfs-actually/n/copy-on-write/">&rarr; Copy-on-Write</a></li>
         
+        <li><a class="nav-node nav-lateral" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&rarr; The Filesystem Landscape</a></li>
+        
         <li><a class="nav-node nav-lateral" data-node-id="pool" href="/zfs-actually/n/pool/"
                hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/zfs-actually/n/pool/">&rarr; The Pool</a></li>
@@ -162,6 +182,10 @@ data checksums and redundancy—the single-device convictions only).</p>
         <li><a class="nav-node nav-backlink" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
                hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
                hx-push-url="/zfs-actually/n/copy-on-write/">&uarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&uarr; The Filesystem Landscape</a></li>
         
         <li><a class="nav-node nav-backlink" data-node-id="pool" href="/zfs-actually/n/pool/"
                hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"

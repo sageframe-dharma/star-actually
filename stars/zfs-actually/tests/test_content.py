@@ -18,28 +18,28 @@ NODES_DIR = REPO_ROOT / "nodes"
 def test_real_site_yaml_loads() -> None:
     config = load_config(REPO_ROOT / "site.yaml")
     assert config.title == "ZFS, Actually"
-    assert config.root_node == "what-zfs-is"
-    assert len(config.chains) == 4
+    assert config.root_node == "what-a-filesystem-is"
+    assert len(config.chains) == 5
 
 
 def test_graph_weaves_strict() -> None:
     """The graph: closed, no dangling edges, no warnings, no orphans."""
     graph = build_graph(load_nodes(NODES_DIR))
     assert graph.warnings == ()
-    assert len(graph.nodes) == 34
-    for node_id in ("what-zfs-is", "vdev", "snapshot", "zil-slog", "replace-disk"):
+    assert len(graph.nodes) == 37
+    for node_id in ("what-a-filesystem-is", "what-zfs-is", "vdev", "snapshot", "replace-disk"):
         assert node_id in graph.nodes
 
 
 def test_root_is_reachable_forward() -> None:
     graph = build_graph(load_nodes(NODES_DIR))
-    assert graph.neighborhoods["what-zfs-is"].forward
+    assert graph.neighborhoods["what-a-filesystem-is"].forward
 
 
 def test_root_shape() -> None:
-    node = parse_node(NODES_DIR / "what-zfs-is.md")
+    node = parse_node(NODES_DIR / "what-a-filesystem-is.md")
     assert node.type is NodeType.CONCEPT
-    assert node.layer(1).markdown == "What ZFS Is"
+    assert node.layer(1).markdown == "What a Filesystem Is"
 
 
 def test_chains_reference_real_nodes() -> None:

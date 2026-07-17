@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Filesystem Landscape · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="filesystem-landscape"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="The Filesystem Landscape">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The Filesystem Landscape</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/filesystem-landscape/d3/"
+         hx-get="/zfs-actually/n/filesystem-landscape/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="from-zero">
+      <span class="chain-title">Start from zero: what a filesystem is, and why ZFS exists</span>
+      <span class="chain-position">3/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="from-zero"
+         href="/zfs-actually/n/filesystem-history/"
+         hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-history/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="from-zero"
+         href="/zfs-actually/n/what-zfs-is/"
+         hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-zfs-is/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>&quot;Which filesystem is best?&quot; is the naive question, and the internet will
+happily fight about it forever. <strong>Actually, filesystems are tools for
+different jobs, and the real question is &quot;what does each one promise?&quot;</strong>
+Most of the familiar ones promise: <em>your records will survive a crash</em>.
+ZFS promises something stronger and rarer: <em>your data will be verified,
+and if a copy exists, repaired</em>—across many disks, as one system. Nothing
+else in wide use makes that full promise; one system (Btrfs) makes most of
+it. That difference, not speed or popularity, is what you're choosing when
+you choose ZFS.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The roster, one honest line each:</p>
+<ul>
+<li><strong>ext4</strong> — the Linux default. Journaled, fast, two decades of debugging.
+Trusts the disk completely. The right answer for most single-disk Linux
+machines.</li>
+<li><strong>XFS</strong> — ext4's heavy-duty sibling (the default on Red Hat systems);
+excels at large files and parallel work. Same trust in the disk.</li>
+<li><strong>NTFS</strong> — Windows' filesystem since the 90s. Journaled, capable, and
+not really a choice—it's what Windows is.</li>
+<li><strong>APFS</strong> — Apple's modern filesystem. Shares real DNA with ZFS
+(copy-on-write, snapshots) but skips data checksums and multi-disk
+redundancy: it's the single-SSD-in-a-laptop distillation of the ideas.</li>
+<li><strong>Btrfs</strong> — the closest relative: ZFS's convictions (checksums,
+snapshots, multi-disk pools) rebuilt inside the mainline Linux kernel.
+Mature for single disks and mirrors; its RAID5/6-style parity modes
+never became trustworthy, which is the caveat that keeps it second.</li>
+<li><strong>exFAT / FAT32</strong> — the interchange formats. No journal, no ownership,
+no promises; readable by everything. Perfect for a camera card,
+unthinkable for your archive.</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>What ZFS uniquely combines—each piece exists somewhere else; the
+<em>combination</em> is the offer:</p>
+<ul>
+<li><strong>Verification</strong> (checksums on all data) — Btrfs yes; ext4/XFS/NTFS/APFS
+no.</li>
+<li><strong>Repair from redundancy</strong> (self-healing across disks) — Btrfs
+partially; nothing else even attempts it.</li>
+<li><strong>Whole-stack scope</strong> (one system managing disks, redundancy, and
+files) — traditionally three separate tools everywhere else.</li>
+<li><strong>Snapshots and replication as first-class verbs</strong> — APFS and Btrfs
+have snapshots; ZFS's send/receive replication is the piece the others
+lack or approximate.</li>
+</ul>
+<p>And the honest costs, so the comparison isn't a sales pitch: ZFS wants
+memory (its cache is a feature, not a leak), lives outside the mainline
+Linux kernel for licensing reasons (an extra installation step, not a
+quality verdict), and asks you to learn a real mental model—which is,
+after all, why this site exists. When the machine is one laptop with one
+SSD, ext4 or APFS is genuinely the better fit. When the machine is where
+your data <em>lives</em>, the combination above is the argument.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="filesystem-history" href="/zfs-actually/n/filesystem-history/"
+               hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-history/">&rarr; A Short History of Filesystems</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-a-filesystem-is" href="/zfs-actually/n/what-a-filesystem-is/"
+               hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-a-filesystem-is/">&rarr; What a Filesystem Is</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&rarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="filesystem-history" href="/zfs-actually/n/filesystem-history/"
+               hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-history/">&uarr; A Short History of Filesystems</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="what-a-filesystem-is" href="/zfs-actually/n/what-a-filesystem-is/"
+               hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-a-filesystem-is/">&uarr; What a Filesystem Is</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&uarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

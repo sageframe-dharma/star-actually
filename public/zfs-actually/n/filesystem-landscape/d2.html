@@ -1,0 +1,79 @@
+<article class="node" id="content"
+  data-node-id="filesystem-landscape"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="The Filesystem Landscape">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The Filesystem Landscape</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/filesystem-landscape/d3/"
+         hx-get="/zfs-actually/n/filesystem-landscape/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="from-zero">
+      <span class="chain-title">Start from zero: what a filesystem is, and why ZFS exists</span>
+      <span class="chain-position">3/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="from-zero"
+         href="/zfs-actually/n/filesystem-history/"
+         hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-history/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="from-zero"
+         href="/zfs-actually/n/what-zfs-is/"
+         hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-zfs-is/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>&quot;Which filesystem is best?&quot; is the naive question, and the internet will
+happily fight about it forever. <strong>Actually, filesystems are tools for
+different jobs, and the real question is &quot;what does each one promise?&quot;</strong>
+Most of the familiar ones promise: <em>your records will survive a crash</em>.
+ZFS promises something stronger and rarer: <em>your data will be verified,
+and if a copy exists, repaired</em>—across many disks, as one system. Nothing
+else in wide use makes that full promise; one system (Btrfs) makes most of
+it. That difference, not speed or popularity, is what you're choosing when
+you choose ZFS.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="filesystem-history" href="/zfs-actually/n/filesystem-history/"
+               hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-history/">&rarr; A Short History of Filesystems</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-a-filesystem-is" href="/zfs-actually/n/what-a-filesystem-is/"
+               hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-a-filesystem-is/">&rarr; What a Filesystem Is</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&rarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

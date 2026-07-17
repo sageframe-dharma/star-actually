@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What a Filesystem Is (depth 5) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="what-a-filesystem-is"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="What a Filesystem Is">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">What a Filesystem Is</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/what-a-filesystem-is/d4/"
+         hx-get="/zfs-actually/n/what-a-filesystem-is/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="from-zero">
+      <span class="chain-title">Start from zero: what a filesystem is, and why ZFS exists</span>
+      <span class="chain-position">1/4</span>
+      
+      <span class="chain-step chain-prev is-disabled" aria-disabled="true">&larr; prev</span>
+      <a class="chain-step chain-next" data-chain-id="from-zero"
+         href="/zfs-actually/n/filesystem-history/"
+         hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-history/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A disk—a hard drive, an SSD, a USB stick—stores nothing but <strong>blocks</strong>:
+millions of small, numbered, same-sized slots that each hold some bytes. The
+disk has no idea what a file is. It can do exactly two things: read block
+number so-and-so, and write block number so-and-so.</p>
+<p>A <strong>filesystem</strong> is the bookkeeping software that turns those anonymous
+blocks into the world you actually use: files with names and sizes, folders
+inside folders, a record of who is allowed to read what.</p>
+<p>The correction worth carrying from here on: &quot;my files are on the disk&quot; is
+not quite true. <strong>The disk holds only blocks; the <em>files</em> live in the
+ledger.</strong> Lose the ledger and the blocks are all still there—and mean
+nothing.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>You have been using filesystems for years without naming them:</p>
+<ul>
+<li><strong>&quot;Formatting&quot; a drive</strong> means writing a fresh, empty ledger onto it.
+Nothing about the hardware changes—the drive just gets a new, blank
+book of records.</li>
+<li>Every device picked a ledger design: USB sticks usually carry <strong>FAT32</strong>
+or <strong>exFAT</strong>, Windows uses <strong>NTFS</strong>, Macs use <strong>APFS</strong>, Linux most often
+uses <strong>ext4</strong>. When a Mac can't write to a Windows drive, that isn't a
+hardware problem—the two systems keep their records differently, and
+one side can't read the other's book.</li>
+<li>&quot;The format erased my files&quot; means: new ledger, old entries gone. The
+blocks underneath often still hold the old bytes for a while—which is
+exactly what data-recovery tools go digging for.</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The words that get tangled together, untangled:</p>
+<ul>
+<li><strong>The disk</strong> is hardware. It holds blocks. That is all it does.</li>
+<li><strong>A partition</strong> is a fenced-off region of a disk—a way to split one
+physical disk into sections, each of which gets its own filesystem.</li>
+<li><strong>The filesystem</strong> is the ledger written inside a partition (or a whole
+disk): the software layer that invents files.</li>
+<li><strong>The operating system</strong> is the reader and writer of that ledger—it
+contains the code that understands each format.</li>
+</ul>
+<p>Stacked in order: <strong>disk → partition → filesystem → files</strong>. Each layer
+adds meaning the layer below doesn't have. Almost everything in storage
+that seems confusing becomes clear the moment you ask &quot;which layer is this
+about?&quot;—and ZFS, where this site is headed, is interesting precisely
+because it redraws these layer boundaries.</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>Every filesystem ever built is a set of answers to the same four problems:</p>
+<ol>
+<li><strong>Allocation</strong> — which blocks are free, and which belong to which file?</li>
+<li><strong>Naming</strong> — how does <code>/photos/cat.jpg</code> become a list of block numbers?</li>
+<li><strong>Consistency</strong> — what happens if the power dies <em>while the ledger is
+half-updated</em>? A ledger that lies is worse than no ledger.</li>
+<li><strong>Speed</strong> — disks are slow and memory is fast; what gets cached, and
+when is it safe to say &quot;done&quot;?</li>
+</ol>
+<p>Different filesystems are different trade-offs among the four. And the
+<em>history</em> of filesystems—the next node—is mostly the history of problem 3:
+each generation discovered a new way the ledger could end up wrong, and
+built a new defense. The most recent generation, the one ZFS opened, added
+a fifth problem the first four decades quietly ignored: <strong>what if the disk
+itself lies?</strong></p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="filesystem-history" href="/zfs-actually/n/filesystem-history/"
+               hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-history/">&darr; A Short History of Filesystems</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&darr; The Filesystem Landscape</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&darr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="filesystem-history" href="/zfs-actually/n/filesystem-history/"
+               hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-history/">&rarr; A Short History of Filesystems</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&rarr; The Filesystem Landscape</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="filesystem-history" href="/zfs-actually/n/filesystem-history/"
+               hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-history/">&uarr; A Short History of Filesystems</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="filesystem-landscape" href="/zfs-actually/n/filesystem-landscape/"
+               hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/filesystem-landscape/">&uarr; The Filesystem Landscape</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&uarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

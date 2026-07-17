@@ -1,6 +1,6 @@
 {
   "site": "ZFS, Actually",
-  "root": "what-zfs-is",
+  "root": "what-a-filesystem-is",
   "nodes": [
     {
       "id": "arc",
@@ -108,6 +108,35 @@
         "scrub of death",
         "zfs without ecc",
         "is non ecc ram dangerous"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "filesystem-history",
+      "title": "A Short History of Filesystems",
+      "type": "concept",
+      "summary": "Fifty years in one story: each generation of filesystems answers the previous generation's disaster—ending (so far) at the generation ZFS opened, which stopped trusting the disk itself.",
+      "entry_points": [
+        "history of filesystems",
+        "why are there so many filesystems",
+        "what is journaling",
+        "how did filesystems evolve",
+        "what came before zfs"
+      ],
+      "depth_levels": 4
+    },
+    {
+      "id": "filesystem-landscape",
+      "title": "The Filesystem Landscape",
+      "type": "concept",
+      "summary": "The filesystems you actually meet—ext4, XFS, NTFS, APFS, Btrfs—one honest line each, and the specific combination ZFS offers that the others don't.",
+      "entry_points": [
+        "zfs vs ext4",
+        "zfs vs btrfs",
+        "zfs vs ntfs",
+        "which filesystem should i use",
+        "comparable filesystems",
+        "alternatives to zfs"
       ],
       "depth_levels": 4
     },
@@ -405,6 +434,20 @@
       "depth_levels": 5
     },
     {
+      "id": "what-a-filesystem-is",
+      "title": "What a Filesystem Is",
+      "type": "concept",
+      "summary": "The absolute ground floor: a disk stores only numbered blocks and has no idea what a file is—the filesystem is the ledger that invents files, names, and folders on top of them.",
+      "entry_points": [
+        "what is a filesystem",
+        "what does a filesystem do",
+        "filesystem basics",
+        "what does formatting mean",
+        "i know nothing about storage"
+      ],
+      "depth_levels": 5
+    },
+    {
       "id": "what-zfs-is",
       "title": "What ZFS Is",
       "type": "concept",
@@ -414,7 +457,6 @@
         "is zfs a filesystem",
         "what layer is zfs",
         "why is zfs different",
-        "zfs vs ext4",
         "why do people love zfs"
       ],
       "depth_levels": 5

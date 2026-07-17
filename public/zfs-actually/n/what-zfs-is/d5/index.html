@@ -63,25 +63,32 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>You'll want to call ZFS a filesystem, because that's the word the ecosystem
-uses. <strong>Actually, ZFS is the entire storage stack in one system.</strong> The jobs
-that are normally three separate tools—the filesystem (the ledger that
-turns blocks into files), the volume manager (the software that gathers
-many disks into one usable space), and the RAID layer (the software that
-keeps redundant copies so a dead disk costs nothing)—are merged, on
-purpose, into one.</p>
-<p>Everything else you'll meet—pools, checksums, snapshots, scrubs—falls out
-of one founding assumption: <strong>your hardware is lying to you.</strong> Disks return
-wrong data without error, controllers drop writes, power dies mid-operation.
-ZFS is what storage looks like when you refuse to trust any of it.</p>
+      <p>ZFS is a system for storing data, built around one promise: <strong>what you put
+in comes back exactly as you wrote it—or ZFS tells you, loudly, instead of
+silently handing you something broken.</strong></p>
+<p>In practice, it does four things for you:</p>
+<ul>
+<li><strong>Gathers any number of disks into one pool</strong> of storage, so you stop
+thinking about individual drives.</li>
+<li><strong>Checks everything it reads</strong> for damage, and repairs damage
+automatically from a spare copy.</li>
+<li><strong>Freezes moments in time</strong> (snapshots)—instantly, at no cost—so you can
+rewind a mistake.</li>
+<li><strong>Copies those moments to another machine</strong>, efficiently, which is what a
+real backup is.</li>
+</ul>
+<p>People reach for ZFS when a computer's job is to <em>hold data that matters</em>:
+years of photos, a business's records, a home server. It's usually called a
+filesystem, and it is one—but that undersells it, in a way that becomes
+interesting once the basics are solid (that story is a level deeper).</p>
 
     </section>
     
     <section class="layer layer-3" data-depth="3">
-      <p>In practice this means you stop juggling tools. The usual parade of
-single-purpose utilities—one to partition the disk, one to build the RAID,
-one to create volumes, one to format, one config file to mount—simply
-isn't there. Two commands cover almost everything:</p>
+      <p>Using ZFS feels different from ordinary storage from the first minute: the
+usual parade of single-purpose utilities—one tool to partition the disk,
+one to group disks together, one to format, one config file to say what
+mounts where—simply isn't there. Two commands cover almost everything:</p>
 <ul>
 <li><strong><code>zpool</code></strong>—the physical side: disks, redundancy, health.</li>
 <li><strong><code>zfs</code></strong>—the logical side: datasets, properties, snapshots, replication.</li>
@@ -96,7 +103,13 @@ helps.</p>
     </section>
     
     <section class="layer layer-4" data-depth="4">
-      <p>The traditional stack is a bucket brigade of strangers: the filesystem hands
+      <p>Now the category question, because it's where ZFS sits oddly among its
+neighbors: ZFS is the filesystem, the <strong>volume manager</strong> (the software that
+gathers disks into one usable space), and the <strong>RAID layer</strong> (the software
+that keeps redundant copies so a dead disk costs nothing) merged into a
+single system. Elsewhere those are three separate tools, stacked.</p>
+<p>Why the merge matters: the traditional stack is a bucket brigade of
+strangers—the filesystem hands
 blocks to a volume manager, which hands them to a RAID layer, which hands
 them to disks—and <strong>no layer can check another's work.</strong> RAID will
 faithfully mirror corruption it can't detect; a filesystem can't ask RAID

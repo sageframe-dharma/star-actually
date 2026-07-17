@@ -1,0 +1,118 @@
+<article class="node" id="content"
+  data-node-id="copy-on-write"
+  data-depth="3"
+  data-max-depth="5"
+  data-title="Copy-on-Write">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Copy-on-Write</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/4</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/copy-on-write/d4/"
+         hx-get="/zfs-actually/n/copy-on-write/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/copy-on-write/d2/"
+         hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="sleep-at-night">
+      <span class="chain-title">Snapshots, backups, and actually sleeping at night</span>
+      <span class="chain-position">1/6</span>
+      
+      <span class="chain-step chain-prev is-disabled" aria-disabled="true">&larr; prev</span>
+      <a class="chain-step chain-next" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshot/"
+         hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The naive parse of &quot;copy-on-write&quot; is a safety feature—something like
+journaling, keeping a copy in case a change goes wrong. <strong>Actually,
+copy-on-write means ZFS never overwrites a live block, ever.</strong> When you
+&quot;change&quot; a file, ZFS writes new blocks somewhere fresh, then atomically flips
+pointers so the new blocks become the truth. The old blocks aren't defended
+or recovered—they're simply never touched.</p>
+<p>The consequence: at every instant, the on-disk state is <em>some</em> complete,
+consistent moment. A write either fully happened or never happened. There is
+no torn middle—which is why there's no fsck, and no journal replaying
+half-finished work.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>You feel CoW everywhere before you can name it:</p>
+<ul>
+<li><strong>Snapshots are instant and free</strong>—old blocks were never going to be
+overwritten, so &quot;keep the past&quot; is just &quot;don't garbage-collect these yet.&quot;</li>
+<li><strong>Power loss stops being scary</strong>—pull the plug mid-write; on import the
+pool is simply <em>at</em> the last committed moment. No repair pass.</li>
+<li><strong>Free space is a working resource</strong>—even overwrites and deletions need
+fresh space to land, which is why a nearly-full CoW pool degrades (see
+The Free-Space Discipline).</li>
+<li><strong>Sequential writes fragment over time</strong>—rewrite the middle of a file
+and the new blocks live elsewhere; the file's layout scatters. The steady
+state of a busy CoW pool is honest fragmentation managed by caching.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&darr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&darr; Snapshots</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="zil-slog" href="/zfs-actually/n/zil-slog/"
+               hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zil-slog/">&darr; ZIL and SLOG</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&rarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&rarr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&rarr; Snapshots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&rarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

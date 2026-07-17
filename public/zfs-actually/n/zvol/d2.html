@@ -1,0 +1,73 @@
+<article class="node" id="content"
+  data-node-id="zvol"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="Zvols">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Zvols</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/zvol/d3/"
+         hx-get="/zfs-actually/n/zvol/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>zvol</strong> is a dataset that presents as a raw block device instead of a
+filesystem—a virtual disk carved from the pool, appearing at
+<code>/dev/zvol/tank/...</code>. The naive hunt—&quot;where's the file for my VM's disk?&quot;—finds nothing because <strong>there is no file</strong>: no qcow2, no image format, no
+filesystem-in-a-file. The consumer (a VM, iSCSI, swap) formats the block
+device however it likes, and underneath it's still ZFS: checksummed,
+snapshottable, sendable, thin by default.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&darr; ZFS Under Proxmox</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&rarr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&rarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

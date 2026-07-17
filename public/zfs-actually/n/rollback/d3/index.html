@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rollback (depth 3) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="rollback"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Rollback">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Rollback</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/rollback/d4/"
+         hx-get="/zfs-actually/n/rollback/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/rollback/d2/"
+         hx-get="/zfs-actually/n/rollback/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Proxmox-style VM snapshots teach a seductive model: the timeline is a
+scrubber bar—jump to Tuesday, look around, jump forward again. <strong>Actually,
+<code>zfs rollback</code> is demolition, not navigation: making Tuesday the present
+destroys everything after Tuesday</strong>—the data since, and every later
+snapshot. Permanently. There is no roll forward, because forward no longer
+exists.</p>
+<p>⚠ <strong>DESTRUCTIVE</strong>—verify before running. The <code>-r</code> flag doesn't protect
+later snapshots; it <em>confirms</em> their destruction (rollback to a non-latest
+snapshot refuses to run without it—the refusal is the safety, the flag
+disarms it). Semantics per zfs-rollback(8).</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The decision procedure, because the destructive verb is usually the wrong
+one:</p>
+<ul>
+<li><strong>Want one file from the past?</strong> Copy it out of the hidden
+<code>.zfs/snapshot/&lt;name&gt;/</code> directory. Nothing is destroyed; this is most
+restores.</li>
+<li><strong>Want to inspect or experiment with the past?</strong> <code>zfs clone tank/ds@tuesday tank/ds-tuesday</code>—a writable branch sharing blocks,
+costing nearly nothing. Look around, take what you need, destroy the
+clone.</li>
+<li><strong>Certain the present is worthless?</strong> That's rollback's one legitimate
+case: <code>zfs rollback tank/ds@tuesday</code>. Before running it, say out loud
+what dies: all data since Tuesday, and every snapshot after it (<code>-r</code> to
+acknowledge). If saying it caused hesitation, take a snapshot of <em>now</em>
+first—snapshots are free, and future-you may want to inspect the
+wreckage.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&rarr; Snapshots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot-space" href="/zfs-actually/n/snapshot-space/"
+               hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot-space/">&rarr; Snapshots and Disappearing Space</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

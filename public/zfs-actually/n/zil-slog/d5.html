@@ -1,0 +1,138 @@
+<article class="node" id="content"
+  data-node-id="zil-slog"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="ZIL and SLOG">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">ZIL and SLOG</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/zil-slog/d4/"
+         hx-get="/zfs-actually/n/zil-slog/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="performance-model">
+      <span class="chain-title">Where the speed actually comes from</span>
+      <span class="chain-position">3/5</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="performance-model"
+         href="/zfs-actually/n/l2arc/"
+         hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/l2arc/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="performance-model"
+         href="/zfs-actually/n/recordsize/"
+         hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/recordsize/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The naive model—writes land on the fast SLOG first, then flush to the slow
+pool—is a write <em>cache</em>, and it's wrong in every part. <strong>Actually, the ZIL
+(ZFS Intent Log) is a crash log: written constantly, and in normal operation
+never read at all.</strong> It's read exactly once—at pool import after a crash,
+to replay acknowledged writes that hadn't reached their final home (&quot;On
+system startup, ZFS reads the ZIL and replays any pending transactions&quot;—Klara). Data does not flow <em>through</em> it; writes stage in RAM regardless.</p>
+<p>A <strong>SLOG</strong> is nothing but the ZIL relocated to a fast dedicated device.
+Every pool already has a ZIL without one, living on the pool's own disks.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The part that decides whether you should care: <strong>only synchronous writes
+touch the ZIL.</strong> An async write (most writes—file copies, media, general
+homelab traffic) is acknowledged from RAM and flows to the pool in the next
+transaction group; &quot;neither the ZIL nor the SLOG make a difference with
+pending asynchronous writes… if you don't have any applications that use
+synchronous writes, you don't need a SLOG&quot; (Klara).</p>
+<p>Sync writes—databases honoring fsync, NFS exports, VMs whose guests demand
+durability—must be on stable storage <em>before</em> ZFS acknowledges. Without a
+SLOG that means a hurried write to the ZIL area of your spinning pool per
+fsync; latency suffers. A SLOG (low-latency, power-loss-protected SSD—Optane-class ideally) absorbs exactly that. Check whether you even have the
+problem: <code>zilstat</code>, or watch pool latency while a sync-heavy workload runs.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Placed against its false siblings:</p>
+<ul>
+<li><strong>vs a write cache</strong>—RAM is the write cache (dirty data waiting in the
+transaction group). The ZIL is durability <em>insurance on the
+acknowledgment</em>, not a stop on the data path.</li>
+<li><strong>vs L2ARC</strong>—read-side spillover cache; loss is harmless. Losing a SLOG
+is harmless <em>except</em> if it dies together with a crash before replay—the
+one window where the log was about to be needed. Cheap consumer SSDs
+without power-loss protection quietly fail the job description.</li>
+<li><strong>vs <code>sync=disabled</code></strong>—the tempting benchmark cheat: acknowledge sync
+writes as if durable. The performance of a SLOG for free, paid for with
+the exact guarantee the application asked for. Fine for scratch data you
+can regenerate; a lie anywhere durability was the point.</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>Why does a CoW filesystem with atomic transaction groups need a log at all?
+Because txgs commit every few seconds, and a sync write can't wait seconds—the contract is &quot;durable <em>now</em>.&quot; The ZIL bridges the gap: a minimal record
+of the acknowledged operation lands on stable storage immediately, while the
+real write travels the normal CoW path in its txg. When the txg commits, the
+log records become garbage without ever being read—the happy path discards
+the log continuously.</p>
+<p>So the ZIL is the deliberate exception to &quot;everything flows through the
+tree&quot;: a small, forward-only side channel purchased solely so that fsync can
+return in device-latency time instead of txg time. Understanding that makes
+the SLOG sizing folklore obvious—it holds seconds of sync writes, not
+gigabytes of data (a few GB is plenty), and its virtue is latency, not
+bandwidth.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&rarr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="l2arc" href="/zfs-actually/n/l2arc/"
+               hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/l2arc/">&rarr; L2ARC</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&uarr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="l2arc" href="/zfs-actually/n/l2arc/"
+               hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/l2arc/">&uarr; L2ARC</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

@@ -1,0 +1,140 @@
+<article class="node" id="content"
+  data-node-id="snapshot-space"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Snapshots and Disappearing Space">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Snapshots and Disappearing Space</h1>
+      <span class="node-type node-type-troubleshooting">troubleshooting</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/snapshot-space/d3/"
+         hx-get="/zfs-actually/n/snapshot-space/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="sleep-at-night">
+      <span class="chain-title">Snapshots, backups, and actually sleeping at night</span>
+      <span class="chain-position">3/6</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshot/"
+         hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshots-are-not-backups/"
+         hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The lived version: you clear 100GB of artifacts to free space, run
+<code>zfs list</code>, and almost nothing came back. Forty years of filesystems said
+deleting frees space. <strong>Actually, deletion only frees blocks that nothing
+references—and every snapshot taken while those files existed still
+references them.</strong> The space didn't leak; it moved from the dataset's ledger
+to the snapshots' ledger. Deleting files in the present cannot unpin the
+past. <em>(Operational source: the practitioner's own hourly-snapshot dataset
+doing exactly this.)</em></p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The diagnostic, in order:</p>
+<ol>
+<li><code>zfs list -o space tank/...</code>—read <code>USEDDS</code> (the live dataset) vs
+<code>USEDSNAP</code> (held by snapshots). A big <code>USEDSNAP</code> is this exact
+situation.</li>
+<li><code>zfs list -t snapshot -o name,used,creation tank/...</code>—see who's
+holding. Remember each snapshot's <code>used</code> shows only <em>unique</em> space, so a
+chain can collectively hold far more than the column suggests.</li>
+<li>To reclaim: destroy the snapshots that span the deletion. Dry-run first—<code>zfs destroy -nv tank/ds@old1%old8</code> (a range, with <code>-n</code> showing what
+would free without doing it).</li>
+</ol>
+<p>⚠ <strong>Destructive</strong>—<code>zfs destroy</code> of snapshots is permanent, and under a
+policy tool it's also usually <em>wrong</em>: sanoid will keep pruning on schedule
+anyway. Adjust the retention policy, not individual snapshots—hand-culling
+what a policy engine manages is how you end up with neither the space nor
+the history.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The two intuitions this scenario finally reconciles: &quot;snapshots are free&quot;
+(true—at creation) and &quot;deleting frees space&quot; (true—absent references).
+Snapshot cost is <strong>divergence</strong>: churn-heavy datasets (databases, build
+dirs, VM disks) under hourly retention accumulate held space fast; static
+media barely accrues any. Which means retention policy is a <em>per-dataset</em>
+decision—the databases might warrant aggressive hourlies pruned in days,
+the media library weekly snapshots kept for months. One-size retention is
+how the pool fills.</p>
+<p>The graduating insight: <code>USEDSNAP</code> isn't waste—it's the storage price of
+your history, itemized. The question is never &quot;how do I make it zero&quot; but
+&quot;is this history worth this rent,&quot; dataset by dataset.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&rarr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="rollback" href="/zfs-actually/n/rollback/"
+               hx-get="/zfs-actually/n/rollback/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/rollback/">&rarr; Rollback</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&rarr; Sanoid and Syncoid</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&rarr; Snapshots</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&uarr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="rollback" href="/zfs-actually/n/rollback/"
+               hx-get="/zfs-actually/n/rollback/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/rollback/">&uarr; Rollback</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&uarr; Sanoid and Syncoid</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&uarr; Snapshots</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

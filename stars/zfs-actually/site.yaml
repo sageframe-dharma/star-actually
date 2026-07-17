@@ -1,0 +1,58 @@
+# The domain boundary. Everything ZFS-specific that isn't a node lives here.
+# The engine (the star-actually package) never mentions the domain.
+
+title: "ZFS, Actually"
+system_name: "*, Actually"
+domain_word: "ZFS"
+tagline: "Storage you can finally reason about."
+prompt: "What do you want to know about ZFS, actually?"
+url: "https://star-actually.sageframe.net/zfs-actually"
+root_node: "what-zfs-is"
+repo: "https://github.com/sageframe-dharma/star-actually"
+author: "Andrew T Marcus"
+receptionist: false  # static build; the /ask backend is not deployed
+blurb: >
+  ZFS is the storage system that assumes your hardware is lying to you—and
+  builds everything else from that one act of distrust. Most people meet it
+  sideways, through Proxmox or TrueNAS or a homelab guide, and end up typing
+  commands they don't own. This site is the mental model underneath the
+  commands: what a pool actually is, why snapshots cost nothing until they
+  cost everything, and where the real failure lines run.
+source_url: "https://openzfs.github.io/openzfs-docs/"
+source_label: "the OpenZFS documentation"
+base_path: "/zfs-actually"
+
+# The trails—curated journeys through the graph. The graph is the terrain;
+# these are the routes worth walking in order.
+chains:
+  - id: "build-first-pool"
+    title: "Build your first pool with intent"
+    nodes:
+      [
+        "what-zfs-is",
+        "pool",
+        "vdev",
+        "mirror",
+        "raidz",
+        "ashift",
+        "dataset",
+        "compression",
+        "first-pool",
+      ]
+  - id: "sleep-at-night"
+    title: "Snapshots, backups, and actually sleeping at night"
+    nodes:
+      [
+        "copy-on-write",
+        "snapshot",
+        "snapshot-space",
+        "snapshots-are-not-backups",
+        "send-recv",
+        "sanoid-syncoid",
+      ]
+  - id: "disk-died"
+    title: "A disk just died"
+    nodes: ["zpool-status", "replace-disk", "resilver", "scrub"]
+  - id: "performance-model"
+    title: "Where the speed actually comes from"
+    nodes: ["arc", "l2arc", "zil-slog", "recordsize", "free-space-discipline"]

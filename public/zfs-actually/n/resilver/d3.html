@@ -1,0 +1,112 @@
+<article class="node" id="content"
+  data-node-id="resilver"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Resilvering">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Resilvering</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/resilver/d4/"
+         hx-get="/zfs-actually/n/resilver/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/resilver/d2/"
+         hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="disk-died">
+      <span class="chain-title">A disk just died</span>
+      <span class="chain-position">3/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="disk-died"
+         href="/zfs-actually/n/replace-disk/"
+         hx-get="/zfs-actually/n/replace-disk/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/replace-disk/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="disk-died"
+         href="/zfs-actually/n/scrub/"
+         hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/scrub/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A hardware RAID rebuild copies every sector, start to end, because the
+controller has no idea which sectors matter. <strong>Actually, ZFS <em>is</em> the
+filesystem—it knows exactly which blocks are live, so a resilver copies
+data, not disk</strong> (&quot;resilvering only examines data that ZFS knows to be out
+of date&quot;—zpool-scrub(8)), and verifies each block against its checksum as
+it goes. A half-full vdev resilvers in roughly half the time—and the time
+matters, because the resilver window is when your margin is thinnest.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Living through one: the pool stays up and serving—a resilver is a
+background process, visible in <code>zpool status</code> with progress and an
+estimate (early estimates lie; trust them only after they settle). The
+system deliberately throttles resilver I/O behind live traffic, so a busy
+pool resilvers slower. Don't reboot casually mid-resilver—it resumes, but
+the window extends.</p>
+<p>Vdev geometry sets the character of the event: a <strong>mirror</strong> resilver is a
+straight copy from the healthy twin—fast, gentle. A <strong>RAIDZ</strong> resilver
+reconstructs the missing disk from <em>all</em> survivors, hammering every one of
+them for hours or days at exactly the moment redundancy is reduced—correlated disks (same batch, same age) make that a real stress test. This
+asymmetry is a load-bearing input to the mirrors-vs-RAIDZ decision.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="replace-disk" href="/zfs-actually/n/replace-disk/"
+               hx-get="/zfs-actually/n/replace-disk/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/replace-disk/">&darr; Replacing a Disk</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&rarr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&rarr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="replace-disk" href="/zfs-actually/n/replace-disk/"
+               hx-get="/zfs-actually/n/replace-disk/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/replace-disk/">&rarr; Replacing a Disk</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&rarr; Scrubs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

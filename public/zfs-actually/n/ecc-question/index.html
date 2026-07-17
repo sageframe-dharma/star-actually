@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The ECC Question · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="ecc-question"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="The ECC Question">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The ECC Question</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/ecc-question/d3/"
+         hx-get="/zfs-actually/n/ecc-question/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The claim arrives with total confidence: running ZFS on non-ECC RAM is
+reckless—a scrub with bad memory will &quot;correct&quot; your good data into
+garbage, pool-wide. It has the <em>shape</em> of expert knowledge: specific,
+counterintuitive, scary. <strong>Actually, here's Matt Ahrens, co-creator of ZFS:
+&quot;There's nothing special about ZFS that requires/encourages the use of ECC
+RAM more so than any other filesystem.&quot;</strong> ECC is good engineering—for
+every filesystem equally. ZFS on consumer RAM is still <em>safer</em> than ext4 on
+the same RAM, because everything ZFS verifies is still being verified.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&rarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&rarr; Scrubs</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

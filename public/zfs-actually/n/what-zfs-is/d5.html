@@ -1,0 +1,178 @@
+<article class="node" id="content"
+  data-node-id="what-zfs-is"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="What ZFS Is">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">What ZFS Is</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/what-zfs-is/d4/"
+         hx-get="/zfs-actually/n/what-zfs-is/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">1/9</span>
+      
+      <span class="chain-step chain-prev is-disabled" aria-disabled="true">&larr; prev</span>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/pool/"
+         hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/pool/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>You'll want to call ZFS a filesystem, because that's the word the ecosystem
+uses. <strong>Actually, ZFS is the entire storage stack in one system</strong>—the
+volume manager, the RAID layer, and the filesystem, merged on purpose.</p>
+<p>Everything else you'll meet—pools, checksums, snapshots, scrubs—falls out
+of one founding assumption: <strong>your hardware is lying to you.</strong> Disks return
+wrong data without error, controllers drop writes, power dies mid-operation.
+ZFS is what storage looks like when you refuse to trust any of it.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>In practice this means you stop juggling tools. There's no <code>fdisk</code>, no
+<code>mdadm</code>, no <code>lvcreate</code>, no <code>mkfs</code>, no <code>fstab</code> entry. Two commands cover almost
+everything:</p>
+<ul>
+<li><strong><code>zpool</code></strong>—the physical side: disks, redundancy, health.</li>
+<li><strong><code>zfs</code></strong>—the logical side: datasets, properties, snapshots, replication.</li>
+</ul>
+<p>You meet ZFS most often without choosing it: Proxmox offers it at install,
+TrueNAS is built on it, a homelab guide says &quot;make a pool.&quot; Which is exactly
+how you end up <em>operating</em> ZFS for a year without being able to say what it
+is. The commands work whether or not you hold the model—until the first
+disk dies or the first pool fills, and then the model is the only thing that
+helps.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The traditional stack is a bucket brigade of strangers: the filesystem hands
+blocks to a volume manager, which hands them to a RAID layer, which hands
+them to disks—and <strong>no layer can check another's work.</strong> RAID will
+faithfully mirror corruption it can't detect; a filesystem can't ask RAID
+&quot;which of your two copies is right?&quot; because the interface between them has
+no words for that question.</p>
+<p>People called ZFS's merge a <em>layering violation</em>—a serious accusation in
+systems design. The retort is that the boundary being violated was the
+problem: repair requires one system that both <strong>knows what the data should
+be</strong> (checksums, the filesystem's knowledge) and <strong>has another copy to fix it
+with</strong> (redundancy, the RAID layer's knowledge). Split those across an
+interface and self-healing is structurally impossible.</p>
+<p>Nearest kin: <strong>Btrfs</strong> (same convictions, rockier history—its RAID5/6 never
+became trustworthy) and <strong>APFS</strong> (took copy-on-write and snapshots, skipped
+data checksums and redundancy—the single-device convictions only).</p>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>The design reduces to three commitments, each buying the next:</p>
+<ol>
+<li><strong>Never overwrite live data.</strong> Every write goes to fresh space; pointers
+flip atomically afterward. The on-disk state is always <em>some</em> consistent
+moment—there is no torn middle to repair, which is why there's no fsck.</li>
+<li><strong>Checksum everything, and keep the checksum away from the data.</strong> Each
+block's checksum lives in its <em>parent</em> block, so the whole pool is a
+Merkle tree up to a root (the uberblock). A disk that silently returns
+wrong bits fails verification on read. Detection is unconditional.</li>
+<li><strong>Manage redundancy yourself.</strong> Because ZFS placed the copies, a failed
+checksum isn't just detectable—it's <em>repairable</em>, quietly, from the
+copy that verifies. This is self-healing, and it's the payoff the merge
+exists for.</li>
+</ol>
+<p>History, briefly: built at Sun for Solaris in the 2000s; Oracle closed it;
+the open fork became <strong>OpenZFS</strong>, which is what Linux and FreeBSD run today.
+When forum posts contradict each other, check the year—pre-2013 Solaris
+lore and pre-2025 &quot;you can never grow RAIDZ&quot; absolutes both linger.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&darr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&darr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&darr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&darr; The Pool</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&rarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&rarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&rarr; The Pool</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&uarr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&uarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&uarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&uarr; The Pool</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

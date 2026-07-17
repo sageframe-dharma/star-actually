@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recordsize · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="recordsize"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Recordsize">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Recordsize</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/recordsize/d3/"
+         hx-get="/zfs-actually/n/recordsize/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="performance-model">
+      <span class="chain-title">Where the speed actually comes from</span>
+      <span class="chain-position">4/5</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="performance-model"
+         href="/zfs-actually/n/zil-slog/"
+         hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/zil-slog/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="performance-model"
+         href="/zfs-actually/n/free-space-discipline/"
+         hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/free-space-discipline/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Your brain has one slot for &quot;block size&quot; and the disk's sectors are sitting
+in it. <strong>Actually, recordsize is a policy knob, not a hardware fact: the
+<em>maximum</em> logical block ZFS will use for a file's data, set per dataset,
+default 128K</strong> (&quot;ZFS datasets use an internal recordsize of 128KB by
+default&quot;—OpenZFS docs). Small files simply use smaller blocks; the setting
+caps, it doesn't pad. The hardware-sector story lives one node over, in
+ashift.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>When it matters: <strong>applications doing small random I/O inside large files.</strong>
+A database updating a 16K page inside a 50GB file under 128K records forces
+ZFS to read and copy-on-write 128K to change 16K—an 8× amplification on
+every hot-path write. Match the record to the I/O grain:</p>
+<ul>
+<li><code>recordsize=16K</code> for MySQL/InnoDB data files; ~<code>32K</code> (or the 128K
+default) works well for PostgreSQL (OpenZFS docs).</li>
+<li><code>recordsize=1M</code> for sequential, whole-file workloads—media, backups,
+archives (&quot;Set recordsize=1M on datasets that are subject to sequential
+workloads&quot;). Fewer, bigger blocks: less metadata, better compression.</li>
+<li>Everything else: leave the 128K default alone. It's a good default.</li>
+</ul>
+<p>The trap that catches everyone: &quot;Changing the recordsize on a dataset will
+only take effect for new files&quot; (OpenZFS docs). Tuning a dataset full of
+existing data changes nothing until the files are rewritten—copy them in
+again or accept the status quo.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Its neighborhood:</p>
+<ul>
+<li><strong>vs ashift</strong>—the pair that shares one mental slot. Ashift is the
+<em>physical</em> floor (the sector size a vdev assumes, immutable); recordsize
+is the <em>logical</em> ceiling (per dataset, changeable anytime). Foundation
+and furniture.</li>
+<li><strong>vs volblocksize</strong>—zvols don't have files, so they get a fixed block
+size instead (<code>volblocksize</code>, set at zvol creation, <em>not</em> changeable)—the same workload-matching question Proxmox answers for you with its
+defaults when it carves VM disks.</li>
+<li><strong>vs compression</strong>—records are the unit compression chews; bigger
+records compress better. On archive datasets, <code>recordsize=1M</code> +
+zstd is the classic pairing.</li>
+</ul>
+<p>The meta-lesson it teaches: ZFS default settings are chosen for the general
+case and are usually right; the knobs exist for the two datasets on your
+pool whose workload you can actually name.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ashift" href="/zfs-actually/n/ashift/"
+               hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ashift/">&rarr; Ashift</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&rarr; Compression</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&rarr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&rarr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&rarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&rarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zvol" href="/zfs-actually/n/zvol/"
+               hx-get="/zfs-actually/n/zvol/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zvol/">&rarr; Zvols</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ashift" href="/zfs-actually/n/ashift/"
+               hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ashift/">&uarr; Ashift</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&uarr; Compression</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&uarr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&uarr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&uarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="zvol" href="/zfs-actually/n/zvol/"
+               hx-get="/zfs-actually/n/zvol/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zvol/">&uarr; Zvols</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

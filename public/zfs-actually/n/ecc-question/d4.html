@@ -1,0 +1,108 @@
+<article class="node" id="content"
+  data-node-id="ecc-question"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="The ECC Question">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The ECC Question</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/ecc-question/d3/"
+         hx-get="/zfs-actually/n/ecc-question/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The claim arrives with total confidence: running ZFS on non-ECC RAM is
+reckless—a scrub with bad memory will &quot;correct&quot; your good data into
+garbage, pool-wide. It has the <em>shape</em> of expert knowledge: specific,
+counterintuitive, scary. <strong>Actually, here's Matt Ahrens, co-creator of ZFS:
+&quot;There's nothing special about ZFS that requires/encourages the use of ECC
+RAM more so than any other filesystem.&quot;</strong> ECC is good engineering—for
+every filesystem equally. ZFS on consumer RAM is still <em>safer</em> than ext4 on
+the same RAM, because everything ZFS verifies is still being verified.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Why the &quot;scrub of death&quot; fails on inspection: for a scrub to overwrite good
+data, the repair path has to <em>accept</em> a corrupted reconstruction—and
+acceptance requires the reconstruction to <strong>match its checksum</strong>. Random RAM
+corruption producing data that happens to hash correctly is a hash
+collision by accident—odds so remote they aren't a scenario, they're a
+rounding error (the jrs-s.net analysis walks the arithmetic). Bad RAM makes
+a scrub <em>fail to repair</em> things, loudly; it doesn't convert the repair
+machinery into a corruption engine. The myth requires the safety system to
+be the weapon, and the safety system checks its own work.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The calibrated position, since both extremes are wrong:</p>
+<ul>
+<li><strong>What non-ECC actually risks</strong> (on any filesystem): data corrupted in
+RAM <em>before</em> ZFS checksums it is checksummed-as-corrupted—written
+wrong, verified wrong forever. Checksums guard the disk boundary, not
+the memory above it. This is real, rare, and filesystem-agnostic.</li>
+<li><strong>What ECC buys</strong>: closing that gap. On an always-on server doing work
+you care about, ECC is worth having—the boring, universal argument,
+which was never ZFS-specific.</li>
+<li><strong>Why the myth persists</strong>: it flatters its holder (secret knowledge),
+it's unfalsifiable in the small (nobody's homelab runs the control), and
+it got institutionalized by forum culture repeating a worst-case sketch
+as a mechanism. Its function now is mostly gatekeeping—&quot;your hardware
+isn't worthy of ZFS&quot;—which is exactly backwards: the machines that
+can't have ECC benefit <em>most</em> from a filesystem that verifies.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&rarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&rarr; Scrubs</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&uarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&uarr; Scrubs</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

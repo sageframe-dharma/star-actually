@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zvols (depth 3) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="zvol"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Zvols">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Zvols</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/zvol/d4/"
+         hx-get="/zfs-actually/n/zvol/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/zvol/d2/"
+         hx-get="/zfs-actually/n/zvol/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>zvol</strong> is a dataset that presents as a raw block device instead of a
+filesystem—a virtual disk carved from the pool, appearing at
+<code>/dev/zvol/tank/...</code>. The naive hunt—&quot;where's the file for my VM's disk?&quot;—finds nothing because <strong>there is no file</strong>: no qcow2, no image format, no
+filesystem-in-a-file. The consumer (a VM, iSCSI, swap) formats the block
+device however it likes, and underneath it's still ZFS: checksummed,
+snapshottable, sendable, thin by default.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Where you meet them: <strong>Proxmox carves one zvol per VM disk</strong> (that's why
+<code>zfs list</code> on a Proxmox host shows <code>.../vm-103-disk-0</code> entries where you
+expected files). The practical grammar: created with <code>zfs create -V 32G tank/vm-disk</code>; snapshots and send/recv work exactly as for datasets—which
+is how a VM disk gets hourly history and offsite replication with the same
+machinery as everything else.</p>
+<p>Two zvol-specific knobs worth knowing exist: <strong><code>volblocksize</code></strong> is the
+recordsize question in block-device form—fixed at creation,
+workload-matched (virtualizers set sane defaults); and <strong>thin vs thick</strong>
+(<code>-s</code> for sparse) decides whether the pool promises the space up front or
+lets you overcommit—overcommitted thin zvols on a filling pool are a
+classic slow-motion incident.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&darr; ZFS Under Proxmox</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&rarr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&rarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

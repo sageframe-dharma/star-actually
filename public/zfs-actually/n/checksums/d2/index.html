@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checksums (depth 2) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="checksums"
+  data-depth="2"
+  data-max-depth="5"
+  data-title="Checksums">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Checksums</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/4</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/checksums/d3/"
+         hx-get="/zfs-actually/n/checksums/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The naive model: &quot;RAID protects my data, and corruption announces itself as
+errors.&quot; <strong>Actually, disks lie silently</strong>—they return wrong bits while
+reporting success—and traditional RAID can't even ask which of its copies
+is right. ZFS checksums every block and verifies on <strong>every read</strong>, so wrong
+data cannot travel: it's caught the moment anything touches it.</p>
+<p>Hold the two powers apart, because everything downstream depends on the
+split: <strong>checksums detect, unconditionally. Repair requires a second good
+copy</strong>—a mirror, RAIDZ parity. Detection without redundancy tells you what
+you lost; it can't give it back.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="dedup" href="/zfs-actually/n/dedup/"
+               hx-get="/zfs-actually/n/dedup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dedup/">&darr; Deduplication</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="ecc-question" href="/zfs-actually/n/ecc-question/"
+               hx-get="/zfs-actually/n/ecc-question/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ecc-question/">&darr; The ECC Question</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&darr; Scrubs</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&rarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ecc-question" href="/zfs-actually/n/ecc-question/"
+               hx-get="/zfs-actually/n/ecc-question/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ecc-question/">&rarr; The ECC Question</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&rarr; Scrubs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&rarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

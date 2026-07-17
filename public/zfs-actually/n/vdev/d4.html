@@ -1,0 +1,200 @@
+<article class="node" id="content"
+  data-node-id="vdev"
+  data-depth="4"
+  data-max-depth="5"
+  data-title="The Vdev">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The Vdev</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 3/4</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/vdev/d5/"
+         hx-get="/zfs-actually/n/vdev/d5.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/vdev/d3/"
+         hx-get="/zfs-actually/n/vdev/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">3/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/pool/"
+         hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/pool/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/mirror/"
+         hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/mirror/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>vdev</strong> (virtual device) is a group of disks bound together with a
+redundancy scheme—a mirrored pair, a RAIDZ set, or (dangerously) a single
+bare disk. The pool is built by striping across vdevs.</p>
+<p>Here is the sentence this entire site most wants you to hold: <strong>redundancy
+lives inside each vdev, never between vdevs—so losing any one vdev loses
+the whole pool.</strong> Not degraded. Gone. The pool striped every dataset's blocks
+across all its vdevs, so a dead vdev is a bite out of everything.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>This is why the classic homelab move—&quot;the pool's getting full, I'll just
+add this spare disk&quot;—is a trap. <code>zpool add tank /dev/sdX</code> with a bare disk
+welds a redundancy-less vdev into your pool of mirrors, permanently. Now that
+one consumer drive can take down everything, and the two mirrors you paid for
+protect nothing. The pool is exactly as strong as its weakest vdev.</p>
+<p>Audit your real layout in ten seconds: <code>zpool status</code> indents the truth—vdevs (<code>mirror-0</code>, <code>raidz1-0</code>) at one level, member disks under them. A disk
+sitting at vdev indentation with no group above it <em>is</em> a single-disk vdev.
+If you find one under data you care about, that's a rebuild-the-pool
+conversation, not a someday conversation.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The vdev is where every serious layout question actually lives:</p>
+<ul>
+<li><strong>Mirrors vs RAIDZ</strong> is a per-vdev choice (and don't mix types under one
+pool without a reason).</li>
+<li><strong>Performance</strong> scales with vdev <em>count</em>, not disk count—the pool
+stripes across vdevs, so six disks as three mirrors substantially
+out-IOPS six disks as one RAIDZ2.</li>
+<li><strong>A resilver</strong> is a vdev event: one vdev rebuilding a member while the
+others carry on.</li>
+<li><strong>Growth</strong> happens vdev-wise: add a vdev, or swap every disk in one vdev
+for bigger ones. (RAIDZ widening exists now—see RAIDZ Expansion—but
+the vdev remains the unit you plan around.)</li>
+</ul>
+<p>Special vdev classes exist (log, cache, spare, special)—supporting cast,
+not data vdevs; the log and cache ones have their own nodes.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="ashift" href="/zfs-actually/n/ashift/"
+               hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ashift/">&darr; Ashift</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&darr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&darr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&darr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&darr; Resilvering</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ashift" href="/zfs-actually/n/ashift/"
+               hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ashift/">&rarr; Ashift</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&rarr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&rarr; The Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&rarr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz-expansion" href="/zfs-actually/n/raidz-expansion/"
+               hx-get="/zfs-actually/n/raidz-expansion/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz-expansion/">&rarr; RAIDZ Expansion</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&rarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshots-are-not-backups" href="/zfs-actually/n/snapshots-are-not-backups/"
+               hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">&rarr; Snapshots Are Not Backups</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zpool-status" href="/zfs-actually/n/zpool-status/"
+               hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zpool-status/">&rarr; Reading zpool status</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="ashift" href="/zfs-actually/n/ashift/"
+               hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ashift/">&uarr; Ashift</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&uarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&uarr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&uarr; The Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&uarr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="raidz-expansion" href="/zfs-actually/n/raidz-expansion/"
+               hx-get="/zfs-actually/n/raidz-expansion/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz-expansion/">&uarr; RAIDZ Expansion</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&uarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="snapshots-are-not-backups" href="/zfs-actually/n/snapshots-are-not-backups/"
+               hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">&uarr; Snapshots Are Not Backups</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="zpool-status" href="/zfs-actually/n/zpool-status/"
+               hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zpool-status/">&uarr; Reading zpool status</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

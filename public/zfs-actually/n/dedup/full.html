@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deduplication · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="dedup"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Deduplication">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Deduplication</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/dedup/d3/"
+         hx-get="/zfs-actually/n/dedup/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The reasoning feels airtight: ZFS already checksums every block, so noticing
+duplicates should be nearly free—flip it on, especially with all these
+similar VMs. <strong>Actually, dedup requires the table of every written block's
+hash to be consulted on every write—which means held in RAM—and each
+entry costs &quot;slightly more than 320 bytes of memory&quot; (OpenZFS docs),
+forever, per unique block.</strong> When the table outgrows RAM, &quot;each cache miss
+will require reading a random block from disk&quot;—writes go random-read slow,
+which is the storage equivalent of walking with your shoelaces tied
+together.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Run the arithmetic before the feature: a few TB of unique 128K blocks is
+already multiple GB of dedup table that must stay resident—RAM that was
+being your ARC. In almost every homelab, <strong>the RAM dedup consumes would buy
+more value as cache than dedup saves as space</strong>, and plain lz4 compression
+already captures much of the same win (similar blocks compress well) for
+approximately zero cost.</p>
+<p>Where it genuinely pays: high-duplication, high-value-per-TB data—dozens
+of near-identical VM golden images, certain backup corpora—on machines
+specced for it. If you're not sure you're that case, you aren't. Estimate
+first: <code>zdb -S tank</code> simulates the dedup ratio without committing to
+anything. Under ~2×, close the tab.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Placed honestly:</p>
+<ul>
+<li><strong>vs compression</strong>—same aisle (&quot;space features&quot;), opposite reflexes:
+compression default-on, dedup default-off. If you want one sentence:
+compression is free money; dedup is a mortgage.</li>
+<li><strong>Fast dedup (OpenZFS 2.3)</strong>—&quot;a major performance upgrade to the
+original OpenZFS deduplication functionality&quot; (release notes): smarter,
+smaller, prunable tables. It softens the cliff; it does not repeal the
+arithmetic. The decision procedure above survives it intact.</li>
+<li><strong>The permanence trap</strong>—<code>dedup=off</code> stops <em>new</em> dedup, but existing
+deduped blocks keep the table alive until that data is destroyed. It's a
+feature you can regret at leisure and un-regret only by rewriting data.</li>
+<li><strong>Block cloning</strong>—modern ZFS can reflink copies (<code>cp</code> on the same pool
+sharing blocks without any table), which quietly serves the most common
+&quot;I have copies&quot; case for free. Much of what people wanted dedup for, it
+now delivers by default.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&rarr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&rarr; Compression</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&uarr; Compression</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

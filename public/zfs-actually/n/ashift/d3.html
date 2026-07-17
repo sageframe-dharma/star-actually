@@ -1,0 +1,103 @@
+<article class="node" id="content"
+  data-node-id="ashift"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Ashift">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Ashift</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/ashift/d4/"
+         hx-get="/zfs-actually/n/ashift/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/ashift/d2/"
+         hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">6/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/raidz/"
+         hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/raidz/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/dataset/"
+         hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/dataset/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>ZFS trains you to expect mutability—nearly everything is a property you
+can change anytime. <strong>Ashift is the exception: the sector size a vdev
+assumes, baked into its on-disk format at creation—&quot;it is set at vdev
+creation and it is immutable&quot; (OpenZFS docs).</strong> It's a power of two: ashift=9
+means 512-byte sectors, ashift=12 means 4K.</p>
+<p>That's why the guides scream about one small number: it's the single
+decision in ZFS that is actually a foundation pour.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The failure mode: modern drives have 4K physical sectors, but many <em>report</em>
+512 for compatibility. Trust the lie and you get ashift=9 on 4K hardware—and every sub-4K write becomes a read-modify-write cycle <em>inside the drive</em>,
+forever, invisibly, on every vdev member. The pool works; it's just
+permanently slower, and the only exit is destroying and rebuilding the vdev.</p>
+<p>The practice is blunt: <strong><code>zpool create -o ashift=12</code></strong> unless you can prove
+your drives are truly 512-native (almost nothing you'd buy today is).
+ashift=12 on a genuinely-512 drive costs a little slack space; ashift=9 on a
+4K drive costs performance permanently. The asymmetry does the deciding.
+Check an existing pool with <code>zdb -C tank | grep ashift</code>—better to know
+than to wonder.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&darr; Your First Pool</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&rarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

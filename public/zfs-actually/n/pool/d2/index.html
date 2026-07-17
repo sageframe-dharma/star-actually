@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pool (depth 2) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="pool"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="The Pool">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The Pool</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/pool/d3/"
+         hx-get="/zfs-actually/n/pool/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">2/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/what-zfs-is/"
+         hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-zfs-is/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/vdev/"
+         hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/vdev/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The naive model—<em>a pool is a big partition</em>—will let you operate for a
+long time without being true. <strong>Actually, a pool is a reservoir</strong>: you hand
+ZFS whole disks, arranged into vdevs, and get back one undifferentiated pot
+of capacity that everything on top shares. Nothing inside a pool has a fixed
+size—no partitioning, no pre-allocation, no &quot;resize the volume&quot; ever again.</p>
+<p>The dangerous half of the correction: the pool is <strong>not</strong> where redundancy
+lives. That's the vdev's job, one layer down—and the distinction is the
+difference between a safe layout and a time bomb.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&darr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="pool-import-export" href="/zfs-actually/n/pool-import-export/"
+               hx-get="/zfs-actually/n/pool-import-export/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool-import-export/">&darr; Import and Export</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&darr; The Vdev</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="zpool-status" href="/zfs-actually/n/zpool-status/"
+               hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zpool-status/">&darr; Reading zpool status</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&rarr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pool-import-export" href="/zfs-actually/n/pool-import-export/"
+               hx-get="/zfs-actually/n/pool-import-export/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool-import-export/">&rarr; Import and Export</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="what-zfs-is" href="/zfs-actually/n/what-zfs-is/"
+               hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/what-zfs-is/">&rarr; What ZFS Is</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

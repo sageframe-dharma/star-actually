@@ -1,0 +1,64 @@
+<article class="node" id="content"
+  data-node-id="raidz-expansion"
+  data-depth="2"
+  data-max-depth="3"
+  data-title="RAIDZ Expansion">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">RAIDZ Expansion</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/2</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/raidz-expansion/d3/"
+         hx-get="/zfs-actually/n/raidz-expansion/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Two absolutes circulate: &quot;of course arrays grow&quot; (appliance intuition) and
+&quot;ZFS RAIDZ can never grow&quot; (a decade of forum truth). <strong>Actually, both are
+stale: since OpenZFS 2.3 (January 2025), RAIDZ expansion lets you &quot;add new
+devices to an existing RAIDZ pool, increasing storage capacity without
+downtime&quot;</strong> (release notes)—<code>zpool attach</code> a disk to a RAIDZ vdev and it
+widens, live, while the pool serves.</p>
+<p>When reading ZFS advice, check the date. This feature made years of
+confident guidance obsolete overnight, and the forums have long memories.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&rarr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="replace-disk" href="/zfs-actually/n/replace-disk/"
+               hx-get="/zfs-actually/n/replace-disk/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/replace-disk/">&rarr; Replacing a Disk</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Property Inheritance (depth 3) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="property-inheritance"
+  data-depth="3"
+  data-max-depth="3"
+  data-title="Property Inheritance">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Property Inheritance</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 2"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 2/2</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/property-inheritance/d2/"
+         hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Every dataset carries dozens of <strong>properties</strong>—compression, recordsize,
+quota, mountpoint—and each one either was set <em>here</em> or is <strong>inherited</strong>
+from the nearest ancestor that set it. You don't configure datasets; you
+configure the <em>tree</em>, at the highest node where the policy is true, and let
+it flow down.</p>
+<p>The small actually: there's no global config file to hunt for. The pool's
+root dataset <em>is</em> the global config, and every deviation is local, visible,
+and attributed.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The three verbs:</p>
+<ul>
+<li><code>zfs get compression tank/services/postgres</code>—read a property, and read
+its <strong>SOURCE</strong> column: <code>default</code>, <code>inherited from tank</code>, or <code>local</code>. The
+SOURCE column is the audit trail—it tells you <em>why</em> the value is what it
+is.</li>
+<li><code>zfs set recordsize=16K tank/services/postgres</code>—override locally, from
+here down.</li>
+<li><code>zfs inherit recordsize tank/services/postgres</code>—delete the local
+opinion; rejoin the ancestors.</li>
+</ul>
+<p>The working pattern: set <code>compression=lz4</code> (and your snapshot-policy tags)
+once near the top; override recordsize on the two datasets whose workloads
+actually differ. A tree where every dataset sets everything locally is the
+smell of configuration by copy-paste. One timing note: property changes
+affect <em>new writes</em>—existing blocks keep the settings they were born under.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&rarr; Compression</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dataset" href="/zfs-actually/n/dataset/"
+               hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dataset/">&rarr; Datasets</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mountpoints" href="/zfs-actually/n/mountpoints/"
+               hx-get="/zfs-actually/n/mountpoints/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mountpoints/">&rarr; Mountpoints</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<article class="node" id="content"
+  data-node-id="snapshot-space"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="Snapshots and Disappearing Space">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Snapshots and Disappearing Space</h1>
+      <span class="node-type node-type-troubleshooting">troubleshooting</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/snapshot-space/d3/"
+         hx-get="/zfs-actually/n/snapshot-space/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="sleep-at-night">
+      <span class="chain-title">Snapshots, backups, and actually sleeping at night</span>
+      <span class="chain-position">3/6</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshot/"
+         hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshots-are-not-backups/"
+         hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The lived version: you clear 100GB of artifacts to free space, run
+<code>zfs list</code>, and almost nothing came back. Forty years of filesystems said
+deleting frees space. <strong>Actually, deletion only frees blocks that nothing
+references—and every snapshot taken while those files existed still
+references them.</strong> The space didn't leak; it moved from the dataset's ledger
+to the snapshots' ledger. Deleting files in the present cannot unpin the
+past. <em>(Operational source: the practitioner's own hourly-snapshot dataset
+doing exactly this.)</em></p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="free-space-discipline" href="/zfs-actually/n/free-space-discipline/"
+               hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/free-space-discipline/">&rarr; The Free-Space Discipline</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="rollback" href="/zfs-actually/n/rollback/"
+               hx-get="/zfs-actually/n/rollback/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/rollback/">&rarr; Rollback</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&rarr; Sanoid and Syncoid</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&rarr; Snapshots</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

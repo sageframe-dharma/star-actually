@@ -1,0 +1,203 @@
+<article class="node" id="content"
+  data-node-id="dataset"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Datasets">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Datasets</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/dataset/d3/"
+         hx-get="/zfs-actually/n/dataset/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">7/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/ashift/"
+         hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/ashift/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/compression/"
+         hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/compression/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>dataset</strong> is a filesystem carved out of the pool—it mounts, it holds
+files, it looks like a directory from the outside. The naive model says it's
+either a fancy folder or a small partition. <strong>Actually, a dataset is a policy
+boundary</strong>: it has no fixed size (all datasets share the pool's one
+reservoir), costs almost nothing to create, and is the unit at which
+everything interesting happens—properties, quotas, snapshots, replication.</p>
+<p>The posture correction: on ext4 you'd make a directory; on ZFS you should
+usually make a dataset. Make many.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The rule of thumb: <strong>anything you might want to snapshot, replicate, quota,
+or tune separately gets its own dataset.</strong> A directory can't be snapshotted,
+sent to another machine, or given its own recordsize; a dataset can.</p>
+<p>This is why a service-deployment setup makes a separate dataset per service
+rather than a folder per service: each service gets its own snapshot policy
+(the database hourly, the media library weekly), its own replication
+schedule, its own properties—and a restore of one service doesn't drag the
+others backward in time with it.</p>
+<p>Datasets nest into a tree (<code>tank/services/postgres</code>), and children inherit
+properties from parents—so policy gets set once at the sensible level and
+flows down. Creating one is instant: <code>zfs create tank/services/newthing</code>.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The boundaries that actually matter:</p>
+<ul>
+<li><strong>Dataset vs directory</strong>—invisible day-to-day, decisive the day you need
+history: snapshots, sends, and rollbacks stop at dataset edges. The
+granularity you chose at creation is the granularity of your disaster
+recovery.</li>
+<li><strong>Dataset vs partition</strong>—no fixed size is the liberation, but it cuts
+both ways: nothing stops one dataset from eating the pool. <code>quota</code> (ceiling)
+and <code>reservation</code> (guaranteed floor) reintroduce limits <em>as policy</em> where
+you actually want them, instead of as geometry everywhere.</li>
+<li><strong>Dataset vs zvol</strong>—same carving, different face: a dataset presents a
+filesystem; a zvol presents a raw block device (what Proxmox gives VMs).</li>
+</ul>
+<p>One warm-blooded warning: <code>zfs destroy</code> on a dataset takes its snapshots and
+its children with it, and there is no undo. The cheapness of creation does
+not extend to deletion.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&darr; Compression</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&darr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="mountpoints" href="/zfs-actually/n/mountpoints/"
+               hx-get="/zfs-actually/n/mountpoints/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mountpoints/">&darr; Mountpoints</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&darr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&darr; Recordsize</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&darr; Snapshots</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="zvol" href="/zfs-actually/n/zvol/"
+               hx-get="/zfs-actually/n/zvol/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zvol/">&darr; Zvols</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mountpoints" href="/zfs-actually/n/mountpoints/"
+               hx-get="/zfs-actually/n/mountpoints/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mountpoints/">&rarr; Mountpoints</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&rarr; The Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&rarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&rarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zvol" href="/zfs-actually/n/zvol/"
+               hx-get="/zfs-actually/n/zvol/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zvol/">&rarr; Zvols</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&uarr; Compression</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&uarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mountpoints" href="/zfs-actually/n/mountpoints/"
+               hx-get="/zfs-actually/n/mountpoints/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mountpoints/">&uarr; Mountpoints</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&uarr; The Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&uarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&uarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&uarr; Recordsize</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&uarr; Snapshots</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="zvol" href="/zfs-actually/n/zvol/"
+               hx-get="/zfs-actually/n/zvol/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zvol/">&uarr; Zvols</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

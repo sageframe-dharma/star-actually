@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The ARC (depth 5) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="arc"
+  data-depth="5"
+  data-max-depth="5"
+  data-title="The ARC">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The ARC</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 4 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 4/4</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/arc/d4/"
+         hx-get="/zfs-actually/n/arc/d4.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="performance-model">
+      <span class="chain-title">Where the speed actually comes from</span>
+      <span class="chain-position">1/5</span>
+      
+      <span class="chain-step chain-prev is-disabled" aria-disabled="true">&larr; prev</span>
+      <a class="chain-step chain-next" data-chain-id="performance-model"
+         href="/zfs-actually/n/l2arc/"
+         hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/l2arc/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>You look at htop on a ZFS machine, see nearly all RAM in use on a quiet
+system, and conclude something is leaking. <strong>Actually, that's the ARC—the
+Adaptive Replacement Cache—and it is supposed to be huge.</strong> Free RAM does
+nothing for anyone; the ARC turns it into read speed, and it yields when
+applications genuinely need the memory back.</p>
+<p>The correction under the correction: the memory bar you've read as a fuel
+gauge all your life is the wrong instrument here. Full is the healthy state.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Reading it honestly: <code>arc_summary</code> (or <code>arcstat</code>) instead of htop. The number
+that matters is the <strong>hit rate</strong>—a warm homelab ARC serving in the high-90s
+percent is why the pool feels faster than its spinning disks have any right
+to be.</p>
+<p>The one legitimate reason to cap it: <strong>VM hosts.</strong> The ARC's give-it-back
+dance with the Linux kernel is imperfect and slightly laggy, and VMs
+allocating big chunks of RAM can collide with it. That's why Proxmox
+installations conventionally set <code>zfs_arc_max</code> to a fixed budget (Proxmox
+itself defaults to a capped ARC on new installs). On a pure storage box,
+leave it alone—capping ARC &quot;to keep RAM free&quot; is buying nothing with your
+cache.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Its neighbors, and the traps between them:</p>
+<ul>
+<li><strong>The page cache</strong>—Linux's own file cache, which ordinary filesystems
+use and which htop <em>doesn't</em> alarm you about (it hides under
+&quot;available&quot;). ZFS's separate ARC accounting is why identical caching reads
+as a crisis on ZFS and as normal on ext4. Same behavior, scarier
+bookkeeping.</li>
+<li><strong>L2ARC</strong>—the ARC's spillover tier on SSD. Not more ARC: every L2ARC
+block costs real ARC RAM for its index (see L2ARC before buying).</li>
+<li><strong>The ZIL/SLOG</strong>—the write-side sibling in name only; it's a crash log,
+not a cache. &quot;ARC for reads, SLOG for writes&quot; is a symmetry your brain
+wants and the system doesn't have.</li>
+</ul>
+
+    </section>
+    
+    <section class="layer layer-5" data-depth="5">
+      <p>Why &quot;adaptive,&quot; and why ZFS didn't just use the page cache. A plain LRU
+cache has a famous failure: one large sequential read (a backup job, a media
+scan) flushes everything warm. The ARC runs <strong>two lists—recently used and
+frequently used—and moves the boundary between them continuously</strong>, using
+ghost lists (records of recent evictions) to notice which list it should
+have trusted more. Scan-resistant by construction: the backup job churns the
+recency list while the frequency list keeps your hot working set pinned.</p>
+<p>The separate-cache design is Solaris heritage, but the argument survived the
+port: ZFS wants to cache <em>its own</em> blocks (checksummed, compressed—the ARC
+holds them compressed, stretching effective capacity) under its own eviction
+policy, rather than inherit LRU behavior tuned for a different filesystem's
+assumptions. The price is the double-accounting weirdness and the
+give-it-back lag on Linux; the payoff is a cache that survives workloads
+that flatten an LRU.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="l2arc" href="/zfs-actually/n/l2arc/"
+               hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/l2arc/">&darr; L2ARC</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dedup" href="/zfs-actually/n/dedup/"
+               hx-get="/zfs-actually/n/dedup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dedup/">&rarr; Deduplication</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="l2arc" href="/zfs-actually/n/l2arc/"
+               hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/l2arc/">&rarr; L2ARC</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&rarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zil-slog" href="/zfs-actually/n/zil-slog/"
+               hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zil-slog/">&rarr; ZIL and SLOG</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="dedup" href="/zfs-actually/n/dedup/"
+               hx-get="/zfs-actually/n/dedup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dedup/">&uarr; Deduplication</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="l2arc" href="/zfs-actually/n/l2arc/"
+               hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/l2arc/">&uarr; L2ARC</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="proxmox-zfs" href="/zfs-actually/n/proxmox-zfs/"
+               hx-get="/zfs-actually/n/proxmox-zfs/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/proxmox-zfs/">&uarr; ZFS Under Proxmox</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="zil-slog" href="/zfs-actually/n/zil-slog/"
+               hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zil-slog/">&uarr; ZIL and SLOG</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

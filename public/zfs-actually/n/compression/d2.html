@@ -1,0 +1,84 @@
+<article class="node" id="content"
+  data-node-id="compression"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="Compression">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Compression</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/compression/d3/"
+         hx-get="/zfs-actually/n/compression/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">8/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/dataset/"
+         hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/dataset/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/first-pool/"
+         hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/first-pool/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The inherited model: compression trades CPU for space—a tax you pay only
+when the space is worth it. <strong>Actually, with LZ4 the trade usually runs
+backward: compressing costs less time than reading and writing the extra
+uncompressed bytes would</strong>, so compression frequently makes the pool
+<em>faster</em>. It early-aborts on incompressible data (media files cost you
+almost nothing), and it's the OpenZFS default posture—&quot;set
+compression=lz4 on your pools' root datasets so that all datasets inherit it
+unless you have a reason not to enable it&quot; (OpenZFS docs).</p>
+<p>Your 90s-CPU intuition about gzip was correct <em>then</em>. The hardware moved;
+the intuition didn't.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dedup" href="/zfs-actually/n/dedup/"
+               hx-get="/zfs-actually/n/dedup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dedup/">&rarr; Deduplication</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&rarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&rarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

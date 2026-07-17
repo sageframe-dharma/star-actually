@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirrors (depth 4) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="mirror"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Mirrors">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Mirrors</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/mirror/d3/"
+         hx-get="/zfs-actually/n/mirror/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">4/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/vdev/"
+         hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/vdev/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/raidz/"
+         hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/raidz/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>A <strong>mirror vdev</strong> is two (or more) disks holding identical copies of every
+block. Capacity math makes it look like the naive option—you &quot;lose&quot; half
+your disks. <strong>Actually, the capacity you give up buys the three things
+parity can't sell you</strong>: reads served by any member (IOPS scale with disk
+count), resilvers that are a straight copy from a healthy twin, and vdevs
+you can grow, split, and rearrange with the least ceremony in ZFS.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Where mirrors are simply the right answer: <strong>pools whose workload is random
+I/O—VMs, databases, container volumes.</strong> The pool stripes across vdevs, so
+six disks as three mirror vdevs gives roughly 3× write IOPS and 6× read
+IOPS of a single disk; the same six as one RAIDZ2 gives roughly 1× (see
+RAIDZ for why). This is the whole &quot;mirrors for VMs&quot; folk wisdom, derived.</p>
+<p>Operations worth knowing exist: <code>zpool attach</code> converts a lone disk into a
+mirror (the retroactive fix for a single-disk-vdev regret) or adds a third
+member to a pair—and resilvering a mirror is reading one healthy disk,
+not reconstructing from the whole vdev. Growth path: replace both members
+with bigger disks one resilver at a time, or add another mirror vdev to the
+pool.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Against its alternatives honestly:</p>
+<ul>
+<li><strong>vs RAIDZ</strong>—mirrors pay in capacity (50% at two-way); RAIDZ pays in
+IOPS and inflexibility. Sequential bulk storage (media, backups) doesn't
+feel RAIDZ's costs, which is why the split verdict—mirrors for random,
+RAIDZ for bulk—keeps being the answer.</li>
+<li><strong>The two-way honesty clause</strong>—a 2-disk mirror survives <em>one</em> failure,
+and the resilver window after that failure is a no-redundancy window (a
+read error during it costs data). Three-way mirrors exist precisely for
+data where that window is unacceptable.</li>
+<li><strong>vs &quot;RAID1 is a backup&quot;</strong>—a mirror faithfully replicates your
+mistakes in real time. It survives a disk; it does not survive you (see
+Snapshots Are Not Backups for the full stack of what-protects-what).</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&rarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&rarr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&rarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&uarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&uarr; RAIDZ</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&uarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&uarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

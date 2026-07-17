@@ -1,0 +1,119 @@
+<article class="node" id="content"
+  data-node-id="l2arc"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="L2ARC">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">L2ARC</h1>
+      <span class="node-type node-type-definition">definition</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/l2arc/d3/"
+         hx-get="/zfs-actually/n/l2arc/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="performance-model">
+      <span class="chain-title">Where the speed actually comes from</span>
+      <span class="chain-position">2/5</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="performance-model"
+         href="/zfs-actually/n/arc/"
+         hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/arc/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="performance-model"
+         href="/zfs-actually/n/zil-slog/"
+         hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/zil-slog/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The forum instinct: spare NVMe + slow pool = add a cache drive, because more
+cache is always better. <strong>Actually, L2ARC is not free speed—its index
+lives in RAM, so every block cached on the SSD eats a slice of the ARC</strong>,
+the cache that's actually fast. On a modest-RAM machine you can end up
+trading excellent cache (RAM) for mediocre cache (SSD) and calling it an
+upgrade.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The honest decision procedure, in order:</p>
+<ol>
+<li><strong>Max out RAM first.</strong> It's the better cache and it needs no index.</li>
+<li><strong>Measure.</strong> <code>arc_summary</code>—if the ARC hit rate is already high
+(homelabs: it usually is), there is nothing for an L2ARC to catch.</li>
+<li>Only with real, sustained ARC misses on a working set that fits on the
+SSD: <code>zpool add tank cache &lt;ssd&gt;</code>.</li>
+</ol>
+<p>Two softeners worth knowing: losing an L2ARC device is harmless (it's pure
+cache—the pool doesn't depend on it, unlike a SLOG mid-crash), and modern
+OpenZFS supports a persistent L2ARC that survives reboots, fixing the old
+cold-cache-every-boot complaint. Neither changes the arithmetic at depth 2.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>The confusion neighborhood: L2ARC and SLOG get bought together by the same
+impulse (&quot;SSDs make pools fast&quot;) and do unrelated jobs—L2ARC serves
+re-reads of warm data; a SLOG serves synchronous-write latency and is a
+crash log, not a cache. The homelab pattern of carving one SSD into &quot;a bit
+of SLOG, a bit of L2ARC&quot; usually means neither was justified by a
+measurement.</p>
+<p>What actually fixes a slow pool, most often: more RAM (ARC), mirrors instead
+of RAIDZ for random-I/O workloads (vdev IOPS), recordsize matched to the
+workload, or the pool simply being too full (see The Free-Space Discipline).
+L2ARC is the right tool in the narrow case where the working set is bigger
+than RAM, smaller than an SSD, and genuinely re-read—a real pattern
+(shared build caches, hot media subsets), just rarer than the forums imply.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&rarr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zil-slog" href="/zfs-actually/n/zil-slog/"
+               hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zil-slog/">&rarr; ZIL and SLOG</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="arc" href="/zfs-actually/n/arc/"
+               hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/arc/">&uarr; The ARC</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="zil-slog" href="/zfs-actually/n/zil-slog/"
+               hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zil-slog/">&uarr; ZIL and SLOG</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

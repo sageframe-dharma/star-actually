@@ -1,0 +1,109 @@
+<article class="node" id="content"
+  data-node-id="send-recv"
+  data-depth="3"
+  data-max-depth="5"
+  data-title="Send and Receive">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Send and Receive</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/4</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/send-recv/d4/"
+         hx-get="/zfs-actually/n/send-recv/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/send-recv/d2/"
+         hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="sleep-at-night">
+      <span class="chain-title">Snapshots, backups, and actually sleeping at night</span>
+      <span class="chain-position">5/6</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshots-are-not-backups/"
+         hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/sanoid-syncoid/"
+         hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/sanoid-syncoid/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The naive slot for &quot;replication tool&quot; is rsync-shaped: walk the tree,
+compare, copy what changed. <strong>Actually, <code>zfs send</code> serializes a snapshot—an exact, block-level, point-in-time state of a dataset—into a stream,
+and <code>zfs recv</code> reconstructs it perfectly on any pool</strong>: every file,
+property, and the snapshot itself. No walking, no comparing, no &quot;mostly the
+same.&quot; rsync approximates sameness file-by-file over a live, shifting
+target; recv <em>is</em> sameness, of a frozen moment.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The shape of use:</p>
+<ul>
+<li>Full: <code>zfs send tank/ds@snap | ssh backup zfs recv vault/ds</code>—a stream
+through a pipe, composable with ssh (this is where your SSH keys earn
+their keep).</li>
+<li><strong>Incremental</strong> is the daily workhorse: <code>zfs send -i @yesterday @today</code>
+ships only the blocks born between the two snapshots. Cost scales with
+churn, not dataset size—a 10TB dataset that changed 2GB sends 2GB.</li>
+<li>Interrupted transfers resume (<code>-t</code> with a receive token)—relevant the
+first time a multi-TB initial send meets a flaky link.</li>
+<li>Nobody types this on schedule; syncoid wraps the whole dance. But run it
+by hand once—the pipe makes the architecture legible.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&darr; Sanoid and Syncoid</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pool-import-export" href="/zfs-actually/n/pool-import-export/"
+               hx-get="/zfs-actually/n/pool-import-export/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool-import-export/">&rarr; Import and Export</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&rarr; Sanoid and Syncoid</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot" href="/zfs-actually/n/snapshot/"
+               hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot/">&rarr; Snapshots</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshots-are-not-backups" href="/zfs-actually/n/snapshots-are-not-backups/"
+               hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">&rarr; Snapshots Are Not Backups</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

@@ -1,0 +1,109 @@
+<article class="node" id="content"
+  data-node-id="snapshot"
+  data-depth="2"
+  data-max-depth="5"
+  data-title="Snapshots">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Snapshots</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/4</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/snapshot/d3/"
+         hx-get="/zfs-actually/n/snapshot/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="sleep-at-night">
+      <span class="chain-title">Snapshots, backups, and actually sleeping at night</span>
+      <span class="chain-position">2/6</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/copy-on-write/"
+         hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/copy-on-write/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshot-space/"
+         hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot-space/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The word &quot;snapshot&quot; sounds like a photograph—a captured duplicate of a
+moment, costing what the data costs. <strong>Actually, a ZFS snapshot copies
+nothing.</strong> Copy-on-write means the current state of a dataset is a tree of
+blocks that were never going to be overwritten anyway; a snapshot is just a
+named pointer to that tree, plus a promise: <em>don't garbage-collect these
+blocks while I hold them.</em> Creation is instant and free at any size.</p>
+<p>The cost is deferred, not absent: it accrues later, as the live dataset
+diverges from the pinned past and the old blocks can't be freed.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="rollback" href="/zfs-actually/n/rollback/"
+               hx-get="/zfs-actually/n/rollback/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/rollback/">&darr; Rollback</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&darr; Sanoid and Syncoid</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="send-recv" href="/zfs-actually/n/send-recv/"
+               hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/send-recv/">&darr; Send and Receive</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="snapshot-space" href="/zfs-actually/n/snapshot-space/"
+               hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot-space/">&darr; Snapshots and Disappearing Space</a></li>
+        
+        <li><a class="nav-node nav-forward" data-node-id="snapshots-are-not-backups" href="/zfs-actually/n/snapshots-are-not-backups/"
+               hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">&darr; Snapshots Are Not Backups</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&rarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="rollback" href="/zfs-actually/n/rollback/"
+               hx-get="/zfs-actually/n/rollback/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/rollback/">&rarr; Rollback</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="send-recv" href="/zfs-actually/n/send-recv/"
+               hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/send-recv/">&rarr; Send and Receive</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot-space" href="/zfs-actually/n/snapshot-space/"
+               hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot-space/">&rarr; Snapshots and Disappearing Space</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

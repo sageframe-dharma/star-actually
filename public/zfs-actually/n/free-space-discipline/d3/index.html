@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Free-Space Discipline (depth 3) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="free-space-discipline"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="The Free-Space Discipline">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">The Free-Space Discipline</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/free-space-discipline/d4/"
+         hx-get="/zfs-actually/n/free-space-discipline/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/free-space-discipline/d2/"
+         hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="performance-model">
+      <span class="chain-title">Where the speed actually comes from</span>
+      <span class="chain-position">5/5</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="performance-model"
+         href="/zfs-actually/n/recordsize/"
+         hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/recordsize/">&larr; prev</a>
+      <span class="chain-step chain-next is-disabled" aria-disabled="true">next &rarr;</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Intuition says a 95%-full disk is just a disk with less room—capacity and
+speed are separate ledgers. On ordinary filesystems that's <em>mostly</em> true.
+<strong>Actually, copy-on-write makes free space a working resource: every write—including &quot;overwrites,&quot; including deletions—needs fresh space to land.</strong>
+A full pool forces the allocator to hunt for scraps, writes fragment into
+whatever gaps exist, and the pool slows down in a way that doesn't fully
+undo when you free space later, because the fragmentation already happened.</p>
+<p>Free space isn't headroom. It's the workshop floor CoW does its work on.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Operating numbers, honestly labeled as heuristics: keep general-purpose
+pools <strong>below ~80–85%</strong>; performance-sensitive pools (VMs, databases)
+appreciate more slack. Past ~90% the allocator visibly changes character;
+at ~100%, deletion itself gets weird—<em>freeing</em> space needs CoW writes too
+(snapshot destruction is the usual escape because it frees without
+writing... unless snapshots are exactly what's pinning everything—see
+Snapshots and Disappearing Space).</p>
+<p>Watch two numbers: <code>zpool list</code> for <code>CAP</code> and <code>FRAG</code>. FRAG measures
+<em>free-space</em> fragmentation (how shredded the remaining room is), not file
+fragmentation—a high-FRAG, high-CAP pool is one whose future writes are
+already compromised. The honest fixes are the blunt ones: grow the pool
+(add a vdev), or want less (retention policy, quotas so one dataset can't
+eat the floor).</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="copy-on-write" href="/zfs-actually/n/copy-on-write/"
+               hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/copy-on-write/">&rarr; Copy-on-Write</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="snapshot-space" href="/zfs-actually/n/snapshot-space/"
+               hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/snapshot-space/">&rarr; Snapshots and Disappearing Space</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

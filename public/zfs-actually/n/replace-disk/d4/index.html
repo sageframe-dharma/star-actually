@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replacing a Disk (depth 4) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="replace-disk"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Replacing a Disk">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Replacing a Disk</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/replace-disk/d3/"
+         hx-get="/zfs-actually/n/replace-disk/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="disk-died">
+      <span class="chain-title">A disk just died</span>
+      <span class="chain-position">2/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="disk-died"
+         href="/zfs-actually/n/zpool-status/"
+         hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/zpool-status/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="disk-died"
+         href="/zfs-actually/n/resilver/"
+         hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/resilver/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The instinct when <code>zpool status</code> shows a dead disk is either panic-speed or
+paralysis. <strong>Actually, a degraded pool is stable and serving—the
+procedure is unhurried, and the failure mode that actually bites is
+imprecision: pulling the <em>wrong</em> disk from a machine full of identical
+drives.</strong> The command itself is one line: <code>zpool replace</code> &quot;is equivalent to
+attaching new-device, waiting for it to resilver, and then detaching device&quot;
+(zpool-replace(8)). Everything around that line is about being sure which
+physical object you're touching.</p>
+<p>⚠ <strong>DESTRUCTIVE</strong>—verify before running: <code>zpool replace</code> repartitions the
+new device, and pulling a wrong disk from a degraded RAIDZ1 or two-way
+mirror kills the pool. Semantics per zpool-replace(8).</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The procedure:</p>
+<ol>
+<li><strong>Identify beyond doubt.</strong> Map the failed device to a physical serial
+number (<code>zpool status</code> names the device; smartctl or /dev/disk/by-id
+gives the serial printed on the label). This step is the whole game—this is why pools should be built with <code>by-id</code> paths, not <code>/dev/sdX</code>
+names that reshuffle across reboots.</li>
+<li><strong>Swap the hardware</strong> (hot-swap bays or a powered-off swap—either is
+fine; the pool imports degraded and waits).</li>
+<li><strong><code>zpool replace tank &lt;old-device&gt; &lt;new-device&gt;</code></strong>—the new disk must
+be at least &quot;the minimum size of all the devices&quot; in the vdev
+(zpool-replace(8)). Resilver begins immediately; the pool serves
+throughout.</li>
+<li><strong>Watch it finish</strong> (<code>zpool status</code>), then <strong>scrub</strong> to certify the
+whole pool. Note: starting the replace &quot;cancels any in-progress scrub&quot;
+(man page)—resilver first, scrub after, not the reverse.</li>
+</ol>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Judgment calls around the mechanics:</p>
+<ul>
+<li><strong>Failing vs failed</strong>—a disk that still limps (rising errors, not yet
+dead) can be replaced <em>while alive</em>: <code>zpool replace</code> with both old and
+new connected reads from the failing disk too, keeping full redundancy
+through the resilver. Strictly better when you have the ports—don't
+pull the sick disk first if you don't have to.</li>
+<li><strong>The window</strong>—the resilver is your thinnest moment (see Resilvering);
+a RAIDZ1 rebuild across correlated, same-batch survivors is where
+healthy paranoia earns its keep. Have the replacement on the shelf
+<em>before</em> the failure; the window starts when the disk dies, not when the
+courier arrives.</li>
+<li><strong>Spares</strong>—a <code>spare</code> vdev automates step 2 for machines you don't
+watch daily; for a watched homelab, the shelf spare plus this procedure
+is usually enough.</li>
+<li><strong>After it's boring</strong>—the first replacement teaches you your bay
+labeling, your by-id discipline, and your nerves. Do the serial-number
+mapping <em>now</em>, on a healthy pool, and tape the printout to the case.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz-expansion" href="/zfs-actually/n/raidz-expansion/"
+               hx-get="/zfs-actually/n/raidz-expansion/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz-expansion/">&rarr; RAIDZ Expansion</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&rarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="scrub" href="/zfs-actually/n/scrub/"
+               hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/scrub/">&rarr; Scrubs</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zpool-status" href="/zfs-actually/n/zpool-status/"
+               hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zpool-status/">&rarr; Reading zpool status</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&uarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="zpool-status" href="/zfs-actually/n/zpool-status/"
+               hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zpool-status/">&uarr; Reading zpool status</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your First Pool · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="first-pool"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="Your First Pool">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Your First Pool</h1>
+      <span class="node-type node-type-procedure">procedure</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/first-pool/d3/"
+         hx-get="/zfs-actually/n/first-pool/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">9/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/compression/"
+         hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/compression/">&larr; prev</a>
+      <span class="chain-step chain-next is-disabled" aria-disabled="true">next &rarr;</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>Guides present <code>zpool create</code> as setup—type it, get storage, move on.
+<strong>Actually, that one command makes the only decisions in ZFS you can't
+revise: the vdev shape and the ashift.</strong> Everything else—compression,
+mountpoints, quotas, datasets—is a property you can change over morning
+coffee. The discipline is knowing which decisions are the foundation pour
+and giving them the ten deliberate minutes they deserve.</p>
+<p>⚠ <strong>DESTRUCTIVE</strong>—<code>zpool create</code> repartitions the named devices. A typo'd
+device name destroys a disk's contents. Verify with <code>ls -l /dev/disk/by-id/</code> before running.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ashift" href="/zfs-actually/n/ashift/"
+               hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ashift/">&rarr; Ashift</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="compression" href="/zfs-actually/n/compression/"
+               hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/compression/">&rarr; Compression</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&rarr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mountpoints" href="/zfs-actually/n/mountpoints/"
+               hx-get="/zfs-actually/n/mountpoints/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mountpoints/">&rarr; Mountpoints</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz" href="/zfs-actually/n/raidz/"
+               hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz/">&rarr; RAIDZ</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

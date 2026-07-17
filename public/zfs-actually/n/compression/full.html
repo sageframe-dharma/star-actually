@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compression · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="compression"
+  data-depth="4"
+  data-max-depth="4"
+  data-title="Compression">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Compression</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span></span>
+      <span class="depth-label">depth 3/3</span>
+      
+      <span class="depth-step depth-deeper is-disabled" aria-disabled="true">&minus; deeper</span>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/compression/d3/"
+         hx-get="/zfs-actually/n/compression/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">8/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/dataset/"
+         hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/dataset/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/first-pool/"
+         hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/first-pool/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The inherited model: compression trades CPU for space—a tax you pay only
+when the space is worth it. <strong>Actually, with LZ4 the trade usually runs
+backward: compressing costs less time than reading and writing the extra
+uncompressed bytes would</strong>, so compression frequently makes the pool
+<em>faster</em>. It early-aborts on incompressible data (media files cost you
+almost nothing), and it's the OpenZFS default posture—&quot;set
+compression=lz4 on your pools' root datasets so that all datasets inherit it
+unless you have a reason not to enable it&quot; (OpenZFS docs).</p>
+<p>Your 90s-CPU intuition about gzip was correct <em>then</em>. The hardware moved;
+the intuition didn't.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Operating it:</p>
+<ul>
+<li>Set once at the top (<code>zfs set compression=lz4 tank</code>), let inheritance
+carry it down. On current OpenZFS, <code>compression=on</code> means lz4 already.</li>
+<li>Check what it's buying: <code>zfs get compressratio tank/...</code>—text, logs,
+and databases commonly land 1.5–3×; already-compressed media sits at
+1.0× and cost you a rounding error to check.</li>
+<li><strong>zstd</strong> is the deliberate upgrade: better ratios than lz4 for more CPU,
+tunable levels (<code>compression=zstd-3</code>). Worth it on datasets that are
+compressible, written moderately, and read a lot—archives, logs. lz4
+remains the right default reflex.</li>
+</ul>
+<p>The temporal gotcha (same rule as every ZFS property): it applies to <strong>newly
+written blocks only</strong>. Flipping it on rewrites nothing—old data stays
+uncompressed until something rewrites it. Don't be puzzled by a 1.0× ratio
+on a dataset that was full before you enabled it.</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Boundaries worth holding:</p>
+<ul>
+<li><strong>vs dedup</strong>—the two get mentioned together as &quot;space features&quot; and
+deserve opposite reflexes: compression is nearly-free and default-on;
+dedup is a standing RAM tax and default-off. Compression also quietly
+captures much of what people hope dedup will give them (all those similar
+text blocks compress well) for none of the cost.</li>
+<li><strong>vs recordsize</strong>—compression works per record, so larger records give
+the compressor more to chew on; a 1M-recordsize archive dataset
+compresses meaningfully better than the same bytes at 128K. The two knobs
+are teammates on archive-shaped data.</li>
+<li><strong>Where not to bother</strong>—datasets that are purely already-compressed
+media <em>can</em> be set <code>compression=off</code> for tidiness, but the early-abort
+makes the savings mostly aesthetic. The reflex &quot;off for performance&quot; is
+the one to unlearn.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="dedup" href="/zfs-actually/n/dedup/"
+               hx-get="/zfs-actually/n/dedup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dedup/">&rarr; Deduplication</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&rarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&rarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&rarr; Recordsize</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="dedup" href="/zfs-actually/n/dedup/"
+               hx-get="/zfs-actually/n/dedup/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/dedup/">&uarr; Deduplication</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&uarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="property-inheritance" href="/zfs-actually/n/property-inheritance/"
+               hx-get="/zfs-actually/n/property-inheritance/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/property-inheritance/">&uarr; Property Inheritance</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="recordsize" href="/zfs-actually/n/recordsize/"
+               hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/recordsize/">&uarr; Recordsize</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

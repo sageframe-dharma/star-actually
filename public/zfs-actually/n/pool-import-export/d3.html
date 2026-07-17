@@ -1,0 +1,85 @@
+<article class="node" id="content"
+  data-node-id="pool-import-export"
+  data-depth="3"
+  data-max-depth="4"
+  data-title="Import and Export">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Import and Export</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 2 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 2/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/pool-import-export/d4/"
+         hx-get="/zfs-actually/n/pool-import-export/d4.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/pool-import-export/d2/"
+         hx-get="/zfs-actually/n/pool-import-export/d2.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The fear comes from RAID history: array configuration lives in a controller
+or an OS file, and when <em>that</em> dies, the disks become a puzzle. <strong>Actually,
+a ZFS pool's entire self-description—vdev layout, properties, dataset
+tree, mountpoints—lives on the member disks themselves, as labels.</strong> A
+dead motherboard is a hardware errand, not a data event: move the disks to
+any machine running OpenZFS, <code>zpool import tank</code>, and everything arrives—including where it all mounts.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>The verbs:</p>
+<ul>
+<li><strong><code>zpool export tank</code></strong>—the polite handoff: unmount, flush, mark
+released. Do this before planned moves.</li>
+<li><strong><code>zpool import</code></strong>—with no arguments, it <em>scans</em> attached disks and
+reports every importable pool it finds; then <code>zpool import tank</code> takes
+one. After an unplanned death there's no export on record, so the new
+machine asks for <code>-f</code> (force)—that's the expected flow after a
+hardware failure, not a danger sign by itself.</li>
+<li>The disks don't even need the same names, ports, or order—ZFS
+identifies members by label, not location. (This is also why building
+pools against <code>/dev/disk/by-id</code> is kindness to future-you: the <em>display</em>
+stays legible.)</li>
+</ul>
+<p>⚠ The one sharp edge: importing a pool on two machines <strong>at once</strong> (shared
+disk shelves, iSCSI, VM passthrough mistakes) corrupts it—the <code>-f</code> flag
+can override the &quot;looks active elsewhere&quot; warning, so make sure &quot;elsewhere&quot;
+is actually dead before forcing.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mountpoints" href="/zfs-actually/n/mountpoints/"
+               hx-get="/zfs-actually/n/mountpoints/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mountpoints/">&rarr; Mountpoints</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="pool" href="/zfs-actually/n/pool/"
+               hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/pool/">&rarr; The Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="send-recv" href="/zfs-actually/n/send-recv/"
+               hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/send-recv/">&rarr; Send and Receive</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

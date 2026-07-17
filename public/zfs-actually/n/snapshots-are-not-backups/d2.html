@@ -1,0 +1,80 @@
+<article class="node" id="content"
+  data-node-id="snapshots-are-not-backups"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="Snapshots Are Not Backups">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Snapshots Are Not Backups</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/snapshots-are-not-backups/d3/"
+         hx-get="/zfs-actually/n/snapshots-are-not-backups/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="sleep-at-night">
+      <span class="chain-title">Snapshots, backups, and actually sleeping at night</span>
+      <span class="chain-position">4/6</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/snapshot-space/"
+         hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot-space/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="sleep-at-night"
+         href="/zfs-actually/n/send-recv/"
+         hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/send-recv/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The feeling is earned: hourlies, dailies, monthlies on every dataset—you
+can recover anything from any point in time. That's what backups <em>do</em>, so
+surely you have backups. <strong>Actually, ask one question of any protection
+scheme: what failures does it survive?</strong> A snapshot lives on the same disks,
+in the same pool, behind the same controller, in the same building, under
+the same admin as the data. Pool death, fire, theft, ransomware with root, a
+fat-fingered <code>zpool destroy</code>—the snapshot dies in every scenario the word
+&quot;backup&quot; exists for.</p>
+<p>Snapshots answer &quot;the <em>data</em> changed wrongly.&quot; Backups answer &quot;the <em>place</em>
+failed.&quot; Different questions.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="sanoid-syncoid" href="/zfs-actually/n/sanoid-syncoid/"
+               hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/sanoid-syncoid/">&rarr; Sanoid and Syncoid</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="send-recv" href="/zfs-actually/n/send-recv/"
+               hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/send-recv/">&rarr; Send and Receive</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>

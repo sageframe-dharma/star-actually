@@ -1,0 +1,162 @@
+<article class="node" id="content"
+  data-node-id="raidz"
+  data-depth="4"
+  data-max-depth="5"
+  data-title="RAIDZ">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">RAIDZ</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 3 of 4"><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell lit"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 3/4</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/raidz/d5/"
+         hx-get="/zfs-actually/n/raidz/d5.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <a class="depth-step depth-shallower" href="/zfs-actually/n/raidz/d3/"
+         hx-get="/zfs-actually/n/raidz/d3.html" hx-target="#content" hx-swap="outerHTML">+ surface</a>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="build-first-pool">
+      <span class="chain-title">Build your first pool with intent</span>
+      <span class="chain-position">5/9</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/mirror/"
+         hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/mirror/">&larr; prev</a>
+      <a class="chain-step chain-next" data-chain-id="build-first-pool"
+         href="/zfs-actually/n/ashift/"
+         hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/ashift/">next &rarr;</a>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>&quot;RAIDZ is RAID5 with a Z&quot; is half right, and each half matters. The parity
+arithmetic is the same shape—RAIDZ1/2/3 survive one/two/three disk
+failures per vdev. <strong>Actually, two things separate it. RAIDZ closed RAID5's
+write hole</strong> (the crash-between-data-and-parity corruption that haunted
+hardware RAID)—CoW and variable-width stripes mean no read-modify-write
+and no torn parity, ever. <strong>And a RAIDZ vdev delivers roughly one disk's
+worth of random IOPS, no matter how many disks are in it</strong>—the fact the
+capacity math hides and the performance math is ruled by.</p>
+
+    </section>
+    
+    <section class="layer layer-3" data-depth="3">
+      <p>Choosing within the family:</p>
+<ul>
+<li><strong>RAIDZ1</strong>—one parity disk. With today's drive sizes, a resilver reads
+many TB from every survivor for hours or days; a second failure or read
+error in that window costs data. Fine for genuinely rebuildable bulk;
+nervous territory for anything else.</li>
+<li><strong>RAIDZ2</strong>—the homelab default for bulk storage vdevs (classic shape:
+6–8 disks). Two-failure tolerance is what makes the resilver window
+boring instead of frightening.</li>
+<li><strong>RAIDZ3</strong>—for wide vdevs and long resilvers at scales most homelabs
+don't reach.</li>
+</ul>
+<p>Use it where it's strong: media libraries, backup targets, archives—big
+sequential reads and writes, where bandwidth is fine and IOPS don't matter.
+Keep VMs and databases off it (that's what mirror vdevs are for).</p>
+
+    </section>
+    
+    <section class="layer layer-4" data-depth="4">
+      <p>Its standing confusions:</p>
+<ul>
+<li><strong>&quot;More spindles = faster&quot;</strong>—true across <em>vdevs</em>, false within a RAIDZ:
+every random read touches every data disk in the stripe, so the vdev
+moves as one unit at one disk's cadence. Width buys capacity and
+bandwidth, not IOPS.</li>
+<li><strong>vs mirrors</strong>—the recurring decision. Capacity efficiency vs IOPS,
+slow reconstructive resilvers vs fast copy resilvers, rigidity vs
+flexibility. The workload decides; wanting one pool to do both jobs well
+is how people end up disappointed.</li>
+<li><strong>Growth</strong>—the old absolute &quot;you can never expand a RAIDZ&quot; died in
+OpenZFS 2.3 (see RAIDZ Expansion), but width is still mostly a
+creation-time decision, and type (Z1→Z2) still can't change in place.</li>
+</ul>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    <section class="hood onward">
+      <h2 class="hood-label">onward</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-forward" data-node-id="raidz-expansion" href="/zfs-actually/n/raidz-expansion/"
+               hx-get="/zfs-actually/n/raidz-expansion/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz-expansion/">&darr; RAIDZ Expansion</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&rarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&rarr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="raidz-expansion" href="/zfs-actually/n/raidz-expansion/"
+               hx-get="/zfs-actually/n/raidz-expansion/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz-expansion/">&rarr; RAIDZ Expansion</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&rarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&rarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    <section class="hood backlinks">
+      <h2 class="hood-label">what points here</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="first-pool" href="/zfs-actually/n/first-pool/"
+               hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/first-pool/">&uarr; Your First Pool</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="mirror" href="/zfs-actually/n/mirror/"
+               hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/mirror/">&uarr; Mirrors</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="raidz-expansion" href="/zfs-actually/n/raidz-expansion/"
+               hx-get="/zfs-actually/n/raidz-expansion/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/raidz-expansion/">&uarr; RAIDZ Expansion</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&uarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-backlink" data-node-id="vdev" href="/zfs-actually/n/vdev/"
+               hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/vdev/">&uarr; The Vdev</a></li>
+        
+      </ul>
+    </section>
+    
+  </nav>
+</article>

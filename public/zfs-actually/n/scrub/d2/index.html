@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrubs (depth 2) · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+<article class="node" id="content"
+  data-node-id="scrub"
+  data-depth="2"
+  data-max-depth="4"
+  data-title="Scrubs">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Scrubs</h1>
+      <span class="node-type node-type-concept">concept</span>
+    </div>
+    <div class="depth-dial">
+      
+      <span class="depth-gauge" aria-label="reading level 1 of 3"><span class="gauge-cell lit"></span><span class="gauge-cell"></span><span class="gauge-cell"></span></span>
+      <span class="depth-label">depth 1/3</span>
+      
+      <a class="depth-step depth-deeper" href="/zfs-actually/n/scrub/d3/"
+         hx-get="/zfs-actually/n/scrub/d3.html" hx-target="#content" hx-swap="outerHTML">&minus; deeper</a>
+      <span class="depth-step depth-shallower is-disabled" aria-disabled="true">+ surface</span>
+    </div>
+    
+    <div class="chain-strip" data-chain-id="disk-died">
+      <span class="chain-title">A disk just died</span>
+      <span class="chain-position">4/4</span>
+      
+      <a class="chain-step chain-prev" data-chain-id="disk-died"
+         href="/zfs-actually/n/resilver/"
+         hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/resilver/">&larr; prev</a>
+      <span class="chain-step chain-next is-disabled" aria-disabled="true">next &rarr;</span>
+    </div>
+    
+  </header>
+
+  <div class="layers">
+    
+    <section class="layer layer-2" data-depth="2">
+      <p>The word is active—you scrub a thing to clean it—so the naive model
+makes scrub the repair process. <strong>Actually, a scrub is a forced read: &quot;a
+normal scrub examines all data in the specified pools and verifies each
+block's checksum&quot; (zpool-scrub(8)).</strong> Detection was always going to happen
+on read; the scrub's contribution is reading the data <em>nothing else reads</em>,
+so cold corruption is found while the redundancy to fix it still exists.</p>
+<p>Repair happens only where a second good copy lives: &quot;for replicated (mirror,
+raidz, or draid) devices, ZFS automatically repairs any damage discovered.&quot;
+Scrub a redundancy-less vdev and ZFS hands you a list of what rotted—named
+files, even—and can heal none of it.</p>
+
+    </section>
+    
+  </div>
+
+  <nav class="neighborhood">
+    
+    
+    <section class="hood lateral">
+      <h2 class="hood-label">lateral</h2>
+      <ul>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="checksums" href="/zfs-actually/n/checksums/"
+               hx-get="/zfs-actually/n/checksums/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/checksums/">&rarr; Checksums</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="ecc-question" href="/zfs-actually/n/ecc-question/"
+               hx-get="/zfs-actually/n/ecc-question/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/ecc-question/">&rarr; The ECC Question</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="replace-disk" href="/zfs-actually/n/replace-disk/"
+               hx-get="/zfs-actually/n/replace-disk/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/replace-disk/">&rarr; Replacing a Disk</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="resilver" href="/zfs-actually/n/resilver/"
+               hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/resilver/">&rarr; Resilvering</a></li>
+        
+        <li><a class="nav-node nav-lateral" data-node-id="zpool-status" href="/zfs-actually/n/zpool-status/"
+               hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+               hx-push-url="/zfs-actually/n/zpool-status/">&rarr; Reading zpool status</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </nav>
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

@@ -24,18 +24,20 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>checksum</strong> is a tiny fingerprint computed from a piece of data. ZFS
-fingerprints everything it writes, and every time it reads anything back,
-it re-computes the fingerprint and compares. Why bother? Because <strong>disks
-sometimes lie</strong>: they age, they glitch, and they can hand back subtly wrong
-data while reporting that everything is fine. Storage systems that keep
-duplicate copies but no fingerprints can't even tell which copy is the
-right one. With fingerprints, wrong data gets caught the moment anything
-touches it.</p>
-<p>Hold two powers apart, because everything downstream depends on the split:
-<strong>noticing damage is guaranteed, everywhere, always. Fixing damage requires
-a spare copy to fix it from.</strong> Fingerprints without spare copies can only
-tell you what you lost—they can't give it back.</p>
+      <p>You trust a disk the way you trust a filing cabinet: what you put in is
+what you'll get back. Mostly, that's true. But disks age and glitch, and
+once in a long while one hands back subtly wrong data <em>while reporting
+that everything is fine</em>—no error, no warning, just wrong bytes. Keeping
+duplicate copies doesn't escape this: with two copies that disagree and no
+referee, which one is right?</p>
+<p>ZFS's referee is the <strong>checksum</strong>: a tiny fingerprint computed from every
+piece of data as it's written. Every time anything is read back, ZFS
+re-computes the fingerprint and compares—so wrong data gets caught the
+moment anything touches it. Hold two powers apart, because everything
+downstream depends on the split: <strong>noticing damage is guaranteed,
+everywhere, always. Fixing damage requires a spare copy to fix it from.</strong>
+Fingerprints alone can only tell you what you lost—they can't give it
+back.</p>
 
     </section>
     

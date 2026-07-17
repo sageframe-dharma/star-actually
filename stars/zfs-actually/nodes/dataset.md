@@ -19,12 +19,15 @@ summary: >
 Datasets
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **dataset** is a named slice of the pool. From the outside it looks and
-acts like a folder—it holds files, it appears in your folder tree. The
-difference: **a dataset is the thing ZFS applies rules to.** Each one can
-have its own settings (compress or not), its own space limits, its own
-frozen moments in time, its own copy schedule to another machine. A plain
-folder can have none of that.
+For your whole computing life, organizing storage has meant one move: make
+a folder. Folders group things and give them names—and that is all they
+do. A folder carries no rules of its own.
+
+ZFS adds a second kind of container: the **dataset**, a named slice of the
+pool. It looks and acts exactly like a folder—holds files, appears in your
+folder tree—but **a dataset is the thing ZFS applies rules to.** Each one
+can have its own settings (compress or not), its own space limits, its own
+frozen moments in time, its own copying schedule to another machine.
 
 Two facts make them easy to love: a dataset has no fixed size (they all
 share the pool's one pot), and creating one costs nothing. So the habit to

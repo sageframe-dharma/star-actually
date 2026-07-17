@@ -18,16 +18,17 @@ summary: >
 Zvols
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **zvol** is a slice of the pool that pretends to be a blank disk instead
-of a folder of files. You hand it to something that wants a whole disk of
-its own—most often a virtual machine (a computer simulated in software)—
-and that thing formats and uses it exactly as if it were real hardware.
+If you run virtual machines—computers simulated in software—you've
+probably assumed each machine's disk is a big file sitting in a folder
+somewhere. On most systems, it is. On ZFS you can go hunting for that file
+and find nothing—**because there is no file.**
 
-The confusion it resolves: people go hunting for "the file" that holds
-their virtual machine's disk and find nothing—**because there is no file.**
-The virtual disk is carved straight from the pool. And underneath the
-pretense it's still ZFS: fingerprint-checked, freezable in time, copyable
-to another machine, like everything else in the pool.
+ZFS can serve up a slice of the pool *as if it were a blank physical
+disk*. That slice is a **zvol**. You hand it to anything that wants a
+whole disk of its own—most often a virtual machine—and it formats and
+uses it exactly as if it were real hardware. Underneath the pretense it's
+still ZFS: fingerprint-checked, freezable in time, copyable to another
+machine, like everything else in the pool.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Where you meet them: **Proxmox carves one zvol per VM disk** (that's why

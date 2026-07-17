@@ -18,16 +18,18 @@ summary: >
 Property Inheritance
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Every dataset carries dozens of **properties**—settings like whether to
-squeeze its data, how much space it may use, where it appears in your
-folders. Datasets sit in a family tree, and each setting either was set
-*right here* or is **inherited** from the nearest ancestor that set it.
-So you don't configure each dataset; you set a rule once, at the highest
-point in the tree where it's true, and everything below follows.
+Everywhere else in your computing life, settings live in one central
+place—a preferences screen, a control panel, a configuration file. ZFS
+does it differently: every dataset carries its own **properties**—settings
+like whether to squeeze its data, how much space it may use, where it
+appears in your folders. And because datasets sit in a family tree, each
+setting either was set *right here* or is **inherited** from the nearest
+ancestor that set it. You set a rule once, at the highest point in the
+tree where it's true, and everything below follows.
 
-The small surprise: there is no central settings file to hunt for. The top
-of the tree *is* the settings, and every local exception is visible and
-signed—you can always ask a dataset where a setting came from.
+The payoff: there is no central settings file to hunt for. The top of the
+tree *is* the settings, and every local exception is visible and signed—
+you can always ask a dataset where a setting came from.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The three verbs:

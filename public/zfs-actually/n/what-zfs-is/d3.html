@@ -47,24 +47,19 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>ZFS is a system for storing data, built around one promise: <strong>what you put
-in comes back exactly as you wrote it—or ZFS tells you, loudly, instead of
-silently handing you something broken.</strong></p>
-<p>In practice, it does four things for you:</p>
-<ul>
-<li><strong>Gathers any number of disks into one pool</strong> of storage, so you stop
-thinking about individual drives.</li>
-<li><strong>Checks everything it reads</strong> for damage, and repairs damage
-automatically from a spare copy.</li>
-<li><strong>Freezes moments in time</strong> (snapshots)—instantly, at no cost—so you can
-rewind a mistake.</li>
-<li><strong>Copies those moments to another machine</strong>, efficiently, which is what a
-real backup is.</li>
-</ul>
-<p>People reach for ZFS when a computer's job is to <em>hold data that matters</em>:
-years of photos, a business's records, a home server. It's usually called a
-filesystem, and it is one—but that undersells it, in a way that becomes
-interesting once the basics are solid (that story is a level deeper).</p>
+      <p>People call ZFS a filesystem, because that's the word the documentation
+uses. A filesystem is the software that keeps track of your files—which
+pieces of the disk belong to which document, what's named what, what lives
+in which folder. You've used them all your life without naming them: FAT32
+on a USB stick, NTFS on Windows, APFS on a Mac.</p>
+<p>Actually, ZFS is more than that. It does the filesystem's job—and also the
+jobs storage normally spreads across other tools: combining many disks into
+one supply of space, checking everything it reads for damage and repairing
+it from spare copies, freezing moments in time so you can rewind a mistake,
+and shipping those moments to another machine. One system, doing the whole
+job of storage. People reach for it when a computer's job is to <em>hold data
+that matters</em>—and that merger is where everything interesting about it
+comes from.</p>
 
     </section>
     

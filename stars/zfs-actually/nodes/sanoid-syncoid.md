@@ -19,14 +19,18 @@ summary: >
 Sanoid and Syncoid
 <!-- depth:2 -->
 <!-- provenance: extracted -->
-Set up once, together, in one file, they blur into a single mental object:
-"the backup system." **Actually, they're two separate, small helpers, each
-automating one thing you can do by hand.** **Sanoid** is the
+A snapshot routine that actually protects you—taken every hour, old ones
+cleaned out, fresh copies shipped to another machine—is a chore no human
+keeps up by hand at three in the morning. So most serious ZFS setups run
+two small helper tools, usually installed together and easily mistaken for
+one thing called "the backup system." **Actually, they're two separate
+helpers, each automating one job you can do yourself.** **Sanoid** is the
 snapshot-taker: "a policy-driven snapshot management tool" (its README)—it
-takes snapshots on a schedule (hourly, daily, monthly) and deletes old ones
-according to rules you set. **Syncoid** is the shipper: it "facilitates the
-asynchronous incremental replication of ZFS filesystems"—it finds the last
-moment both machines share, and sends over only what's new since.
+takes snapshots on a schedule (hourly, daily, monthly) and deletes old
+ones according to rules you set. **Syncoid** is the shipper: it
+"facilitates the asynchronous incremental replication of ZFS filesystems"—
+it finds the last moment both machines share, and sends over only what's
+new since.
 
 Neither adds any storage machinery of its own. They're scheduling and
 judgment layered on top of snapshots and send/receive—which is why

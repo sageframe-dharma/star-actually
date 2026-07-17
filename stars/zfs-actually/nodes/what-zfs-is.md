@@ -19,25 +19,20 @@ summary: >
 What ZFS Is
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-ZFS is a system for storing data, built around one promise: **what you put
-in comes back exactly as you wrote it—or ZFS tells you, loudly, instead of
-silently handing you something broken.**
+People call ZFS a filesystem, because that's the word the documentation
+uses. A filesystem is the software that keeps track of your files—which
+pieces of the disk belong to which document, what's named what, what lives
+in which folder. You've used them all your life without naming them: FAT32
+on a USB stick, NTFS on Windows, APFS on a Mac.
 
-In practice, it does four things for you:
-
-- **Gathers any number of disks into one pool** of storage, so you stop
-  thinking about individual drives.
-- **Checks everything it reads** for damage, and repairs damage
-  automatically from a spare copy.
-- **Freezes moments in time** (snapshots)—instantly, at no cost—so you can
-  rewind a mistake.
-- **Copies those moments to another machine**, efficiently, which is what a
-  real backup is.
-
-People reach for ZFS when a computer's job is to *hold data that matters*:
-years of photos, a business's records, a home server. It's usually called a
-filesystem, and it is one—but that undersells it, in a way that becomes
-interesting once the basics are solid (that story is a level deeper).
+Actually, ZFS is more than that. It does the filesystem's job—and also the
+jobs storage normally spreads across other tools: combining many disks into
+one supply of space, checking everything it reads for damage and repairing
+it from spare copies, freezing moments in time so you can rewind a mistake,
+and shipping those moments to another machine. One system, doing the whole
+job of storage. People reach for it when a computer's job is to *hold data
+that matters*—and that merger is where everything interesting about it
+comes from.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 Using ZFS feels different from ordinary storage from the first minute: the

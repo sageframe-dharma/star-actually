@@ -19,18 +19,20 @@ summary: >
 What a Filesystem Is
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A disk—a hard drive, an SSD, a USB stick—stores nothing but **blocks**:
-millions of small, numbered, same-sized slots that each hold some bytes. The
-disk has no idea what a file is. It can do exactly two things: read block
-number so-and-so, and write block number so-and-so.
+Everyone has saved a file. It feels like the file goes "onto the disk"—a
+thing, placed in a place. But a disk—a hard drive, an SSD, a USB stick—
+offers nothing so friendly. It stores only **blocks**: millions of small,
+numbered, same-sized slots that each hold some bytes. A disk has no idea
+what a file is. It can do exactly two things: read slot number so-and-so,
+and write slot number so-and-so.
 
 A **filesystem** is the bookkeeping software that turns those anonymous
-blocks into the world you actually use: files with names and sizes, folders
+slots into the world you actually use: files with names and sizes, folders
 inside folders, a record of who is allowed to read what.
 
-The correction worth carrying from here on: "my files are on the disk" is
-not quite true. **The disk holds only blocks; the *files* live in the
-ledger.** Lose the ledger and the blocks are all still there—and mean
+So the correction worth carrying from here on: your files are not really
+"on the disk." **The disk holds only blocks; the *files* live in the
+ledger.** Lose the ledger and every block is still there—and means
 nothing.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->

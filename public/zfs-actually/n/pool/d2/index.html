@@ -55,16 +55,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>The <strong>pool</strong> is what ZFS turns your disks into: one shared pot of storage
-that the whole machine draws from. You hand ZFS the disks; it hands you
-back a single supply of space. You never carve it up in advance, never
-decide sizes ahead of time, never &quot;resize&quot; anything again—everything on the
-machine simply shares the pot.</p>
-<p>The surprise hiding inside the word: <strong>the pool itself keeps no spare
-copies of anything.</strong> Protection against a dead disk lives one level down,
-inside the small teams of disks the pool is built from (called <em>vdevs</em>—the
-next idea to meet). That distinction is the difference between a safe setup
-and a time bomb, which is why it gets its own page.</p>
+      <p>Every computer you've owned has made you think about <em>which</em> disk things
+live on: this drive is full, that one has room, move the photos. ZFS
+retires that question. You hand it all your disks, and it hands back one
+thing—the <strong>pool</strong>: a single shared supply of storage the whole machine
+draws from. Nothing gets carved up in advance, no sizes decided ahead of
+time, no &quot;resizing&quot; ever again. Everything simply shares the pot.</p>
+<p>One warning belongs this early: <strong>the pool itself keeps no spare copies of
+anything.</strong> Protection against a dead disk lives one level down, inside
+the small teams of disks the pool is built from (called <em>vdevs</em>—the next
+idea to meet). That distinction is the difference between a safe setup and
+a time bomb, which is why it gets its own page.</p>
 
     </section>
     

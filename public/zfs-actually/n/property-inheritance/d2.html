@@ -24,15 +24,17 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Every dataset carries dozens of <strong>properties</strong>—settings like whether to
-squeeze its data, how much space it may use, where it appears in your
-folders. Datasets sit in a family tree, and each setting either was set
-<em>right here</em> or is <strong>inherited</strong> from the nearest ancestor that set it.
-So you don't configure each dataset; you set a rule once, at the highest
-point in the tree where it's true, and everything below follows.</p>
-<p>The small surprise: there is no central settings file to hunt for. The top
-of the tree <em>is</em> the settings, and every local exception is visible and
-signed—you can always ask a dataset where a setting came from.</p>
+      <p>Everywhere else in your computing life, settings live in one central
+place—a preferences screen, a control panel, a configuration file. ZFS
+does it differently: every dataset carries its own <strong>properties</strong>—settings
+like whether to squeeze its data, how much space it may use, where it
+appears in your folders. And because datasets sit in a family tree, each
+setting either was set <em>right here</em> or is <strong>inherited</strong> from the nearest
+ancestor that set it. You set a rule once, at the highest point in the
+tree where it's true, and everything below follows.</p>
+<p>The payoff: there is no central settings file to hunt for. The top of the
+tree <em>is</em> the settings, and every local exception is visible and signed—
+you can always ask a dataset where a setting came from.</p>
 
     </section>
     

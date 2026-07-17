@@ -19,9 +19,11 @@ summary: >
 The Vdev
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **vdev** ("virtual device") is a small team of disks that back each other
-up. A team might be two disks keeping identical copies (a *mirror*), a
-group of disks sharing recovery math so any one can die (*RAIDZ*), or—
+From above, the pool looks like one undivided pot of storage. Underneath,
+ZFS never treats your disks as one big group. It binds them into small
+teams, and each team backs itself up. That team is a **vdev** ("virtual
+device"). A team might be two disks keeping identical copies (a *mirror*),
+a group of disks sharing recovery math so any one can die (*RAIDZ*), or—
 dangerously—one lone disk backing up nothing. A pool is built by joining
 teams together.
 

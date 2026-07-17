@@ -25,15 +25,16 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>A <strong>zvol</strong> is a slice of the pool that pretends to be a blank disk instead
-of a folder of files. You hand it to something that wants a whole disk of
-its own—most often a virtual machine (a computer simulated in software)—
-and that thing formats and uses it exactly as if it were real hardware.</p>
-<p>The confusion it resolves: people go hunting for &quot;the file&quot; that holds
-their virtual machine's disk and find nothing—<strong>because there is no file.</strong>
-The virtual disk is carved straight from the pool. And underneath the
-pretense it's still ZFS: fingerprint-checked, freezable in time, copyable
-to another machine, like everything else in the pool.</p>
+      <p>If you run virtual machines—computers simulated in software—you've
+probably assumed each machine's disk is a big file sitting in a folder
+somewhere. On most systems, it is. On ZFS you can go hunting for that file
+and find nothing—<strong>because there is no file.</strong></p>
+<p>ZFS can serve up a slice of the pool <em>as if it were a blank physical
+disk</em>. That slice is a <strong>zvol</strong>. You hand it to anything that wants a
+whole disk of its own—most often a virtual machine—and it formats and
+uses it exactly as if it were real hardware. Underneath the pretense it's
+still ZFS: fingerprint-checked, freezable in time, copyable to another
+machine, like everything else in the pool.</p>
 
     </section>
     

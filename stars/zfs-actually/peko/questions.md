@@ -229,3 +229,10 @@ is the finding that forced the boundary correction.*
 - **Why it felt right:** That's how most software works; "why hasn't everyone upgraded" is usually a fair question.
 - **Resolved by:** node `filesystem-history` (and `filesystem-landscape`)
 - **Actually:** Filesystem history is a chain of disasters and answers—simple ledgers lost to crashes, journaling answered crashes, the integrity generation (ZFS) answered lying hardware. Each older generation survives exactly where its trade-offs still fit: FAT32 rules camera cards *because* simplicity is the feature there. They're not versions; they're different answers to different disasters.
+
+## Q32 · plain words in the wrong order are still arcane   [phase: P4] [status: resolved]
+- **Asked:** (reader test, round three) "This is so awkward: 'You'll want to call ZFS a filesystem, because that's the word the ecosystem uses. Actually, ZFS is the entire storage stack…' Do you see the learning path there?"
+- **Naive model:** "Clear and additive" means plain vocabulary—swap jargon for everyday words and the surface is fixed. A sentence can open with the author's conclusion as long as the words in it are simple.
+- **Why it felt right:** The jargon was the visible offense, so removing jargon looked like the whole cure. But a plain-worded sentence that starts from the author's conclusion still strands the reader—they have the words and not the ground.
+- **Resolved by:** the walk shape, applied to every depth-2 surface (heard-word → define it → anchor it in lived experience → then the correction)
+- **Actually:** Additive means *ordered*, not merely plain: start from the word or belief the reader already carries, define it in the same breath, anchor it in something they've lived (FAT32 on a USB stick), and only then fire the "actually." Each sentence hands the next its footing—the correction lands *because* the ground was laid. A depth-2 that opens with the author's framing is a lecture; one that opens with the reader's is a path.

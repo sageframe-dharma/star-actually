@@ -18,17 +18,18 @@ summary: >
 The Pool
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The **pool** is what ZFS turns your disks into: one shared pot of storage
-that the whole machine draws from. You hand ZFS the disks; it hands you
-back a single supply of space. You never carve it up in advance, never
-decide sizes ahead of time, never "resize" anything again—everything on the
-machine simply shares the pot.
+Every computer you've owned has made you think about *which* disk things
+live on: this drive is full, that one has room, move the photos. ZFS
+retires that question. You hand it all your disks, and it hands back one
+thing—the **pool**: a single shared supply of storage the whole machine
+draws from. Nothing gets carved up in advance, no sizes decided ahead of
+time, no "resizing" ever again. Everything simply shares the pot.
 
-The surprise hiding inside the word: **the pool itself keeps no spare
-copies of anything.** Protection against a dead disk lives one level down,
-inside the small teams of disks the pool is built from (called *vdevs*—the
-next idea to meet). That distinction is the difference between a safe setup
-and a time bomb, which is why it gets its own page.
+One warning belongs this early: **the pool itself keeps no spare copies of
+anything.** Protection against a dead disk lives one level down, inside
+the small teams of disks the pool is built from (called *vdevs*—the next
+idea to meet). That distinction is the difference between a safe setup and
+a time bomb, which is why it gets its own page.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 The containment hierarchy, once and cleanly:

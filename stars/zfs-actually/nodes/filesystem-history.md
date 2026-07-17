@@ -19,9 +19,11 @@ summary: >
 A Short History of Filesystems
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-Filesystem history looks like a parade of product names—FAT, ext2, NTFS,
-ZFS. **Actually, it's a chain of disasters and answers.** Three generations,
-each built to survive the failure that ruined the one before:
+You've met the names in format menus and error messages—FAT32, NTFS,
+ext4—and maybe wondered why there are so many, and whether the old ones
+are simply bad. The list looks like a parade of products, each replacing
+the last. **Actually, it's a chain of disasters and answers**: three
+generations, each built to survive the failure that ruined the one before.
 
 1. **Simple ledgers** (1970s–80s: FAT, early Unix filesystems). Fast and
    tiny. But lose power mid-write and the ledger itself ends up

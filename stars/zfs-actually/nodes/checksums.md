@@ -19,19 +19,21 @@ summary: >
 Checksums
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-A **checksum** is a tiny fingerprint computed from a piece of data. ZFS
-fingerprints everything it writes, and every time it reads anything back,
-it re-computes the fingerprint and compares. Why bother? Because **disks
-sometimes lie**: they age, they glitch, and they can hand back subtly wrong
-data while reporting that everything is fine. Storage systems that keep
-duplicate copies but no fingerprints can't even tell which copy is the
-right one. With fingerprints, wrong data gets caught the moment anything
-touches it.
+You trust a disk the way you trust a filing cabinet: what you put in is
+what you'll get back. Mostly, that's true. But disks age and glitch, and
+once in a long while one hands back subtly wrong data *while reporting
+that everything is fine*—no error, no warning, just wrong bytes. Keeping
+duplicate copies doesn't escape this: with two copies that disagree and no
+referee, which one is right?
 
-Hold two powers apart, because everything downstream depends on the split:
-**noticing damage is guaranteed, everywhere, always. Fixing damage requires
-a spare copy to fix it from.** Fingerprints without spare copies can only
-tell you what you lost—they can't give it back.
+ZFS's referee is the **checksum**: a tiny fingerprint computed from every
+piece of data as it's written. Every time anything is read back, ZFS
+re-computes the fingerprint and compares—so wrong data gets caught the
+moment anything touches it. Hold two powers apart, because everything
+downstream depends on the split: **noticing damage is guaranteed,
+everywhere, always. Fixing damage requires a spare copy to fix it from.**
+Fingerprints alone can only tell you what you lost—they can't give it
+back.
 <!-- depth:3 -->
 <!-- provenance: extracted -->
 Where you meet them: `zpool status` has three error columns—READ, WRITE,

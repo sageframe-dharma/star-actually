@@ -19,18 +19,19 @@ summary: >
 Copy-on-Write
 <!-- depth:2 -->
 <!-- provenance: synthesized -->
-The name suggests a safety net—keeping a spare copy in case a change goes
-wrong. **Actually, copy-on-write means ZFS never writes over existing data.
-Ever.** When you "change" a file, ZFS writes the new version onto fresh,
-empty space, and then—in one clean, instant switch—makes the new version
-the official one. The old data isn't protected or repaired; it's simply
-never touched.
+When an ordinary system saves a change, it writes the new version on top
+of the old one, right where it sat. That's the obvious approach, and it
+carries a hidden bet: that nothing goes wrong *mid-write*. Lose power at
+the wrong instant and the old version is half-destroyed while the new one
+is half-written—the ugly middle that older systems needed repair tools
+for.
 
-The consequence is enormous for something so simple: at every moment, what's
-on disk is *some* complete, correct state. A change either fully happened
-or never happened—there is no half-finished middle. This is why a ZFS
-machine that loses power mid-write doesn't need a repair pass afterward:
-there is nothing half-done to repair.
+**Copy-on-write is ZFS's refusal to ever make that bet: existing data is
+never written over. Ever.** When you "change" a file, ZFS writes the new
+version onto fresh, empty space, and then—in one clean, instant switch—
+makes it the official one. So at every moment, what's on disk is *some*
+complete, correct state. A change either fully happened or never happened;
+there is nothing half-done to repair, which is why no repair pass exists.
 <!-- depth:3 -->
 <!-- provenance: synthesized -->
 You feel CoW everywhere before you can name it:

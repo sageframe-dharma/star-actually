@@ -36,14 +36,18 @@
   <div class="layers">
     
     <section class="layer layer-2" data-depth="2">
-      <p>Set up once, together, in one file, they blur into a single mental object:
-&quot;the backup system.&quot; <strong>Actually, they're two separate, small helpers, each
-automating one thing you can do by hand.</strong> <strong>Sanoid</strong> is the
+      <p>A snapshot routine that actually protects you—taken every hour, old ones
+cleaned out, fresh copies shipped to another machine—is a chore no human
+keeps up by hand at three in the morning. So most serious ZFS setups run
+two small helper tools, usually installed together and easily mistaken for
+one thing called &quot;the backup system.&quot; <strong>Actually, they're two separate
+helpers, each automating one job you can do yourself.</strong> <strong>Sanoid</strong> is the
 snapshot-taker: &quot;a policy-driven snapshot management tool&quot; (its README)—it
-takes snapshots on a schedule (hourly, daily, monthly) and deletes old ones
-according to rules you set. <strong>Syncoid</strong> is the shipper: it &quot;facilitates the
-asynchronous incremental replication of ZFS filesystems&quot;—it finds the last
-moment both machines share, and sends over only what's new since.</p>
+takes snapshots on a schedule (hourly, daily, monthly) and deletes old
+ones according to rules you set. <strong>Syncoid</strong> is the shipper: it
+&quot;facilitates the asynchronous incremental replication of ZFS filesystems&quot;—
+it finds the last moment both machines share, and sends over only what's
+new since.</p>
 <p>Neither adds any storage machinery of its own. They're scheduling and
 judgment layered on top of snapshots and send/receive—which is why
 understanding those two ideas <em>is</em> understanding these tools.</p>

@@ -1,5 +1,5 @@
 {
-  "keisaku": 1,
+  "keisaku": 2,
   "works": [
     {
       "id": "zfs-actually",
@@ -11,15 +11,17 @@
       "media": [
         "website"
       ],
+      "status": "in-development",
       "repo": "git@github-dharma:sageframe-dharma/star-actually.git",
       "tech_stack": "Python (star-actually)",
       "created": "2026-07-16",
       "last_updated": "2026-07-17",
       "_keisaku": {
-        "generated_at": "2026-11-16T10:49:47",
+        "generated_at": "2026-11-17T15:26:32",
         "generator_version": "1",
         "sources": {
           "readme": "README.md",
+          "contract": "ho-process/kamae-6-zfs-actually-state-memory.md",
           "manifest": "pyproject.toml"
         },
         "derived_defaults": {
@@ -28,15 +30,14 @@
           "media": [
             "software"
           ],
+          "status": "in-development",
           "created": "2026-07-16",
           "tags": [
             "python",
             "star-actually"
           ]
         },
-        "contract_issues": [
-          "no-contract-source"
-        ]
+        "contract_issues": []
       }
     }
   ]

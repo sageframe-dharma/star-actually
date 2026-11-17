@@ -1,0 +1,91 @@
+{
+  "keisaku": 1,
+  "works": [
+    {
+      "id": "ssh-actually",
+      "name": "SSH, Actually",
+      "hero": "Mental models before commands.",
+      "importance": 4,
+      "featured": false,
+      "group": "knowledge-architecture",
+      "themes": [
+        "knowledge",
+        "infrastructure"
+      ],
+      "sort_order_within_group": 20,
+      "tags": [
+        "content",
+        "knowledge-architecture",
+        "ssh",
+        "security",
+        "htmx"
+      ],
+      "media": [
+        "website",
+        "writing"
+      ],
+      "status": "live",
+      "repo": "git@github-dharma:sageframe-dharma/star-actually.git",
+      "license": "MIT",
+      "deployment": [
+        {
+          "label": "Live edition",
+          "url": "https://star-actually.sageframe.net/ssh-actually/"
+        },
+        {
+          "label": "Websites repo",
+          "url": "https://github.com/sageframe-dharma/star-actually"
+        }
+      ],
+      "tech_stack": "Python (star-actually)",
+      "created": "2026-03-10",
+      "last_updated": "2026-07-15",
+      "conceived": "2026-01-30",
+      "short_description": "The first instance built on the *, Actually engine—a definition-first guide to SSH, key pairs, hardware security keys, and modern authentication.",
+      "substantive_description": [
+        "A specific demonstration of *, Actually inside a domain whose existing documentation is famously bad. SSH is a system every working developer needs, every working developer pretends to understand, and almost no one was taught well; the official documentation describes commands, and the field needs mental models. SSH, Actually starts where understanding starts—mental models before commands—and works outward through concept relationships rather than product features, honest about where the subject is genuinely confusing. It covers SSH fundamentals, cryptographic primitives, FIDO2, passkeys, and hardware security keys, with a companion commands reference. The deeper argument is that the same approach generalizes: any technical domain whose documentation has accumulated as features-of-tools rather than relationships-between-concepts has the same opportunity, and SSH, Actually is the first instance of the answer—a content repo supplying nodes and a site.yaml to the star-actually engine.",
+        "A depth-layered markdown content set built and rendered by the star-actually engine into a self-published static site—htmx-based, terminal-aesthetic, keyboard-driven, with zero framework overhead—live at star-actually.sageframe.net/ssh-actually; content published under CC BY-ND 4.0."
+      ],
+      "images": {
+        "gallery": []
+      },
+      "relationships": [
+        {
+          "edge_class": "narrative",
+          "target": "star-actually",
+          "type": "operationalizes",
+          "note": "The first complete content set demonstrating the *, Actually system."
+        }
+      ],
+      "_keisaku": {
+        "generated_at": "2026-11-16T10:49:42",
+        "generator_version": "1",
+        "sources": {
+          "readme": "README.md",
+          "manifest": "pyproject.toml"
+        },
+        "derived_defaults": {
+          "id": "ssh-actually",
+          "name": "SSH, Actually",
+          "media": [
+            "software"
+          ],
+          "created": "2026-07-09",
+          "tags": [
+            "python",
+            "star-actually"
+          ],
+          "deployment": [
+            {
+              "label": "ssh, actually",
+              "url": "https://star-actually.sageframe.net/ssh-actually/"
+            }
+          ]
+        },
+        "contract_issues": [
+          "no-contract-source"
+        ]
+      }
+    }
+  ]
+}

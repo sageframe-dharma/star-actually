@@ -1,0 +1,90 @@
+{
+  "keisaku": 1,
+  "works": [
+    {
+      "id": "ho-actually",
+      "name": "Ho, Actually",
+      "hero": "The methodology, taught under its own discipline.",
+      "importance": 4,
+      "featured": false,
+      "group": "knowledge-architecture",
+      "themes": [
+        "knowledge",
+        "craft"
+      ],
+      "sort_order_within_group": 25,
+      "tags": [
+        "content",
+        "knowledge-architecture",
+        "ho-system",
+        "methodology",
+        "htmx"
+      ],
+      "media": [
+        "website",
+        "writing"
+      ],
+      "status": "live",
+      "repo": "git@github-dharma:sageframe-dharma/star-actually.git",
+      "license": "MIT",
+      "deployment": [
+        {
+          "label": "Live edition",
+          "url": "https://star-actually.sageframe.net/ho-actually/"
+        },
+        {
+          "label": "Websites repo",
+          "url": "https://github.com/sageframe-dharma/star-actually"
+        }
+      ],
+      "tech_stack": "Python (star-actually)",
+      "created": "2026-07-11",
+      "last_updated": "2026-07-15",
+      "conceived": "2026-07-11",
+      "short_description": "The Ho System taught as a navigable graph—a depth-layered guide to the methodology, built on the *, Actually engine. Enter with a question, dial the depth, stop when you understand enough.",
+      "substantive_description": [
+        "The second live instance of *, Actually, and the reflexive one: the methodology documented under its own discipline. Where SSH, Actually proves the engine generalizes outward to an external domain, Ho, Actually turns it inward—the Ho System's concepts, stages, and document chain organized by question and relationship rather than by chapter order, each node readable at the depth the reader needs."
+      ],
+      "images": {
+        "gallery": []
+      },
+      "relationships": [
+        {
+          "edge_class": "narrative",
+          "target": "star-actually",
+          "type": "operationalizes",
+          "note": "A content repo supplying nodes and a site.yaml to the shared engine."
+        },
+        {
+          "edge_class": "narrative",
+          "target": "ho-system",
+          "type": "documents",
+          "strength": 3
+        }
+      ],
+      "_keisaku": {
+        "generated_at": "2026-11-16T10:49:42",
+        "generator_version": "1",
+        "sources": {
+          "readme": "README.md",
+          "manifest": "pyproject.toml"
+        },
+        "derived_defaults": {
+          "id": "ho-actually",
+          "name": "Ho System, Actually",
+          "media": [
+            "software"
+          ],
+          "created": "2026-07-09",
+          "tags": [
+            "python",
+            "star-actually"
+          ]
+        },
+        "contract_issues": [
+          "no-contract-source"
+        ]
+      }
+    }
+  ]
+}

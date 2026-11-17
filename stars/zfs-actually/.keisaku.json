@@ -1,0 +1,43 @@
+{
+  "keisaku": 1,
+  "works": [
+    {
+      "id": "zfs-actually",
+      "name": "ZFS, Actually",
+      "tags": [
+        "python",
+        "star-actually"
+      ],
+      "media": [
+        "software"
+      ],
+      "repo": "git@github-dharma:sageframe-dharma/star-actually.git",
+      "tech_stack": "Python (star-actually)",
+      "created": "2026-07-16",
+      "last_updated": "2026-07-17",
+      "_keisaku": {
+        "generated_at": "2026-11-16T10:49:47",
+        "generator_version": "1",
+        "sources": {
+          "readme": "README.md",
+          "manifest": "pyproject.toml"
+        },
+        "derived_defaults": {
+          "id": "zfs-actually",
+          "name": "ZFS, Actually",
+          "media": [
+            "software"
+          ],
+          "created": "2026-07-16",
+          "tags": [
+            "python",
+            "star-actually"
+          ]
+        },
+        "contract_issues": [
+          "no-contract-source"
+        ]
+      }
+    }
+  ]
+}

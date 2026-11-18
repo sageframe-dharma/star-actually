@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start from zero: what a filesystem is, and why ZFS exists · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+  
+  <nav class="head-chains" aria-label="chains">
+    <a class="head-chain" href="/zfs-actually/c/from-zero/"
+       hx-get="/zfs-actually/c/from-zero.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/from-zero/">&equiv; Start from zero: what a filesystem is, and why ZFS exists &middot; 4</a>
+    <a class="head-chain" href="/zfs-actually/c/build-first-pool/"
+       hx-get="/zfs-actually/c/build-first-pool.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/build-first-pool/">&equiv; Build your first pool with intent &middot; 9</a>
+    <a class="head-chain" href="/zfs-actually/c/sleep-at-night/"
+       hx-get="/zfs-actually/c/sleep-at-night.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/sleep-at-night/">&equiv; Snapshots, backups, and actually sleeping at night &middot; 6</a>
+    <a class="head-chain" href="/zfs-actually/c/disk-died/"
+       hx-get="/zfs-actually/c/disk-died.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/disk-died/">&equiv; A disk just died &middot; 4</a>
+    <a class="head-chain" href="/zfs-actually/c/performance-model/"
+       hx-get="/zfs-actually/c/performance-model.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/performance-model/">&equiv; Where the speed actually comes from &middot; 5</a>
+  </nav>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+
+<article class="chain-index" id="content" data-chain-id="from-zero">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Start from zero: what a filesystem is, and why ZFS exists</h1>
+      <span class="node-type node-type-chain">chain</span>
+    </div>
+    <p class="chain-count">4 steps, in order &mdash; start anywhere</p>
+  </header>
+
+  <ol class="chain-list">
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="what-a-filesystem-is"
+         href="/zfs-actually/n/what-a-filesystem-is/"
+         hx-get="/zfs-actually/n/what-a-filesystem-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-a-filesystem-is/">What a Filesystem Is</a>
+      <span class="chain-item-summary">The absolute ground floor: a disk stores only numbered blocks and has no idea what a file is—the filesystem is the ledger that invents files, names, and folders on top of them.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="filesystem-history"
+         href="/zfs-actually/n/filesystem-history/"
+         hx-get="/zfs-actually/n/filesystem-history/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-history/">A Short History of Filesystems</a>
+      <span class="chain-item-summary">Fifty years in one story: each generation of filesystems answers the previous generation's disaster—ending (so far) at the generation ZFS opened, which stopped trusting the disk itself.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="filesystem-landscape"
+         href="/zfs-actually/n/filesystem-landscape/"
+         hx-get="/zfs-actually/n/filesystem-landscape/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/filesystem-landscape/">The Filesystem Landscape</a>
+      <span class="chain-item-summary">The filesystems you actually meet—ext4, XFS, NTFS, APFS, Btrfs—one honest line each, and the specific combination ZFS offers that the others don't.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="what-zfs-is"
+         href="/zfs-actually/n/what-zfs-is/"
+         hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-zfs-is/">What ZFS Is</a>
+      <span class="chain-item-summary">A system for storing data built around one promise: what you put in comes back exactly—or ZFS tells you, loudly, instead of silently handing you something broken.</span>
+    </li>
+    
+  </ol>
+
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

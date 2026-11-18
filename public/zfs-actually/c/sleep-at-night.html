@@ -1,0 +1,64 @@
+
+<article class="chain-index" id="content" data-chain-id="sleep-at-night">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Snapshots, backups, and actually sleeping at night</h1>
+      <span class="node-type node-type-chain">chain</span>
+    </div>
+    <p class="chain-count">6 steps, in order &mdash; start anywhere</p>
+  </header>
+
+  <ol class="chain-list">
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="copy-on-write"
+         href="/zfs-actually/n/copy-on-write/"
+         hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/copy-on-write/">Copy-on-Write</a>
+      <span class="chain-item-summary">ZFS never writes over existing data—every change lands on fresh space first, then takes effect in one clean switch. The habit everything else stands on.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="snapshot"
+         href="/zfs-actually/n/snapshot/"
+         hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot/">Snapshots</a>
+      <span class="chain-item-summary">A frozen moment of a dataset that copies nothing—it just keeps the past from being thrown away. Free to take; the cost arrives slowly, as the present drifts from the moment you kept.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="snapshot-space"
+         href="/zfs-actually/n/snapshot-space/"
+         hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot-space/">Snapshots and Disappearing Space</a>
+      <span class="chain-item-summary">You deleted the files and the free space barely moved—because snapshots are still holding those files. The space changed owners; it didn't come back.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="snapshots-are-not-backups"
+         href="/zfs-actually/n/snapshots-are-not-backups/"
+         hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">Snapshots Are Not Backups</a>
+      <span class="chain-item-summary">A snapshot lives on the same disks, in the same pool, behind the same mistakes as the data. It's the versioning half of a backup strategy; replication is the other half.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="send-recv"
+         href="/zfs-actually/n/send-recv/"
+         hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/send-recv/">Send and Receive</a>
+      <span class="chain-item-summary">How a frozen moment travels to another machine—an exact copy, and after the first trip, only what changed. Not a file-comparing sync tool: it already knows what's different.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="sanoid-syncoid"
+         href="/zfs-actually/n/sanoid-syncoid/"
+         hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/sanoid-syncoid/">Sanoid and Syncoid</a>
+      <span class="chain-item-summary">Not one "backup system"—two small helpers: sanoid takes and prunes snapshots on a schedule; syncoid ships them to another machine. Both just automate things you can do by hand.</span>
+    </li>
+    
+  </ol>
+
+</article>

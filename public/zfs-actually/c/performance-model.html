@@ -1,0 +1,56 @@
+
+<article class="chain-index" id="content" data-chain-id="performance-model">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Where the speed actually comes from</h1>
+      <span class="node-type node-type-chain">chain</span>
+    </div>
+    <p class="chain-count">5 steps, in order &mdash; start anywhere</p>
+  </header>
+
+  <ol class="chain-list">
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="arc"
+         href="/zfs-actually/n/arc/"
+         hx-get="/zfs-actually/n/arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/arc/">The ARC</a>
+      <span class="chain-item-summary">ZFS's reading cache—the reason your machine's memory looks full, and why that's the system working, not leaking.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="l2arc"
+         href="/zfs-actually/n/l2arc/"
+         hx-get="/zfs-actually/n/l2arc/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/l2arc/">L2ARC</a>
+      <span class="chain-item-summary">A second-tier cache on a fast drive—not free speed, because indexing it spends the memory cache that's actually fast. A measured fix for a proven problem, not an upgrade.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="zil-slog"
+         href="/zfs-actually/n/zil-slog/"
+         hx-get="/zfs-actually/n/zil-slog/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/zil-slog/">ZIL and SLOG</a>
+      <span class="chain-item-summary">Not a fast lane for writes—a diary of promises, written constantly and read exactly once: after a crash. A SLOG just moves the diary to a faster drive, and only promise-me-now writes ever use it.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="recordsize"
+         href="/zfs-actually/n/recordsize/"
+         hx-get="/zfs-actually/n/recordsize/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/recordsize/">Recordsize</a>
+      <span class="chain-item-summary">The size of the chunks ZFS stores files in—adjustable per dataset. It matters when programs change small pieces inside huge files, and changing it only affects files written afterward.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="free-space-discipline"
+         href="/zfs-actually/n/free-space-discipline/"
+         hx-get="/zfs-actually/n/free-space-discipline/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/free-space-discipline/">The Free-Space Discipline</a>
+      <span class="chain-item-summary">On ZFS, empty space isn't spare room—it's the workshop floor every change is made on. Fill the pool and it gets permanently grumpier.</span>
+    </li>
+    
+  </ol>
+
+</article>

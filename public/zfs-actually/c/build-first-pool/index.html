@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build your first pool with intent · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+  
+  <nav class="head-chains" aria-label="chains">
+    <a class="head-chain" href="/zfs-actually/c/from-zero/"
+       hx-get="/zfs-actually/c/from-zero.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/from-zero/">&equiv; Start from zero: what a filesystem is, and why ZFS exists &middot; 4</a>
+    <a class="head-chain" href="/zfs-actually/c/build-first-pool/"
+       hx-get="/zfs-actually/c/build-first-pool.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/build-first-pool/">&equiv; Build your first pool with intent &middot; 9</a>
+    <a class="head-chain" href="/zfs-actually/c/sleep-at-night/"
+       hx-get="/zfs-actually/c/sleep-at-night.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/sleep-at-night/">&equiv; Snapshots, backups, and actually sleeping at night &middot; 6</a>
+    <a class="head-chain" href="/zfs-actually/c/disk-died/"
+       hx-get="/zfs-actually/c/disk-died.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/disk-died/">&equiv; A disk just died &middot; 4</a>
+    <a class="head-chain" href="/zfs-actually/c/performance-model/"
+       hx-get="/zfs-actually/c/performance-model.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/performance-model/">&equiv; Where the speed actually comes from &middot; 5</a>
+  </nav>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+
+<article class="chain-index" id="content" data-chain-id="build-first-pool">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Build your first pool with intent</h1>
+      <span class="node-type node-type-chain">chain</span>
+    </div>
+    <p class="chain-count">9 steps, in order &mdash; start anywhere</p>
+  </header>
+
+  <ol class="chain-list">
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="what-zfs-is"
+         href="/zfs-actually/n/what-zfs-is/"
+         hx-get="/zfs-actually/n/what-zfs-is/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/what-zfs-is/">What ZFS Is</a>
+      <span class="chain-item-summary">A system for storing data built around one promise: what you put in comes back exactly—or ZFS tells you, loudly, instead of silently handing you something broken.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="pool"
+         href="/zfs-actually/n/pool/"
+         hx-get="/zfs-actually/n/pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/pool/">The Pool</a>
+      <span class="chain-item-summary">All your disks, combined into one shared pot of storage—and the surprise inside the word: the pool itself keeps no spare copies.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="vdev"
+         href="/zfs-actually/n/vdev/"
+         hx-get="/zfs-actually/n/vdev/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/vdev/">The Vdev</a>
+      <span class="chain-item-summary">The small team of disks that back each other up—where protection actually lives, and therefore where failure actually lives. Lose one whole team, lose the whole pool.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="mirror"
+         href="/zfs-actually/n/mirror/"
+         hx-get="/zfs-actually/n/mirror/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/mirror/">Mirrors</a>
+      <span class="chain-item-summary">Two or more disks holding identical copies of everything—half the space, in exchange for the best speed, the fastest recovery, and the most freedom to change your mind later.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="raidz"
+         href="/zfs-actually/n/raidz/"
+         hx-get="/zfs-actually/n/raidz/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/raidz/">RAIDZ</a>
+      <span class="chain-item-summary">Protection by recovery math instead of full copies—more usable space than mirrors, but a RAIDZ team moves at one disk's pace for scattered small requests. Big libraries, not virtual machines.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="ashift"
+         href="/zfs-actually/n/ashift/"
+         hx-get="/zfs-actually/n/ashift/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/ashift/">Ashift</a>
+      <span class="chain-item-summary">ZFS's recorded guess about a disk's true cell size—made once, when a disk team is created, and permanent forever. The one setting a wrong guess makes unfixable. Use 12.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="dataset"
+         href="/zfs-actually/n/dataset/"
+         hx-get="/zfs-actually/n/dataset/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/dataset/">Datasets</a>
+      <span class="chain-item-summary">A named slice of the pool that looks like a folder but carries its own rules—its own settings, limits, and history. Costs nothing to make. Make many.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="compression"
+         href="/zfs-actually/n/compression/"
+         hx-get="/zfs-actually/n/compression/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/compression/">Compression</a>
+      <span class="chain-item-summary">Squeezing data used to cost speed to save space. ZFS's method is so fast the trade runs backward—leave it on, and it often makes things faster.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="first-pool"
+         href="/zfs-actually/n/first-pool/"
+         hx-get="/zfs-actually/n/first-pool/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/first-pool/">Your First Pool</a>
+      <span class="chain-item-summary">Creating a pool is one command and four judgments—two of them permanent (how the disks are teamed, and the disk cell-size setting), the rest changeable over coffee.</span>
+    </li>
+    
+  </ol>
+
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

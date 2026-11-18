@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snapshots, backups, and actually sleeping at night · ZFS, Actually</title>
+<link rel="stylesheet" href="/zfs-actually/assets/style.css">
+</head>
+<body data-base="/zfs-actually">
+<header class="site-head">
+  <a class="site-name" href="/zfs-actually/">ZFS, Actually</a>
+  <span class="site-tagline">Storage you can finally reason about.</span>
+  
+  <nav class="head-chains" aria-label="chains">
+    <a class="head-chain" href="/zfs-actually/c/from-zero/"
+       hx-get="/zfs-actually/c/from-zero.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/from-zero/">&equiv; Start from zero: what a filesystem is, and why ZFS exists &middot; 4</a>
+    <a class="head-chain" href="/zfs-actually/c/build-first-pool/"
+       hx-get="/zfs-actually/c/build-first-pool.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/build-first-pool/">&equiv; Build your first pool with intent &middot; 9</a>
+    <a class="head-chain" href="/zfs-actually/c/sleep-at-night/"
+       hx-get="/zfs-actually/c/sleep-at-night.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/sleep-at-night/">&equiv; Snapshots, backups, and actually sleeping at night &middot; 6</a>
+    <a class="head-chain" href="/zfs-actually/c/disk-died/"
+       hx-get="/zfs-actually/c/disk-died.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/disk-died/">&equiv; A disk just died &middot; 4</a>
+    <a class="head-chain" href="/zfs-actually/c/performance-model/"
+       hx-get="/zfs-actually/c/performance-model.html" hx-target="#content" hx-swap="outerHTML"
+       hx-push-url="/zfs-actually/c/performance-model/">&equiv; Where the speed actually comes from &middot; 5</a>
+  </nav>
+</header>
+
+<div class="rail" id="rail" aria-label="your path"></div>
+
+<main class="reading">
+
+<article class="chain-index" id="content" data-chain-id="sleep-at-night">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">Snapshots, backups, and actually sleeping at night</h1>
+      <span class="node-type node-type-chain">chain</span>
+    </div>
+    <p class="chain-count">6 steps, in order &mdash; start anywhere</p>
+  </header>
+
+  <ol class="chain-list">
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="copy-on-write"
+         href="/zfs-actually/n/copy-on-write/"
+         hx-get="/zfs-actually/n/copy-on-write/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/copy-on-write/">Copy-on-Write</a>
+      <span class="chain-item-summary">ZFS never writes over existing data—every change lands on fresh space first, then takes effect in one clean switch. The habit everything else stands on.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="snapshot"
+         href="/zfs-actually/n/snapshot/"
+         hx-get="/zfs-actually/n/snapshot/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot/">Snapshots</a>
+      <span class="chain-item-summary">A frozen moment of a dataset that copies nothing—it just keeps the past from being thrown away. Free to take; the cost arrives slowly, as the present drifts from the moment you kept.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="snapshot-space"
+         href="/zfs-actually/n/snapshot-space/"
+         hx-get="/zfs-actually/n/snapshot-space/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshot-space/">Snapshots and Disappearing Space</a>
+      <span class="chain-item-summary">You deleted the files and the free space barely moved—because snapshots are still holding those files. The space changed owners; it didn't come back.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="snapshots-are-not-backups"
+         href="/zfs-actually/n/snapshots-are-not-backups/"
+         hx-get="/zfs-actually/n/snapshots-are-not-backups/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/snapshots-are-not-backups/">Snapshots Are Not Backups</a>
+      <span class="chain-item-summary">A snapshot lives on the same disks, in the same pool, behind the same mistakes as the data. It's the versioning half of a backup strategy; replication is the other half.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="send-recv"
+         href="/zfs-actually/n/send-recv/"
+         hx-get="/zfs-actually/n/send-recv/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/send-recv/">Send and Receive</a>
+      <span class="chain-item-summary">How a frozen moment travels to another machine—an exact copy, and after the first trip, only what changed. Not a file-comparing sync tool: it already knows what's different.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="sanoid-syncoid"
+         href="/zfs-actually/n/sanoid-syncoid/"
+         hx-get="/zfs-actually/n/sanoid-syncoid/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/sanoid-syncoid/">Sanoid and Syncoid</a>
+      <span class="chain-item-summary">Not one "backup system"—two small helpers: sanoid takes and prunes snapshots on a schedule; syncoid ships them to another machine. Both just automate things you can do by hand.</span>
+    </li>
+    
+  </ol>
+
+</article>
+
+</main>
+
+<footer class="action-bar" id="action-bar">
+  <span class="key-hint"><kbd>&uarr;</kbd> back</span>
+  <span class="key-hint"><kbd>&darr;</kbd> onward</span>
+  <span class="key-hint"><kbd>&minus;</kbd> deeper</span>
+  <span class="key-hint"><kbd>+</kbd> surface</span>
+  <span class="key-hint"><kbd>&rarr;</kbd> branch</span>
+  <span class="key-hint"><kbd>&crarr;</kbd> return</span>
+  <span class="key-hint"><a href="/zfs-actually/"><kbd>/</kbd> search</a></span>
+  <span class="key-hint"><a href="/zfs-actually/help.html"><kbd>?</kbd> help</a></span>
+</footer>
+
+<script src="/zfs-actually/assets/htmx.min.js"></script>
+<script src="/zfs-actually/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+<article class="chain-index" id="content" data-chain-id="disk-died">
+
+  <header class="node-head">
+    <div class="node-title-line">
+      <h1 class="node-title">A disk just died</h1>
+      <span class="node-type node-type-chain">chain</span>
+    </div>
+    <p class="chain-count">4 steps, in order &mdash; start anywhere</p>
+  </header>
+
+  <ol class="chain-list">
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="zpool-status"
+         href="/zfs-actually/n/zpool-status/"
+         hx-get="/zfs-actually/n/zpool-status/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/zpool-status/">Reading zpool status</a>
+      <span class="chain-item-summary">The pool's one health report—and DEGRADED means the design is working, not that the pool is dying. How to read it without panic.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="replace-disk"
+         href="/zfs-actually/n/replace-disk/"
+         hx-get="/zfs-actually/n/replace-disk/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/replace-disk/">Replacing a Disk</a>
+      <span class="chain-item-summary">The procedure you'll run under stress, made boring: identify by serial, replace, watch the resilver, scrub. The real risk is precision, not speed.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="resilver"
+         href="/zfs-actually/n/resilver/"
+         hx-get="/zfs-actually/n/resilver/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/resilver/">Resilvering</a>
+      <span class="chain-item-summary">How ZFS refills a replacement disk—copying only real data, checking every piece as it goes. A half-full pool recovers in half the time, and the time matters.</span>
+    </li>
+    
+    <li class="chain-item">
+      <a class="nav-node chain-member" data-node-id="scrub"
+         href="/zfs-actually/n/scrub/"
+         hx-get="/zfs-actually/n/scrub/d2.html" hx-target="#content" hx-swap="outerHTML"
+         hx-push-url="/zfs-actually/n/scrub/">Scrubs</a>
+      <span class="chain-item-summary">A scheduled read-through of everything the pool holds, so quiet damage in untouched data gets found while a spare copy still exists to fix it. Finding is guaranteed; fixing isn't.</span>
+    </li>
+    
+  </ol>
+
+</article>
